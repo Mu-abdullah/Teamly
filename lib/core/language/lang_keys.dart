@@ -57,12 +57,7 @@ class LangKeys {
 
   // Home Keys
   static const String home = 'home';
-  static const String search = 'search';
-  static const String rahaali = 'rahaali';
-  static const String account = 'account';
-  static const String travelQuote = 'travelQuote';
-  static const String governorates = 'governorates';
-  static const String cities = 'cities';
-  static const String places = 'places';
-  static const String youRequestUnderReview = 'youRequestUnderReview';
+  static const String current = 'current';
+  static const String resigned = 'resigned';
+  static const String terminated = 'terminated';
 }

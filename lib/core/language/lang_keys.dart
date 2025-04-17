@@ -41,17 +41,6 @@ class LangKeys {
   static const String tryToConnect = 'tryToConnect';
   static const String stillNotConnected = 'stillNotConnected';
 
-  // onboarding keys
-  static const String skip = 'skip';
-  static const String next = 'next';
-  static const String discover = 'discover';
-  static const String title1 = 'title1';
-  static const String title2 = 'title2';
-  static const String title3 = 'title3';
-  static const String body1 = 'body1';
-  static const String body2 = 'body2';
-  static const String body3 = 'body3';
-
   // Auth Keys
   static const String login = 'login';
   static const String register = 'register';
@@ -76,24 +65,4 @@ class LangKeys {
   static const String cities = 'cities';
   static const String places = 'places';
   static const String youRequestUnderReview = 'youRequestUnderReview';
-
-  // Cities Keys
-  static const String addNewPlace = 'addNewPlace';
-  static const String addPhotosToPalace = 'addPhotosToPalace';
-  static const String noPhotos = 'noPhotos';
-  static const String placeName = 'placeName';
-  static const String placelocation = 'placelocation';
-  static const String placeDescription = 'placeDescription';
-  static const String noPlaces = 'noPlaces';
-  static const String place = 'place';
-  static const String beFirst = 'beFirst';
-  static const String go = 'go';
-  static const String goToLocation = 'goToLocation';
-  static const String createdByAi = 'createdByAi';
-  static const String chooseGovernorate = 'chooseGovernorate';
-
-  // chat Keys
-  static const String noMassagesYet = 'noMassagesYet';
-  static const String typeYourMessage = 'typeYourMessage';
-  static const String poweredByAi = 'poweredByAi';
 }

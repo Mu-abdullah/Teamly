@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/statics/app_statics.dart';
@@ -60,10 +59,15 @@ class HomeCard extends StatelessWidget {
                 children: [
                   Icon(cardIcon, size: 32, color: textColor),
                   const SizedBox(height: 16),
-                  AppText(cardCount, isTitle: isHighlighted, color: textColor),
+                  AppText(
+                    cardCount,
+                    isTitle: isHighlighted,
+                    color: textColor,
+                    translate: false,
+                  ),
                   const SizedBox(height: 4),
                   AppText(
-                    context.translate(cardTitle),
+                    cardTitle,
                     isTitle: isHighlighted,
                     color: textColor.withValues(alpha: 0.9),
                   ),

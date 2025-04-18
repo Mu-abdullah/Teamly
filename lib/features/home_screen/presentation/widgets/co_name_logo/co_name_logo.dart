@@ -113,10 +113,14 @@ class _CoNameLogoState extends State<CoNameLogo> {
                               child: const AppText(
                                 "تيملي للموارد البشرية",
                                 isTitle: true,
+                                translate: false,
                               ),
                             ),
                             const SizedBox(height: 8),
-                            AppText("Human Resources Solutions"),
+                            AppText(
+                              "Human Resources Solutions",
+                              translate: false,
+                            ),
                           ],
                         ),
                       ),
@@ -131,7 +135,5 @@ class _CoNameLogoState extends State<CoNameLogo> {
     );
   }
 
-  void _handleCompanyLogoPress(BuildContext context) {
-    
-  }
+  void _handleCompanyLogoPress(BuildContext context) {}
 }

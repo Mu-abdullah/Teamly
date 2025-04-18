@@ -35,7 +35,7 @@ class LangKeys {
   static const String policy = 'policy';
   static const String acceptPolicy = 'acceptPolicy';
   static const String logout = 'logout';
-  static const String myPlaces = 'myPlaces';
+ 
 
   // no internet screen
   static const String tryToConnect = 'tryToConnect';
@@ -58,6 +58,7 @@ class LangKeys {
   // Home Keys
   static const String home = 'home';
   static const String employees = 'employees';
+  static const String menue = 'menue';
   static const String current = 'current';
   static const String resigned = 'resigned';
   static const String terminated = 'terminated';

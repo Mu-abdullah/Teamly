@@ -81,7 +81,11 @@ class HomeCompaniesItem extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppText('شركة ${index + 1}', fontSize: 18),
+                        AppText(
+                          'شركة ${index + 1}',
+                          fontSize: 18,
+                          translate: false,
+                        ),
                         const SizedBox(height: 6),
                         Row(
                           children: [
@@ -116,7 +120,12 @@ class HomeCompaniesItem extends StatelessWidget {
         color: AppColors.blueAccent.withValues(alpha: 0.1),
         borderRadius: AppBorderRadius.largeRadius,
       ),
-      child: AppText(text, fontSize: 12, color: AppColors.blueAccent),
+      child: AppText(
+        text,
+        fontSize: 12,
+        color: AppColors.blueAccent,
+        translate: false,
+      ),
     );
   }
 }

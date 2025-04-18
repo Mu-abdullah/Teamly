@@ -9,11 +9,13 @@ class AppText extends StatelessWidget {
     super.key,
     this.isTitle = false,
     this.isUpperCase = false,
+    this.translate = true,
     this.isBold = false,
     this.isUnderline = false,
     this.isOverLine = false,
     this.isLineThrough = false,
     this.textAlign = TextAlign.justify,
+    this.overflow = TextOverflow.ellipsis,
     this.maxLines = 1,
     this.color = AppColors.black,
     this.lineColor = AppColors.black,
@@ -25,11 +27,13 @@ class AppText extends StatelessWidget {
 
   final String text;
   final TextAlign? textAlign;
+  final TextOverflow? overflow;
   final int maxLines;
   final Color? color;
   final Color? lineColor;
   final double height;
   final bool isUpperCase;
+  final bool translate;
   final bool isTitle;
   final bool isBold;
   final bool isUnderline;
@@ -41,8 +45,9 @@ class AppText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final displayText = translate ? context.translate(text) : text;
     return Text(
-      isUpperCase ? text.toUpperCase() : text,
+      isUpperCase ? displayText.toUpperCase() : displayText,
       style: customTextStyle(
         context,
         color: color!,
@@ -58,7 +63,7 @@ class AppText extends StatelessWidget {
         fontWeight: fontWeight,
         fontFamily: fontFamily,
       ),
-      overflow: TextOverflow.ellipsis,
+      overflow: overflow,
       textAlign: textAlign,
       maxLines: maxLines,
     );
@@ -82,7 +87,8 @@ TextStyle customTextStyle(
 }) {
   return TextStyle(
     fontFamily: fontFamily ?? FontsHelper.fontFamily,
-    fontSize: fontSize ??
+    fontSize:
+        fontSize ??
         (isTitle ? context.titleLarge?.fontSize : context.bodySmall?.fontSize),
     color: color,
     fontWeight: fontWeight ?? (isBold ? FontWeight.bold : FontWeight.normal),

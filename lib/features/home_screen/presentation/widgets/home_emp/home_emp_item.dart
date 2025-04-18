@@ -51,9 +51,9 @@ class HomeEmpItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: const [
-                  AppText('محمد احمد', isTitle: true),
+                  AppText('محمد احمد', isTitle: true, translate: false),
                   SizedBox(height: 4),
-                  AppText('مدير عام', fontSize: 12),
+                  AppText('مدير عام', fontSize: 12, translate: false),
                 ],
               ),
             ),

@@ -38,7 +38,7 @@
     "favorites":"Favorites",
     "deleteAccount":"Delete Account",
     "logout":"Logout",
-    "myPlaces":"My Places",
+ 
 
     "######################################Login":"",
     "login":"Login",
@@ -57,6 +57,7 @@
     "######################################HomeScreen":"",
     "home":"Home",
     "employees":"Employees",
+    "menue":"Menue",
     "companies":"Companies",
     "current":"Current",
     "resigned":"Resigned",

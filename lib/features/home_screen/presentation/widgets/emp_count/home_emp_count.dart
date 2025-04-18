@@ -13,39 +13,50 @@ class HomeEmpCount extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: AppPadding.smallPadding,
-      child: Column(
-        spacing: 12,
-        children: [
-          HomeCard(
-            cardTitle: LangKeys.current,
-            cardCount: '20',
-            cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
-            isHighlighted: true,
-          ),
-          Row(
-            spacing: 12,
-            children: [
-              Expanded(
-                child: HomeCard(
-                  cardTitle: LangKeys.resigned,
-                  cardCount: '3',
-                  cardIcon: HugeIcons.strokeRoundedCancelCircle,
-                  color: AppColors.yellow,
-                  textColor: AppColors.black,
-                ),
-              ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: AppBorderRadius.mediumRadius,
+          color: AppColors.white,
+        ),
+        height: 330,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          spacing: 12,
+          children: [
+            HomeCard(
+              cardTitle: LangKeys.current,
+              cardCount: '256',
+              cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
+              isHighlighted: true,
+            ),
+            Expanded(
+              child: Row(
+                spacing: 12,
+                children: [
+                  Expanded(
+                    child: HomeCard(
+                      cardTitle: LangKeys.resigned,
+                      cardCount: '23',
+                      cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                      color: AppColors.yellow,
+                      textColor: AppColors.black,
+                    ),
+                  ),
 
-              Expanded(
-                child: HomeCard(
-                  cardTitle: LangKeys.terminated,
-                  cardCount: '1',
-                  cardIcon: HugeIcons.strokeRoundedCancelCircle,
-                  color: AppColors.red,
-                ),
+                  Expanded(
+                    child: HomeCard(
+                      cardTitle: LangKeys.terminated,
+                      cardCount: '5',
+                      cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                      color: AppColors.red,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

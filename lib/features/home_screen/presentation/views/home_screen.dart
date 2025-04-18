@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/language/lang_keys.dart';
 import '../../../../core/style/widgets/custom_app_bar.dart';
-import '../refactor/home_mobile_body.dart';
+import '../refactor/home_body.dart';
 import '../widgets/drawer/home_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,8 +16,9 @@ class HomeScreen extends StatelessWidget {
         isBack: false,
         hasDrawer: true,
       ),
-      body: HomeMobileBody(),
+      body: HomeBody(),
       drawer: CustomHomeDrawer(),
     );
   }
 }
+

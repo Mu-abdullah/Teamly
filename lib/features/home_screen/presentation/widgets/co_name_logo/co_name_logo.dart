@@ -35,9 +35,9 @@ class _CoNameLogoState extends State<CoNameLogo> {
                   color: AppColors.black.withValues(
                     alpha: _isHovered ? 0.2 : 0.1,
                   ),
-                  spreadRadius: _isHovered ? 3 : 2,
-                  blurRadius: _isHovered ? 16 : 12,
-                  offset: Offset(0, _isHovered ? 6 : 4),
+                  spreadRadius: _isHovered ? 5 : 2,
+                  blurRadius: _isHovered ? 24 : 12,
+                  offset: Offset(0, _isHovered ? 10 : 4),
                 ),
               ],
             ),
@@ -56,7 +56,7 @@ class _CoNameLogoState extends State<CoNameLogo> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: AppColors.black.withValues(
-                        alpha: _isHovered ? 0.08 : 0.05,
+                        alpha: _isHovered ? 0.1 : 0.05,
                       ),
                     ),
                   ),
@@ -71,7 +71,7 @@ class _CoNameLogoState extends State<CoNameLogo> {
                       // Logo with animated scale
                       AnimatedScale(
                         duration: const Duration(milliseconds: 200),
-                        scale: _isHovered ? 1.05 : 1.0,
+                        scale: _isHovered ? 1.1 : 1.0,
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
@@ -108,7 +108,7 @@ class _CoNameLogoState extends State<CoNameLogo> {
                               ).textTheme.headlineSmall!.copyWith(
                                 color: AppColors.black,
                                 fontWeight: FontWeight.w700,
-                                letterSpacing: _isHovered ? 0.8 : 0.5,
+                                letterSpacing: _isHovered ? 1 : 0.5,
                               ),
                               child: const AppText(
                                 "تيملي للموارد البشرية",

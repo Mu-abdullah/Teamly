@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:teamly/core/style/widgets/app_space.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/color/app_color.dart';
+import '../../../../../core/style/statics/app_statics.dart';
+import '../../../../../core/style/widgets/app_space.dart';
 import '../home_section_header.dart';
 import 'home_emp_listview.dart';
 
@@ -12,7 +13,11 @@ class HomeEmpSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.white,
+      decoration: BoxDecoration(
+        borderRadius: AppBorderRadius.mediumRadius,
+        color: AppColors.white,
+      ),
+
       height: 250,
       child: Column(
         spacing: 10,

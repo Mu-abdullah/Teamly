@@ -109,7 +109,7 @@ class HomeCompaniesItem extends StatelessWidget {
           ),
         ),
       ),
-    ).animate().fadeIn(duration: 600.ms, delay: (100 * index).ms);
+    ).animate().fadeIn(duration: 1000.ms, delay: (1 * index).ms);
   }
 
   // Helper widget for date chips

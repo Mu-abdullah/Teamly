@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/co_name_logo/co_name_logo.dart';
 import '../widgets/emp_count/home_emp_count.dart';
-import '../widgets/mobile_home_emp/mobile_home_emp.dart' show MobileHomeEmp;
+import '../widgets/home_emp/home_emp.dart';
 
 class HomeMobileBody extends StatelessWidget {
   const HomeMobileBody({super.key});

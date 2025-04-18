@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'mobile_home_emp_item.dart';
 
-class MobileHomeEmpListview extends StatelessWidget {
-  const MobileHomeEmpListview({super.key});
+class HomeEmpListview extends StatelessWidget {
+  const HomeEmpListview({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class MobileHomeEmpListview extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 5,
         itemBuilder: (context, index) {
-          return MobileHomeEmpItem();
+          return HomeEmpItem();
         },
       ),
     );

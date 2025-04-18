@@ -5,8 +5,8 @@ import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/statics/image_test.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 
-class MobileHomeEmpItem extends StatelessWidget {
-  const MobileHomeEmpItem({super.key});
+class HomeEmpItem extends StatelessWidget {
+  const HomeEmpItem({super.key});
 
   @override
   Widget build(BuildContext context) {

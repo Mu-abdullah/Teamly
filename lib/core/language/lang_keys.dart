@@ -35,7 +35,6 @@ class LangKeys {
   static const String policy = 'policy';
   static const String acceptPolicy = 'acceptPolicy';
   static const String logout = 'logout';
- 
 
   // no internet screen
   static const String tryToConnect = 'tryToConnect';
@@ -52,7 +51,7 @@ class LangKeys {
   static const String writePhoneCorrect = 'writePhoneCorrect';
   static const String phoneStartWith = 'phoneStartWith';
   static const String writeEmailCorrect = 'writeEmailCorrect';
-  static const String welcemeUser = 'welcemeUser';
+  static const String welcomeUser = 'welcemeUser';
   static const String shouldBeLogin = 'shouldBeLogin';
 
   // Home Keys
@@ -66,4 +65,11 @@ class LangKeys {
   static const String addCompany = 'addCompany';
   static const String addEmployee = 'addEmployee';
 
+  // Profile Keys
+  static const String attendanceLeaving = 'attendanceLeaving';
+  static const String checkIn = 'checkIn';
+  static const String checkOut = 'checkOut';
+  static const String showLess = 'showLess';
+  static const String showMore = 'showMore';
+  static const String lastAttendance = 'lastAttendance';
 }

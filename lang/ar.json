@@ -68,7 +68,16 @@
     "companies":"الشركات",
     "current":"الحاليين",
     "resigned":"المستقيلين",
-    "terminated":"المفصولين"
+    "terminated":"المفصولين",
+
+
+    "######################################Profile":"", 
+    "attendanceLeaving":"الحضور والانصراف",
+    "lastAttendance":"اخر الحضور والانصراف",
+    "checkIn":"الحضور",
+    "checkOut":"الانصراف",
+    "showMore":"اظهار المزيد",
+    "showLess":"اظهار اقل"
 
      
 }

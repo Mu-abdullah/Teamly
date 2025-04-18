@@ -15,6 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.backgroundColor = AppColors.scaffoldBackground,
     this.icon = HugeIcons.strokeRoundedMenu03,
+    this.elevation,
   });
 
   final String title;
@@ -24,6 +25,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final Color backgroundColor;
   final IconData? icon;
+  final double? elevation;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -46,6 +48,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: AppText(title, isTitle: true, translate: translate),
       actions: actions,
       backgroundColor: backgroundColor,
+      elevation: elevation,
     );
   }
 

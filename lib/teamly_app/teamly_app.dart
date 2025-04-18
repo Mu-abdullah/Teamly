@@ -54,7 +54,7 @@ class _TeamlyState extends State<Teamly> {
         builder: (context, language) {
           _syncLocaleWithLanguage(language);
           return _buildMaterialApp(
-            initialRoute: RoutesNames.homeScreen,
+            initialRoute: RoutesNames.userHomeScreen,
             builder: _appBuilder,
           );
         },

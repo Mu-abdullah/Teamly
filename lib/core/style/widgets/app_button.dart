@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:teamly/core/extextions/extentions.dart';
 
 import '../color/app_color.dart';
 import '../statics/app_statics.dart';
@@ -91,12 +90,7 @@ class AppButton extends StatelessWidget {
   }
 
   Widget _buildText(BuildContext context, Color textColor) {
-    return AppText(
-      context.translate(text!),
-      isUpperCase: true,
-      color: textColor,
-      isBold: true,
-    );
+    return AppText(text!, isUpperCase: true, color: textColor, isBold: true);
   }
 
   Widget _buildIcon(Color iconColor) {

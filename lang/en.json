@@ -63,7 +63,16 @@
     "companies":"Companies",
     "current":"Current",
     "resigned":"Resigned",
-    "terminated":"Terminated"
+    "terminated":"Terminated",
+
+
+    "######################################Profile":"", 
+    "attendanceLeaving":"Attendance & Leaving",
+    "lastAttendance":"Last Attendance & Leaving",
+    "checkIn":"Check In",
+    "checkOut":"Check Out",
+    "showMore":"Show more",
+    "showLess":"Show less"
     
      
 }

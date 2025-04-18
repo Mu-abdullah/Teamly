@@ -4,7 +4,10 @@ class RoutesNames {
   static const String language = 'language';
   static const String noInternet = 'noInternet';
 
-  // home screens
+  //admin screens
   static const String homeScreen = 'homeScreen';
   static const String empProfileScreen = 'empProfileScreen';
+
+  //user screens
+  static const String userHomeScreen = 'userHomeScreen';
 }

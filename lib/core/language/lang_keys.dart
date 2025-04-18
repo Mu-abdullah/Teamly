@@ -61,4 +61,6 @@ class LangKeys {
   static const String current = 'current';
   static const String resigned = 'resigned';
   static const String terminated = 'terminated';
+  static const String companies = 'companies';
+
 }

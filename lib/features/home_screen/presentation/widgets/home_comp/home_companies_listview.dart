@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-import 'home_emp_item.dart';
+import 'home_companies_item.dart';
 
-class HomeEmpListview extends StatelessWidget {
-  const HomeEmpListview({super.key});
+class HomeCompaniesListview extends StatelessWidget {
+  const HomeCompaniesListview({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 5,
+        itemCount: 15,
         itemBuilder: (context, index) {
-          return HomeEmpItem();
+          return HomeCompaniesItem(index: index);
         },
       ),
     );

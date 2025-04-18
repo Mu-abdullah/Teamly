@@ -6,8 +6,8 @@ import '../../../../../core/style/color/app_color.dart';
 import '../home_section_header.dart';
 import 'home_emp_listview.dart';
 
-class MobileHomeEmp extends StatelessWidget {
-  const MobileHomeEmp({super.key});
+class HomeEmpSection extends StatelessWidget {
+  const HomeEmpSection({super.key});
 
   @override
   Widget build(BuildContext context) {

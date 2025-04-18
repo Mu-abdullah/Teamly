@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/co_name_logo/co_name_logo.dart';
 import '../widgets/emp_count/home_emp_count.dart';
+import '../widgets/home_comp/home_companies.dart';
 import '../widgets/home_emp/home_emp.dart';
 
 class HomeMobileBody extends StatelessWidget {
@@ -11,11 +12,12 @@ class HomeMobileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        spacing: 10,
         children: [
           CoNameLogo(),
           HomeEmpCount(),
-          SizedBox(height: 20),
-          MobileHomeEmp(),
+          HomeCompaniesSection(),
+          HomeEmpSection(),
         ],
       ),
     );

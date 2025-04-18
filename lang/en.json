@@ -57,6 +57,7 @@
     "######################################HomeScreen":"",
     "home":"Home",
     "employees":"Employees",
+    "companies":"Companies",
     "current":"Current",
     "resigned":"Resigned",
     "terminated":"Terminated"

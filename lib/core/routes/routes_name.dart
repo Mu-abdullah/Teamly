@@ -6,4 +6,5 @@ class RoutesNames {
 
   // home screens
   static const String homeScreen = 'homeScreen';
+  static const String empProfileScreen = 'empProfileScreen';
 }

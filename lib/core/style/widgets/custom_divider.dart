@@ -29,19 +29,20 @@ class CustomDivider extends StatelessWidget {
         horizontal: hPaddingDouble,
         vertical: vPaddingDouble,
       ),
-      child: veratical
-          ? VerticalDivider(
-              color: color.withValues(alpha: opacity),
-              endIndent: endIndent,
-              indent: indent,
-              thickness: thickness,
-            )
-          : Divider(
-              color: color.withValues(alpha: opacity),
-              endIndent: endIndent,
-              indent: indent,
-              thickness: thickness,
-            ),
+      child:
+          veratical
+              ? VerticalDivider(
+                color: color.withValues(alpha: opacity),
+                endIndent: endIndent,
+                indent: indent,
+                thickness: thickness,
+              )
+              : Divider(
+                color: color.withValues(alpha: opacity),
+                endIndent: endIndent,
+                indent: indent,
+                thickness: thickness,
+              ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/emp_profile/presentation/views/emp_profile.dart';
 import '../../features/home_screen/presentation/views/home_screen.dart';
 import '../app/image/image_preview.dart';
 import '../app/language/language_screen.dart';
@@ -34,6 +35,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.homeScreen:
       return BaseRoute(page: const HomeScreen());
+
+    case RoutesNames.empProfileScreen:
+      return BaseRoute(page: const EmpProfile());
 
     default:
       return BaseRoute(page: const MaterialApp());

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/style/color/app_color.dart';
+import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 
 class HomeCard extends StatelessWidget {
@@ -26,13 +27,13 @@ class HomeCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: Material(
         elevation: 2,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppBorderRadius.mediumRadius,
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: AppBorderRadius.mediumRadius,
             gradient:
                 isHighlighted
                     ? LinearGradient(

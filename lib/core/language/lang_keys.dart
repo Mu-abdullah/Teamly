@@ -57,6 +57,7 @@ class LangKeys {
 
   // Home Keys
   static const String home = 'home';
+  static const String employees = 'employees';
   static const String current = 'current';
   static const String resigned = 'resigned';
   static const String terminated = 'terminated';

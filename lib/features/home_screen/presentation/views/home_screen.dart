@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/language/lang_keys.dart';
 import '../../../../core/style/widgets/custom_app_bar.dart';
 import '../refactor/home_mobile_body.dart';
-import '../widgets/home_drawer.dart';
+import '../widgets/drawer/home_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        translatedTitle: LangKeys.home,
+        title: LangKeys.home,
         isBack: false,
         hasDrawer: true,
       ),

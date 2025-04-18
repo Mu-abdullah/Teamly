@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:teamly/core/language/lang_keys.dart';
-import 'package:teamly/core/style/widgets/app_space.dart';
 
-import '../../../../core/style/widgets/app_text.dart';
+import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/style/widgets/app_space.dart';
+import '../../../../../core/style/widgets/app_text.dart';
+import 'home_drawer_button_list.dart';
 
 class CustomHomeDrawer extends StatelessWidget {
   const CustomHomeDrawer({super.key});
@@ -19,10 +20,13 @@ class CustomHomeDrawer extends StatelessWidget {
             Row(
               children: [
                 Expanded(child: AppText(LangKeys.menue, isTitle: true)),
-                Icon(HugeIcons.strokeRoundedCancelSquare),
+                InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: Icon(HugeIcons.strokeRoundedCancelSquare),
+                ),
               ],
             ),
-            Center(child: AppText("text")),
+            DrawerButtonList(),
           ],
         ),
       ),

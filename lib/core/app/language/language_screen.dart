@@ -19,7 +19,7 @@ class LanguageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(translatedTitle: LangKeys.changeLanguage),
+      appBar: CustomAppBar(title: LangKeys.changeLanguage),
       body: DecoratedBox(
         decoration: BoxDecoration(
           color: AppColors.scaffoldBackground.withValues(alpha: 0.9),

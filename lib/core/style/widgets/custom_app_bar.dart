@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import '../../../core/extextions/extentions.dart';
+
 import '../../../core/style/color/app_color.dart';
 import '../../../core/style/widgets/app_text.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
-    this.translatedTitle,
+
     this.title = '',
+    this.translate = true,
     this.isBack = true,
     this.hasDrawer = false,
     this.actions,
     this.backgroundColor = AppColors.scaffoldBackground,
     this.icon = HugeIcons.strokeRoundedMenu03,
   });
-  final String? translatedTitle;
+
   final String title;
+  final bool translate;
   final bool isBack;
   final bool hasDrawer;
   final List<Widget>? actions;
@@ -24,8 +26,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData? icon;
   @override
   Widget build(BuildContext context) {
-    var dispalayTitle =
-        translatedTitle != null ? context.translate(translatedTitle!) : title;
     return AppBar(
       automaticallyImplyLeading: isBack,
       leading:
@@ -43,7 +43,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () => Navigator.pop(context),
               )
               : null,
-      title: AppText(dispalayTitle, isTitle: true),
+      title: AppText(title, isTitle: true, translate: translate),
       actions: actions,
       backgroundColor: backgroundColor,
     );

@@ -86,11 +86,7 @@ class _CustodyItemState extends State<CustodyItem>
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      gradient: LinearGradient(
-        colors: [AppColors.white, AppColors.blueAccent.withValues(alpha: 0.1)],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      ),
+      color: AppColors.white,
       borderRadius: AppBorderRadius.mediumRadius,
       boxShadow: [
         BoxShadow(

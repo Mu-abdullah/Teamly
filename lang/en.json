@@ -73,7 +73,17 @@
     "checkIn":"Check In",
     "checkOut":"Check Out",
     "showMore":"Show more",
-    "showLess":"Show less"
+    "showLess":"Show less",
+
+    "######################################Custody":"", 
+    "addCustody":"Add Custody",
+    "custodyName":"Custody Name",
+    "custodyDate":"Custody Date",
+    "custodyDetails":"Custody Details",
+    "custodyAmount":"Custody Amount",
+    "custodyStatus":"Custody Status" ,
+    "notSettled":"Not Settled",
+    "settled":"Settled"
     
      
 }

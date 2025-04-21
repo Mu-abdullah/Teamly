@@ -78,7 +78,15 @@
     "checkIn":"الحضور",
     "checkOut":"الانصراف",
     "showMore":"اظهار المزيد",
-    "showLess":"اظهار اقل"
+    "showLess":"اظهار اقل",
 
-     
+    "######################################Custody":"", 
+    "addCustody":"إضافة عهدة",
+    "custodyName":"اسم العهدة",
+    "custodyDate":"تاريخ العهدة",
+    "custodyDetails":"تفاصيل العهدة",
+    "custodyAmount":"قيمة العهدة",
+    "custodyStatus":"حالة العهدة",
+    "notSettled":"لم يتم التسوية",
+    "settled":"تم التسوية"
 }

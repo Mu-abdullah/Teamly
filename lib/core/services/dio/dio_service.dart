@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class DioService {
   final Dio _dio = Dio();
   final String _graphqlUrl;
   final String _apiKey;
 
-  DioService({required String graphqlUrl, required String apiKey})
-    : _graphqlUrl = graphqlUrl,
-      _apiKey = apiKey {
+  DioService()
+    : _graphqlUrl = '${dotenv.env['SUPABASE_URL']}',
+      _apiKey = '${dotenv.env['API_KEY']}' {
     _dio.options.baseUrl = _graphqlUrl;
     _dio.options.headers = {
       'Authorization': 'Bearer $_apiKey',

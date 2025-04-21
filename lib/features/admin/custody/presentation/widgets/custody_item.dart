@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/entities/custody_entity.dart';
+import '../../../../../core/functions/timestamp_to_time.dart';
 import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/services/status/custody_status.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/statics/app_statics.dart';
@@ -10,8 +13,8 @@ import '../../../../../core/style/widgets/app_text.dart';
 
 class CustodyItem extends StatefulWidget {
   final CustodyEntity custody;
-  const CustodyItem({super.key, required this.custody});
-
+  const CustodyItem({super.key, required this.custody, this.showMore = true});
+  final bool showMore;
   @override
   State<CustodyItem> createState() => _CustodyItemState();
 }
@@ -150,21 +153,23 @@ class _CustodyItemState extends State<CustodyItem>
           _buildDetailRow(
             icon: HugeIcons.strokeRoundedCalendar01,
             label: LangKeys.custodyDate,
-            value: widget.custody.createdAt.toString(),
+            value: TimestampToTime.time(timestamp: widget.custody.createdAt),
           ),
           const SizedBox(height: 16),
           _buildDetailRow(
             icon: HugeIcons.strokeRoundedPoundSquare,
             label: LangKeys.custodyAmount,
-            value: widget.custody.amount.toString(),
+            value: widget.custody.totalAmount!,
             valueColor: AppColors.green,
           ),
           const SizedBox(height: 16),
           Row(
-            spacing: 10,
+            spacing: widget.showMore ? 10 : 0,
             children: [
               Expanded(child: _buildStatusChip()),
-              Expanded(child: _buildShowMoreButton()),
+              widget.showMore
+                  ? Expanded(child: _buildShowMoreButton())
+                  : const SizedBox.shrink(),
             ],
           ),
         ],
@@ -221,7 +226,12 @@ class _CustodyItemState extends State<CustodyItem>
 
     return InkWell(
       borderRadius: AppBorderRadius.mediumRadius,
-      onTap: () {},
+      onTap: () {
+        context.pushNamed(
+          RoutesNames.custodyDetails,
+          arguments: {'custody': widget.custody},
+        );
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(

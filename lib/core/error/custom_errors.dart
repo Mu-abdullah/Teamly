@@ -1,23 +1,18 @@
+enum ErrorType { network, graphql, noData, parsing, unknown }
+
 class CustomError {
-  CustomError(this.message);
   final String message;
+  final ErrorType type;
+  final String? details;
+  final StackTrace? stackTrace;
+
+  CustomError(
+    this.message, {
+    this.type = ErrorType.unknown,
+    this.details,
+    this.stackTrace,
+  });
 
   @override
-  String toString() => message;
-}
-
-class ServerError extends CustomError {
-  ServerError(super.message);
-}
-
-class NetworkError extends CustomError {
-  NetworkError(super.message);
-}
-
-class CacheError extends CustomError {
-  CacheError(super.message);
-}
-
-class AuthError extends CustomError {
-  AuthError(super.message);
+  String toString() => 'CustomError: $message (Type: $type, Details: $details)';
 }

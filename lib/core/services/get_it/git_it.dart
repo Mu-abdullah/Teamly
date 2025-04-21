@@ -1,5 +1,8 @@
 import 'package:get_it/get_it.dart';
 
+import '../../../features/admin/custody/data/repo/get_custody.dart';
+import '../graph_ql/graph_ql.dart';
+
 final GetIt locator = GetIt.instance;
 void setupLocator() {
   _registerRepositories();
@@ -7,11 +10,11 @@ void setupLocator() {
 }
 
 void _registerRepositories() {
-  // locator.registerLazySingleton(() => GetPlacesRepo(locator()));
+  locator.registerLazySingleton(() => GetCustody(locator()));
 }
 
 void _registerServices() {
-  // locator.registerLazySingleton(() => SupabaseServicesRepo());
+  locator.registerLazySingleton(() => GraphQLService());
   // locator.registerLazySingleton<DataService>(
   //   () => SupabaseDataService(locator()),
   // );

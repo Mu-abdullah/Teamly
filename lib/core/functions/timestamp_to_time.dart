@@ -14,15 +14,17 @@ class TimestampToTime {
         } else {
           // Assume it's a string representation of an integer timestamp
           int parsedTimestamp = int.parse(timestamp);
-          dateTime = isMilliseconds
-              ? DateTime.fromMillisecondsSinceEpoch(parsedTimestamp)
-              : DateTime.fromMillisecondsSinceEpoch(parsedTimestamp * 1000);
+          dateTime =
+              isMilliseconds
+                  ? DateTime.fromMillisecondsSinceEpoch(parsedTimestamp)
+                  : DateTime.fromMillisecondsSinceEpoch(parsedTimestamp * 1000);
         }
       } else if (timestamp is int) {
         // If the timestamp is an integer, use it directly
-        dateTime = isMilliseconds
-            ? DateTime.fromMillisecondsSinceEpoch(timestamp)
-            : DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+        dateTime =
+            isMilliseconds
+                ? DateTime.fromMillisecondsSinceEpoch(timestamp)
+                : DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
       } else {
         throw ArgumentError('Timestamp must be a String or int.');
       }

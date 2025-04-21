@@ -1,19 +1,19 @@
 class CustodyEntity {
   final int? id;
   final String? name;
-  final String? amount;
+  final String? totalAmount;
   final String? status;
-  final String? notes;
-  final String? approvedBy;
-  final DateTime? createdAt;
+  final int? approvedBy;
+  final String? note;
+  final String? createdAt;
 
   const CustodyEntity({
     this.id,
     this.name,
-    this.amount,
+    this.totalAmount,
     this.status,
-    this.notes,
     this.approvedBy,
+    this.note,
     this.createdAt,
   });
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/admin/custody/presentation/refactor/custody_details.dart';
 import '../../features/admin/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/emp_profile/presentation/views/emp_profile.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
@@ -7,6 +8,7 @@ import '../../features/user/user_home/presentation/views/user_home.dart';
 import '../app/image/image_preview.dart';
 import '../app/language/language_screen.dart';
 import '../app/no_internet/no_internet_screen.dart';
+import '../entities/custody_entity.dart';
 import 'base_routes.dart';
 import 'routes_name.dart';
 
@@ -40,9 +42,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.empProfileScreen:
       return BaseRoute(page: const EmpProfile());
-      
+
     case RoutesNames.custodyScreen:
       return BaseRoute(page: const CustodyScreen());
+
+    case RoutesNames.custodyDetails:
+      return BaseRoute(
+        page: CustodyDetails(custody: args?['custody'] as CustodyEntity),
+      );
 
     /////////
     /////////user feature routes////////////

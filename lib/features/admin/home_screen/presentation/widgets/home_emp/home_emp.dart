@@ -8,8 +8,8 @@ import '../home_section_header.dart';
 import 'home_emp_listview.dart';
 
 class HomeEmpSection extends StatelessWidget {
-  const HomeEmpSection({super.key});
-
+  const HomeEmpSection({super.key, this.height = 250});
+  final double height;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +18,7 @@ class HomeEmpSection extends StatelessWidget {
         color: AppColors.white,
       ),
 
-      height: 250,
+      height: height,
       child: Column(
         spacing: 10,
         crossAxisAlignment: CrossAxisAlignment.start,

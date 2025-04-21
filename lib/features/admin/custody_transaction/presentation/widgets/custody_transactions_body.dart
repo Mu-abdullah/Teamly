@@ -16,11 +16,44 @@ class CustodyTransactionBody extends StatelessWidget {
   final GetCustodyTransactionCubit cubit;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CalcCustody(cubit: cubit, custodyTransaction: custodyTransaction),
-        CustodyTransactionsListview(custodyTransaction: custodyTransaction),
-      ].animate(interval: 200.ms).fadeIn(duration: 400.ms).slideY(begin: 0.2),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth < 600) {
+          return Column(
+            children: [
+                  CalcCustody(
+                    cubit: cubit,
+                    custodyTransaction: custodyTransaction,
+                  ),
+                  CustodyTransactionsListview(
+                    custodyTransaction: custodyTransaction,
+                  ),
+                ]
+                .animate(interval: 200.ms)
+                .fadeIn(duration: 400.ms)
+                .slideY(begin: 0.2),
+          );
+        } else {
+          return Row(
+            children: [
+                  Expanded(
+                    child: CalcCustody(
+                      cubit: cubit,
+                      custodyTransaction: custodyTransaction,
+                    ),
+                  ),
+                  Expanded(
+                    child: CustodyTransactionsListview(
+                      custodyTransaction: custodyTransaction,
+                    ),
+                  ),
+                ]
+                .animate(interval: 200.ms)
+                .fadeIn(duration: 400.ms)
+                .slideY(begin: 0.2),
+          );
+        }
+      },
     );
   }
 }

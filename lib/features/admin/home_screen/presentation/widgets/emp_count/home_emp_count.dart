@@ -7,8 +7,8 @@ import '../../../../../../core/style/statics/app_statics.dart';
 import 'home_card.dart';
 
 class HomeEmpCount extends StatelessWidget {
-  const HomeEmpCount({super.key});
-
+  const HomeEmpCount({super.key, this.height = 270});
+  final double height;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +16,7 @@ class HomeEmpCount extends StatelessWidget {
         borderRadius: AppBorderRadius.mediumRadius,
         color: AppColors.white,
       ),
-      height: 270,
+      height: height,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

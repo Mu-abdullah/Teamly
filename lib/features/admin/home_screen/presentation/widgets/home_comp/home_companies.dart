@@ -8,8 +8,8 @@ import '../home_section_header.dart';
 import 'home_companies_listview.dart';
 
 class HomeCompaniesSection extends StatelessWidget {
-  const HomeCompaniesSection({super.key});
-
+  const HomeCompaniesSection({super.key , this.height = 330});
+final double height;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +17,7 @@ class HomeCompaniesSection extends StatelessWidget {
         color: AppColors.white,
         borderRadius: AppBorderRadius.mediumRadius,
       ),
-      height: 330,
+      height: height,
       child: Column(
         spacing: 10,
         children: [

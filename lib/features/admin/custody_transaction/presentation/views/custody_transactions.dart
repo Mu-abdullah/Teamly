@@ -22,7 +22,9 @@ class CustodyTransactions extends StatelessWidget {
                 ..fetchCustodyTransaction(int.parse(custody.id!)),
       child: Scaffold(
         appBar: CustomAppBar(title: LangKeys.custodyDetails),
-        body: CustodyTransactionsBody(custody: custody),
+        body: SingleChildScrollView(
+          child: CustodyTransactionsBody(custody: custody),
+        ),
       ),
     );
   }

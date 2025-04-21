@@ -9,8 +9,8 @@ import '../../../../../../core/style/statics/app_statics.dart';
 import '../emp_count/home_card.dart';
 
 class HomeCustody extends StatelessWidget {
-  const HomeCustody({super.key});
-
+  const HomeCustody({super.key, this.height = 120});
+  final double height;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +26,7 @@ class HomeCustody extends StatelessWidget {
         },
         child: HomeCard(
           cardTitle: LangKeys.custody,
-          height: 120,
+          height: height,
           color: AppColors.green,
           cardIcon: HugeIcons.strokeRoundedDollarCircle,
           isHighlighted: true,

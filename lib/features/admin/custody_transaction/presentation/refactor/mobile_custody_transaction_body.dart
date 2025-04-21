@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/entities/custody_entity.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../cubits/get_custody_transaction_cubit/get_custody_transaction_cubit.dart';
 import '../widgets/custody_transactions_body.dart';
 
-class CustodyTransactionsBody extends StatelessWidget {
-  const CustodyTransactionsBody({super.key, required this.custody});
-
-  final CustodyEntity custody;
+class MobileCustodyTransactionBody extends StatelessWidget {
+  const MobileCustodyTransactionBody({super.key});
 
   @override
   Widget build(BuildContext context) {

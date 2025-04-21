@@ -19,15 +19,15 @@ class HomeWebBody extends StatelessWidget {
           Row(
             spacing: 10,
             children: [
-              Expanded(child: HomeEmpCount()),
-              Expanded(child: HomeCompaniesSection()),
+              Expanded(child: HomeEmpCount(height: 270)),
+              Expanded(child: HomeCustody(height: 270)),
             ],
           ),
           Row(
             spacing: 10,
             children: [
-              Expanded(child: HomeEmpSection()),
-              Expanded(child: HomeCustody()),
+              Expanded(child: HomeEmpSection(height: 330)),
+              Expanded(child: HomeCompaniesSection(height: 330)),
             ],
           ),
         ],

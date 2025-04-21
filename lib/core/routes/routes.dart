@@ -30,7 +30,6 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case RoutesNames.noInternet:
       return BaseRoute(page: NoInternetScreen());
 
-
     /////////
     /////////admin feature routes////////////
     /////////
@@ -40,7 +39,6 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.empProfileScreen:
       return BaseRoute(page: const EmpProfile());
-
 
     /////////
     /////////user feature routes////////////

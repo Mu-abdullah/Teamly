@@ -64,6 +64,7 @@ class LangKeys {
   static const String companies = 'companies';
   static const String addCompany = 'addCompany';
   static const String addEmployee = 'addEmployee';
+  static const String custody = 'custody';
 
   // Profile Keys
   static const String attendanceLeaving = 'attendanceLeaving';

@@ -90,12 +90,7 @@ class CustodyItemWeb extends StatelessWidget {
                   value: custody.totalAmount ?? '',
                   isAmount: true,
                 ),
-                _buildWebItem(
-                  icon: HugeIcons.strokeRoundedCalendar01,
-                  title: LangKeys.custodyDate,
-                  value: _getStatusText(custody.status!),
-                  translate: true,
-                ),
+
                 _buildWebItem(
                   icon:
                       custody.status == CustodyStatus.settlement

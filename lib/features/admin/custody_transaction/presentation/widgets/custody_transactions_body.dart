@@ -35,14 +35,17 @@ class CustodyTransactionBody extends StatelessWidget {
           );
         } else {
           return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
                   Expanded(
+                    flex: 1,
                     child: CalcCustody(
                       cubit: cubit,
                       custodyTransaction: custodyTransaction,
                     ),
                   ),
                   Expanded(
+                    flex: 2,
                     child: CustodyTransactionsListview(
                       custodyTransaction: custodyTransaction,
                     ),

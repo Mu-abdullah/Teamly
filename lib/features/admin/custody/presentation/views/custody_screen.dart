@@ -17,12 +17,10 @@ class CustodyScreen extends StatelessWidget {
         children: [
           CustodyItem(
             custody: CustodyEntity(
-              id: 'cust-123',
+              id: 1,
               name: 'Laptop Purchase',
-              description: 'MacBook Pro for design team',
               amount: "1999.99",
               status: CustodyStatus.settlement,
-              assignedTo: 'emp-456',
               approvedBy: 'mgr-789',
               createdAt: DateTime.now(),
             ),

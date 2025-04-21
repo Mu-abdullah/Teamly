@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/admin/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/emp_profile/presentation/views/emp_profile.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/user/user_home/presentation/views/user_home.dart';
@@ -39,6 +40,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.empProfileScreen:
       return BaseRoute(page: const EmpProfile());
+      
+    case RoutesNames.custodyScreen:
+      return BaseRoute(page: const CustodyScreen());
 
     /////////
     /////////user feature routes////////////

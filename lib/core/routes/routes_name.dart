@@ -7,6 +7,7 @@ class RoutesNames {
   //admin screens
   static const String homeScreen = 'homeScreen';
   static const String empProfileScreen = 'empProfileScreen';
+  static const String custodyScreen = 'custodyScreen';
 
   //user screens
   static const String userHomeScreen = 'userHomeScreen';

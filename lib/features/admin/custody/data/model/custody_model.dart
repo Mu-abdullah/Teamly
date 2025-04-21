@@ -13,7 +13,7 @@ class CustodyModel extends CustodyEntity {
 
   factory CustodyModel.fromJson(Map<String, dynamic> json) {
     return CustodyModel(
-      id: json['id'] as int?,
+      id: json['id'] as String?,
       name: json['name'] as String?,
       totalAmount: json['total_amount'] as String?,
       status: json['status'] as String?,

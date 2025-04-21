@@ -119,23 +119,50 @@ class GraphQLService {
     int? offset,
     required T Function(Map<String, dynamic>) fromJson,
   }) async {
-    final query = _buildQuery(
-      collection: collection,
-      fields: fields,
-      filters: filters,
-      limit: limit,
-      offset: offset,
-    );
+    try {
+      final query = _buildQuery(
+        collection: collection,
+        fields: fields,
+        filters: filters,
+        limit: limit,
+        offset: offset,
+      );
 
-    final data = await executeQuery<Map<String, dynamic>>(
-      query,
-      operationName: 'Fetch$collection',
-    );
+      final response = await _dio.post(
+        '',
+        data: {
+          'query': query,
+          if (filters != null) 'variables': {'filter': filters},
+        },
+      );
 
-    final edges = data['${collection}Collection']['edges'] as List<dynamic>;
-    return edges
-        .map((e) => fromJson(e['node'] as Map<String, dynamic>))
-        .toList();
+      final data = response.data;
+      if (data['errors'] != null) {
+        throw CustomError(
+          'GraphQL Errors: ${data['errors'].toString()}',
+          type: ErrorType.graphql,
+          details: data['errors'].toString(),
+        );
+      }
+
+      final edges =
+          data['data']['${collection}Collection']['edges'] as List<dynamic>;
+      return edges
+          .map((e) => fromJson(e['node'] as Map<String, dynamic>))
+          .toList();
+    } on DioException catch (e) {
+      throw CustomError(
+        'Network error: ${e.message}',
+        type: ErrorType.network,
+        details: e.response?.data?.toString(),
+      );
+    } catch (e, stackTrace) {
+      throw CustomError(
+        'Unexpected error: $e',
+        type: ErrorType.unknown,
+        stackTrace: stackTrace,
+      );
+    }
   }
 
   /// Inserts records into a Supabase collection with type safety.
@@ -239,6 +266,10 @@ class GraphQLService {
     int? offset,
   }) {
     final fieldsString = fields.join('\n');
+    // Define the variable declaration for the filter
+    final variableDeclaration =
+        filters != null ? '(\$filter: ${collection}Filter)' : '';
+    // Define the argument for the collection
     final args = [
       if (filters != null) 'filter: \$filter',
       if (limit != null) 'first: $limit',
@@ -246,7 +277,7 @@ class GraphQLService {
     ].join(', ');
 
     return '''
-      query Fetch$collection${filters != null ? '(\$filter: ${collection}Filter)' : ''} {
+      query Fetch$collection$variableDeclaration {
         ${collection}Collection${args.isNotEmpty ? '($args)' : ''} {
           edges {
             node {
@@ -257,14 +288,15 @@ class GraphQLService {
       }
     ''';
   }
+}
 
-  // Helper method to construct an insert mutation
-  String _buildInsertMutation({
-    required String collection,
-    required List<String> returningFields,
-  }) {
-    final fieldsString = returningFields.join('\n');
-    return '''
+// Helper method to construct an insert mutation
+String _buildInsertMutation({
+  required String collection,
+  required List<String> returningFields,
+}) {
+  final fieldsString = returningFields.join('\n');
+  return '''
       mutation InsertInto$collection(\$objects: [${collection}InsertInput!]!) {
         insertInto${collection}Collection(objects: \$objects) {
           affectedCount
@@ -274,15 +306,15 @@ class GraphQLService {
         }
       }
     ''';
-  }
+}
 
-  // Helper method to construct an update mutation
-  String _buildUpdateMutation({
-    required String collection,
-    required List<String> returningFields,
-  }) {
-    final fieldsString = returningFields.join('\n');
-    return '''
+// Helper method to construct an update mutation
+String _buildUpdateMutation({
+  required String collection,
+  required List<String> returningFields,
+}) {
+  final fieldsString = returningFields.join('\n');
+  return '''
       mutation Update$collection(\$filter: ${collection}Filter!, \$updates: ${collection}UpdateInput!) {
         update${collection}Collection(filter: \$filter, set: \$updates) {
           affectedCount
@@ -292,15 +324,15 @@ class GraphQLService {
         }
       }
     ''';
-  }
+}
 
-  // Helper method to construct a delete mutation
-  String _buildDeleteMutation({
-    required String collection,
-    required List<String> returningFields,
-  }) {
-    final fieldsString = returningFields.join('\n');
-    return '''
+// Helper method to construct a delete mutation
+String _buildDeleteMutation({
+  required String collection,
+  required List<String> returningFields,
+}) {
+  final fieldsString = returningFields.join('\n');
+  return '''
       mutation DeleteFrom$collection(\$filter: ${collection}Filter!) {
         delete${collection}Collection(filter: \$filter) {
           affectedCount
@@ -310,5 +342,4 @@ class GraphQLService {
         }
       }
     ''';
-  }
 }

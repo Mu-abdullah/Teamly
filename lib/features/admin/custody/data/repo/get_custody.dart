@@ -1,21 +1,22 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:teamly/core/services/supabase/backend_points.dart';
 
 import '../../../../../core/error/custom_errors.dart';
 import '../../../../../core/services/graph_ql/graph_ql.dart';
+import '../../../../../core/services/supabase/backend_points.dart';
 import '../model/custody_model.dart';
 
-class GetCustody {
+class GetCustodyRepo {
   final GraphQLService service;
 
-  GetCustody(this.service);
+  GetCustodyRepo(this.service);
 
   Future<Either<CustomError, List<CustodyModel>>> getCustody() async {
     try {
       final data = await service.fetchCollection<CustodyModel>(
         collection: BackendPoint.custody,
         fields: const [
+          'id',
           'created_at',
           'company_id',
           'total_amount',
@@ -23,8 +24,10 @@ class GetCustody {
           'status',
         ],
         fromJson: CustodyModel.fromJson,
-        filters: {'company_id': 1},
-        limit: 10,
+        filters: {
+          ///  [DON'T FORGET TO CHANGE THIS COMPANY ID]  ///
+          'company_id': {'eq': 1},
+        },
       );
 
       return right(data);

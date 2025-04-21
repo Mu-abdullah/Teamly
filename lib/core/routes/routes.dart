@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../features/admin/custody/presentation/refactor/custody_details.dart';
+import '../../features/admin/custody_transaction/presentation/views/custody_transactions.dart';
 import '../../features/admin/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/emp_profile/presentation/views/emp_profile.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
@@ -46,9 +46,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case RoutesNames.custodyScreen:
       return BaseRoute(page: const CustodyScreen());
 
-    case RoutesNames.custodyDetails:
+    case RoutesNames.custodyTransactions:
       return BaseRoute(
-        page: CustodyDetails(custody: args?['custody'] as CustodyEntity),
+        page: CustodyTransactions(custody: args?['custody'] as CustodyEntity),
       );
 
     /////////

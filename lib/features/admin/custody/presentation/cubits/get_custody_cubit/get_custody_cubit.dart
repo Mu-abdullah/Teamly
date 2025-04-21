@@ -9,7 +9,7 @@ import '../../../data/repo/get_custody.dart';
 part 'get_custody_state.dart';
 
 class GetCustodyCubit extends Cubit<GetCustodyState> {
-  final GetCustody custodyRepo;
+  final GetCustodyRepo custodyRepo;
   GetCustodyCubit(this.custodyRepo) : super(GetCustodyInitial());
 
   static GetCustodyCubit get(context) => BlocProvider.of(context);

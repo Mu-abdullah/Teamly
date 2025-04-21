@@ -13,7 +13,7 @@ class CustodyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var lac = locator<GetCustody>();
+    var lac = locator<GetCustodyRepo>();
     return BlocProvider(
       create: (context) => GetCustodyCubit(lac)..fetchCustody(),
       child: Scaffold(

@@ -76,6 +76,10 @@
     "showLess":"Show less",
 
     "######################################Custody":"", 
+    "eg":"EGP",
+    "custodySummary":"custodySummary",
+    "rimaining":"Remaining",
+    "spended":"Spended",
     "addCustody":"Add Custody",
     "custodyName":"Custody Name",
     "custodyDate":"Custody Date",

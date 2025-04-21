@@ -1,9 +1,9 @@
 class CustodyEntity {
-  final int? id;
+  final dynamic id;
   final String? name;
   final String? totalAmount;
   final String? status;
-  final int? approvedBy;
+  final dynamic approvedBy;
   final String? note;
   final String? createdAt;
 

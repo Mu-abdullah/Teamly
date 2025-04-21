@@ -75,7 +75,10 @@ class LangKeys {
   static const String lastAttendance = 'lastAttendance';
 
   // Custody Keys
+  static const String custodySummary = 'custodySummary';
   static const String addCustody = 'addCustody';
+  static const String rimaining = 'rimaining';
+  static const String spended = 'spended';
   static const String custodyName = 'custodyName';
   static const String custodyDate = 'custodyDate';
   static const String custodyDetails = 'custodyDetails';
@@ -83,4 +86,5 @@ class LangKeys {
   static const String custodyStatus = 'custodyStatus';
   static const String settled = 'settled';
   static const String notSettled = 'notSettled';
+  static const String eg = 'eg';
 }

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
-import '../../../../../core/entities/custody_entity.dart';
-import '../../../../../core/functions/timestamp_to_time.dart';
-import '../../../../../core/language/lang_keys.dart';
-import '../../../../../core/routes/routes_name.dart';
-import '../../../../../core/services/status/custody_status.dart';
-import '../../../../../core/style/color/app_color.dart';
-import '../../../../../core/style/statics/app_statics.dart';
-import '../../../../../core/style/widgets/app_text.dart';
+import '../../../../../../core/entities/custody_entity.dart';
+import '../../../../../../core/functions/timestamp_to_time.dart';
+import '../../../../../../core/language/lang_keys.dart';
+import '../../../../../../core/routes/routes_name.dart';
+import '../../../../../../core/services/status/custody_status.dart';
+import '../../../../../../core/style/color/app_color.dart';
+import '../../../../../../core/style/statics/app_statics.dart';
+import '../../../../../../core/style/widgets/app_text.dart';
 
 class CustodyItem extends StatefulWidget {
   final CustodyEntity custody;
@@ -228,7 +228,7 @@ class _CustodyItemState extends State<CustodyItem>
       borderRadius: AppBorderRadius.mediumRadius,
       onTap: () {
         context.pushNamed(
-          RoutesNames.custodyDetails,
+          RoutesNames.custodyTransactions,
           arguments: {'custody': widget.custody},
         );
       },

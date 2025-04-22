@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
@@ -23,7 +24,7 @@ class _CoNameLogoState extends State<CoNameLogo> {
         onEnter: (_) => setState(() => _isHovered = true),
         onExit: (_) => setState(() => _isHovered = false),
         child: GestureDetector(
-          onTap: () => _handleCompanyLogoPress(context),
+          onTap: () {},
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             height: 160,
@@ -113,13 +114,17 @@ class _CoNameLogoState extends State<CoNameLogo> {
                               child: const AppText(
                                 "تيملي للموارد البشرية",
                                 isTitle: true,
+                                maxLines: 3,
                                 translate: false,
+                                textAlign: TextAlign.start,
                               ),
                             ),
                             const SizedBox(height: 8),
                             AppText(
                               "Human Resources Solutions",
+                              maxLines: 3,
                               translate: false,
+                              textAlign: TextAlign.start,
                             ),
                           ],
                         ),
@@ -132,8 +137,6 @@ class _CoNameLogoState extends State<CoNameLogo> {
           ),
         ),
       ),
-    );
+    ).animate().scale(duration: 300.ms, curve: Curves.easeOut);
   }
-
-  void _handleCompanyLogoPress(BuildContext context) {}
 }

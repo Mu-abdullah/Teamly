@@ -4,6 +4,7 @@ class RoutesNames {
   static const String language = 'language';
   static const String noInternet = 'noInternet';
   static const String auth = 'auth';
+  static const String checkRole = 'checkRole';
 
   //admin screens
   static const String homeScreen = 'homeScreen';

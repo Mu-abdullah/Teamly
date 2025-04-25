@@ -15,7 +15,9 @@ class AuthButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: AppButton(
         onTap: () {
-          if (authCubit.formKey.currentState!.validate()) {}
+          if (authCubit.formKey.currentState!.validate()) {
+            authCubit.login();
+          }
         },
         text: LangKeys.login,
       ),

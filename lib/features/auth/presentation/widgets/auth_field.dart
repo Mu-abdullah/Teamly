@@ -1,10 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
-import 'package:teamly/core/style/widgets/app_text_form_felid.dart'
-    show AppTextFormField;
 
 import '../../../../core/language/lang_keys.dart';
+import '../../../../core/style/widgets/app_text_form_felid.dart';
 import '../cubit/auth_cubit/auth_cubit.dart';
 
 class AuthField extends StatelessWidget {
@@ -17,7 +16,11 @@ class AuthField extends StatelessWidget {
     return Form(
       key: authCubit.formKey,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: EdgeInsets.only(
+          left: 16,
+          right: 16,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
         child: Column(
           spacing: 10,
           children: [

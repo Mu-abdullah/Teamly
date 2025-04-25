@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
+import '../../../../core/routes/routes_name.dart';
+import '../../../../core/style/color/app_color.dart';
+import '../../../../core/style/widgets/custom_snack_bar.dart';
 import '../../../admin/home_screen/presentation/widgets/co_name_logo/co_name_logo.dart';
 import '../cubit/auth_cubit/auth_cubit.dart';
 import '../widgets/auth_button.dart';
@@ -12,10 +16,11 @@ class AuthBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthCubit, AuthState>(
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: _authListener,
       builder: (context, state) {
         var authCubit = AuthCubit.get(context);
-        return Center(
+        return SingleChildScrollView(
           child: Column(
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,5 +34,46 @@ class AuthBody extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _authListener(BuildContext context, state) {
+    if (state is AuthInitial) {
+      CustomSnackbar.showTopSnackBar(
+        context,
+        message: 'Welcome to Teamly',
+        translate: false,
+        backgroundColor: AppColors.blueAccent,
+      );
+    }
+    if (state is AuthError) {
+      CustomSnackbar.showTopSnackBar(
+        context,
+        message: state.message,
+        translate: false,
+        backgroundColor: AppColors.red,
+      );
+    } else if (state is AuthSuccess) {
+      CustomSnackbar.showTopSnackBar(
+        context,
+        message: 'Login successful',
+        translate: false,
+        backgroundColor: AppColors.green,
+      );
+      context.pushNamed(RoutesNames.homeScreen);
+    } else if (state is AuthLoading) {
+      CustomSnackbar.showTopSnackBar(
+        context,
+        message: 'Loading...',
+        backgroundColor: AppColors.yellow,
+        translate: false,
+      );
+    } else if (state is UserNotFound) {
+      CustomSnackbar.showTopSnackBar(
+        context,
+        message: state.message,
+        translate: false,
+        backgroundColor: AppColors.red,
+      );
+    }
   }
 }

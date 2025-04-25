@@ -5,6 +5,7 @@ import '../../features/admin/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/emp_profile/presentation/views/emp_profile.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
+import '../../features/auth/presentation/views/check_role.dart';
 import '../../features/user/user_home/presentation/views/user_home.dart';
 import '../app/image/image_preview.dart';
 import '../app/language/language_screen.dart';
@@ -36,6 +37,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.auth:
       return BaseRoute(page: AuthScreen());
+
+    case RoutesNames.checkRole:
+      return BaseRoute(page: CheckRole());
 
     /////////
     /////////admin feature routes////////////

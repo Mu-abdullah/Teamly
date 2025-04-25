@@ -1,10 +1,11 @@
 class UserEntity {
-  final int? id;
+  final String? id;
   final String? createdAt;
   final String? email;
   final String? userId;
   final String? uid;
   final String? role;
+  final String? compnay;
 
   UserEntity({
     this.id,
@@ -13,5 +14,6 @@ class UserEntity {
     this.userId,
     this.uid,
     this.role,
+    this.compnay,
   });
 }

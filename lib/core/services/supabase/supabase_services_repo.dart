@@ -1,7 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'supabase_services.dart';
- 
+
 class SupabaseServicesRepo implements SupabaseServices {
   final supabase = Supabase.instance.client;
 
@@ -19,17 +19,18 @@ class SupabaseServicesRepo implements SupabaseServices {
 
     // set limit if limit is not null
     if (limit != null) {
-      return await response.select().limit(limit).order(
+      return await response
+          .select()
+          .limit(limit)
+          .order(
             orderBy ?? 'created_at',
             ascending: ascending ?? orderBy != null,
           );
     }
-
     // set search if searchKey and value is not null
     else if (searchKey != null && value != null) {
-      return await response.select().ilike(searchKey, '%$value%');
+      return await response.select().eq(searchKey, '%$value%');
     }
-
     // set filter if filterKey and value is not null
     else if (filterKey != null && value != null) {
       return await response.select().eq(filterKey, value);

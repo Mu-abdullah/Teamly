@@ -59,7 +59,10 @@ class AuthBody extends StatelessWidget {
         translate: false,
         backgroundColor: AppColors.green,
       );
-      context.pushNamed(RoutesNames.homeScreen);
+      context.pushNamed(
+        RoutesNames.checkRole,
+        arguments: {'mail': context.read<AuthCubit>().emailController.text},
+      );
     } else if (state is AuthLoading) {
       CustomSnackbar.showTopSnackBar(
         context,

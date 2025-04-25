@@ -4,4 +4,5 @@ class BackendPoint {
   static const custody = 'custody';
   static const custodyTransaction = 'custody_transaction';
   static const custodyTransactionItem = 'custody_transaction_item';
+  static const users = 'users';
 }

@@ -39,7 +39,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return BaseRoute(page: AuthScreen());
 
     case RoutesNames.checkRole:
-      return BaseRoute(page: CheckRole());
+      return BaseRoute(page: CheckRole(mail: args?['mail'] as String));
 
     /////////
     /////////admin feature routes////////////

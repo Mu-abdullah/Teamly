@@ -50,14 +50,22 @@
     "register":"تسجيل", 
     "email":"البريد الإلكتروني",
     "name":"الاسم",
+    "password":"كلمة المرور",
     "phone":"رقم الهاتف",
     "authHint":"رقم الهاتف أو البريد الإلكتروني",
     "userNotFound":"المستخدم غير موجود",
     "writePhoneCorrect":"اكتب رقم الهاتف بشكل صحيح",
     "PhoneStartWith":"يجب أن يبدأ بـ 010 أو 011 أو 012 أو 015 متبوعًا بـ 11 رقمًا",
     "writeEmailCorrect":"اكتب البريد الإلكتروني بشكل صحيح",
-    "welcemeUser":"مرحبًا بك",
+    "welcomeUser":"مرحبًا بك، ادخل بياناتك لتسجيل الدخول.",
     "shouldBeLogin":"يجب تسجيل الدخول",
+    "passwordLength":" يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+    "writePasswordCorrect":"اكتب كلمة المرور بشكل صحيح",
+    "forgotPassword":"نسيت كلمة المرور؟",
+    "mailHint":"**********@example.com",
+    "passwordHint":"********",
+    
+
 
     "######################################HomeScreen":"", 
     "home":"الرئيسية",

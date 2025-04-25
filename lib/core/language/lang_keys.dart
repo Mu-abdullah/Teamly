@@ -51,8 +51,14 @@ class LangKeys {
   static const String writePhoneCorrect = 'writePhoneCorrect';
   static const String phoneStartWith = 'phoneStartWith';
   static const String writeEmailCorrect = 'writeEmailCorrect';
-  static const String welcomeUser = 'welcemeUser';
+  static const String welcomeUser = 'welcomeUser';
   static const String shouldBeLogin = 'shouldBeLogin';
+  static const String writePasswordCorrect = 'writePasswordCorrect';
+  static const String passwordLength = 'passwordLength';
+  static const String forgotPassword = 'forgotPassword';
+  static const String password = 'password';
+  static const String passwordHint = 'passwordHint';
+  static const String mailHint = 'mailHint';
 
   // Home Keys
   static const String home = 'home';

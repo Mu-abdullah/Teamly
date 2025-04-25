@@ -94,38 +94,35 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     );
   }
 
-  InputDecoration _decoration(
-    BuildContext context,
-  ) {
+  InputDecoration _decoration(BuildContext context) {
     return InputDecoration(
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      hintText: widget.hint,
+      hintText: widget.hint == null ? "" : context.translate(widget.hint!),
       hintStyle: _fontFamily(false, context),
       errorStyle: _fontFamily(true, context),
-      labelText: widget.label,
+      labelText: widget.label == null ? "" : context.translate(widget.label!),
       suffix: _suffix(),
       labelStyle: _fontFamily(false, context),
       prefixIcon: widget.prefix,
       border: widget.border ? _borderOutLineBorder() : null,
-      focusedBorder: widget.border
-          ? _focuseOutLineBorder()
-          : _underlineBorder(color: widget.underlineColor),
+      focusedBorder:
+          widget.border
+              ? _focuseOutLineBorder()
+              : _underlineBorder(color: widget.underlineColor),
       enabledBorder:
           widget.border ? null : _underlineBorder(color: widget.underlineColor),
       alignLabelWithHint: true,
     );
   }
 
-  TextStyle _fontFamily(
-    bool isError,
-    BuildContext context,
-  ) {
+  TextStyle _fontFamily(bool isError, BuildContext context) {
     return customTextStyle(
       context,
       isBold: !isError,
-      fontSize: !isError
-          ? context.bodySmall!.fontSize
-          : context.bodySmall!.fontSize! - 2,
+      fontSize:
+          !isError
+              ? context.bodySmall!.fontSize
+              : context.bodySmall!.fontSize! - 2,
       color: isError ? AppColors.red : AppColors.black,
     );
   }
@@ -139,26 +136,20 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
 
   UnderlineInputBorder _underlineBorder({Color? color}) {
     return UnderlineInputBorder(
-      borderSide: BorderSide(
-        color: color ?? Colors.white,
-      ),
+      borderSide: BorderSide(color: color ?? Colors.white),
     );
   }
 
   OutlineInputBorder _focuseOutLineBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(
-        color: AppColors.black,
-      ),
+      borderSide: const BorderSide(color: AppColors.black),
       borderRadius: BorderRadius.circular(15),
     );
   }
 
   OutlineInputBorder _borderOutLineBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(
-        color: Colors.white,
-      ),
+      borderSide: const BorderSide(color: Colors.white),
       borderRadius: BorderRadius.circular(15),
     );
   }

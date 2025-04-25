@@ -16,3 +16,7 @@ class CustomError {
   @override
   String toString() => 'CustomError: $message (Type: $type, Details: $details)';
 }
+
+class AuthError extends CustomError {
+  AuthError(super.message);
+}

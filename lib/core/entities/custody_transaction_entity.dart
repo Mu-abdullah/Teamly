@@ -1,7 +1,7 @@
 class CustodyTransactionEntity {
-  final dynamic id;
+  final String? id;
   final String? createdAt;
-  final dynamic custodyId;
+  final String? custodyId;
   final String? personName;
   final String? personId;
   final String? amount;

@@ -7,19 +7,23 @@ class CustodyModel extends CustodyEntity {
     super.totalAmount,
     super.status,
     super.approvedBy,
+    super.companyId,
     super.createdAt,
     super.note,
   });
 
   factory CustodyModel.fromJson(Map<String, dynamic> json) {
     return CustodyModel(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      totalAmount: json['total_amount'] as String?,
-      status: json['status'] as String?,
-      approvedBy: json['approved_by'] as int?,
-      createdAt: json['created_at'] as String,
-      note: json['note'] as String?,
+      id: json['id'],
+      createdAt: json['created_at'],
+      companyId: json['company_id'],
+      totalAmount: json['total_amount'],
+      name: json['name'],
+
+      status: json['status'],
+      approvedBy: json['approved_by'],
+
+      note: json['note'],
     );
   }
 
@@ -29,6 +33,7 @@ class CustodyModel extends CustodyEntity {
     'total_amount': totalAmount,
     'status': status,
     'approved_by': approvedBy,
+    'company_id': companyId,
     'created_at': createdAt,
     'note': note,
   };

@@ -173,26 +173,35 @@ class GraphQLService {
   /// - [fromJson]: Function to parse JSON into type [T].
   ///
   /// Returns a list of inserted [T].
-  Future<List<T>> insertIntoCollection<T>({
+  Future<T> insertIntoCollection<T>({
     required String collection,
-    required List<Map<String, dynamic>> objects,
+    required Map<String, dynamic> object,
     List<String> returningFields = const ['id'],
     required T Function(Map<String, dynamic>) fromJson,
   }) async {
-    final mutation = _buildInsertMutation(
-      collection: collection,
-      returningFields: returningFields,
-    );
+    try {
+      final mutation = _buildInsertMutation(
+        collection: collection,
+        returningFields: returningFields,
+      );
 
-    final data = await executeQuery<Map<String, dynamic>>(
-      mutation,
-      variables: {'objects': objects},
-      operationName: 'InsertInto$collection',
-    );
+      print('Executing mutation: $mutation with object: $object');
 
-    final records =
-        data['insertInto${collection}Collection']['records'] as List<dynamic>;
-    return records.map((e) => fromJson(e as Map<String, dynamic>)).toList();
+      final data = await executeQuery<Map<String, dynamic>>(
+        mutation,
+        variables: {'object': object},
+        operationName: 'InsertInto$collection',
+      );
+
+      final record =
+          data['insertInto${collection}Collection']['records'][0]
+              as Map<String, dynamic>;
+      print('Inserted record: $record');
+      return fromJson(record);
+    } catch (e) {
+      print('Error in insertIntoCollection: $e');
+      rethrow;
+    }
   }
 
   /// Updates records in a Supabase collection with type safety.

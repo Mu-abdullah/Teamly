@@ -103,42 +103,46 @@ class _CustodyItemState extends State<CustodyItem>
   }
 
   Widget _buildHeader() {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(12),
-        onTap: _toggleExpansion,
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: AppColors.black.withValues(alpha: 0.05),
-            borderRadius: BorderRadius.circular(12),
+    return InkWell(
+      borderRadius: BorderRadius.circular(12),
+      onTap: _toggleExpansion,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          // color: AppColors.black.withValues(alpha: 0.05),
+          borderRadius: BorderRadius.circular(12),
+          gradient: LinearGradient(
+            colors: [_getStatusColor(widget.custody.status!), AppColors.white],
+            begin: const FractionalOffset(0.0, 0.0),
+            end: const FractionalOffset(1.0, 0.0),
+            stops: [0.0, 1.0],
+            tileMode: TileMode.clamp,
           ),
-          child: Row(
-            children: [
-              const Icon(
-                HugeIcons.strokeRoundedBriefcaseDollar,
-                color: AppColors.black,
-                size: 24,
+        ),
+        child: Row(
+          children: [
+            const Icon(
+              HugeIcons.strokeRoundedBriefcaseDollar,
+              color: AppColors.black,
+              size: 24,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: AppText(
+                widget.custody.name ?? '',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                translate: false,
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: AppText(
-                  widget.custody.name ?? '',
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  translate: false,
-                ),
+            ),
+            RotationTransition(
+              turns: _rotationAnimation,
+              child: const Icon(
+                Icons.expand_more_rounded,
+                color: AppColors.white,
               ),
-              RotationTransition(
-                turns: _rotationAnimation,
-                child: const Icon(
-                  Icons.expand_more_rounded,
-                  color: AppColors.blueGrey,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

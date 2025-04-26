@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:teamly/core/extextions/extentions.dart';
-import 'package:teamly/core/routes/routes_name.dart';
 
-import '../../../../../core/style/color/app_color.dart';
-import '../../../../../core/style/statics/image_test.dart';
-import '../../../../../core/style/widgets/app_text.dart';
+import '../../../../../../core/routes/routes_name.dart';
+import '../../../../../../core/style/color/app_color.dart';
+import '../../../../../../core/style/statics/image_test.dart';
+import '../../../../../../core/style/widgets/app_space.dart';
+import '../../../../../../core/style/widgets/app_text.dart';
+import '../../../../../auth/data/models/emp_model.dart';
 
-class UserHomeCard extends StatelessWidget {
-  const UserHomeCard({super.key, required this.isArabic});
+class UserInfo extends StatelessWidget {
+  const UserInfo({super.key, required this.isArabic, required this.user});
 
   final bool isArabic;
+  final EmpModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -74,13 +77,13 @@ class UserHomeCard extends StatelessWidget {
                 child: Column(
                   spacing: 10,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Expanded(
                           child: AppText(
-                            'محمد احمد محمود عمر علي',
+                            user.name!,
                             isTitle: true,
                             maxLines: 3,
                             translate: false,
@@ -91,9 +94,11 @@ class UserHomeCard extends StatelessWidget {
                       ],
                     ),
 
-                    AppText('مدير عام', fontSize: 12, translate: false),
-                    AppText('الرقم الوظيفي', fontSize: 12, translate: false),
-                    AppText('مقر العمل', fontSize: 12, translate: false),
+                    AppText(user.phone!, fontSize: 12, translate: false),
+                    AppText(user.nid!, fontSize: 12, translate: false),
+                    AppText(user.startIn!, fontSize: 12, translate: false),
+                    AppText(user.id!, fontSize: 12, translate: false),
+                    AppSpace(space: 5),
                   ],
                 ),
               ),

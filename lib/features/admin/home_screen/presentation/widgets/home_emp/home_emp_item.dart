@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teamly/core/extextions/extentions.dart';
-import 'package:teamly/core/routes/routes_name.dart';
 
+import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/image_test.dart';
 import '../../../../../../core/style/widgets/app_text.dart';

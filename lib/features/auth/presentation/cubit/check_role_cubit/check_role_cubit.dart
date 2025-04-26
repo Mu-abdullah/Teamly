@@ -10,44 +10,26 @@ part 'check_role_state.dart';
 class CheckRoleCubit extends Cubit<CheckRoleState> {
   final CheckRoleRepo repo;
   final String email;
+
   CheckRoleCubit({required this.repo, required this.email})
     : super(CheckRoleInitial());
 
   Future<void> checkRole() async {
     emit(CheckRoleLoading());
     final result = await repo.checkRole(email);
-    result.fold((l) => emit(CheckRoleError(l.message)), (r) {
-      if (!isClosed) {
-        emit(CheckRoleLoaded(r));
-        saveUserRole(role: r.role!);
-        getUserData(r.id!);
+    result.fold((error) => emit(CheckRoleError(error.message)), (user) async {
+      if (isClosed) return;
+      try {
+        await Future.wait([repo.saveUserRole(role: user.userId!)]);
+
+        if (!isClosed) {
+          emit(CheckRoleLoaded(user));
+        }
+      } catch (e) {
+        if (!isClosed) {
+          emit(CheckRoleError('Failed to save user data: $e'));
+        }
       }
     });
-  }
-
-  void getUserData(String id) async {
-    emit(UserDataLoading());
-    final result = await repo.getUserData(id);
-    result.fold(
-      (l) {
-        if (!isClosed) {
-          emit(UserDataError(l.message));
-        }
-      },
-      (r) {
-        if (!isClosed) {
-          emit(UserDataLoaded(r));
-          saveUserData(r);
-        }
-      },
-    );
-  }
-
-  void saveUserData(EmpModel user) async {
-    await repo.saveUserData(user);
-  }
-
-  void saveUserRole({required String role}) async {
-    await repo.saveUserRole(role: role);
   }
 }

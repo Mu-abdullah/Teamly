@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../../../../core/style/widgets/custom_divider.dart';
+import '../../../../auth/data/models/emp_model.dart';
+import '../cubits/user_profile_cubit/user_profile_cubit.dart';
 import '../widgets/build_detail_item.dart';
 import '../widgets/build_info_tile.dart';
 import '../widgets/name_image_position.dart';
@@ -13,13 +16,32 @@ class MobileEmpProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<UserProfileCubit, UserProfileState>(
+      builder: (context, state) {
+        if (state is UserProfileLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is UserProfileLoaded) {
+          return _buildProfileDetails(context, state.user);
+        } else if (state is UserProfileError) {
+          return Center(child: Text(state.message));
+        } else {
+          return const Center(child: Text('Something went wrong'));
+        }
+      },
+    );
+  }
+
+  Widget _buildProfileDetails(BuildContext context, EmpModel user) {
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NameImagePosition(),
-          _buildMainInformation(),
+          const SizedBox(height: 20),
+          NameImagePosition(user: user),
+          const SizedBox(height: 20),
+          _buildMainInformation(user),
           _infoDivider(),
-          _buildProfessionalDetails(),
+          _buildProfessionalDetails(user),
         ],
       ),
     );
@@ -32,20 +54,20 @@ class MobileEmpProfile extends StatelessWidget {
     );
   }
 
-  Padding _buildMainInformation() {
+  Padding _buildMainInformation(EmpModel user) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          BuidInfoTile(title: 'الرقم الوظيفي', value: '#DEV-2204'),
-          BuidInfoTile(title: 'مقر العمل', value: 'New York HQ'),
+          BuidInfoTile(title: 'الرقم الوظيفي', value: user.id!),
+          BuidInfoTile(title: 'مقر العمل', value: user.position!),
         ],
       ),
     );
   }
 
-  Widget _buildProfessionalDetails() {
+  Widget _buildProfessionalDetails(EmpModel user) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
@@ -57,22 +79,22 @@ class MobileEmpProfile extends StatelessWidget {
           BuildDetailItem(
             icon: HugeIcons.strokeRoundedLocation01,
             title: 'العنوان',
-            value: '28 ش عين شمس، القاهرة، مصر',
+            value: user.address!,
           ),
           BuildDetailItem(
             icon: HugeIcons.strokeRoundedStudentCard,
             title: 'الرقم القومي',
-            value: '1234567890',
+            value: user.nid!,
           ),
           BuildDetailItem(
             icon: HugeIcons.strokeRoundedSmartPhone01,
             title: 'الهاتف',
-            value: '01234567890',
+            value: user.phone!,
           ),
           BuildDetailItem(
             icon: HugeIcons.strokeRoundedDateTime,
             title: 'بداية العمل',
-            value: 'March 2018 (5.5 years)',
+            value: user.startIn!,
           ),
           BuildDetailItem(
             icon: HugeIcons.strokeRoundedDateTime,

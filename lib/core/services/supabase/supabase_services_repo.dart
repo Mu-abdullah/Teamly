@@ -29,7 +29,7 @@ class SupabaseServicesRepo implements SupabaseServices {
     }
     // set search if searchKey and value is not null
     else if (searchKey != null && value != null) {
-      return await response.select().eq(searchKey, '%$value%');
+      return await response.select().ilike(searchKey, '%$value%');
     }
     // set filter if filterKey and value is not null
     else if (filterKey != null && value != null) {

@@ -9,21 +9,24 @@ sealed class AppUserState extends Equatable {
 
 final class UserInitial extends AppUserState {}
 
-// final class UserLoading extends AppUserState {}
+final class UserProfileLoading extends AppUserState {}
 
-// final class UserLoggedIn extends AppUserState {
-//   final UserModel user;
-//   const UserLoggedIn({required this.user});
-// }
+final class UserProfileLoaded extends AppUserState {
+  final EmpModel user;
 
-// final class UserNotLoggedIn extends AppUserState {}
+  const UserProfileLoaded(this.user);
 
-// final class UserError extends AppUserState {
-//   final String message;
-//   const UserError({required this.message});
-// }
+  @override
+  List<Object> get props => [user];
+}
 
-// final class SavedUser extends AppUserState {
-//   final UserModel user;
-//   const SavedUser({required this.user});
-// }
+final class UserProfileError extends AppUserState {
+  final String message;
+
+  const UserProfileError(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
+
+final class UserLoggedOut extends AppUserState {}

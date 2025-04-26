@@ -4,6 +4,9 @@ class PrefKeys {
   // role
   static const String role = 'role';
 
+  // user id
+  static const String userID = 'userID';
+
   // emp
   static const String emp = 'emp';
 }

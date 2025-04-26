@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/style/statics/image_test.dart';
 import '../../../../../core/style/widgets/app_text.dart';
+import '../../../../auth/data/models/emp_model.dart';
 
 class NameImagePosition extends StatelessWidget {
-  const NameImagePosition({super.key});
-
+  const NameImagePosition({super.key, required this.user});
+  final EmpModel user;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,9 +26,9 @@ class NameImagePosition extends StatelessWidget {
             ),
           ),
 
-          AppText('محمد علي', isTitle: true, translate: false),
+          AppText(user.name!, isTitle: true, translate: false),
           AppText(
-            'مهندس البرمجيات',
+            user.salary.toString(),
             textAlign: TextAlign.center,
             translate: false,
             isTitle: true,

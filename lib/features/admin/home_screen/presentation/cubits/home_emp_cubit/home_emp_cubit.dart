@@ -20,7 +20,7 @@ class HomeEmpCubit extends Cubit<HomeEmpState> {
 
   Future<void> getCount(String? comId) async {
     emit(EmpLoading());
-    var empCount = await repo.getCount(comId: comId!);
+    var empCount = await repo.getEmp(comId: comId!);
     empCount.fold((error) => emit(EmpError(error.message)), (empCount) {
       if (!isClosed) {
         emit(EmpSuccess(empCount));

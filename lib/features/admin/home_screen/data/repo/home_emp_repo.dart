@@ -12,8 +12,9 @@ class HomeEmpRepo {
   GraphQLService graphQLService;
   HomeEmpRepo(this.graphQLService);
 
-  Future<Either<CustomError, List<HomeEmpModel>>> getCount({
+  Future<Either<CustomError, List<HomeEmpModel>>> getEmp({
     required String comId,
+    String? userId,
   }) async {
     try {
       var result = await graphQLService.fetchCollection(
@@ -22,6 +23,7 @@ class HomeEmpRepo {
         filters: {
           'com_id': {'eq': comId},
           'job_status': {'eq': JobStatus.onWork},
+          userId == null ? '' : 'id': {'eq': userId},
         },
         fromJson: HomeEmpModel.fromJson,
       );
@@ -38,6 +40,14 @@ class HomeEmpRepo {
 
   Future<String> getCompID() async {
     var emp = await SharedPref.getData(key: PrefKeys.companyID);
+    if (emp != null) {
+      return emp.toString();
+    } else {
+      throw Exception("No employee found in shared preferences.");
+    }
+  }
+  Future<String> getUserID() async {
+    var emp = await SharedPref.getData(key: PrefKeys.userID);
     if (emp != null) {
       return emp.toString();
     } else {

@@ -6,13 +6,13 @@ import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/image_test.dart';
 import '../../../../../../core/style/widgets/app_space.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
-import '../../../../../auth/data/models/emp_model.dart';
+import '../../../../../admin/home_screen/data/model/home_emp_model.dart';
 
 class UserInfo extends StatelessWidget {
   const UserInfo({super.key, required this.isArabic, required this.user});
 
   final bool isArabic;
-  final EmpModel user;
+  final HomeEmpModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -95,8 +95,7 @@ class UserInfo extends StatelessWidget {
                     ),
 
                     AppText(user.phone!, fontSize: 12, translate: false),
-                    AppText(user.nid!, fontSize: 12, translate: false),
-                    AppText(user.startIn!, fontSize: 12, translate: false),
+                    AppText(user.position!, fontSize: 12, translate: false),
                     AppText(user.id!, fontSize: 12, translate: false),
                     AppSpace(space: 5),
                   ],

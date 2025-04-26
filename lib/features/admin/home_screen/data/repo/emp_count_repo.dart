@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:teamly/core/services/shared_pref/pref_keys.dart';
-import 'package:teamly/features/auth/data/models/emp_model.dart';
 
 import '../../../../../core/error/custom_errors.dart';
 import '../../../../../core/services/graph_ql/graph_ql.dart';
+import '../../../../../core/services/shared_pref/pref_keys.dart';
 import '../../../../../core/services/shared_pref/shared_pref.dart';
 import '../../../../../core/services/supabase/backend_points.dart';
 import '../model/emp_count_model.dart';
@@ -35,10 +34,10 @@ class EmpCountRepo {
     }
   }
 
-  Future<EmpModel> getCompID() async {
-    var emp = await SharedPref.getUserFromPreferences(key: PrefKeys.emp);
+  Future<String> getCompID() async {
+    var emp = await SharedPref.getData(key: PrefKeys.companyID);
     if (emp != null) {
-      return EmpModel.fromJson(emp);
+      return emp.toString();
     } else {
       throw Exception("No employee found in shared preferences.");
     }

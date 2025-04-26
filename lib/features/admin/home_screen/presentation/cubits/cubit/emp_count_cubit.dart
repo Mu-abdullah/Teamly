@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teamly/core/services/status/job_status.dart';
 
-import '../../../../../auth/data/models/emp_model.dart';
+import '../../../../../../core/services/status/job_status.dart';
 import '../../../data/model/emp_count_model.dart';
 import '../../../data/repo/emp_count_repo.dart';
 
@@ -17,24 +16,21 @@ class EmpCountCubit extends Cubit<EmpCountState> {
   static EmpCountCubit get(context) => BlocProvider.of(context);
 
   List<EmpCountModel> emp = [];
-  EmpModel? empModel;
+  Future<void> getCompID() async {
+    var emp = await repo.getCompID();
 
-  Future<void> getEmpCount() async {
+    await getEmpCount(emp);
+  }
+
+  Future<void> getEmpCount(String? comId) async {
     emit(EmpCountLoading());
-    var empCount = await repo.getEmpCount(comId: empModel!.comId!);
+    var empCount = await repo.getEmpCount(comId: comId!);
     empCount.fold((error) => emit(EmpCountError(error.message)), (empCount) {
       if (!isClosed) {
         emp = empCount;
         emit(EmpCountSuccess(empCount));
       }
     });
-  }
-
-  getCompID() async {
-    var emp = await repo.getCompID();
-    empModel = emp;
-    await getEmpCount();
-    return empModel;
   }
 
   List<EmpCountModel> getOnWork() {

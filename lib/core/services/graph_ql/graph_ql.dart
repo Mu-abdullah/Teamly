@@ -185,7 +185,7 @@ class GraphQLService {
         returningFields: returningFields,
       );
 
-      print('Executing mutation: $mutation with object: $object');
+      debugPrint('Executing mutation: $mutation with object: $object');
 
       final data = await executeQuery<Map<String, dynamic>>(
         mutation,
@@ -196,10 +196,10 @@ class GraphQLService {
       final record =
           data['insertInto${collection}Collection']['records'][0]
               as Map<String, dynamic>;
-      print('Inserted record: $record');
+      debugPrint('Inserted record: $record');
       return fromJson(record);
     } catch (e) {
-      print('Error in insertIntoCollection: $e');
+      debugPrint('Error in insertIntoCollection: $e');
       rethrow;
     }
   }

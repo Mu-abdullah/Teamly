@@ -7,6 +7,9 @@ class PrefKeys {
   // user id
   static const String userID = 'userID';
 
+  // company id
+  static const String companyID = 'companyID';
+
   // emp
   static const String emp = 'emp';
 }

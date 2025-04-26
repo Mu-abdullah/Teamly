@@ -1,8 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:teamly/core/services/graph_ql/graph_ql.dart';
 
 import '../../../../core/error/custom_errors.dart';
-import '../../../../core/services/shared_pref/pref_keys.dart';
+import '../../../../core/services/graph_ql/graph_ql.dart';
 import '../../../../core/services/shared_pref/shared_pref.dart';
 import '../../../../core/services/supabase/backend_points.dart'
     show BackendPoint;
@@ -23,7 +22,10 @@ class CheckRoleRepo {
     );
   }
 
-  Future<void> saveUserRole({required String role}) async {
-    await SharedPref.saveData(key: PrefKeys.userID, value: role);
+  Future<void> saveUserRole({
+    required String key,
+    required String value,
+  }) async {
+    await SharedPref.saveData(key: key, value: value);
   }
 }

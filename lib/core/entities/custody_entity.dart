@@ -1,12 +1,12 @@
 class CustodyEntity {
   final String? id;
-  final String? name;
+  final String? createdAt;
+  final String? companyId;
   final String? totalAmount;
+  final String? name;
   final String? status;
   final String? approvedBy;
-  final String? companyId;
   final String? note;
-  final String? createdAt;
 
   const CustodyEntity({
     this.id,

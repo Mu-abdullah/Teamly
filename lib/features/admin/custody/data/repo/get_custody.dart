@@ -11,7 +11,7 @@ class GetCustodyRepo {
 
   GetCustodyRepo(this.service);
 
-  Future<Either<CustomError, List<CustodyModel>>> getCustody() async {
+  Future<Either<CustomError, List<CustodyModel>>> getCustody(String compId) async {
     try {
       final data = await service.fetchCollection<CustodyModel>(
         collection: BackendPoint.custody,
@@ -25,8 +25,7 @@ class GetCustodyRepo {
         ],
         fromJson: CustodyModel.fromJson,
         filters: {
-          ///  [DON'T FORGET TO CHANGE THIS COMPANY ID]  ///
-          'company_id': {'eq': 1},
+          'company_id': {'eq': compId},
         },
       );
 

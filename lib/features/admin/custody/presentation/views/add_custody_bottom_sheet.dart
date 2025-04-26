@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
+import '../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/get_it/git_it.dart';
 import '../../../../../core/services/status/custody_status.dart';
@@ -39,6 +40,7 @@ class AddCustodyBottomSheet extends StatelessWidget {
         },
         builder: (context, state) {
           var c = AddCustodyCubit.get(context);
+          var compId = context.read<AppUserCubit>().compId;
           return Padding(
             padding: EdgeInsets.only(
               left: 16,
@@ -99,10 +101,14 @@ class AddCustodyBottomSheet extends StatelessWidget {
                           totalAmount: c.amountController.text,
                           approvedBy: "11",
                           status: CustodyStatus.notSettled,
-                          companyId: "1",
+                          companyId: compId,
                           note: "null",
                         );
-                        c.insertCustody(data: data, context: context);
+                        c.insertCustody(
+                          data: data,
+                          context: context,
+                          compId: compId,
+                        );
                       }
                     },
                     text: LangKeys.addCustody,

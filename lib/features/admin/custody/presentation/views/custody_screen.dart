@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../core/services/get_it/git_it.dart';
 import '../../data/repo/get_custody.dart';
 import '../cubits/get_custody_cubit/get_custody_cubit.dart';
@@ -14,7 +15,10 @@ class CustodyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var lac = locator<GetCustodyRepo>();
     return BlocProvider(
-      create: (context) => GetCustodyCubit(lac)..fetchCustody(),
+      create:
+          (context) =>
+              GetCustodyCubit(lac)
+                ..fetchCustody(context.read<AppUserCubit>().compId),
       child: Scaffold(appBar: CustodyAppBar(), body: CustodyBody()),
     );
   }

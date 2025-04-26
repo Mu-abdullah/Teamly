@@ -13,10 +13,10 @@ class GetCustodyCubit extends Cubit<GetCustodyState> {
   GetCustodyCubit(this.custodyRepo) : super(GetCustodyInitial());
 
   static GetCustodyCubit get(context) => BlocProvider.of(context);
-  Future<void> fetchCustody() async {
+  Future<void> fetchCustody(String compId) async {
     emit(CustodyLoading());
 
-    final result = await custodyRepo.getCustody();
+    final result = await custodyRepo.getCustody(compId);
 
     result.fold((error) {
       emit(CustodyError(error));

@@ -19,6 +19,7 @@ class AddCustodyCubit extends Cubit<AddCustodyState> {
   Future<void> insertCustody({
     required CustodyModel data,
     required BuildContext context,
+    required String compId,
   }) async {
     emit(AddCustodyLoadingState());
     var res = await repo.insertCustody(data: data.toJson());
@@ -32,7 +33,7 @@ class AddCustodyCubit extends Cubit<AddCustodyState> {
       (r) {
         if (!isClosed) {
           emit(AddCustodySuccessState());
-          GetCustodyCubit.get(context).fetchCustody();
+          GetCustodyCubit.get(context).fetchCustody(compId);
         }
       },
     );

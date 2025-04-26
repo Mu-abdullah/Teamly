@@ -1,14 +1,19 @@
+
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
+import '../../cubits/cubit/emp_count_cubit.dart';
 import 'home_card.dart';
 
-class HomeEmpCount extends StatelessWidget {
-  const HomeEmpCount({super.key, this.height = 270});
+class EmpCount extends StatelessWidget {
+  const EmpCount({super.key, required this.height, required this.cubit});
+
   final double height;
+  final EmpCountCubit cubit;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +29,7 @@ class HomeEmpCount extends StatelessWidget {
         children: [
           HomeCard(
             cardTitle: LangKeys.current,
-            cardCount: '256',
+            cardCount: cubit.getOnWork().length.toString(),
             cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
             isHighlighted: true,
           ),
@@ -35,7 +40,7 @@ class HomeEmpCount extends StatelessWidget {
                 Expanded(
                   child: HomeCard(
                     cardTitle: LangKeys.resigned,
-                    cardCount: '23',
+                    cardCount: cubit.getResigned().length.toString(),
                     cardIcon: HugeIcons.strokeRoundedCancelCircle,
                     color: AppColors.yellow,
                     textColor: AppColors.black,
@@ -45,7 +50,7 @@ class HomeEmpCount extends StatelessWidget {
                 Expanded(
                   child: HomeCard(
                     cardTitle: LangKeys.terminated,
-                    cardCount: '5',
+                    cardCount: cubit.getTerminated().length.toString(),
                     cardIcon: HugeIcons.strokeRoundedCancelCircle,
                     color: AppColors.red,
                   ),

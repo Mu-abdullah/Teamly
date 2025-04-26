@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/co_name_logo/co_name_logo.dart';
-import '../widgets/emp_count/home_emp_count.dart';
+import '../widgets/emp_count/home_emp_count_body.dart';
 import '../widgets/home_comp/home_companies.dart';
 import '../widgets/home_custody/home_custody.dart';
 import '../widgets/home_emp/home_emp.dart';
@@ -19,7 +19,7 @@ class HomeWebBody extends StatelessWidget {
           Row(
             spacing: 10,
             children: [
-              Expanded(child: HomeEmpCount(height: 270)),
+              Expanded(child: HomeEmpCountBody(height: 270)),
               Expanded(child: HomeCustody(height: 270)),
             ],
           ),

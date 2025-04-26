@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/style/widgets/app_space.dart';
 import '../widgets/co_name_logo/co_name_logo.dart';
-import '../widgets/emp_count/home_emp_count.dart';
+import '../widgets/emp_count/home_emp_count_body.dart';
 import '../widgets/home_comp/home_companies.dart';
 import '../widgets/home_custody/home_custody.dart';
 import '../widgets/home_emp/home_emp.dart';
@@ -17,7 +17,7 @@ class HomeMobileBody extends StatelessWidget {
         spacing: 10,
         children: [
           CoNameLogo(),
-          HomeEmpCount(),
+          HomeEmpCountBody(),
           HomeCustody(),
           HomeCompaniesSection(),
           HomeEmpSection(),
@@ -27,4 +27,3 @@ class HomeMobileBody extends StatelessWidget {
     );
   }
 }
-

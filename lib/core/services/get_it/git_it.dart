@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import '../../../features/admin/custody/data/repo/add_custody.dart';
 import '../../../features/admin/custody/data/repo/get_custody.dart';
 import '../../../features/admin/custody_transaction/data/repo/get_custody_transaction.dart';
+import '../../../features/admin/home_screen/data/repo/emp_count_repo.dart';
 import '../../../features/auth/data/repo/auth_repo.dart';
 import '../../../features/auth/data/repo/check_role_repo.dart';
 import '../../app/user/repo/app_user_repo.dart';
@@ -24,6 +25,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => GetCustodyRepo(locator()));
   locator.registerLazySingleton(() => GetCustodyTransactionRepo(locator()));
   locator.registerLazySingleton(() => AddCustodyRepo(locator()));
+  locator.registerLazySingleton(() => EmpCountRepo(locator()));
 }
 
 void _registerServices() {

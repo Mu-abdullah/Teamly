@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 
+import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../../../../core/style/widgets/custom_divider.dart';
@@ -23,9 +24,9 @@ class MobileEmpProfile extends StatelessWidget {
         } else if (state is UserProfileLoaded) {
           return _buildProfileDetails(context, state.user);
         } else if (state is UserProfileError) {
-          return Center(child: Text(state.message));
+          return Center(child: AppText(state.message));
         } else {
-          return const Center(child: Text('Something went wrong'));
+          return const Center(child: AppText(LangKeys.error));
         }
       },
     );

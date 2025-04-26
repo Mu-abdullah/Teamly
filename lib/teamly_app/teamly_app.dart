@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teamly/core/services/get_it/git_it.dart';
 
 import '../core/app/language/language_cubit/language_cubit.dart';
 import '../core/app/no_internet/connection_controller/connection_controller.dart';
 import '../core/app/no_internet/no_internet_screen.dart';
 import '../core/app/user/app_user_cubit/app_user_cubit.dart';
-import '../core/app/user/repo/app_user_repo.dart';
 import '../core/functions/custom_scroll.dart';
 import '../core/language/app_localizations_setup.dart';
 import '../core/routes/routes.dart';
@@ -46,12 +44,11 @@ class _TeamlyState extends State<Teamly> {
   }
 
   Widget _buildConnectedApp() {
-    final lac = locator<AppUserRepo>();
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => LanguageCubit()),
 
-        BlocProvider(create: (_) => AppUserCubit(lac)),
+        BlocProvider(create: (_) => AppUserCubit()),
       ],
       child: BlocBuilder<LanguageCubit, String>(
         builder: (context, language) {

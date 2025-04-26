@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../cubits/cubit/emp_count_cubit.dart';
+import '../../cubits/emp_count_cubit/emp_count_cubit.dart';
 import 'emp_count.dart';
 import 'emp_count_shimmer.dart';
 

@@ -49,7 +49,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return BaseRoute(page: const HomeScreen());
 
     case RoutesNames.empProfileScreen:
-      return BaseRoute(page: const EmpProfile());
+      return BaseRoute(page: EmpProfile(id: args?['id'] as String?));
 
     case RoutesNames.custodyScreen:
       return BaseRoute(page: const CustodyScreen());

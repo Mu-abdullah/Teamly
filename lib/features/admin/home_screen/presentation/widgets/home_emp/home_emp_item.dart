@@ -5,17 +5,21 @@ import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/image_test.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
+import '../../../data/model/home_emp_model.dart';
 
 class HomeEmpItem extends StatelessWidget {
-  const HomeEmpItem({super.key});
-
+  const HomeEmpItem({super.key, required this.emp});
+  final HomeEmpModel emp;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: InkWell(
         onTap: () {
-          context.pushNamed(RoutesNames.empProfileScreen);
+          context.pushNamed(
+            RoutesNames.empProfileScreen,
+            arguments: {'id': emp.id},
+          );
         },
         child: Container(
           width: context.width(percent: 0.8),
@@ -50,17 +54,17 @@ class HomeEmpItem extends StatelessWidget {
                   ),
                 ),
               ),
-
               Positioned.fill(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 40, 16, 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      AppText('محمد احمد', isTitle: true, translate: false),
-                      SizedBox(height: 4),
-                      AppText('مدير عام', fontSize: 12, translate: false),
+                    spacing: 4,
+                    children: [
+                      AppText(emp.name!, isTitle: true, translate: false),
+                      AppText(emp.position!, fontSize: 12, translate: false),
+                      AppText(emp.phone!, fontSize: 12, translate: false),
                     ],
                   ),
                 ),

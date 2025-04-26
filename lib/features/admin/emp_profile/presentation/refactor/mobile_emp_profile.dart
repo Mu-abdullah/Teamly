@@ -62,7 +62,17 @@ class MobileEmpProfile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           BuidInfoTile(title: 'الرقم الوظيفي', value: user.id!),
-          BuidInfoTile(title: 'مقر العمل', value: user.position!),
+          SizedBox(
+            height: 50,
+            child: CustomDivider(
+              veratical: true,
+              color: AppColors.darkGrey,
+              thickness: 0.5,
+              endIndent: 0,
+              indent: 0,
+            ),
+          ),
+          BuidInfoTile(title: 'الراتب', value: user.salary!),
         ],
       ),
     );

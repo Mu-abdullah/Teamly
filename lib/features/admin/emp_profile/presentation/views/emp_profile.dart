@@ -10,16 +10,16 @@ import '../cubits/user_profile_cubit/user_profile_cubit.dart';
 import '../refactor/mobile_emp_profile.dart';
 
 class EmpProfile extends StatelessWidget {
-  const EmpProfile({super.key});
-
+  const EmpProfile({super.key, required this.id});
+  final String? id;
   @override
   Widget build(BuildContext context) {
     final lac = locator<UserProfileRepo>();
     return BlocProvider(
       create:
           (context) =>
-              UserProfileCubit(lac)
-                ..getUserProfile(context.read<AppUserCubit>().userId),
+              UserProfileCubit(isAdmin: id == null, repo: lac)
+                ..getUserProfile(id ?? context.read<AppUserCubit>().userId),
       child: Scaffold(
         appBar: CustomAppBar(title: LangKeys.profile),
         body: MobileEmpProfile(),

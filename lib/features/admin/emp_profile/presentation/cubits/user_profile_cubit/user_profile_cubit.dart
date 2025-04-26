@@ -8,13 +8,15 @@ part 'user_profile_state.dart';
 
 class UserProfileCubit extends Cubit<UserProfileState> {
   UserProfileRepo repo;
-  UserProfileCubit(this.repo) : super(UserProfileInitial());
+  UserProfileCubit({required this.repo, required this.isAdmin})
+    : super(UserProfileInitial());
 
   static UserProfileCubit get(context) => BlocProvider.of(context);
+  bool isAdmin;
 
   Future<void> getUserProfile(id) async {
     emit(UserProfileLoading());
-    final result = await repo.getUserData(id);
+    final result = await repo.getUserData(id: id, isAdmin: isAdmin);
     result.fold(
       (error) {
         if (!isClosed) {

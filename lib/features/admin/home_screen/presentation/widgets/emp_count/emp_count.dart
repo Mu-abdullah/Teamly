@@ -5,7 +5,7 @@ import 'package:hugeicons/hugeicons.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
-import '../../cubits/cubit/emp_count_cubit.dart';
+import '../../cubits/emp_count_cubit/emp_count_cubit.dart';
 import 'home_card.dart';
 
 class EmpCount extends StatelessWidget {

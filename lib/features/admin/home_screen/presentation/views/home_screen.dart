@@ -5,7 +5,9 @@ import 'package:teamly/core/services/get_it/git_it.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../data/repo/emp_count_repo.dart';
-import '../cubits/cubit/emp_count_cubit.dart';
+import '../../data/repo/home_emp_repo.dart';
+import '../cubits/emp_count_cubit/emp_count_cubit.dart';
+import '../cubits/home_emp_cubit/home_emp_cubit.dart';
 import '../refactor/home_body.dart';
 import '../widgets/drawer/home_drawer.dart';
 import '../widgets/home_logout_button.dart';
@@ -16,8 +18,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lac = locator<EmpCountRepo>();
+    final lac2 = locator<HomeEmpRepo>();
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => EmpCountCubit(lac))],
+      providers: [
+        BlocProvider(create: (context) => EmpCountCubit(lac)),
+        BlocProvider(create: (context) => HomeEmpCubit(lac2)),
+        ],
       child: Scaffold(
         appBar: CustomAppBar(
           title: LangKeys.home,

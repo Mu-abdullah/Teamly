@@ -10,7 +10,10 @@ import '../../../../auth/data/models/emp_model.dart';
 class UserProfileRepo {
   final GraphQLService graphQLService;
   UserProfileRepo(this.graphQLService);
-  Future<Either<CustomError, EmpModel>> getUserData(String id) async {
+  Future<Either<CustomError, EmpModel>> getUserData({
+    required String id,
+    bool? isAdmin,
+  }) async {
     try {
       var result = await graphQLService.fetchCollection(
         collection: BackendPoint.emp,
@@ -31,7 +34,9 @@ class UserProfileRepo {
           'id': {'eq': id},
         },
       );
-      await saveUserData(result.first);
+      if (isAdmin == true) {
+        await saveUserData(result.first);
+      }
       return Right(result.first);
     } catch (e) {
       return Left(CustomError("Failed to retrieve user data: ${e.toString()}"));

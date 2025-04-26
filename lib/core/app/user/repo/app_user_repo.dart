@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../features/auth/data/models/emp_model.dart';
 import '../../../error/custom_errors.dart';
@@ -9,6 +10,7 @@ import '../../../services/supabase/backend_points.dart';
 
 class AppUserRepo {
   final GraphQLService graphQLService;
+
   AppUserRepo(this.graphQLService);
 
   Future<Either<CustomError, EmpModel>> getUserData(String id) async {
@@ -53,5 +55,6 @@ class AppUserRepo {
     await SharedPref.removeData(key: PrefKeys.emp);
     await SharedPref.removeData(key: PrefKeys.userID);
     await SharedPref.removeData(key: PrefKeys.role);
+    await Supabase.instance.client.auth.signOut();
   }
 }

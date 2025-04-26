@@ -1,8 +1,10 @@
-class CustodyStatus {
-  static const settlement = 'settled';
-  static const notSettled = 'not_settled';
-  static const pending = 'pending';
-  static const rejected = 'rejected';
+enum CustodyStatusEnum { settlement, notSettled, pending, rejected }
 
-  static const all = [settlement, notSettled, pending, rejected];
+class CustodyStatus {
+  static const String settlement = 'settlement';
+  static const String notSettled = 'notSettled';
+  static const String pending = 'pending';
+  static const String rejected = 'rejected';
+
+  static String getRole(CustodyStatusEnum role) => role.name;
 }

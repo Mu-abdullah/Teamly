@@ -7,6 +7,10 @@ import '../../../../../core/services/get_it/git_it.dart';
 import '../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../../../admin/home_screen/data/repo/home_emp_repo.dart';
 import '../../../../admin/home_screen/presentation/widgets/home_logout_button.dart';
+import '../../data/repo/attendance_repo.dart';
+import '../../data/repo/check_attendance_repo.dart';
+import '../cubits/attendance_cubit/attendance_cubit.dart';
+import '../cubits/check_attendance_cubit/check_attendance_cubit.dart';
 import '../cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import '../refactor/user_home_body.dart';
 
@@ -15,9 +19,22 @@ class UserHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lac = locator<HomeEmpRepo>();
-    return BlocProvider(
-      create: (context) => GetUserDataCubit(lac)..getUserData(),
+    final empHomeLac = locator<HomeEmpRepo>();
+    final attendanceLac = locator<AttendanceRepo>();
+    final checkLac = locator<CheckAttendanceRepo>();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetUserDataCubit(empHomeLac)..getUserData(),
+        ),
+        BlocProvider(create: (context) => AttendanceCubit(attendanceLac)),
+        BlocProvider(
+          create:
+              (context) =>
+                  CheckAttendanceCubit(checkLac)
+                    ..checkAttendance(context.read<AppUserCubit>().userId),
+        ),
+      ],
       child: Scaffold(
         appBar: CustomAppBar(
           title: LangKeys.home,

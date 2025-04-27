@@ -63,9 +63,7 @@ class CustodyTransactionItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AppText(
-                          TimestampToTime.time(
-                            timestamp: transaction.createdAt!,
-                          ),
+                          TimeRefactor.time(timestamp: transaction.createdAt!),
                           translate: false,
                           color: theme.textTheme.bodySmall?.color,
                           fontSize: context.bodySmall!.fontSize,

@@ -1,4 +1,21 @@
-class TimestampToTime {
+class TimeRefactor {
+  static String _format(DateTime date) {
+    return '${date.year.toString().padLeft(4, '0')}/'
+        '${date.month.toString().padLeft(2, '0')}/'
+        '${date.day.toString().padLeft(2, '0')} - '
+        '${date.hour.toString().padLeft(2, '0')}:'
+        '${date.minute.toString().padLeft(2, '0')}:'
+        '${date.second.toString().padLeft(2, '0')}';
+  }
+
+  static String yyyymmdd(DateTime date) {
+    return _format(date);
+  }
+
+  static String yyyymmddString(String date) {
+    return _format(DateTime.parse(date));
+  }
+
   static String time({
     required dynamic timestamp,
     bool isMilliseconds = false,

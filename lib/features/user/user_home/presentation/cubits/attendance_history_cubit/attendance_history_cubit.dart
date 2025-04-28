@@ -26,6 +26,8 @@ class AttendanceHistoryCubit extends Cubit<AttendanceHistoryState> {
       (r) {
         if (!isClosed) {
           debugPrint("rrrrr : $r");
+          // sort by date
+          r.sort((a, b) => b.date!.compareTo(a.date!));
           emit(HistoryLoaded(r));
         }
       },

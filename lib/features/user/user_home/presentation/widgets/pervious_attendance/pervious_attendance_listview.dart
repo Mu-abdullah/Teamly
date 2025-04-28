@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../data/model/history_attendance_model.dart';
 import 'pervious_attendance_item.dart';
 
 class PerviousAttendanceListview extends StatefulWidget {
@@ -12,7 +13,7 @@ class PerviousAttendanceListview extends StatefulWidget {
 
   final GlobalKey<AnimatedListState> _listKey;
   final int visibleItems;
-  final List<int> perviousAttendance;
+  final List<HistoryAttendanceModel> perviousAttendance;
 
   @override
   State<PerviousAttendanceListview> createState() =>
@@ -32,9 +33,7 @@ class _PerviousAttendanceListviewState
         return SizeTransition(
           sizeFactor: animation,
           axis: Axis.vertical,
-          child: PerviousAttendanceItem(
-            index: widget.perviousAttendance[index],
-          ),
+          child: PerviousAttendanceItem(item: widget.perviousAttendance[index]),
         );
       },
     );

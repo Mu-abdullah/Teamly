@@ -97,4 +97,5 @@ class LangKeys {
   static const String checkIn = 'checkIn';
   static const String checkOut = 'checkOut';
   static const String manyHours = 'manyHours';
+  static const String noLogout = 'noLogout';
 }

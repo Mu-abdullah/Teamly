@@ -11,6 +11,7 @@ import '../../../../../../core/style/widgets/circle_progress.dart';
 import '../../../../../../core/style/widgets/custom_snack_bar.dart';
 import '../../../data/model/attendance_model.dart';
 import '../../cubits/attendance_cubit/attendance_cubit.dart';
+import '../../cubits/attendance_history_cubit/attendance_history_cubit.dart';
 import '../../cubits/check_attendance_cubit/check_attendance_cubit.dart';
 import 'atttendance_button.dart';
 
@@ -47,6 +48,7 @@ class CheckInOutButtons extends StatelessWidget {
         } else if (state is AttendanceLoaded) {
           Navigator.pop(context);
           cubit.checkAttendance(uid);
+          context.read<AttendanceHistoryCubit>().getHistory(uid);
         }
       },
       child: Row(

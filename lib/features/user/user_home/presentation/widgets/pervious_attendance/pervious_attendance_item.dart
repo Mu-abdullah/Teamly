@@ -53,6 +53,11 @@ class PerviousAttendanceItem extends StatelessWidget {
                 children: [
                   _buildItem(title: LangKeys.checkIn, value: item.checkIn!),
                   _buildItem(title: LangKeys.checkOut, value: item.checkOut),
+                  _buildManyHours(
+                    title: LangKeys.manyHours,
+                    checkIn: item.checkIn,
+                    checkOut: item.checkOut,
+                  ),
                 ],
               ),
             ),
@@ -72,6 +77,25 @@ class PerviousAttendanceItem extends StatelessWidget {
               ? LangKeys.noLogout
               : TimeRefactor(value).toTimeString(),
           translate: value == null,
+        ),
+      ],
+    );
+  }
+
+  Row _buildManyHours({
+    required String title,
+    String? checkIn,
+    String? checkOut,
+  }) {
+    return Row(
+      children: [
+        AppText(title),
+        AppText(' : ', translate: false),
+        AppText(
+          checkIn == null || checkOut == null
+              ? LangKeys.noLogout
+              : TimeRefactor(checkIn).timeDifferenceInHoursAndMinutes(checkOut),
+          translate: checkIn == null || checkOut == null,
         ),
       ],
     );

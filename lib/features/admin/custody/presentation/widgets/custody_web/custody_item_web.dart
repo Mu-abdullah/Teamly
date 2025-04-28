@@ -82,7 +82,7 @@ class CustodyItemWeb extends StatelessWidget {
                 _buildWebItem(
                   icon: HugeIcons.strokeRoundedCalendar01,
                   title: LangKeys.custodyDate,
-                  value: TimeRefactor.time(timestamp: custody.createdAt),
+                  value: TimeRefactor(custody.createdAt!).toDateString(),
                 ),
                 _buildWebItem(
                   icon: HugeIcons.strokeRoundedPoundCircle,

@@ -1,75 +1,46 @@
+import 'package:intl/intl.dart';
+
 class TimeRefactor {
-  static String _format(DateTime date) {
-    return '${date.year.toString().padLeft(4, '0')}/'
-        '${date.month.toString().padLeft(2, '0')}/'
-        '${date.day.toString().padLeft(2, '0')} - '
-        '${date.hour.toString().padLeft(2, '0')}:'
-        '${date.minute.toString().padLeft(2, '0')}:'
-        '${date.second.toString().padLeft(2, '0')}';
-  }
+  final String timestamp;
 
-  static String yyyymmdd(DateTime date) {
-    return _format(date);
-  }
+  TimeRefactor(this.timestamp);
 
-  static String yyyymmddString(String date) {
-    return _format(DateTime.parse(date));
-  }
-
-  static String time({
-    required dynamic timestamp,
-    bool isMilliseconds = false,
-    String format = 'dd/MM/yyyy hh:mm a',
-  }) {
+  // Convert timestamp to date format: yyyy/MM/dd
+  String toDateString() {
     try {
-      DateTime dateTime;
-
-      if (timestamp is String) {
-        // Check if the string is in ISO 8601 format
-        if (timestamp.contains('T')) {
-          dateTime = DateTime.parse(timestamp).toLocal();
-        } else {
-          // Assume it's a string representation of an integer timestamp
-          int parsedTimestamp = int.parse(timestamp);
-          dateTime =
-              isMilliseconds
-                  ? DateTime.fromMillisecondsSinceEpoch(parsedTimestamp)
-                  : DateTime.fromMillisecondsSinceEpoch(parsedTimestamp * 1000);
-        }
-      } else if (timestamp is int) {
-        // If the timestamp is an integer, use it directly
-        dateTime =
-            isMilliseconds
-                ? DateTime.fromMillisecondsSinceEpoch(timestamp)
-                : DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-      } else {
-        throw ArgumentError('Timestamp must be a String or int.');
-      }
-
-      // Format the time
-      return _formatDateTime(dateTime, format);
+      final dateTime = DateTime.parse(timestamp);
+      return DateFormat('yyyy/MM/dd').format(dateTime);
     } catch (e) {
-      throw Exception('Failed to convert timestamp to time: $e');
+      return 'Invalid timestamp';
     }
   }
 
-  static String _formatDateTime(DateTime dateTime, String format) {
-    switch (format) {
-      case 'HH:mm':
-        return '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
-      case 'hh:mm a':
-        final hour = dateTime.hour % 12 == 0 ? 12 : dateTime.hour % 12;
-        final period = dateTime.hour < 12 ? 'AM' : 'PM';
-        return '${hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')} $period';
-      case 'dd/MM/yyyy hh:mm a':
-        final day = dateTime.day.toString().padLeft(2, '0');
-        final month = dateTime.month.toString().padLeft(2, '0');
-        final year = dateTime.year.toString();
-        final hour = dateTime.hour % 12 == 0 ? 12 : dateTime.hour % 12;
-        final period = dateTime.hour < 12 ? 'AM' : 'PM';
-        return '$day/$month/$year $hour:${dateTime.minute.toString().padLeft(2, '0')} $period';
-      default:
-        throw ArgumentError('Unsupported format: $format');
+  // Convert timestamp to time format: HH:mm
+  String toTimeString() {
+    try {
+      final dateTime = DateTime.parse(timestamp);
+      return DateFormat('hh:mm a').format(dateTime);
+    } catch (e) {
+      return 'Invalid timestamp';
     }
+  }
+
+  // Calculate time difference between this timestamp and another in minutes
+  String timeDifferenceInHoursAndMinutes(String otherTimestamp) {
+    try {
+      final dateTime1 = DateTime.parse(timestamp);
+      final dateTime2 = DateTime.parse(otherTimestamp);
+      final difference = dateTime1.difference(dateTime2).abs();
+      final hours = difference.inHours;
+      final minutes = difference.inMinutes.remainder(60);
+      return '$hours ساعة, $minutes دقيقة';
+    } catch (e) {
+      return 'Invalid timestamps';
+    }
+  }
+
+  static String currentDateString() {
+    final now = DateTime.now();
+    return DateFormat('yyyy/MM/dd').format(now);
   }
 }

@@ -13,7 +13,7 @@ void showProgressIndicator(context) {
       ),
       child: Center(
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
         ),
       ),
     ),

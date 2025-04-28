@@ -14,18 +14,9 @@ class CheckAttendanceCubit extends Cubit<CheckAttendanceState> {
 
   Future<void> checkAttendance(String uid) async {
     emit(CheckAttendanceLoading());
-/*************  ✨ Windsurf Command ⭐  *************/
-  /// Gets the attendance of the given user id in the current date
-  /// and emits a [CheckAttendanceLoaded] if the attendance is found
-  /// or [CheckAttendanceLoaded] with an empty [CheckAttendanceModel]
-  /// if not, or [CheckAttendanceError] if an error occurs.
-  ///
-  /// The [CheckAttendanceLoaded] state contains the attendance model
-  /// if the attendance is found, or an empty [CheckAttendanceModel]
-  /// if not.
-/*******  f0d1b8e0-2f1e-4c9a-be40-f974e88b0b99  *******/    var result = await repo.getAttendance(
+    var result = await repo.getAttendance(
       userId: uid,
-      date: TimeRefactor.yyyymmdd(DateTime.now()),
+      date: TimeRefactor.currentDateString(),
     );
     result.fold(
       (error) {
@@ -41,7 +32,7 @@ class CheckAttendanceCubit extends Cubit<CheckAttendanceState> {
           } else {
             debugPrint("attendance result: ${r.first.toJson()}");
             debugPrint(
-              "attendance result: ${TimeRefactor.yyyymmdd(DateTime.now())}",
+              "attendance result: ${TimeRefactor.currentDateString()}",
             );
             emit(CheckAttendanceLoaded(r.first));
           }

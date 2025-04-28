@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../../core/style/color/app_color.dart';
 import '../../../../../../../core/style/widgets/app_text.dart';
 import '../../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
+import '../../../../../../core/style/widgets/app_button.dart';
 import '../../cubits/check_attendance_cubit/check_attendance_cubit.dart';
 import '../user_card_loading.dart';
 import 'attendance_done.dart';
@@ -41,12 +42,12 @@ class AttendanceLeavingBody extends StatelessWidget {
                 children: [
                   AppText(state.message),
                   const SizedBox(height: 8),
-                  ElevatedButton(
-                    onPressed: () {
+                  AppButton(
+                    onTap: () {
                       final uid = context.read<AppUserCubit>().userId;
                       cubit.checkAttendance(uid);
                     },
-                    child: const Text("Retry"),
+                    text: "Retry",
                   ),
                 ],
               ),
@@ -54,7 +55,7 @@ class AttendanceLeavingBody extends StatelessWidget {
           } else if (state is CheckAttendanceLoaded) {
             final model = state.model;
             if (model.checkIn != null && model.checkOut != null) {
-              return AttendancDone(
+              return AttendanceDone(
                 checkIn: model.checkIn!,
                 checkOut: model.checkOut!,
               );

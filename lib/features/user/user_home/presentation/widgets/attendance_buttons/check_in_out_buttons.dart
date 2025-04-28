@@ -59,7 +59,7 @@ class CheckInOutButtons extends StatelessWidget {
               color: AppColors.green,
               onTap: () {
                 final model = AttendanceModel(
-                  date: TimeRefactor.yyyymmdd(DateTime.now()),
+                  date: TimeRefactor.currentDateString(),
                   userId: uid,
                   companyId: com,
                   checkIn: DateTime.now().toString(),
@@ -84,7 +84,7 @@ class CheckInOutButtons extends StatelessWidget {
                 attendanceCubit.checkOut(
                   checkOut: DateTime.now().toString(),
                   userId: uid,
-                  date: TimeRefactor.yyyymmdd(DateTime.now()),
+                  date: TimeRefactor.currentDateString(),
                 );
               },
             ),

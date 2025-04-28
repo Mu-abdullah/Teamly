@@ -75,8 +75,6 @@ class LangKeys {
 
   // Profile Keys
   static const String attendanceLeaving = 'attendanceLeaving';
-  static const String checkIn = 'checkIn';
-  static const String checkOut = 'checkOut';
   static const String showLess = 'showLess';
   static const String showMore = 'showMore';
   static const String lastAttendance = 'lastAttendance';
@@ -94,4 +92,9 @@ class LangKeys {
   static const String settled = 'settled';
   static const String notSettled = 'notSettled';
   static const String eg = 'eg';
+
+  // attendance keys
+  static const String checkIn = 'checkIn';
+  static const String checkOut = 'checkOut';
+  static const String manyHours = 'manyHours';
 }

@@ -77,8 +77,6 @@
     "######################################Profile":"", 
     "attendanceLeaving":"Attendance & Leaving",
     "lastAttendance":"Last Attendance & Leaving",
-    "checkIn":"Check In",
-    "checkOut":"Check Out",
     "showMore":"Show more",
     "showLess":"Show less",
 
@@ -94,7 +92,13 @@
     "custodyAmount":"Custody Amount",
     "custodyStatus":"Custody Status" ,
     "notSettled":"Not Settled",
-    "settled":"Settled"
+    "settled":"Settled",
+
+
+    "######################################Attendance":"",
+    "checkIn":"Check In",
+    "checkOut":"Check Out",
+    "manyHours":"Many hours"
     
      
 }

@@ -157,7 +157,7 @@ class _CustodyItemState extends State<CustodyItem>
           _buildDetailRow(
             icon: HugeIcons.strokeRoundedCalendar01,
             label: LangKeys.custodyDate,
-            value: TimeRefactor.time(timestamp: widget.custody.createdAt),
+            value: TimeRefactor(widget.custody.createdAt!).toDateString(),
           ),
           const SizedBox(height: 16),
           _buildDetailRow(

@@ -84,8 +84,6 @@
     "######################################Profile":"", 
     "attendanceLeaving":"الحضور والانصراف",
     "lastAttendance":"اخر الحضور والانصراف",
-    "checkIn":"الحضور",
-    "checkOut":"الانصراف",
     "showMore":"اظهار المزيد",
     "showLess":"اظهار اقل",
 
@@ -101,5 +99,13 @@
     "custodyAmount":"قيمة العهدة",
     "custodyStatus":"حالة العهدة",
     "notSettled":"لم يتم التسوية",
-    "settled":"تم التسوية"
+    "settled":"تم التسوية",
+
+
+    "######################################Attendance":"",
+    "checkIn":"الحضور",
+    "checkOut":"الانصراف",
+    "manyHours":"عدد الساعات"
+
+
 }

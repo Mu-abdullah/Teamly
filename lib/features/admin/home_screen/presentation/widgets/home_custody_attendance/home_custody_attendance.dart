@@ -37,7 +37,9 @@ class HomeCustodyAttendance extends StatelessWidget {
           ),
           Expanded(
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(RoutesNames.adminAttendance);
+              },
               child: HomeCard(
                 cardTitle: LangKeys.attendanceLeaving,
                 height: height,

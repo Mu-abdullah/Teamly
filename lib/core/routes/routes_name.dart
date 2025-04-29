@@ -11,6 +11,7 @@ class RoutesNames {
   static const String empProfileScreen = 'empProfileScreen';
   static const String custodyScreen = 'custodyScreen';
   static const String custodyTransactions = 'custodyTransactions';
+  static const String adminAttendance = 'adminAttendance';
 
   //user screens
   static const String userHomeScreen = 'userHomeScreen';

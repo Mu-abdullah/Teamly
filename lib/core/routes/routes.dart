@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/admin/admin_attendance/presentation/views/admin_attendance.dart';
 import '../../features/admin/custody_transaction/presentation/views/custody_transactions.dart';
 import '../../features/admin/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/emp_profile/presentation/views/emp_profile.dart';
@@ -58,6 +59,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return BaseRoute(
         page: CustodyTransactions(custody: args?['custody'] as CustodyEntity),
       );
+
+    case RoutesNames.adminAttendance:
+      return BaseRoute(page: AdminAttendance());
 
     /////////
     /////////user feature routes////////////

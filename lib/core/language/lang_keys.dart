@@ -98,4 +98,5 @@ class LangKeys {
   static const String checkOut = 'checkOut';
   static const String manyHours = 'manyHours';
   static const String noLogout = 'noLogout';
+  static const String chooseMonth = 'chooseMonth';
 }

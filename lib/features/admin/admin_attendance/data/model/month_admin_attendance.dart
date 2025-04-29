@@ -1,25 +1,27 @@
 import '../../../../../core/entities/attendance_entity.dart';
+import 'emp_attendance_model.dart';
 
-class AttendanceModel extends AttendanceEntity {
-  AttendanceModel({
+class MonthAdminAttendance extends AttendanceEntity {
+  final EmpAttendanceModel? emp;
+  MonthAdminAttendance({
     super.id,
     super.date,
     super.checkIn,
     super.checkOut,
     super.companyId,
     super.userId,
-    super.empId,
+    this.emp,
   });
 
-  factory AttendanceModel.fromJson(Map<String, dynamic> json) =>
-      AttendanceModel(
+  factory MonthAdminAttendance.fromJson(Map<String, dynamic> json) =>
+      MonthAdminAttendance(
         id: json['id'],
         date: json['date'],
         checkIn: json['check_in'],
         checkOut: json['check_out'],
         companyId: json['comp_id'],
         userId: json['user_id'],
-        empId: json['emp_id'],
+        emp: EmpAttendanceModel.fromJson(json['emp']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,6 +31,6 @@ class AttendanceModel extends AttendanceEntity {
     'check_out': checkOut,
     'comp_id': companyId,
     'user_id': userId,
-    'emp_id': empId,
+    'emp': emp,
   };
 }

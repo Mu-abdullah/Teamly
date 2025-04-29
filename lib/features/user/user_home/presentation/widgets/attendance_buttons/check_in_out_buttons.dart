@@ -71,7 +71,9 @@ class CheckInOutButtons extends StatelessWidget {
                     tableName: BackendPoint.attendance,
                     companyName: com,
                   ),
+                  empId: uid,
                 );
+                debugPrint("uid : $uid");
                 attendanceCubit.checkIn(model: model);
               },
             ),

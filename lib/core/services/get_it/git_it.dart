@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 
+import '../../../features/admin/admin_attendance/data/repo/admin_attendance_repo.dart';
+import '../../../features/admin/admin_attendance/data/repo/get_month_repo.dart';
 import '../../../features/admin/custody/data/repo/add_custody.dart';
 import '../../../features/admin/custody/data/repo/get_custody.dart';
 import '../../../features/admin/custody_transaction/data/repo/get_custody_transaction.dart';
@@ -34,6 +36,8 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => AttendanceRepo(locator()));
   locator.registerLazySingleton(() => CheckAttendanceRepo(locator()));
   locator.registerLazySingleton(() => GetHistoryRepo(locator()));
+  locator.registerLazySingleton(() => GetMonthRepo(locator()));
+  locator.registerLazySingleton(() => AdminAttendanceRepository(locator()));
 }
 
 void _registerServices() {

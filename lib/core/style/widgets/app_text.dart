@@ -89,7 +89,7 @@ TextStyle customTextStyle(
     fontFamily: fontFamily ?? FontsHelper.fontFamily,
     fontSize:
         fontSize ??
-        (isTitle ? context.titleLarge?.fontSize : context.bodySmall?.fontSize),
+        (isTitle ? context.titleMedium?.fontSize : context.bodySmall?.fontSize),
     color: color,
     fontWeight: fontWeight ?? (isBold ? FontWeight.bold : FontWeight.normal),
     decoration: _textDecoration(

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/model/home_emp_model.dart';
@@ -21,10 +22,18 @@ class HomeEmpCubit extends Cubit<HomeEmpState> {
   Future<void> getCount(String? comId) async {
     emit(EmpLoading());
     var empCount = await repo.getEmp(comId: comId!);
-    empCount.fold((error) => emit(EmpError(error.message)), (empCount) {
-      if (!isClosed) {
-        emit(EmpSuccess(empCount));
-      }
-    });
+    empCount.fold(
+      (error) {
+        if (!isClosed) {
+          debugPrint("Error: ${error.message}");
+          emit(EmpError(error.message));
+        }
+      },
+      (empCount) {
+        if (!isClosed) {
+          emit(EmpSuccess(empCount));
+        }
+      },
+    );
   }
 }

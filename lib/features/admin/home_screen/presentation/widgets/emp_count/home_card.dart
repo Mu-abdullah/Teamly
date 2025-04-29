@@ -15,6 +15,7 @@ class HomeCard extends StatelessWidget {
     this.textColor = AppColors.white,
     this.isHighlighted = false,
     this.height,
+    this.maxLines = 1,
   });
   final String cardTitle;
   final String? cardCount;
@@ -23,6 +24,7 @@ class HomeCard extends StatelessWidget {
   final Color color;
   final Color textColor;
   final bool isHighlighted;
+ final int maxLines   ;
   @override
   Widget build(BuildContext context) {
     var isArabic = FontsHelper.isArabic(context);
@@ -84,6 +86,7 @@ class HomeCard extends StatelessWidget {
                       AppText(
                         cardTitle,
                         isTitle: isHighlighted,
+                        maxLines: maxLines,
                         color: textColor.withValues(alpha: 0.9),
                       ),
                     ],

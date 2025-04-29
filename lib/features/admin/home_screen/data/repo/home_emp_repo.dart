@@ -23,7 +23,6 @@ class HomeEmpRepo {
         filters: {
           'com_id': {'eq': comId},
           'job_status': {'eq': JobStatus.onWork},
-          userId == null ? '' : 'id': {'eq': userId},
         },
         fromJson: HomeEmpModel.fromJson,
       );

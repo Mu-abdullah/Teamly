@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -35,7 +34,6 @@ class EmpCount extends StatelessWidget {
           ),
           Expanded(
             child: Row(
-              spacing: 12,
               children: [
                 Expanded(
                   child: HomeCard(

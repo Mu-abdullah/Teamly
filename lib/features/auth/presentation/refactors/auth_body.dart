@@ -37,14 +37,6 @@ class AuthBody extends StatelessWidget {
   }
 
   void _authListener(BuildContext context, state) {
-    if (state is AuthInitial) {
-      CustomSnackbar.showTopSnackBar(
-        context,
-        message: 'Welcome to Teamly',
-        translate: false,
-        backgroundColor: AppColors.blueAccent,
-      );
-    }
     if (state is AuthError) {
       CustomSnackbar.showTopSnackBar(
         context,
@@ -53,15 +45,15 @@ class AuthBody extends StatelessWidget {
         backgroundColor: AppColors.red,
       );
     } else if (state is AuthSuccess) {
+      context.pushNamed(
+        RoutesNames.checkRole,
+        arguments: {'mail': context.read<AuthCubit>().emailController.text},
+      );
       CustomSnackbar.showTopSnackBar(
         context,
         message: 'Login successful',
         translate: false,
         backgroundColor: AppColors.green,
-      );
-      context.pushNamed(
-        RoutesNames.checkRole,
-        arguments: {'mail': context.read<AuthCubit>().emailController.text},
       );
     } else if (state is AuthLoading) {
       CustomSnackbar.showTopSnackBar(

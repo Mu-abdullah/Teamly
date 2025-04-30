@@ -1,5 +1,5 @@
 class PrefKeys {
-  static const String onBoarding = 'onBoarding';
+  static const String remember = 'remember';
 
   // role
   static const String role = 'role';

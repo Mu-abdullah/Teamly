@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:teamly/core/error/custom_errors.dart';
+import 'package:teamly/core/services/shared_pref/shared_pref.dart';
 
+import '../../../../core/services/shared_pref/pref_keys.dart';
 import '../../../../core/services/supabase/auth_service/auth_services.dart';
 
 class AuthRepo {
@@ -23,5 +25,9 @@ class AuthRepo {
     } catch (e) {
       return Left(CustomError(e.toString()));
     }
+  }
+
+  Future<void> remmeberMe() async {
+    await SharedPref.saveData(key: PrefKeys.remember, value: true);
   }
 }

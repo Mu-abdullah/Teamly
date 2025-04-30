@@ -9,6 +9,7 @@ import '../../../admin/home_screen/presentation/widgets/co_name_logo/co_name_log
 import '../cubit/auth_cubit/auth_cubit.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/auth_field.dart';
+import '../widgets/remmber_me_check_box.dart';
 import '../widgets/welcome_user.dart';
 
 class AuthBody extends StatelessWidget {
@@ -29,6 +30,7 @@ class AuthBody extends StatelessWidget {
               WelcomeUser(),
               AuthField(authCubit: authCubit),
               AuthButton(authCubit: authCubit),
+              RemmberCheckBox(),
             ],
           ),
         );
@@ -45,6 +47,7 @@ class AuthBody extends StatelessWidget {
         backgroundColor: AppColors.red,
       );
     } else if (state is AuthSuccess) {
+      context.read<AuthCubit>().saveMe();
       context.pushNamed(
         RoutesNames.checkRole,
         arguments: {'mail': context.read<AuthCubit>().emailController.text},

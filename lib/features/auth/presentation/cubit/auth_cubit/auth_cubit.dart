@@ -10,6 +10,7 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final AuthRepo authRepo;
+  bool remmeberMe = false;
   AuthCubit(this.authRepo) : super(AuthInitial()) {
     init();
   }
@@ -45,5 +46,11 @@ class AuthCubit extends Cubit<AuthState> {
         }
       },
     );
+  }
+
+  void saveMe() {
+    if (remmeberMe == true) {
+      authRepo.remmeberMe();
+    }
   }
 }

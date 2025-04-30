@@ -59,6 +59,7 @@ class LangKeys {
   static const String password = 'password';
   static const String passwordHint = 'passwordHint';
   static const String mailHint = 'mailHint';
+  static const String remeberMe = 'remeberMe';
 
   // Home Keys
   static const String home = 'home';

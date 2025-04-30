@@ -37,3 +37,5 @@ final class UserNotFound extends AuthState {
   @override
   List<Object> get props => [message];
 }
+
+class ChangeRememberMe extends AuthState {}

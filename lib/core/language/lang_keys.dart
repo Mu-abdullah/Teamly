@@ -78,6 +78,11 @@ class LangKeys {
   static const String showLess = 'showLess';
   static const String showMore = 'showMore';
   static const String lastAttendance = 'lastAttendance';
+  static const String annuallvacation = 'annuallvacation';
+  static const String vacationDate = 'vacationDate';
+  static const String vacationType = 'vacationType';
+  static const String vacationDetails = 'vacationDetails';
+  static const String salary = 'salary';
 
   // Custody Keys
   static const String custodySummary = 'custodySummary';

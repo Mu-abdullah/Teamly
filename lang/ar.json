@@ -86,6 +86,11 @@
     "lastAttendance":"اخر الحضور والانصراف",
     "showMore":"اظهار المزيد",
     "showLess":"اظهار اقل",
+    "annuallvacation":"الاجازات السنوية",
+    "vacationDate":"تاريخ الاجازة",
+    "vacationType":"نوع الاجازة",
+    "vacationDetails":"تفاصيل الاجازة",
+    "salary":"الراتب",
 
     "######################################Custody":"", 
     "eg":"ج.م",

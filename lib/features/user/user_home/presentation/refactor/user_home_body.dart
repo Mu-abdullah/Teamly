@@ -7,6 +7,7 @@ import '../cubits/check_attendance_cubit/check_attendance_cubit.dart';
 import '../widgets/attendance_buttons/attendance_leaving_body.dart';
 import '../widgets/pervious_attendance/pervious_attendance_body.dart';
 import '../widgets/user_info/user_home_card.dart';
+import '../widgets/vacation_salary_cards.dart';
 
 class UserHomeBody extends StatefulWidget {
   const UserHomeBody({super.key});
@@ -34,6 +35,7 @@ class _UserHomeBodyState extends State<UserHomeBody> {
         children: [
           UserHomeCard(isArabic: isArabic),
           AttendanceLeavingBody(),
+          SalaryVacationCards(),
           PerviousAttendance(),
         ],
       ),

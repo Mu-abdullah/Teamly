@@ -3,39 +3,26 @@ import 'package:flutter/material.dart';
 import '../../../data/model/history_attendance_model.dart';
 import 'pervious_attendance_item.dart';
 
-class PerviousAttendanceListview extends StatefulWidget {
-  const PerviousAttendanceListview({
-    super.key,
-    required GlobalKey<AnimatedListState> listKey,
-    required this.visibleItems,
-    required this.perviousAttendance,
-  }) : _listKey = listKey;
+class PerviousAttendanceListview extends StatelessWidget {
+  const PerviousAttendanceListview({super.key, required this.attendanceItems});
 
-  final GlobalKey<AnimatedListState> _listKey;
-  final int visibleItems;
-  final List<HistoryAttendanceModel> perviousAttendance;
+  final List<HistoryAttendanceModel> attendanceItems;
 
-  @override
-  State<PerviousAttendanceListview> createState() =>
-      _PerviousAttendanceListviewState();
-}
-
-class _PerviousAttendanceListviewState
-    extends State<PerviousAttendanceListview> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedList(
-      key: widget._listKey,
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      initialItemCount: widget.visibleItems, // Initial visible items
-      itemBuilder: (context, index, animation) {
-        return SizeTransition(
-          sizeFactor: animation,
-          axis: Axis.vertical,
-          child: PreviousAttendanceItem(item: widget.perviousAttendance[index]),
-        );
-      },
+    return SizedBox(
+      height: 220,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        itemCount: attendanceItems.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: PreviousAttendanceItem(item: attendanceItems[index]),
+          );
+        },
+      ),
     );
   }
 }

@@ -79,6 +79,11 @@
     "lastAttendance":"Last Attendance & Leaving",
     "showMore":"Show more",
     "showLess":"Show less",
+    "annuallvacation":"Annual Vacation",
+    "vacationDate":"Vacation Date",
+    "vacationType":"Vacation Type",
+    "vacationDetails":"Vacation Details",
+    "salary":"Salary",
 
     "######################################Custody":"", 
     "eg":"EGP",

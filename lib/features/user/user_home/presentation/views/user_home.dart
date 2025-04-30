@@ -29,7 +29,7 @@ class UserHome extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => GetUserDataCubit(empHomeLac)..getUserData(),
+          create: (context) => GetUserDataCubit(empHomeLac,isAdmin: isAdmin)..getUserData(),
         ),
         BlocProvider(create: (context) => AttendanceCubit(attendanceLac)),
         BlocProvider(

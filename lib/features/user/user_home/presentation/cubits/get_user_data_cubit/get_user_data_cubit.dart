@@ -8,7 +8,7 @@ part 'get_user_data_state.dart';
 
 class GetUserDataCubit extends Cubit<GetUserDataState> {
   HomeEmpRepo repo;
-  GetUserDataCubit(this.repo) : super(GetUserDataInitial()) {
+  GetUserDataCubit(this.repo,{required this.isAdmin}) : super(GetUserDataInitial()) {
     getCompID();
   }
 
@@ -19,6 +19,7 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
     await getUserData();
   }
 
+  bool isAdmin;
   Future<void> getUserData() async {
     emit(GetUserDataLoading());
     final result = await repo.getEmp(

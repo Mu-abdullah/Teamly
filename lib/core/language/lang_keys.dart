@@ -67,7 +67,16 @@ class LangKeys {
   static const String menue = 'menue';
   static const String current = 'current';
   static const String resigned = 'resigned';
+  static const String onWork = 'onWork';
   static const String terminated = 'terminated';
+  static const String jobStatus = 'jobStatus';
+  static const String id = 'id';
+  static const String startIn = 'startIn';
+  static const String endIn = 'endIn';
+  static const String position = 'position';
+  static const String userInfo = 'userInfo';
+  static const String nid = 'nid';
+  static const String address = 'address';
   static const String companies = 'companies';
   static const String addCompany = 'addCompany';
   static const String addEmployee = 'addEmployee';

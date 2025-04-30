@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import '../user_card_loading.dart';
-import 'user_info.dart';
+import 'home_user_info.dart';
 
 class UserHomeCard extends StatelessWidget {
   const UserHomeCard({super.key, required this.isArabic});
@@ -23,7 +23,7 @@ class UserHomeCard extends StatelessWidget {
           return Center(child: Text(state.message));
         } else if (state is GetUserDataLoaded) {
           final user = state.user;
-          return UserInfo(isArabic: isArabic, user: user);
+          return HomeUserInfo(isArabic: isArabic, user: user);
         } else {
           return const Center(child: Text('Something went wrong'));
         }

@@ -17,8 +17,8 @@ import '../cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import '../refactor/user_home_body.dart';
 
 class UserHome extends StatelessWidget {
-  const UserHome({super.key});
-
+  const UserHome({super.key, this.isAdmin = false});
+  final bool isAdmin;
   @override
   Widget build(BuildContext context) {
     var uid = context.read<AppUserCubit>().userId;
@@ -44,8 +44,8 @@ class UserHome extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           title: LangKeys.home,
-          isBack: false,
-          actions: [HomeLogoutButton()],
+          isBack: isAdmin,
+          actions: isAdmin ? [] : [HomeLogoutButton()],
         ),
         body: BlocBuilder<AppUserCubit, AppUserState>(
           builder: (context, state) {

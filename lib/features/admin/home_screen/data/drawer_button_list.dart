@@ -9,6 +9,17 @@ import 'model/drawer_button_model.dart';
 class DrawerButtonListItems {
   static List<DrawerButtonModel> drawerItems(BuildContext context) => [
     DrawerButtonModel(
+      title: LangKeys.login,
+      icon: HugeIcons.strokeRoundedFingerPrint,
+      onTap: () {
+        context.pop();
+        context.pushNamed(
+          RoutesNames.userHomeScreen,
+          arguments: {'isAdmin': true},
+        );
+      },
+    ),
+    DrawerButtonModel(
       title: LangKeys.profile,
       icon: HugeIcons.strokeRoundedUserAccount,
       onTap: () {

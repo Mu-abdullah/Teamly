@@ -17,8 +17,11 @@ class HomeLogoutButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: InkWell(
         onTap: () {
-          BlocProvider.of<AppUserCubit>(context).logout();
-          context.pushNamedAndRemoveUntil(RoutesNames.auth);
+          BlocProvider.of<AppUserCubit>(context).logout().then((value) {
+            if (context.mounted) {
+              context.pushNamedAndRemoveUntil(RoutesNames.auth);
+            }
+          });
         },
         child: Container(
           decoration: BoxDecoration(

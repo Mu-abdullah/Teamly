@@ -9,6 +9,8 @@ class AppUserRepo {
     await SharedPref.removeData(key: PrefKeys.userID);
     await SharedPref.removeData(key: PrefKeys.role);
     await SharedPref.removeData(key: PrefKeys.companyID);
+    await SharedPref.removeData(key: PrefKeys.remember);
+
     await Supabase.instance.client.auth.signOut();
   }
 }

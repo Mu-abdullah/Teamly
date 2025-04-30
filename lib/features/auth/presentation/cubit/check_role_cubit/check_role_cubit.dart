@@ -25,6 +25,7 @@ class CheckRoleCubit extends Cubit<CheckRoleState> {
       try {
         if (!isClosed) {
           await repo.saveUserRole(key: PrefKeys.userID, value: user.userId!);
+          await repo.saveUserRole(key: PrefKeys.role, value: user.role!);
           emit(CheckRoleLoaded(user));
         }
       } catch (e) {

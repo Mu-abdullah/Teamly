@@ -67,7 +67,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     /////////user feature routes////////////
     /////////
     case RoutesNames.userHomeScreen:
-      return BaseRoute(page: UserHome(isAdmin: args?['isAdmin'] as bool));
+      return BaseRoute(page: UserHome(isAdmin: args?['isAdmin'] ?? false));
 
     default:
       return BaseRoute(page: const MaterialApp());

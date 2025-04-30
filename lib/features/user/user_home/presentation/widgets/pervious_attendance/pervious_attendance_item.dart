@@ -77,7 +77,6 @@ class PreviousAttendanceItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         _buildStatusIndicator(),
-
         Expanded(child: AppText(item.date!, translate: false, isTitle: true)),
       ],
     );
@@ -107,7 +106,6 @@ class PreviousAttendanceItem extends StatelessWidget {
         child: Stack(
           children: [
             _buildProgressCircle(totalMinutes),
-
             Positioned.fill(
               child: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 300),
@@ -199,6 +197,7 @@ class PreviousAttendanceItem extends StatelessWidget {
             colors: [
               Colors.white.withValues(alpha: 0.1),
               Colors.black12.withValues(alpha: 0.3),
+              Colors.white.withValues(alpha: 0.1),
             ],
             stops: const [0.1, 0.5, 0.9],
             begin: Alignment(-1.0, -0.5),

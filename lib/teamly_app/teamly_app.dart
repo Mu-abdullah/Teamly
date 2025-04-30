@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:teamly/core/services/status/user_role.dart';
 
 import '../core/app/language/language_cubit/language_cubit.dart';
 import '../core/app/no_internet/connection_controller/connection_controller.dart';
@@ -9,6 +10,8 @@ import '../core/functions/custom_scroll.dart';
 import '../core/language/app_localizations_setup.dart';
 import '../core/routes/routes.dart';
 import '../core/routes/routes_name.dart';
+import '../core/services/shared_pref/pref_keys.dart';
+import '../core/services/shared_pref/shared_pref.dart';
 import '../core/style/color/app_color.dart';
 
 class Teamly extends StatefulWidget {
@@ -82,7 +85,7 @@ class _TeamlyState extends State<Teamly> {
       theme: _appTheme,
       builder: builder ?? (_, child) => child!,
       onGenerateRoute: onGenerateRoute,
-      initialRoute: initialRoute,
+      initialRoute: _getConnectedInitialRoute(),
       home: home,
     );
   }
@@ -108,11 +111,20 @@ class _TeamlyState extends State<Teamly> {
     }
   }
 
-  // String _getConnectedInitialRoute() {
-  //   final hasSeenOnboarding =
-  //       SharedPref.getData(key: PrefKeys.onBoarding) == true;
-  //   return hasSeenOnboarding ? RoutesNames.homeScreen : RoutesNames.onBoarding;
-  // }
+  String _getConnectedInitialRoute() {
+    final remmberMe = SharedPref.getData(key: PrefKeys.remember) == true;
+    final admin =
+        SharedPref.getData(key: PrefKeys.role) == UserRole.getRole(Role.admin);
+    if (remmberMe == true) {
+      if (admin != true) {
+        return RoutesNames.userHomeScreen;
+      } else {
+        return RoutesNames.homeScreen;
+      }
+    } else {
+      return RoutesNames.auth;
+    }
+  }
 
   ThemeData get _appTheme => ThemeData(
     primarySwatch: Colors.blue,

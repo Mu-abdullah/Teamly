@@ -43,4 +43,22 @@ class TimeRefactor {
     final now = DateTime.now();
     return DateFormat('yyyy/MM/dd').format(now);
   }
+
+  // time format: HH:mm
+  String currentTimeString() {
+    final dateTime = DateTime.parse(timestamp);
+    final now = DateTime.now();
+    final difference = now.difference(dateTime).abs();
+    return 'حتى الان ${difference.inHours} ساعة, ${difference.inMinutes.remainder(60)} دقيقة';
+  }
+
+  Duration calculateDuration(String? endTime) {
+    final start = _parseTime(timestamp);
+    final end = _parseTime(endTime ?? DateTime.now().toIso8601String());
+    return end.difference(start);
+  }
+
+  DateTime _parseTime(String time) {
+    return DateTime.parse(time);
+  }
 }

@@ -42,7 +42,7 @@ class _PerviousAttendanceState extends State<PerviousAttendance> {
         i,
         (context, animation) => SizeTransition(
           sizeFactor: animation,
-          child: PerviousAttendanceItem(item: perviousAttendance[i]),
+          child: PreviousAttendanceItem(item: perviousAttendance[i]),
         ),
       );
     }

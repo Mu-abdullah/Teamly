@@ -33,7 +33,7 @@ class _PerviousAttendanceListviewState
         return SizeTransition(
           sizeFactor: animation,
           axis: Axis.vertical,
-          child: PerviousAttendanceItem(item: widget.perviousAttendance[index]),
+          child: PreviousAttendanceItem(item: widget.perviousAttendance[index]),
         );
       },
     );

@@ -4,61 +4,114 @@ import 'package:hugeicons/hugeicons.dart';
 import '../../../../../../core/functions/timestamp_to_time.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/style/color/app_color.dart';
-import '../../../../../../core/style/statics/app_statics.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
 import '../../../data/model/history_attendance_model.dart';
 
-class PerviousAttendanceItem extends StatelessWidget {
-  const PerviousAttendanceItem({super.key, required this.item});
+class PreviousAttendanceItem extends StatelessWidget {
+  const PreviousAttendanceItem({super.key, required this.item});
   final HistoryAttendanceModel item;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.scaffoldBackground,
-          borderRadius: AppBorderRadius.mediumRadius,
-        ),
-        padding: AppPadding.smallPadding,
-        child: Column(
-          spacing: 10,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                spacing: 16,
-                children: [
-                  CircleAvatar(
-                    backgroundColor:
-                        item.checkOut == null
-                            ? AppColors.yellow
-                            : AppColors.green,
-                    child: Icon(
-                      item.checkOut == null
-                          ? HugeIcons.strokeRoundedMinusSign
-                          : HugeIcons.strokeRoundedCheckmarkCircle01,
-                      color: AppColors.white,
-                    ),
-                  ),
-                  Expanded(child: AppText(item.date!, translate: false)),
-                ],
-              ),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors:
+                  item.checkOut != null
+                      ? [AppColors.green, AppColors.white]
+                      : [AppColors.yellow, AppColors.white],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                spacing: 5,
-                children: [
-                  _buildItem(title: LangKeys.checkIn, value: item.checkIn!),
-                  _buildItem(title: LangKeys.checkOut, value: item.checkOut),
-                  _buildManyHours(
-                    title: LangKeys.manyHours,
-                    checkIn: item.checkIn,
-                    checkOut: item.checkOut,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.1),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: ClipPath(
+            clipper: _DiagonalClipper(),
+            child: Stack(
+              children: [
+                Positioned.fill(child: _buildShimmerEffect()),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildHeaderSection(),
+                      const SizedBox(height: 16),
+                      _buildTimeDetailsSection(),
+                    ],
                   ),
-                ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderSection() {
+    return Row(
+      spacing: 16,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        _buildStatusIndicator(),
+
+        Expanded(child: AppText(item.date!, translate: false, isTitle: true)),
+      ],
+    );
+  }
+
+  Widget _buildStatusIndicator() {
+    final duration = TimeRefactor(
+      item.checkIn!,
+    ).calculateDuration(item.checkOut);
+
+    final minutes = duration.inMinutes.toDouble();
+    final totalMinutes = minutes.clamp(0, 480);
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: AppColors.black.withValues(alpha: 0.1),
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.1),
+            blurRadius: 8,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: CircleAvatar(
+        child: Stack(
+          children: [
+            _buildProgressCircle(totalMinutes),
+
+            Positioned.fill(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  item.checkOut != null
+                      ? HugeIcons.strokeRoundedCheckmarkCircle01
+                      : HugeIcons.strokeRoundedMinusSign,
+                  color:
+                      item.checkOut != null
+                          ? AppColors.green
+                          : AppColors.orange,
+                  size: 28,
+                ),
               ),
             ),
           ],
@@ -67,37 +120,101 @@ class PerviousAttendanceItem extends StatelessWidget {
     );
   }
 
-  Row _buildItem({required String title, String? value}) {
+  Widget _buildTimeDetailsSection() {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: AppColors.white.withValues(alpha: 0.9),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        children: [
+          _buildTimeRow(
+            LangKeys.checkIn,
+            TimeRefactor(item.checkIn!).toTimeString(),
+          ),
+          const Divider(height: 24, thickness: 0.5),
+          _buildTimeRow(
+            LangKeys.checkOut,
+            item.checkOut != null
+                ? TimeRefactor(item.checkOut!).toTimeString()
+                : null,
+          ),
+          if (item.checkOut != null) ...[
+            const Divider(height: 24, thickness: 0.5),
+            _buildTimeRow(
+              LangKeys.manyHours,
+              TimeRefactor(
+                item.checkIn!,
+              ).timeDifferenceInHoursAndMinutes(item.checkOut!),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTimeRow(String title, String? value) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         AppText(title),
-        AppText(' : ', translate: false),
         AppText(
-          value == null
-              ? LangKeys.noLogout
-              : TimeRefactor(value).toTimeString(),
-          translate: value == null,
+          value ?? LangKeys.noLogout,
+          translate: value == null ? true : false,
+          color: value != null ? AppColors.black : AppColors.red,
         ),
       ],
     );
   }
 
-  Row _buildManyHours({
-    required String title,
-    String? checkIn,
-    String? checkOut,
-  }) {
-    return Row(
-      children: [
-        AppText(title),
-        AppText(' : ', translate: false),
-        AppText(
-          checkIn == null || checkOut == null
-              ? LangKeys.noLogout
-              : TimeRefactor(checkIn).timeDifferenceInHoursAndMinutes(checkOut),
-          translate: checkIn == null || checkOut == null,
-        ),
-      ],
+  Widget _buildProgressCircle(totalMinutes) {
+    final workedMinutes = totalMinutes;
+
+    return CircularProgressIndicator(
+      value: workedMinutes / 480,
+      backgroundColor: AppColors.darkGrey.withValues(alpha: 0.5),
+      valueColor: AlwaysStoppedAnimation<Color>(
+        workedMinutes >= 480 ? AppColors.green : AppColors.red,
+      ),
+      trackGap: 8,
     );
   }
+
+  Widget _buildShimmerEffect() {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 1000),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.white.withValues(alpha: 0.1),
+              Colors.black12.withValues(alpha: 0.3),
+            ],
+            stops: const [0.1, 0.5, 0.9],
+            begin: Alignment(-1.0, -0.5),
+            end: Alignment(1.0, 0.5),
+            tileMode: TileMode.clamp,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _DiagonalClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.lineTo(size.width - 30, 0);
+    path.lineTo(size.width, 30);
+    path.lineTo(size.width, size.height);
+    path.lineTo(30, size.height);
+    path.lineTo(0, size.height - 30);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

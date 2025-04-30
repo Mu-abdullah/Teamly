@@ -22,9 +22,9 @@ class CheckRole extends StatelessWidget {
         listener: (context, state) {
           if (state is CheckRoleLoaded) {
             if (state.role.role == UserRole.getRole(Role.admin)) {
-              context.pushReplacementNamed(RoutesNames.homeScreen);
+              context.pushNamedAndRemoveUntil(RoutesNames.homeScreen);
             } else if (state.role.role == UserRole.getRole(Role.user)) {
-              context.pushReplacementNamed(RoutesNames.userHomeScreen);
+              context.pushNamedAndRemoveUntil(RoutesNames.userHomeScreen);
             }
           }
         },

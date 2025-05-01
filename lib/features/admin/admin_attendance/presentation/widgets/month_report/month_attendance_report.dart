@@ -20,7 +20,9 @@ class MonthAttendanceReport extends StatelessWidget {
           final attendance = state.attendanceList;
           return ReportListview(attendance: attendance);
         } else if (state is MonthAttendanceError) {
-          return Expanded(child: Center(child: Text(state.message)));
+          return Expanded(
+            child: Center(child: AppText(state.message, translate: false)),
+          );
         } else {
           return const Expanded(
             child: Center(child: AppText(LangKeys.chooseMonth)),

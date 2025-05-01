@@ -28,6 +28,7 @@ class LangKeys {
   static const String approved = 'approved';
   static const String rejected = 'rejected';
   static const String pending = 'pending';
+  static const String print = 'print';
 
   //account keys
   static const String deleteAccount = 'deleteAccount';

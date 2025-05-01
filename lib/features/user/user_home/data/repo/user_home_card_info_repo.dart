@@ -5,14 +5,14 @@ import '../../../../../core/services/graph_ql/graph_ql.dart';
 import '../../../../../core/services/shared_pref/shared_pref.dart';
 import '../../../../../core/services/status/job_status.dart';
 import '../../../../../core/services/supabase/backend_points.dart';
-import '../model/home_emp_model.dart';
+import '../../../../admin/home_screen/data/model/home_emp_model.dart';
 
-class HomeEmpRepo {
+class UserHomeCardInfoRepo {
   GraphQLService graphQLService;
-  HomeEmpRepo(this.graphQLService);
-
+  UserHomeCardInfoRepo(this.graphQLService);
   Future<Either<CustomError, List<HomeEmpModel>>> getEmp({
     required String comId,
+    required String userId,
   }) async {
     try {
       var result = await graphQLService.fetchCollection(
@@ -21,6 +21,7 @@ class HomeEmpRepo {
         filters: {
           'com_id': {'eq': comId},
           'job_status': {'eq': JobStatus.onWork},
+          'id': {'eq': userId},
         },
         fromJson: HomeEmpModel.fromJson,
       );

@@ -66,7 +66,7 @@ class ExcelExportUtils {
       final File file = File(fileName);
 
       await file.writeAsBytes(bytes, flush: true);
-      await OpenFile.open(fileName);
+      OpenFile.open(fileName);
     }
   }
 }

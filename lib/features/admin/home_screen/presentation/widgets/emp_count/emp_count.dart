@@ -21,42 +21,46 @@ class EmpCount extends StatelessWidget {
         color: AppColors.white,
       ),
       height: height,
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        spacing: 10,
-        children: [
-          HomeCard(
-            cardTitle: LangKeys.current,
-            cardCount: cubit.getOnWork().length.toString(),
-            cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
-            isHighlighted: true,
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: HomeCard(
-                    cardTitle: LangKeys.resigned,
-                    cardCount: cubit.getResigned().length.toString(),
-                    cardIcon: HugeIcons.strokeRoundedCancelCircle,
-                    color: AppColors.yellow,
-                    textColor: AppColors.black,
-                  ),
-                ),
-
-                Expanded(
-                  child: HomeCard(
-                    cardTitle: LangKeys.terminated,
-                    cardCount: cubit.getTerminated().length.toString(),
-                    cardIcon: HugeIcons.strokeRoundedCancelCircle,
-                    color: AppColors.red,
-                  ),
-                ),
-              ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          spacing: 10,
+          children: [
+            HomeCard(
+              cardTitle: LangKeys.current,
+              cardCount: cubit.getOnWork().length.toString(),
+              cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
+              isHighlighted: true,
             ),
-          ),
-        ],
+            Expanded(
+              child: Row(
+                spacing: 10,
+                children: [
+                  Expanded(
+                    child: HomeCard(
+                      cardTitle: LangKeys.resigned,
+                      cardCount: cubit.getResigned().length.toString(),
+                      cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                      color: AppColors.yellow,
+                      textColor: AppColors.black,
+                    ),
+                  ),
+
+                  Expanded(
+                    child: HomeCard(
+                      cardTitle: LangKeys.terminated,
+                      cardCount: cubit.getTerminated().length.toString(),
+                      cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                      color: AppColors.red,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
+import '../../../../core/language/lang_keys.dart';
 import '../../../../core/routes/routes_name.dart';
 import '../../../../core/style/color/app_color.dart';
 import '../../../../core/style/widgets/custom_snack_bar.dart';
@@ -54,14 +55,14 @@ class AuthBody extends StatelessWidget {
       );
       CustomSnackbar.showTopSnackBar(
         context,
-        message: 'Login successful',
+        message: LangKeys.loginSuccess,
         translate: false,
         backgroundColor: AppColors.green,
       );
     } else if (state is AuthLoading) {
       CustomSnackbar.showTopSnackBar(
         context,
-        message: 'Loading...',
+        message: LangKeys.loading,
         backgroundColor: AppColors.yellow,
         translate: false,
       );

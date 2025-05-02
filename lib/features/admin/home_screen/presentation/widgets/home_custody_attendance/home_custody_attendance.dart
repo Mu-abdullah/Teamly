@@ -19,38 +19,42 @@ class HomeCustodyAttendance extends StatelessWidget {
         color: AppColors.white,
         borderRadius: AppBorderRadius.mediumRadius,
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: InkWell(
-              onTap: () {
-                context.pushNamed(RoutesNames.custodyScreen);
-              },
-              child: HomeCard(
-                cardTitle: LangKeys.custody,
-                height: height,
-                color: AppColors.green,
-                cardIcon: HugeIcons.strokeRoundedDollarCircle,
-                isHighlighted: true,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          spacing: 10,
+          children: [
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  context.pushNamed(RoutesNames.custodyScreen);
+                },
+                child: HomeCard(
+                  cardTitle: LangKeys.custody,
+                  height: height,
+                  color: AppColors.green,
+                  cardIcon: HugeIcons.strokeRoundedDollarCircle,
+                  isHighlighted: true,
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: InkWell(
-              onTap: () {
-                context.pushNamed(RoutesNames.adminAttendance);
-              },
-              child: HomeCard(
-                cardTitle: LangKeys.attendanceLeaving,
-                height: height,
-                color: AppColors.black,
-                maxLines: 3,
-                cardIcon: HugeIcons.strokeRoundedFingerPrintScan,
-                isHighlighted: true,
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  context.pushNamed(RoutesNames.adminAttendance);
+                },
+                child: HomeCard(
+                  cardTitle: LangKeys.attendanceLeaving,
+                  height: height,
+                  color: AppColors.black,
+                  maxLines: 3,
+                  cardIcon: HugeIcons.strokeRoundedFingerPrintScan,
+                  isHighlighted: true,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -31,6 +31,7 @@ class SalaryVacationCards extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
+          spacing: 10,
           children: [
             Expanded(
               child: InkWell(

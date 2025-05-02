@@ -61,6 +61,7 @@
     "mailHint":"**********@example.com",
     "passwordHint":"********",
     "remeberMe":"Remeber me",
+    "loginSuccess":"Login successfully",
 
     "######################################HomeScreen":"",
     "home":"Home",
@@ -120,6 +121,7 @@
 
     "######################################Vacation":"",
      "vacation":"Vacation",
+     "vacationRequest":"Vacation Request",
      "exceptionalVacation":"Exceptional Vacation",
      "sickLeave":"Sick Leave",
      "maternityLeave":"Maternity Leave"

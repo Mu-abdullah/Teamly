@@ -66,6 +66,7 @@
     "mailHint":"**********@example.com",
     "passwordHint":"********",
     "remeberMe":"تذكرني",
+    "loginSuccess":"تم تسجيل الدخول بنجاح",
     
 
 
@@ -127,6 +128,7 @@
 
    "######################################Vacation":"",
     "vacation":"الاجازات" ,
+    "vacationRequest":"طلب اجازة" ,
     "exceptionalVacation":"اجازات استثنائية" ,
     "sickLeave":"اجازات مرضية",
     "maternityLeave":"اجازات أمومة"

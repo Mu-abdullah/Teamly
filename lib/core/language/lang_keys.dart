@@ -61,6 +61,7 @@ class LangKeys {
   static const String passwordHint = 'passwordHint';
   static const String mailHint = 'mailHint';
   static const String remeberMe = 'remeberMe';
+  static const String loginSuccess = 'loginSuccess';
 
   // Home Keys
   static const String home = 'home';
@@ -117,6 +118,7 @@ class LangKeys {
 
   // vaction keys
   static const String vacation = 'vacation';
+  static const String vacationRequest = 'vacationRequest';
   static const String annuallVacation = 'annuallvacation';
   static const String exceptionalVacation  = 'exceptionalVacation';
   static const String sickLeave  = 'sickLeave';

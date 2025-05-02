@@ -17,10 +17,10 @@ class HomeEmpCubit extends Cubit<HomeEmpState> {
   Future<void> getCompID() async {
     var emp = await repo.getID(key: PrefKeys.companyID);
 
-    await getCount(emp);
+    await getEmp(emp);
   }
 
-  Future<void> getCount(String? comId) async {
+  Future<void> getEmp(String? comId) async {
     emit(EmpLoading());
     var empCount = await repo.getEmp(comId: comId!);
     empCount.fold(

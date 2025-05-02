@@ -62,7 +62,11 @@ class HomeEmpItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     spacing: 4,
                     children: [
-                      AppText(emp.position!, isTitle: true, translate: false),
+                      AppText(
+                        emp.position!.positionName!,
+                        isTitle: true,
+                        translate: false,
+                      ),
                       AppText(emp.name!, fontSize: 12, translate: false),
                       AppText(emp.phone!, fontSize: 12, translate: false),
                       AppText(emp.id!, fontSize: 12, translate: false),

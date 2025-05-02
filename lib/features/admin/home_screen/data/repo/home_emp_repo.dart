@@ -17,7 +17,13 @@ class HomeEmpRepo {
     try {
       var result = await graphQLService.fetchCollection(
         collection: BackendPoint.emp,
-        fields: const ['id', 'name', 'position', 'phone'],
+        fields: const [
+          'id',
+          'name',
+          'position',
+          'phone',
+          'position { position }',
+        ],
         filters: {
           'com_id': {'eq': comId},
           'job_status': {'eq': JobStatus.onWork},

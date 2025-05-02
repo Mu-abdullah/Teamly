@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../../../core/services/shared_pref/pref_keys.dart';
 import '../../../data/model/user_home_model.dart';
@@ -28,6 +29,7 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
     result.fold(
       (l) {
         if (!isClosed) {
+          debugPrint("Error: ${l.message}");
           emit(GetUserDataError(l.message));
         }
       },

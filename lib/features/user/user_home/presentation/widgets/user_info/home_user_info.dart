@@ -105,7 +105,11 @@ class HomeUserInfo extends StatelessWidget {
                       ),
 
                       AppText(user.phone!, fontSize: 12, translate: false),
-                      AppText(user.position!, fontSize: 12, translate: false),
+                      AppText(
+                        user.position!.positionName!,
+                        fontSize: 12,
+                        translate: false,
+                      ),
                       AppText(user.id!, fontSize: 12, translate: false),
                       AppSpace(space: 5),
                     ],

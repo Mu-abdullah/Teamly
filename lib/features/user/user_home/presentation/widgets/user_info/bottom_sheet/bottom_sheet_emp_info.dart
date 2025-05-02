@@ -143,7 +143,7 @@ class BottomSheetEmpInfo extends StatelessWidget {
         expandedCrossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildInfoRow(LangKeys.id, empInfo.id!),
-          _buildInfoRow(LangKeys.position, empInfo.position!),
+          _buildInfoRow(LangKeys.position, empInfo.position.positionName!),
           _buildInfoRow(LangKeys.nid, empInfo.nid!),
           _buildInfoRow(LangKeys.address, empInfo.address!),
           _buildInfoRow(LangKeys.phone, empInfo.phone!),

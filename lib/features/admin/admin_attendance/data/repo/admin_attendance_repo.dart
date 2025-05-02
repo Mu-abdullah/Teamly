@@ -43,7 +43,7 @@ class AdminAttendanceRepository {
           'user_id',
           'comp_id',
           'date',
-          'emp { id name position }',
+          'emp { id name position { position } }',
         ],
         fromJson: MonthAdminAttendance.fromJson,
         filters: {

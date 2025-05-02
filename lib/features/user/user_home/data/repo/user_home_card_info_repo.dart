@@ -15,7 +15,13 @@ class UserHomeCardInfoRepo {
     try {
       var result = await graphQLService.fetchCollection(
         collection: BackendPoint.emp,
-        fields: ['id', 'name', 'position', 'phone', 'gender { gender } '],
+        fields: [
+          'id',
+          'name',
+          'phone',
+          'gender { gender }',
+          'position { position }',
+        ],
         filters: {
           'id': {'eq': userId},
         },
@@ -26,9 +32,7 @@ class UserHomeCardInfoRepo {
       }
       return Right(result);
     } catch (e) {
-      return Left(
-        CustomError("Failed to retrieve employee count: ${e.toString()}"),
-      );
+      return Left(CustomError("Failed to retrieve employee : ${e.toString()}"));
     }
   }
 

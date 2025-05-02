@@ -1,10 +1,16 @@
 class BackendPoint {
   static const imageBucket = 'images';
 
+  static const attendance = 'attendance';
+  static const company = 'company';
   static const custody = 'custody';
   static const custodyTransaction = 'custody_transaction';
   static const custodyTransactionItem = 'custody_transaction_item';
-  static const users = 'users';
   static const emp = 'emp';
-  static const attendance = 'attendance';
+  static const gender = 'gender';
+  static const images = 'gender';
+  static const locations = 'locations';
+  static const positions = 'positions';
+  static const users = 'users';
+  static const vacations = 'vacations';
 }

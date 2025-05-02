@@ -16,6 +16,7 @@ class HomeCard extends StatelessWidget {
     this.isHighlighted = false,
     this.height,
     this.maxLines = 1,
+    this.onTap,
   });
   final String cardTitle;
   final String? cardCount;
@@ -25,72 +26,76 @@ class HomeCard extends StatelessWidget {
   final Color textColor;
   final bool isHighlighted;
   final int maxLines;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     var isArabic = FontsHelper.isArabic(context);
-    return SizedBox(
-      height: height,
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+        height: height,
 
-      child: Material(
-        elevation: 2,
-        borderRadius: AppBorderRadius.mediumRadius,
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: AppBorderRadius.mediumRadius,
-            gradient:
-                isHighlighted
-                    ? LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [color, color.withValues(alpha: 0.8)],
-                    )
-                    : null,
-          ),
-          child: Stack(
-            children: [
-              if (isHighlighted)
-                Positioned(
-                  right: isArabic ? null : 0,
-                  left: isArabic ? -0 : null,
-                  top: 0,
-                  child: Icon(
-                    cardIcon,
-                    size: 100,
-                    color: textColor.withValues(alpha: 0.2),
+        child: Material(
+          elevation: 2,
+          borderRadius: AppBorderRadius.mediumRadius,
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: AppBorderRadius.mediumRadius,
+              gradient:
+                  isHighlighted
+                      ? LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [color, color.withValues(alpha: 0.8)],
+                      )
+                      : null,
+            ),
+            child: Stack(
+              children: [
+                if (isHighlighted)
+                  Positioned(
+                    right: isArabic ? null : 0,
+                    left: isArabic ? -0 : null,
+                    top: 0,
+                    child: Icon(
+                      cardIcon,
+                      size: 100,
+                      color: textColor.withValues(alpha: 0.2),
+                    ),
+                  ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(cardIcon, size: 32, color: textColor),
+
+                      cardCount != null
+                          ? AppText(
+                            cardCount!,
+                            isTitle: isHighlighted,
+                            color: textColor,
+                            translate: false,
+                          )
+                          : const SizedBox(),
+
+                      AppText(
+                        cardTitle,
+                        isTitle: isHighlighted,
+                        maxLines: maxLines,
+                        color: textColor.withValues(alpha: 0.9),
+                      ),
+                    ],
                   ),
                 ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 8,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(cardIcon, size: 32, color: textColor),
-
-                    cardCount != null
-                        ? AppText(
-                          cardCount!,
-                          isTitle: isHighlighted,
-                          color: textColor,
-                          translate: false,
-                        )
-                        : const SizedBox(),
-
-                    AppText(
-                      cardTitle,
-                      isTitle: isHighlighted,
-                      maxLines: maxLines,
-                      color: textColor.withValues(alpha: 0.9),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

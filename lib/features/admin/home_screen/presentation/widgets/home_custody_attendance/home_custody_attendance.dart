@@ -25,32 +25,28 @@ class HomeCustodyAttendance extends StatelessWidget {
           spacing: 10,
           children: [
             Expanded(
-              child: InkWell(
+              child: HomeCard(
                 onTap: () {
                   context.pushNamed(RoutesNames.custodyScreen);
                 },
-                child: HomeCard(
-                  cardTitle: LangKeys.custody,
-                  height: height,
-                  color: AppColors.green,
-                  cardIcon: HugeIcons.strokeRoundedDollarCircle,
-                  isHighlighted: true,
-                ),
+                cardTitle: LangKeys.custody,
+                height: height,
+                color: AppColors.green,
+                cardIcon: HugeIcons.strokeRoundedDollarCircle,
+                isHighlighted: true,
               ),
             ),
             Expanded(
-              child: InkWell(
+              child: HomeCard(
                 onTap: () {
                   context.pushNamed(RoutesNames.adminAttendance);
                 },
-                child: HomeCard(
-                  cardTitle: LangKeys.attendanceLeaving,
-                  height: height,
-                  color: AppColors.black,
-                  maxLines: 3,
-                  cardIcon: HugeIcons.strokeRoundedFingerPrintScan,
-                  isHighlighted: true,
-                ),
+                cardTitle: LangKeys.attendanceLeaving,
+                height: height,
+                color: AppColors.black,
+                maxLines: 3,
+                cardIcon: HugeIcons.strokeRoundedFingerPrintScan,
+                isHighlighted: true,
               ),
             ),
           ],

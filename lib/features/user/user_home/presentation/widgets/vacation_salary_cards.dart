@@ -34,7 +34,7 @@ class SalaryVacationCards extends StatelessWidget {
           spacing: 10,
           children: [
             Expanded(
-              child: InkWell(
+              child: HomeCard(
                 onTap:
                     () => context.pushNamed(
                       RoutesNames.userVacation,
@@ -43,12 +43,10 @@ class SalaryVacationCards extends StatelessWidget {
                             context.read<GetUserDataCubit>().user!.gend!.name,
                       },
                     ),
-                child: HomeCard(
-                  cardTitle: LangKeys.vacation,
-                  cardIcon: HugeIcons.strokeRoundedBeach,
-                  isHighlighted: true,
-                  height: 150,
-                ),
+                cardTitle: LangKeys.vacation,
+                cardIcon: HugeIcons.strokeRoundedBeach,
+                isHighlighted: true,
+                height: 150,
               ),
             ),
             Expanded(

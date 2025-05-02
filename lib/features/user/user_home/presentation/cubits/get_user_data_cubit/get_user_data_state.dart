@@ -12,7 +12,7 @@ final class GetUserDataInitial extends GetUserDataState {}
 final class GetUserDataLoading extends GetUserDataState {}
 
 final class GetUserDataLoaded extends GetUserDataState {
-  final HomeEmpModel user;
+  final UserHomeModel user;
   const GetUserDataLoaded(this.user);
 }
 

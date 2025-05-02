@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:teamly/core/extextions/extentions.dart';
-import 'package:teamly/core/style/widgets/custom_bottom_sheet.dart';
 
 import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/image_test.dart';
 import '../../../../../../core/style/widgets/app_space.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
-import '../../../../../admin/home_screen/data/model/home_emp_model.dart';
+import '../../../../../../core/style/widgets/custom_bottom_sheet.dart';
+import '../../../data/model/user_home_model.dart';
 import 'bottom_sheet/user_info_bottom_sheet.dart';
 
 class HomeUserInfo extends StatelessWidget {
   const HomeUserInfo({super.key, required this.isArabic, required this.user});
 
   final bool isArabic;
-  final HomeEmpModel user;
+  final UserHomeModel user;
 
   @override
   Widget build(BuildContext context) {

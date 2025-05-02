@@ -71,7 +71,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return BaseRoute(page: UserHome(isAdmin: args?['isAdmin'] ?? false));
 
     case RoutesNames.userVacation:
-      return BaseRoute(page: UserVacations());
+      return BaseRoute(page: UserVacations(gender: args?['gender'] as String));
 
     default:
       return BaseRoute(page: const MaterialApp());

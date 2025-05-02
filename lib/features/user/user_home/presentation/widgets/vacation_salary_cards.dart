@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
@@ -7,6 +8,7 @@ import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../admin/home_screen/presentation/widgets/emp_count/home_card.dart';
+import '../cubits/get_user_data_cubit/get_user_data_cubit.dart';
 
 class SalaryVacationCards extends StatelessWidget {
   const SalaryVacationCards({super.key});
@@ -32,7 +34,14 @@ class SalaryVacationCards extends StatelessWidget {
           children: [
             Expanded(
               child: InkWell(
-                onTap: () => context.pushNamed(RoutesNames.userVacation),
+                onTap:
+                    () => context.pushNamed(
+                      RoutesNames.userVacation,
+                      arguments: {
+                        'gender':
+                            context.read<GetUserDataCubit>().user!.gend!.name,
+                      },
+                    ),
                 child: HomeCard(
                   cardTitle: LangKeys.vacation,
                   cardIcon: HugeIcons.strokeRoundedBeach,

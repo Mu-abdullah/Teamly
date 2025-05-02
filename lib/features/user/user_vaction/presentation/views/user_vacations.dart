@@ -15,4 +15,3 @@ class UserVacations extends StatelessWidget {
     );
   }
 }
-

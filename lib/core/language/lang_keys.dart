@@ -123,4 +123,6 @@ class LangKeys {
   static const String exceptionalVacation  = 'exceptionalVacation';
   static const String sickLeave  = 'sickLeave';
   static const String maternityLeave  = 'maternityLeave';
+  static const String myRequests  = 'myRequests';
+  
 }

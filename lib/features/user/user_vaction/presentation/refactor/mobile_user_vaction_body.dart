@@ -15,6 +15,13 @@ class MobileUserVactionsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> cards = [
       HomeCard(
+        cardTitle: LangKeys.myRequests,
+        cardIcon: HugeIcons.strokeRoundedTask01,
+        isHighlighted: true,
+        color: AppColors.darkGrey,
+        height: 150,
+      ),
+      HomeCard(
         cardTitle: LangKeys.annuallVacation,
         cardIcon: HugeIcons.strokeRoundedBeach,
         isHighlighted: true,

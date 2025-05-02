@@ -24,6 +24,7 @@
     "translate":"Translate",
     "dontShowAnymore":"Don't show again",
     "doYouWantToDeleteAccount":"Are you sure you want to delete your account?",
+    "submit":"Submit",
     "approved":"Approved",
     "pending":"Pending",
     "rejected":"Rejected",
@@ -120,12 +121,19 @@
     "manyHours":"Many hours",
 
     "######################################Vacation":"",
-     "vacation":"Vacation",
-     "vacationRequest":"Vacation Request",
-     "exceptionalVacation":"Exceptional Vacation",
-     "sickLeave":"Sick Leave",
-     "myRequests":"My Requests",
-     "maternityLeave":"Maternity Leave"
+    "vacation":"Vacation",
+    "vacationReason":"Vacation Reason" ,
+    "vacationStatus":"Vacation Status" ,
+    "chooseDate":"Choose Date" ,
+    "startDate":"Start Date" ,
+    "endDate":"End Date" ,
+    "vacationRequest":"Vacation Request",
+    "exceptionalVacation":"Exceptional Vacation",
+    "sickLeave":"Sick Leave",
+    "newRequest":"New Request" ,
+    "myRequests":"My Requests",
+    "maternityLeave":"Maternity Leave",
+    "availableForFemaleOnly":"Available For Female Only"
     
      
 }

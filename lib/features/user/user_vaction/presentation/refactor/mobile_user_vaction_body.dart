@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/services/status/gender_status.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_button.dart';
@@ -15,10 +17,24 @@ class MobileUserVactionsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> cards = [
       HomeCard(
-        cardTitle: LangKeys.myRequests,
+        onTap: () {
+          context.pushNamed(
+            RoutesNames.userVacationRequests,
+            arguments: {'gender': gender},
+          );
+        },
+        cardTitle: LangKeys.newRequest,
         cardIcon: HugeIcons.strokeRoundedTask01,
         isHighlighted: true,
         color: AppColors.darkGrey,
+        height: 150,
+      ),
+      HomeCard(
+        onTap: () {},
+        cardTitle: LangKeys.myRequests,
+        cardIcon: HugeIcons.strokeRoundedTaskDone01,
+        isHighlighted: true,
+        color: AppColors.blueAccent,
         height: 150,
       ),
       HomeCard(

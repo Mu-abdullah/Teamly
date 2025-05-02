@@ -15,6 +15,7 @@ import '../../../features/user/user_home/data/repo/check_attendance_repo.dart';
 import '../../../features/user/user_home/data/repo/emp_info_repo.dart';
 import '../../../features/user/user_home/data/repo/get_history_repo.dart';
 import '../../../features/user/user_home/data/repo/user_home_card_info_repo.dart';
+import '../../../features/user/user_vaction/data/repo/submit_vacation_request_repo.dart';
 import '../graph_ql/graph_ql.dart';
 import '../supabase/auth_service/auth_services.dart';
 import '../supabase/data_base_services.dart';
@@ -42,6 +43,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => AdminAttendanceRepository(locator()));
   locator.registerLazySingleton(() => EmpInfoRepo(locator()));
   locator.registerLazySingleton(() => UserHomeCardInfoRepo(locator()));
+  locator.registerLazySingleton(() => SubmitVacationRequestRepo(locator()));
 }
 
 void _registerServices() {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teamly/features/user/user_vaction/presentation/widgets/user_new_request_vacation/user_request_vacation.dart';
 
 import '../../features/admin/admin_attendance/presentation/views/admin_attendance.dart';
 import '../../features/admin/custody_transaction/presentation/views/custody_transactions.dart';
@@ -72,6 +73,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.userVacation:
       return BaseRoute(page: UserVacations(gender: args?['gender'] as String));
+
+    case RoutesNames.userVacationRequests:
+      return BaseRoute(page: UserRequestVacation(isFemale: args?['gender']as String));
 
     default:
       return BaseRoute(page: const MaterialApp());

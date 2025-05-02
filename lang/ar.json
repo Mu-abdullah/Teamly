@@ -25,6 +25,7 @@
     "translate":"ترجمة",
     "dontShowAnymore":"لا تظهر مرة أخرى",
     "doYouWantToDeleteAccount":"هل تريد حذف حسابك؟",
+    "submit":"تقديم الطلب",
     "approved":"تم الموافقة",
     "pending":"قيد المراجعة",
     "rejected":"مرفوضة",
@@ -128,9 +129,16 @@
 
    "######################################Vacation":"",
     "vacation":"الاجازات" ,
+    "vacationReason":"سبب الاجازة" ,
+    "vacationStatus":"حالة الاجازة" ,
+    "chooseDate":"اختر التاريخ" ,
+    "startDate":"تاريخ البدء" ,
+    "endDate":"تاريخ الانتهاء" ,
     "vacationRequest":"طلب اجازة" ,
     "exceptionalVacation":"اجازات استثنائية" ,
     "sickLeave":"اجازات مرضية",
+    "newRequest":"طلب جديد" ,
     "myRequests":"طلباتي" ,
-    "maternityLeave":"اجازات أمومة"
+    "maternityLeave":"اجازات أمومة",
+     "availableForFemaleOnly":"متاحة للموظفات النساء فقط"
 }

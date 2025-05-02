@@ -25,6 +25,7 @@ class LangKeys {
   static const String hideOriginal = 'hideOriginal';
   static const String dontShowAnymore = 'dontShowAnymore';
   static const String doYouWantToDeleteAccount = 'doYouWantToDeleteAccount';
+  static const String submit = 'submit';
   static const String approved = 'approved';
   static const String rejected = 'rejected';
   static const String pending = 'pending';
@@ -91,7 +92,6 @@ class LangKeys {
   static const String showMore = 'showMore';
   static const String lastAttendance = 'lastAttendance';
   static const String vacationDate = 'vacationDate';
-  static const String vacationType = 'vacationType';
   static const String vacationDetails = 'vacationDetails';
   static const String salary = 'salary';
 
@@ -118,11 +118,18 @@ class LangKeys {
 
   // vaction keys
   static const String vacation = 'vacation';
+  static const String vacationReason = 'vacationReason';
+  static const String vacationType = 'vacationType';
+  static const String vacationStatus = 'vacationStatus';
+  static const String chooseDate = 'chooseDate';
+  static const String startDate = 'startDate';
+  static const String endDate = 'endDate';
   static const String vacationRequest = 'vacationRequest';
   static const String annuallVacation = 'annuallvacation';
-  static const String exceptionalVacation  = 'exceptionalVacation';
-  static const String sickLeave  = 'sickLeave';
-  static const String maternityLeave  = 'maternityLeave';
-  static const String myRequests  = 'myRequests';
-  
+  static const String exceptionalVacation = 'exceptionalVacation';
+  static const String sickLeave = 'sickLeave';
+  static const String maternityLeave = 'maternityLeave';
+  static const String newRequest = 'newRequest';
+  static const String myRequests = 'myRequests';
+  static const String availableForFemaleOnly = 'availableForFemaleOnly';
 }

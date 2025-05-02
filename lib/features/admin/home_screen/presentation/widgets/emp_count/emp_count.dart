@@ -52,7 +52,7 @@ class EmpCount extends StatelessWidget {
                     child: HomeCard(
                       cardTitle: LangKeys.terminated,
                       cardCount: cubit.getTerminated().length.toString(),
-                      cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                      cardIcon: HugeIcons.strokeRoundedAlertDiamond,
                       color: AppColors.red,
                     ),
                   ),

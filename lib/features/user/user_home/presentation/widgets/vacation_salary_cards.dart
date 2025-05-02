@@ -1,16 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../admin/home_screen/presentation/widgets/emp_count/home_card.dart';
 
 class SalaryVacationCards extends StatelessWidget {
-  const SalaryVacationCards({
-    super.key,
-  });
+  const SalaryVacationCards({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +31,14 @@ class SalaryVacationCards extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: HomeCard(
-                cardTitle: LangKeys.annuallvacation,
-                cardIcon: HugeIcons.strokeRoundedBeach,
-                isHighlighted: true,
-                height: 150,
+              child: InkWell(
+                onTap: () => context.pushNamed(RoutesNames.userVacation),
+                child: HomeCard(
+                  cardTitle: LangKeys.vacation,
+                  cardIcon: HugeIcons.strokeRoundedBeach,
+                  isHighlighted: true,
+                  height: 150,
+                ),
               ),
             ),
             Expanded(

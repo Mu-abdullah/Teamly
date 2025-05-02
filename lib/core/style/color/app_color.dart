@@ -13,6 +13,7 @@ class AppColors {
   static const blueAccent = Color(0xFF448AFF);
 
   static const green = Color(0xFF4CAF50);
-  static const yellow = Color(0xFFFFEB3B);
+  static const yellow = Color(0xFFFCD207);
   static const orange = Color(0xFFFF9800);
+  static const pink = Color(0xFFE91E63);
 }

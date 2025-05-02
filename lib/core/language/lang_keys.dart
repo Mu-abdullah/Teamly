@@ -89,7 +89,6 @@ class LangKeys {
   static const String showLess = 'showLess';
   static const String showMore = 'showMore';
   static const String lastAttendance = 'lastAttendance';
-  static const String annuallvacation = 'annuallvacation';
   static const String vacationDate = 'vacationDate';
   static const String vacationType = 'vacationType';
   static const String vacationDetails = 'vacationDetails';
@@ -115,4 +114,11 @@ class LangKeys {
   static const String manyHours = 'manyHours';
   static const String noLogout = 'noLogout';
   static const String chooseMonth = 'chooseMonth';
+
+  // vaction keys
+  static const String vacation = 'vacation';
+  static const String annuallVacation = 'annuallvacation';
+  static const String exceptionalVacation  = 'exceptionalVacation';
+  static const String sickLeave  = 'sickLeave';
+  static const String maternityLeave  = 'maternityLeave';
 }

@@ -12,6 +12,7 @@ class EmpEntity {
   final String? jobStatus;
   final String? comId;
   final String? position;
+  final String? gender;
 
   EmpEntity({
     this.id,
@@ -27,5 +28,6 @@ class EmpEntity {
     this.jobStatus,
     this.comId,
     this.position,
+    this.gender,
   });
 }

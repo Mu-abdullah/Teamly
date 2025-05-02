@@ -8,6 +8,7 @@ import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
 import '../../features/user/user_home/presentation/views/user_home.dart';
+import '../../features/user/user_vaction/presentation/views/user_vacations.dart';
 import '../app/image/image_preview.dart';
 import '../app/language/language_screen.dart';
 import '../app/no_internet/no_internet_screen.dart';
@@ -68,6 +69,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     /////////
     case RoutesNames.userHomeScreen:
       return BaseRoute(page: UserHome(isAdmin: args?['isAdmin'] ?? false));
+
+    case RoutesNames.userVacation:
+      return BaseRoute(page: UserVacations());
 
     default:
       return BaseRoute(page: const MaterialApp());

@@ -6,7 +6,6 @@ import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/services/status/gender_status.dart';
 import '../../../../../core/style/color/app_color.dart';
-import '../../../../../core/style/widgets/app_button.dart';
 import '../../../../admin/home_screen/presentation/widgets/emp_count/home_card.dart';
 
 class MobileUserVactionsBody extends StatelessWidget {
@@ -83,7 +82,6 @@ class MobileUserVactionsBody extends StatelessWidget {
               children: cards,
             ),
           ),
-          AppButton(text: LangKeys.vacationRequest, fontSize: 24, onTap: () {}),
         ],
       ),
     );

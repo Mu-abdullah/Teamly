@@ -59,7 +59,11 @@ class UserVacationRequestItem extends StatelessWidget {
                       LangKeys.vacationReason,
                       request.reason ?? '',
                     ),
-                    _buildInfoRow(LangKeys.approved, request.admin?.name ?? ''),
+                    if (request.admin != null)
+                      _buildInfoRow(
+                        LangKeys.approved,
+                        request.admin?.name ?? '',
+                      ),
                     if ((request.rejectReason ?? '').isNotEmpty)
                       AppText(request.rejectReason ?? "", translate: false),
                   ],

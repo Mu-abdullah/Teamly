@@ -100,7 +100,7 @@ class MobileEmpProfile extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              context.call(url: user.phone!);
+              context.call(phoneNumber: user.phone!);
             },
             child: BuildDetailItem(
               icon: HugeIcons.strokeRoundedSmartPhone01,

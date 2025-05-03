@@ -18,7 +18,7 @@ class HomeVacationAttendance extends StatelessWidget {
       height: height,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColors.white,
+        
         borderRadius: AppBorderRadius.mediumRadius,
       ),
       child: Padding(

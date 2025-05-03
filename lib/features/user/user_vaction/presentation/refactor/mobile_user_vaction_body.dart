@@ -79,6 +79,7 @@ class MobileUserVactionsBody extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
+              childAspectRatio: 16 / 10,
               children: cards,
             ),
           ),

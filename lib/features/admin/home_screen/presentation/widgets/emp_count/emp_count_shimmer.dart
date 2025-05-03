@@ -8,8 +8,8 @@ import '../../../../../../core/style/widgets/custom_shimmer.dart';
 import 'home_card.dart';
 
 class EmpCountShimmer extends StatelessWidget {
-  const EmpCountShimmer({super.key});
-
+  const EmpCountShimmer({super.key, this.height = 270});
+  final double height;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,40 +17,38 @@ class EmpCountShimmer extends StatelessWidget {
         borderRadius: AppBorderRadius.mediumRadius,
         color: AppColors.white,
       ),
-      height: 270,
+      height: height,
       child: CustomShimmer(
-        child: Expanded(
-          child: Row(
-            spacing: 10,
-            children: [
-              Expanded(
-                child: HomeCard(
-                  cardTitle: LangKeys.current,
-                  cardCount: " ",
-                  cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
-                  isHighlighted: true,
-                ),
+        child: Row(
+          spacing: 10,
+          children: [
+            Expanded(
+              child: HomeCard(
+                cardTitle: LangKeys.current,
+                cardCount: " ",
+                cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
+                isHighlighted: true,
               ),
-              Expanded(
-                child: HomeCard(
-                  cardTitle: LangKeys.resigned,
-                  cardCount: " ",
-                  cardIcon: HugeIcons.strokeRoundedCancelCircle,
-                  color: AppColors.yellow,
-                  textColor: AppColors.black,
-                ),
+            ),
+            Expanded(
+              child: HomeCard(
+                cardTitle: LangKeys.resigned,
+                cardCount: " ",
+                cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                color: AppColors.yellow,
+                textColor: AppColors.black,
               ),
+            ),
 
-              Expanded(
-                child: HomeCard(
-                  cardTitle: LangKeys.terminated,
-                  cardCount: " ",
-                  cardIcon: HugeIcons.strokeRoundedCancelCircle,
-                  color: AppColors.red,
-                ),
+            Expanded(
+              child: HomeCard(
+                cardTitle: LangKeys.terminated,
+                cardCount: " ",
+                cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                color: AppColors.red,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

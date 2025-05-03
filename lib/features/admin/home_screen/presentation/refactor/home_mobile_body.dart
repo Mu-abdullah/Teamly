@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
+import '../../../../../core/style/color/app_color.dart';
+import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/widgets/app_space.dart';
 import '../widgets/co_name_logo/co_name_logo.dart';
 import '../widgets/emp_count/home_emp_count_body.dart';
@@ -18,12 +21,32 @@ class HomeMobileBody extends StatelessWidget {
         spacing: 10,
         children: [
           CoNameLogo(),
-          HomeEmpCountBody(height: 150),
-          HomeVacationAttendance(),
-          HomeAdminCustody(),
+          Counts(),
           HomeCompaniesSection(),
           HomeEmpSection(),
           AppSpace(space: 10),
+        ],
+      ),
+    );
+  }
+}
+
+class Counts extends StatelessWidget {
+  const Counts({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: AppBorderRadius.mediumRadius,
+      ),
+      height: context.height(percent: .5),
+      child: Column(
+        children: [
+          HomeEmpCountBody(height: 150),
+          HomeVacationAttendance(),
+          HomeAdminCustody(),
         ],
       ),
     );

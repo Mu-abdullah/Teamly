@@ -17,23 +17,21 @@ final double height;
       height: height,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColors.white,
+       
         borderRadius: AppBorderRadius.mediumRadius,
       ),
 
-      child: Expanded(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: HomeCard(
-            onTap: () {
-              context.pushNamed(RoutesNames.custodyScreen);
-            },
-            cardTitle: LangKeys.custody,
-
-            color: AppColors.green,
-            cardIcon: HugeIcons.strokeRoundedDollarCircle,
-            isHighlighted: true,
-          ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: HomeCard(
+          onTap: () {
+            context.pushNamed(RoutesNames.custodyScreen);
+          },
+          cardTitle: LangKeys.custody,
+      
+          color: AppColors.green,
+          cardIcon: HugeIcons.strokeRoundedDollarCircle,
+          isHighlighted: true,
         ),
       ),
     );

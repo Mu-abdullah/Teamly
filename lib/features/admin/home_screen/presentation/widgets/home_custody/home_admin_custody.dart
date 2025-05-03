@@ -9,17 +9,14 @@ import '../../../../../../core/style/statics/app_statics.dart';
 import '../emp_count/home_card.dart';
 
 class HomeAdminCustody extends StatelessWidget {
-  const HomeAdminCustody({super.key,   this.height = 120});
-final double height;
+  const HomeAdminCustody({super.key, this.height = 110});
+  final double height;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
       width: double.infinity,
-      decoration: BoxDecoration(
-       
-        borderRadius: AppBorderRadius.mediumRadius,
-      ),
+      decoration: BoxDecoration(borderRadius: AppBorderRadius.mediumRadius),
 
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -28,7 +25,7 @@ final double height;
             context.pushNamed(RoutesNames.custodyScreen);
           },
           cardTitle: LangKeys.custody,
-      
+
           color: AppColors.green,
           cardIcon: HugeIcons.strokeRoundedDollarCircle,
           isHighlighted: true,

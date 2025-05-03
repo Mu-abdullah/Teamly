@@ -44,7 +44,7 @@ class Counts extends StatelessWidget {
       height: context.height(percent: .5),
       child: Column(
         children: [
-          HomeEmpCountBody(height: 150),
+          HomeEmpCountBody(height: 140),
           HomeVacationAttendance(height: 140),
           HomeAdminCustody(),
         ],

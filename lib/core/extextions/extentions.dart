@@ -46,6 +46,14 @@ extension ContextExt on BuildContext {
     }
   }
 
+  Future<void> call({required String url}) async {
+    var uri = Uri.parse(url);
+    if (!await canLaunchUrl(uri)) return;
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   // Theme methods for TextTheme
   TextStyle? get displayLarge => Theme.of(this).textTheme.displayLarge;
   TextStyle? get displayMedium => Theme.of(this).textTheme.displayMedium;

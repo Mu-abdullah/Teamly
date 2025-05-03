@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/color/app_color.dart';
@@ -42,7 +43,7 @@ class MobileEmpProfile extends StatelessWidget {
           const SizedBox(height: 20),
           _buildMainInformation(user),
           _infoDivider(),
-          _buildProfessionalDetails(user),
+          _buildProfessionalDetails(context, user),
         ],
       ),
     );
@@ -78,7 +79,7 @@ class MobileEmpProfile extends StatelessWidget {
     );
   }
 
-  Widget _buildProfessionalDetails(EmpModel user) {
+  Widget _buildProfessionalDetails(BuildContext context, EmpModel user) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
@@ -97,10 +98,15 @@ class MobileEmpProfile extends StatelessWidget {
             title: 'الرقم القومي',
             value: user.nid!,
           ),
-          BuildDetailItem(
-            icon: HugeIcons.strokeRoundedSmartPhone01,
-            title: 'الهاتف',
-            value: user.phone!,
+          InkWell(
+            onTap: () {
+              context.call(url: user.phone!);
+            },
+            child: BuildDetailItem(
+              icon: HugeIcons.strokeRoundedSmartPhone01,
+              title: 'الهاتف',
+              value: user.phone!,
+            ),
           ),
           BuildDetailItem(
             icon: HugeIcons.strokeRoundedDateTime,

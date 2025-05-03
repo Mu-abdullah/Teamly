@@ -10,9 +10,11 @@ class HomeSectionHeader extends StatelessWidget {
     super.key,
     required this.title,
     required this.onTap,
+    this.needSeeAll = true,
   });
   final String title;
-  final Function() onTap;
+  final Function()? onTap;
+  final bool needSeeAll;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,17 +23,22 @@ class HomeSectionHeader extends StatelessWidget {
         children: [
           Expanded(child: AppText(title, isTitle: true)),
           AppSpace(space: 5),
-          InkWell(
-            onTap: onTap,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(
-                color: AppColors.darkGrey.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: AppText(LangKeys.seeAll, color: AppColors.black),
-            ),
-          ),
+          needSeeAll
+              ? InkWell(
+                onTap: onTap,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.darkGrey.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: AppText(LangKeys.seeAll, color: AppColors.black),
+                ),
+              )
+              : const SizedBox(),
         ],
       ),
     );

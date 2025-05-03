@@ -15,6 +15,7 @@ class HomeVacationAttendance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height,
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.white,

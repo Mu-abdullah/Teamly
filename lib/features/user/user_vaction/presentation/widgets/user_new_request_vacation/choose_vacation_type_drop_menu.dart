@@ -23,9 +23,7 @@ class ChooseVacationTypeDrpoMenu extends StatelessWidget {
         fillColor: AppColors.scaffoldBackground,
       ),
       items:
-          VacationTypes.getArabicTypeNamesList(gender: cubit.gender).map((
-            type,
-          ) {
+          VacationTypes.getArabicTypeNamesList().map((type) {
             return DropdownMenuItem<String>(
               value: type,
               child: Container(

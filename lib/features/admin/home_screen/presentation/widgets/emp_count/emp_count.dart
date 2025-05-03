@@ -23,37 +23,39 @@ class EmpCount extends StatelessWidget {
       height: height,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          spacing: 10,
-          children: [
-            Expanded(
-              child: HomeCard(
-                cardTitle: LangKeys.current,
-                cardCount: cubit.getOnWork().length.toString(),
-                cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
-                isHighlighted: true,
-                color: AppColors.blueBlack,
+        child: Expanded(
+          child: Row(
+            spacing: 10,
+            children: [
+              Expanded(
+                child: HomeCard(
+                  cardTitle: LangKeys.current,
+                  cardCount: cubit.getOnWork().length.toString(),
+                  cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
+                  isHighlighted: true,
+                  color: AppColors.blueBlack,
+                ),
               ),
-            ),
-            Expanded(
-              child: HomeCard(
-                cardTitle: LangKeys.resigned,
-                cardCount: cubit.getResigned().length.toString(),
-                cardIcon: HugeIcons.strokeRoundedCancelCircle,
-                color: AppColors.yellow,
-                textColor: AppColors.black,
+              Expanded(
+                child: HomeCard(
+                  cardTitle: LangKeys.resigned,
+                  cardCount: cubit.getResigned().length.toString(),
+                  cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                  color: AppColors.yellow,
+                  textColor: AppColors.black,
+                ),
               ),
-            ),
 
-            Expanded(
-              child: HomeCard(
-                cardTitle: LangKeys.terminated,
-                cardCount: cubit.getTerminated().length.toString(),
-                cardIcon: HugeIcons.strokeRoundedAlertDiamond,
-                color: AppColors.red,
+              Expanded(
+                child: HomeCard(
+                  cardTitle: LangKeys.terminated,
+                  cardCount: cubit.getTerminated().length.toString(),
+                  cardIcon: HugeIcons.strokeRoundedAlertDiamond,
+                  color: AppColors.red,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

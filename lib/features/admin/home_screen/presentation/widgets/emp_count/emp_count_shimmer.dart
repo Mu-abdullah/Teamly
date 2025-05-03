@@ -19,43 +19,38 @@ class EmpCountShimmer extends StatelessWidget {
       ),
       height: 270,
       child: CustomShimmer(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          spacing: 10,
-          children: [
-            HomeCard(
-              cardTitle: LangKeys.current,
-              cardCount: " ",
-              cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
-              isHighlighted: true,
-            ),
-            Expanded(
-              child: Row(
-                spacing: 12,
-                children: [
-                  Expanded(
-                    child: HomeCard(
-                      cardTitle: LangKeys.resigned,
-                      cardCount: " ",
-                      cardIcon: HugeIcons.strokeRoundedCancelCircle,
-                      color: AppColors.yellow,
-                      textColor: AppColors.black,
-                    ),
-                  ),
-
-                  Expanded(
-                    child: HomeCard(
-                      cardTitle: LangKeys.terminated,
-                      cardCount: " ",
-                      cardIcon: HugeIcons.strokeRoundedCancelCircle,
-                      color: AppColors.red,
-                    ),
-                  ),
-                ],
+        child: Expanded(
+          child: Row(
+            spacing: 10,
+            children: [
+              Expanded(
+                child: HomeCard(
+                  cardTitle: LangKeys.current,
+                  cardCount: " ",
+                  cardIcon: HugeIcons.strokeRoundedCheckmarkCircle01,
+                  isHighlighted: true,
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                child: HomeCard(
+                  cardTitle: LangKeys.resigned,
+                  cardCount: " ",
+                  cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                  color: AppColors.yellow,
+                  textColor: AppColors.black,
+                ),
+              ),
+
+              Expanded(
+                child: HomeCard(
+                  cardTitle: LangKeys.terminated,
+                  cardCount: " ",
+                  cardIcon: HugeIcons.strokeRoundedCancelCircle,
+                  color: AppColors.red,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

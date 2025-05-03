@@ -9,12 +9,12 @@ import '../../../../../../core/style/statics/app_statics.dart';
 import '../emp_count/home_card.dart';
 
 class HomeAdminCustody extends StatelessWidget {
-  const HomeAdminCustody({super.key});
-
+  const HomeAdminCustody({super.key,   this.height = 120});
+final double height;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: height,
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.white,

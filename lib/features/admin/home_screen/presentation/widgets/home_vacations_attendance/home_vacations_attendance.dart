@@ -8,8 +8,8 @@ import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
 import '../emp_count/home_card.dart';
 
-class HomeCustodyAttendance extends StatelessWidget {
-  const HomeCustodyAttendance({super.key, this.height = 120});
+class HomeVacationAttendance extends StatelessWidget {
+  const HomeVacationAttendance({super.key, this.height = 120});
   final double height;
   @override
   Widget build(BuildContext context) {
@@ -26,13 +26,11 @@ class HomeCustodyAttendance extends StatelessWidget {
           children: [
             Expanded(
               child: HomeCard(
-                onTap: () {
-                  context.pushNamed(RoutesNames.custodyScreen);
-                },
-                cardTitle: LangKeys.custody,
+                onTap: () {},
+                cardTitle: LangKeys.vacation,
                 height: height,
-                color: AppColors.green,
-                cardIcon: HugeIcons.strokeRoundedDollarCircle,
+                color: AppColors.blueAccent,
+                cardIcon: HugeIcons.strokeRoundedBeach,
                 isHighlighted: true,
               ),
             ),

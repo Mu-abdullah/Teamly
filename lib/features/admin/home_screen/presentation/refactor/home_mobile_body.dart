@@ -4,7 +4,8 @@ import '../../../../../core/style/widgets/app_space.dart';
 import '../widgets/co_name_logo/co_name_logo.dart';
 import '../widgets/emp_count/home_emp_count_body.dart';
 import '../widgets/home_comp/home_companies.dart';
-import '../widgets/home_custody_attendance/home_custody_attendance.dart';
+import '../widgets/home_custody/home_admin_custody.dart';
+import '../widgets/home_vacations_attendance/home_vacations_attendance.dart';
 import '../widgets/home_emp/home_emp.dart';
 
 class HomeMobileBody extends StatelessWidget {
@@ -18,7 +19,8 @@ class HomeMobileBody extends StatelessWidget {
         children: [
           CoNameLogo(),
           HomeEmpCountBody(),
-          HomeCustodyAttendance(),
+          HomeVacationAttendance(),
+          HomeAdminCustody(),
           HomeCompaniesSection(),
           HomeEmpSection(),
           AppSpace(space: 10),
@@ -27,3 +29,4 @@ class HomeMobileBody extends StatelessWidget {
     );
   }
 }
+

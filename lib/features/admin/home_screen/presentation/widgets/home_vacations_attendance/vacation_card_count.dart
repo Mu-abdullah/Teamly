@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../../core/language/lang_keys.dart';
+import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../cubits/vacation_count_cubit/vacation_count_cubit.dart';
 import '../emp_count/home_card.dart';
@@ -21,7 +23,9 @@ class VacationCardCount extends StatelessWidget {
           return VacationCardLoading(height: height);
         } else if (state is VacationCountSuccess) {
           return HomeCard(
-            onTap: () {},
+            onTap: () {
+              context.pushNamed(RoutesNames.reviewVacationRequest);
+            },
             cardTitle: LangKeys.vacation,
             height: height,
             cardCount: state.vacCount.length.toString(),

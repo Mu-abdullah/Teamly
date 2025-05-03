@@ -9,6 +9,7 @@ import '../../../features/admin/emp_profile/data/repo/user_profile_repo.dart';
 import '../../../features/admin/home_screen/data/repo/emp_count_repo.dart';
 import '../../../features/admin/home_screen/data/repo/home_emp_repo.dart';
 import '../../../features/admin/home_screen/data/repo/vaction_count_repo.dart';
+import '../../../features/admin/review_vacation_requests/data/repo/review_vacation_repo.dart';
 import '../../../features/auth/data/repo/auth_repo.dart';
 import '../../../features/auth/data/repo/check_role_repo.dart';
 import '../../../features/user/user_home/data/repo/attendance_repo.dart';
@@ -49,6 +50,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => UserHomeCardInfoRepo(locator()));
   locator.registerLazySingleton(() => SubmitVacationRequestRepo(locator()));
   locator.registerLazySingleton(() => GetUserVacationsRequestsRepo(locator()));
+  locator.registerLazySingleton(() => ReviewVacationRepo(locator()));
 }
 
 void _registerServices() {

@@ -134,4 +134,11 @@ class LangKeys {
   static const String availableForFemaleOnly = 'availableForFemaleOnly';
   static const String requestDate = 'requestDate';
   static const String noVacationRequests = 'noVacationRequests';
+
+
+  // vacation review 
+  static const String reviewVacationRequest = 'reviewVacationRequest';
+  static const String userVacationRequest = 'userVacationRequest';
+  static const String createdBy = 'createdBy';
+  
 }

@@ -135,7 +135,14 @@
     "myRequests":"My Requests",
     "maternityLeave":"Maternity Leave",
     "noVacationRequests":"No Vacation Requests",
-    "availableForFemaleOnly":"Maternity Leave is available For Female Only"
+    "availableForFemaleOnly":"Maternity Leave is available For Female Only",
+
+
+
+    "######################################VacationReview":"", 
+    "reviewVacationRequest":"Review Vacation Requests",
+    "createdBy":"Created By",
+    "userVacationRequest":"User Vacation Request"
     
      
 }

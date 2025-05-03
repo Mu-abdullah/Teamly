@@ -30,4 +30,6 @@ class VacationTypes {
 
   static String convertToEnglish(String type) =>
       getNamesList().firstWhere((element) => _arabicTypeNames[element] == type);
+
+  static convertToArabic(String type) => _arabicTypeNames[type] ?? 'غير معروف';
 }

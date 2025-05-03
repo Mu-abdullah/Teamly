@@ -142,5 +142,13 @@
     "myRequests":"طلباتي" ,
     "maternityLeave":"اجازة أمومة",
     "noVacationRequests":"لا يوجد طلبات اجازة",
-    "availableForFemaleOnly":" اجازة الامومة متاحة للموظفات النساء فقط"
+    "availableForFemaleOnly":" اجازة الامومة متاحة للموظفات النساء فقط",
+
+
+
+    "######################################VacationReview":"", 
+    "reviewVacationRequest":"مراجعة طلبات الاجازة",
+    "createdBy":"منشئ الطلب",
+    "userVacationRequest":"طالب الاجازة"
+
 }

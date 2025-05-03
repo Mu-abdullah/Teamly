@@ -6,6 +6,7 @@ import '../../features/admin/custody_transaction/presentation/views/custody_tran
 import '../../features/admin/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/emp_profile/presentation/views/emp_profile.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
+import '../../features/admin/review_vacation_requests/presentation/views/review_vacation_request.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
 import '../../features/user/user_home/presentation/views/user_home.dart';
@@ -66,6 +67,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case RoutesNames.adminAttendance:
       return BaseRoute(page: AdminAttendance());
 
+    case RoutesNames.reviewVacationRequest:
+      return BaseRoute(page: ReviewVacationRequest());
+
     /////////
     /////////user feature routes////////////
     /////////
@@ -79,6 +83,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return BaseRoute(
         page: UserRequestVacation(isFemale: args?['gender'] as String),
       );
+
     case RoutesNames.userVacationsRequests:
       return BaseRoute(page: UserVacationsRequests());
 

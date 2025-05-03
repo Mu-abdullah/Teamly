@@ -82,7 +82,7 @@ class MobileUserVactionsBody extends StatelessWidget {
               children: cards,
             ),
           ),
-          AppButton(text: LangKeys.vacationRequest, fontSize: 24, onTap: () {}),
+          
         ],
       ),
     );

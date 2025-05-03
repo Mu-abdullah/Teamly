@@ -122,6 +122,7 @@
 
     "######################################Vacation":"",
     "vacation":"Vacation",
+    "requestDate":"Request Date" ,
     "vacationReason":"Vacation Reason" ,
     "vacationStatus":"Vacation Status" ,
     "chooseDate":"Choose Date" ,
@@ -133,7 +134,8 @@
     "newRequest":"New Request" ,
     "myRequests":"My Requests",
     "maternityLeave":"Maternity Leave",
-    "availableForFemaleOnly":"Available For Female Only"
+    "noVacationRequests":"No Vacation Requests",
+    "availableForFemaleOnly":"Maternity Leave is available For Female Only"
     
      
 }

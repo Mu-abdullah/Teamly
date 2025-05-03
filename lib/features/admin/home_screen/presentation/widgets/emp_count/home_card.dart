@@ -15,7 +15,7 @@ class HomeCard extends StatelessWidget {
     this.textColor = AppColors.white,
     this.isHighlighted = false,
     this.height,
-    this.maxLines = 1,
+    this.maxLines = 2,
     this.onTap,
   });
   final String cardTitle;

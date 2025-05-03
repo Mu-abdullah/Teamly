@@ -36,8 +36,9 @@ class CustomSnackbar {
                       child: AppText(
                         message,
                         color: textColor,
-                        maxLines: 2,
+                        maxLines: 5,
                         translate: translate,
+                        textAlign: TextAlign.start,
                       ),
                     ),
                     needIcon == false

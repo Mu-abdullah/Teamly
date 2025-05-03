@@ -6,11 +6,11 @@ import '../../../../../../core/services/status/vactions_typs.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
-import '../../cubits/request_vacation_cubit/request_vacation_cubit.dart';
+import '../../cubits/new_request_vacation_cubit/new_request_vacation_cubit.dart';
 
 class ChooseVacationTypeDrpoMenu extends StatelessWidget {
   const ChooseVacationTypeDrpoMenu({super.key, required this.cubit});
-  final RequestVacationCubit cubit;
+  final NewRequestVacationCubit cubit;
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
@@ -23,7 +23,9 @@ class ChooseVacationTypeDrpoMenu extends StatelessWidget {
         fillColor: AppColors.scaffoldBackground,
       ),
       items:
-          VacationUtils.getArabicTypeNamesList().map((type) {
+          VacationTypes.getArabicTypeNamesList(gender: cubit.gender).map((
+            type,
+          ) {
             return DropdownMenuItem<String>(
               value: type,
               child: Container(
@@ -34,7 +36,7 @@ class ChooseVacationTypeDrpoMenu extends StatelessWidget {
           }).toList(),
       onChanged: (String? type) {
         if (type != null) {
-          cubit.vactionType(type);
+          cubit.vactionType(VacationTypes.convertToEnglish(type));
         }
       },
 
@@ -55,7 +57,7 @@ class ChooseVacationTypeDrpoMenu extends StatelessWidget {
       menuMaxHeight: 300,
       alignment: AlignmentDirectional.center,
       selectedItemBuilder: (BuildContext context) {
-        return VacationUtils.getArabicTypeNamesList().map((String value) {
+        return VacationTypes.getArabicTypeNamesList().map((String value) {
           return Align(
             alignment: Alignment.center,
             child: AppText(value, translate: false),

@@ -4,12 +4,12 @@ import 'package:teamly/core/extextions/extentions.dart';
 import '../../../../../../core/functions/select_data.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/style/widgets/app_text_form_felid.dart';
-import '../../cubits/request_vacation_cubit/request_vacation_cubit.dart';
+import '../../cubits/new_request_vacation_cubit/new_request_vacation_cubit.dart';
 
 class VacationRequestForm extends StatelessWidget {
   const VacationRequestForm({super.key, required this.cubit});
 
-  final RequestVacationCubit cubit;
+  final NewRequestVacationCubit cubit;
 
   @override
   Widget build(BuildContext context) {

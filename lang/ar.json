@@ -99,7 +99,7 @@
     "lastAttendance":"اخر الحضور والانصراف",
     "showMore":"اظهار المزيد",
     "showLess":"اظهار اقل",
-    "annuallvacation":"الاجازات السنوية",
+    "annuallvacation":"اجازة السنوية",
     "vacationDate":"تاريخ الاجازة",
     "vacationType":"نوع الاجازة",
     "vacationDetails":"تفاصيل الاجازة",
@@ -129,16 +129,18 @@
 
    "######################################Vacation":"",
     "vacation":"الاجازات" ,
+    "requestDate":"تاريخ الطلب" ,
     "vacationReason":"سبب الاجازة" ,
     "vacationStatus":"حالة الاجازة" ,
     "chooseDate":"اختر التاريخ" ,
     "startDate":"تاريخ البدء" ,
     "endDate":"تاريخ الانتهاء" ,
     "vacationRequest":"طلب اجازة" ,
-    "exceptionalVacation":"اجازات استثنائية" ,
-    "sickLeave":"اجازات مرضية",
+    "exceptionalVacation":"اجازة استثنائية" ,
+    "sickLeave":"اجازة مرضية",
     "newRequest":"طلب جديد" ,
     "myRequests":"طلباتي" ,
-    "maternityLeave":"اجازات أمومة",
-     "availableForFemaleOnly":"متاحة للموظفات النساء فقط"
+    "maternityLeave":"اجازة أمومة",
+    "noVacationRequests":"لا يوجد طلبات اجازة",
+    "availableForFemaleOnly":" اجازة الامومة متاحة للموظفات النساء فقط"
 }

@@ -19,7 +19,7 @@ class MobileUserVactionsBody extends StatelessWidget {
       HomeCard(
         onTap: () {
           context.pushNamed(
-            RoutesNames.userVacationRequests,
+            RoutesNames.userNewVacationRequests,
             arguments: {'gender': gender},
           );
         },
@@ -30,7 +30,9 @@ class MobileUserVactionsBody extends StatelessWidget {
         height: 150,
       ),
       HomeCard(
-        onTap: () {},
+        onTap: () {
+          context.pushNamed(RoutesNames.userVacationsRequests);
+        },
         cardTitle: LangKeys.myRequests,
         cardIcon: HugeIcons.strokeRoundedTaskDone01,
         isHighlighted: true,

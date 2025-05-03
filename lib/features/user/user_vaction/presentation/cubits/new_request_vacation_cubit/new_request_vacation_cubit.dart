@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teamly/core/services/status/gender_status.dart';
 
-import '../../../data/model/request_vacation_model.dart';
+import '../../../data/model/new_request_vacation_model.dart';
 import '../../../data/repo/submit_vacation_request_repo.dart';
 
-part 'request_vacation_state.dart';
+part 'new_request_vacation_state.dart';
 
-class RequestVacationCubit extends Cubit<RequestVacationState> {
+class NewRequestVacationCubit extends Cubit<NewRequestVacationState> {
   SubmitVacationRequestRepo repo;
-  RequestVacationCubit({required this.gender, required this.repo})
+  NewRequestVacationCubit({required this.gender, required this.repo})
     : super(RequestVacationInitial());
 
   String gender;
   String? type;
 
-  static RequestVacationCubit get(context) => BlocProvider.of(context);
+  static NewRequestVacationCubit get(context) => BlocProvider.of(context);
   var formKey = GlobalKey<FormState>();
   var startDate = TextEditingController();
   var endDate = TextEditingController();
@@ -24,10 +24,11 @@ class RequestVacationCubit extends Cubit<RequestVacationState> {
 
   void vactionType(String value) {
     type = value;
+    debugPrint(type);
     emit(VactionType(value));
   }
 
-  Future<void> submit(RequestVacationModel model) async {
+  Future<void> submit(NewRequestVacationModel model) async {
     emit(RequestVacationLoading());
     var response = await repo.submitVacationRequest(model: model);
     response.fold(

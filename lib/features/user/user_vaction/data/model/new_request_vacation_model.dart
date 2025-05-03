@@ -1,7 +1,7 @@
 import '../../../../../core/entities/vacation_entity.dart';
 
-class RequestVacationModel extends VacationEntity {
-  RequestVacationModel({
+class NewRequestVacationModel extends VacationEntity {
+  NewRequestVacationModel({
     required super.id,
     required super.createdAt,
     required super.comId,
@@ -13,8 +13,8 @@ class RequestVacationModel extends VacationEntity {
     required super.reason,
   });
 
-  factory RequestVacationModel.fromJson(Map<String, dynamic> json) =>
-      RequestVacationModel(
+  factory NewRequestVacationModel.fromJson(Map<String, dynamic> json) =>
+      NewRequestVacationModel(
         id: json['id'],
         createdAt: json['created_at'],
         comId: json['com_id'],

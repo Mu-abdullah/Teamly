@@ -132,4 +132,6 @@ class LangKeys {
   static const String newRequest = 'newRequest';
   static const String myRequests = 'myRequests';
   static const String availableForFemaleOnly = 'availableForFemaleOnly';
+  static const String requestDate = 'requestDate';
+  static const String noVacationRequests = 'noVacationRequests';
 }

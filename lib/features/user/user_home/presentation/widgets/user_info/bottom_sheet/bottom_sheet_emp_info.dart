@@ -46,11 +46,11 @@ class BottomSheetEmpInfo extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
+                  spacing: 8,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     _buildHeaderSection(context),
-                    const SizedBox(height: 16),
                     _buildInfoSection(context),
                   ],
                 ),
@@ -69,13 +69,11 @@ class BottomSheetEmpInfo extends StatelessWidget {
         CircleAvatar(
           radius: 40,
           backgroundColor: Colors.blue.shade600,
-          child: Text(
+          child: AppText(
             empInfo.name!.isNotEmpty ? empInfo.name![0].toUpperCase() : '?',
-            style: const TextStyle(
-              fontSize: 32,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
+            fontSize: 32,
+            translate: false,
+            color: Colors.white,
           ),
         ),
         const SizedBox(width: 16),
@@ -155,15 +153,14 @@ class BottomSheetEmpInfo extends StatelessWidget {
 
   Widget _buildInfoRow(String label, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 100,
-            child: AppText(label, color: Colors.grey.shade600, fontSize: 14),
-          ),
+          Expanded(flex: 1, child: AppText(label, color: Colors.grey.shade600)),
+          AppText(" : ", translate: false),
           Expanded(
+            flex: 2,
             child: AppText(
               value,
               translate: false,

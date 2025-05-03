@@ -10,6 +10,7 @@ import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
 import '../../features/user/user_home/presentation/views/user_home.dart';
 import '../../features/user/user_vaction/presentation/views/user_vacations.dart';
+import '../../features/user/user_vaction/presentation/widgets/user_vacations_requests/user_vacations_requests.dart';
 import '../app/image/image_preview.dart';
 import '../app/language/language_screen.dart';
 import '../app/no_internet/no_internet_screen.dart';
@@ -74,8 +75,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case RoutesNames.userVacation:
       return BaseRoute(page: UserVacations(gender: args?['gender'] as String));
 
-    case RoutesNames.userVacationRequests:
-      return BaseRoute(page: UserRequestVacation(isFemale: args?['gender']as String));
+    case RoutesNames.userNewVacationRequests:
+      return BaseRoute(
+        page: UserRequestVacation(isFemale: args?['gender'] as String),
+      );
+    case RoutesNames.userVacationsRequests:
+      return BaseRoute(page: UserVacationsRequests());
 
     default:
       return BaseRoute(page: const MaterialApp());

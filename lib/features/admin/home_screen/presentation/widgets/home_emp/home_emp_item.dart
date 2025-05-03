@@ -22,7 +22,7 @@ class HomeEmpItem extends StatelessWidget {
           );
         },
         child: Container(
-          width: context.width(percent: 0.8),
+          width: context.width(percent: 0.7),
           margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
@@ -56,7 +56,11 @@ class HomeEmpItem extends StatelessWidget {
               ),
               Positioned.fill(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 40, 16, 16),
+                  padding: const EdgeInsets.only(
+                    left: 120,
+                    right: 16,
+                    bottom: 16,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,

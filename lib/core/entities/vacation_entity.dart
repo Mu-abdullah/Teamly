@@ -10,6 +10,8 @@ class VacationEntity {
   final String? endDate;
   final String? reason;
   final String? status;
+  final String? rejectReason;
+  
 
   VacationEntity({
     this.id,
@@ -23,5 +25,7 @@ class VacationEntity {
     this.endDate,
     this.reason,
     this.status,
+    this.rejectReason,
+   
   });
 }

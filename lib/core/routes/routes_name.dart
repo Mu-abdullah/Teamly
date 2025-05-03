@@ -16,5 +16,6 @@ class RoutesNames {
   //user screens
   static const String userHomeScreen = 'userHomeScreen';
   static const String userVacation = 'userVacation';
-  static const String userVacationRequests = 'userVacationRequests';
+  static const String userNewVacationRequests = 'userNewVacationRequests';
+  static const String userVacationsRequests = 'UserVacationsRequests';
 }

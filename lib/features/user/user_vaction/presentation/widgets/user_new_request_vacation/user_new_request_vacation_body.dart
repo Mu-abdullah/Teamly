@@ -6,7 +6,7 @@ import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/widgets/app_space.dart';
 import '../../../../../../core/style/widgets/custom_snack_bar.dart';
-import '../../cubits/request_vacation_cubit/request_vacation_cubit.dart';
+import '../../cubits/new_request_vacation_cubit/new_request_vacation_cubit.dart';
 import 'choose_vacation_type_drop_menu.dart';
 import 'submit_button.dart';
 import 'user_request_vacation_form.dart';
@@ -16,7 +16,7 @@ class UserNewRequestVacationBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RequestVacationCubit, RequestVacationState>(
+    return BlocConsumer<NewRequestVacationCubit, NewRequestVacationState>(
       listener: (context, state) {
         if (state is RequestVacationSuccess) {
           context.pop();
@@ -36,7 +36,7 @@ class UserNewRequestVacationBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        var cubit = RequestVacationCubit.get(context);
+        var cubit = NewRequestVacationCubit.get(context);
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(

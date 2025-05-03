@@ -25,6 +25,15 @@ class TimeRefactor {
     }
   }
 
+  String timeString() {
+    try {
+      final dateTime = DateTime.parse(timestamp);
+      return DateFormat('yyyy/mm/dd hh:mm a', 'ar_SA').format(dateTime);
+    } catch (e) {
+      return 'Invalid timestamp';
+    }
+  }
+
   // Calculate time difference between this timestamp and another in minutes
   String timeDifferenceInHoursAndMinutes(String otherTimestamp) {
     try {

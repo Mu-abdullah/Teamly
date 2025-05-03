@@ -1,34 +1,37 @@
-enum VacationType { annual, exceptional, sick, maternity }
+import 'gender_status.dart';
 
-enum VacationStatus { approved, rejected, pending }
+class VacationStatus {
+  static const String approved = 'approved';
+  static const String pending = 'pending';
+  static const String rejected = 'rejected';
+}
 
-class VacationUtils {
-  // Arabic names for vacation types
-  static const Map<VacationType, String> _arabicTypeNames = {
-    VacationType.annual: 'إجازة سنوية',
-    VacationType.sick: 'إجازة مرضية',
-    VacationType.exceptional: 'إجازة استثنائية',
-    VacationType.maternity: 'إجازة أمومة',
+class VacationTypes {
+  static const String annual = 'annual';
+  static const String sickLeave = 'sick';
+  static const String maternity = 'maternity';
+  static const String exceptional = 'exceptional';
+
+  static List<String> getNamesList({String? gender}) {
+    final List<String> types = [annual, sickLeave, maternity, exceptional];
+    if (gender == GenderStatus.getGender(Gender.male)) {
+      return types.where((type) => type != maternity).toList();
+    }
+    return types;
+  }
+
+  static const Map<String, String> _arabicTypeNames = {
+    annual: 'إجازة سنوية',
+    sickLeave: 'إجازة مرضية',
+    exceptional: 'إجازة استثنائية',
+    maternity: 'إجازة أمومة',
   };
 
-  // Arabic names for vacation statuses
-  static const Map<VacationStatus, String> _arabicStatusNames = {
-    VacationStatus.approved: 'موافق عليها',
-    VacationStatus.rejected: 'مرفوضة',
-    VacationStatus.pending: 'معلقة',
-  };
+  static List<String> getArabicTypeNamesList({String? gender}) =>
+      getNamesList(
+        gender: gender,
+      ).map((type) => _arabicTypeNames[type] ?? 'غير معروف').toList();
 
-  /// Returns the Arabic name for a given vacation type.
-  static String getArabicTypeName(VacationType type) =>
-      _arabicTypeNames[type] ?? 'غير معروف';
-
-  /// Returns the Arabic name for a given vacation status.
-  static String getArabicStatusName(VacationStatus status) =>
-      _arabicStatusNames[status] ?? 'غير معروف';
-
-  /// Returns a list of Arabic vacation type names, excluding maternity for male users.
-  static List<String> getArabicTypeNamesList() =>
-      VacationType.values
-          .map((type) => _arabicTypeNames[type] ?? 'غير معروف')
-          .toList();
+  static String convertToEnglish(String type) =>
+      getNamesList().firstWhere((element) => _arabicTypeNames[element] == type);
 }

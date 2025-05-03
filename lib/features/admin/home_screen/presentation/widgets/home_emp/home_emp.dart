@@ -27,7 +27,7 @@ class HomeEmpSection extends StatelessWidget {
 
             height: height,
             child: Column(
-              spacing: 10,
+              spacing: 5,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppSpace(space: 10),

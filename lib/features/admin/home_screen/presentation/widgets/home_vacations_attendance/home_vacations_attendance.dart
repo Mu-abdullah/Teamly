@@ -7,6 +7,7 @@ import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
 import '../emp_count/home_card.dart';
+import 'vacation_card_count.dart';
 
 class HomeVacationAttendance extends StatelessWidget {
   const HomeVacationAttendance({super.key, this.height = 120});
@@ -24,16 +25,7 @@ class HomeVacationAttendance extends StatelessWidget {
         child: Row(
           spacing: 10,
           children: [
-            Expanded(
-              child: HomeCard(
-                onTap: () {},
-                cardTitle: LangKeys.vacation,
-                height: height,
-                color: AppColors.blueAccent,
-                cardIcon: HugeIcons.strokeRoundedBeach,
-                isHighlighted: true,
-              ),
-            ),
+            Expanded(child: VacationCardCount(height: height)),
             Expanded(
               child: HomeCard(
                 onTap: () {
@@ -53,3 +45,4 @@ class HomeVacationAttendance extends StatelessWidget {
     );
   }
 }
+

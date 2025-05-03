@@ -18,7 +18,7 @@ class HomeMobileBody extends StatelessWidget {
         spacing: 10,
         children: [
           CoNameLogo(),
-          HomeEmpCountBody(),
+          HomeEmpCountBody(height: 150),
           HomeVacationAttendance(),
           HomeAdminCustody(),
           HomeCompaniesSection(),
@@ -29,4 +29,3 @@ class HomeMobileBody extends StatelessWidget {
     );
   }
 }
-

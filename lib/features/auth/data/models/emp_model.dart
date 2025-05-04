@@ -1,8 +1,6 @@
 import '../../../../core/entities/emp_entity.dart';
-import '../../../../core/entities/positions_entity.dart';
 
 class EmpModel extends EmpEntity {
-  final EmpPositionModel position;
   EmpModel({
     required super.id,
     required super.createdAt,
@@ -16,7 +14,7 @@ class EmpModel extends EmpEntity {
     required super.endJobReason,
     required super.jobStatus,
     required super.comId,
-    required this.position,
+    required super.position,
   });
 
   factory EmpModel.fromJson(Map<String, dynamic> json) => EmpModel(
@@ -32,7 +30,7 @@ class EmpModel extends EmpEntity {
     endJobReason: json["end_job_reason"],
     jobStatus: json["job_status"],
     comId: json["com_id"],
-    position: EmpPositionModel.fromJson(json["position"]),
+    position: json["position"]['position'],
   );
 
   Map<String, dynamic> toJson() => {
@@ -48,6 +46,6 @@ class EmpModel extends EmpEntity {
     "end_job_reason": endJobReason,
     "job_status": jobStatus,
     "com_id": comId,
-    "position": position.toJson(),
+    "position": position,
   };
 }

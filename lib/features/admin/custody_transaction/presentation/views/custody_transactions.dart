@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/get_it/git_it.dart';
@@ -22,6 +23,10 @@ class CustodyTransactions extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(title: LangKeys.custodyDetails),
         body: SingleChildScrollView(child: CustodyTransactionsBody()),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(HugeIcons.strokeRoundedPoundSend),
+          onPressed: () {},
+        ),
       ),
     );
   }

@@ -11,7 +11,7 @@ class EmpEntity {
   final String? endJobReason;
   final String? jobStatus;
   final String? comId;
-   
+  final String? position;
   final String? gender;
 
   EmpEntity({
@@ -27,7 +27,7 @@ class EmpEntity {
     this.endJobReason,
     this.jobStatus,
     this.comId,
-    
+    this.position,
     this.gender,
   });
 }

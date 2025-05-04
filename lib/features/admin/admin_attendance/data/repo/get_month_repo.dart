@@ -26,7 +26,7 @@ class GetMonthRepo {
               .map((record) {
                 final dateStr = record.date as String;
                 final date = DateTime.parse(dateStr.replaceAll('/', '-'));
-                return '${date.year}-${date.month.toString().padLeft(2, '0')}'; // صيغة "yyyy-mm"
+                return '${date.year}-${date.month.toString().padLeft(2, '0')}';
               })
               .toSet()
               .toList();

@@ -67,7 +67,7 @@ class HomeEmpItem extends StatelessWidget {
                     spacing: 4,
                     children: [
                       AppText(
-                        emp.position!.positionName!,
+                        emp.position!,
                         isTitle: true,
                         translate: false,
                       ),

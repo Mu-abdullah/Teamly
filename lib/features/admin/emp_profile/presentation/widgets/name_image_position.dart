@@ -28,7 +28,7 @@ class NameImagePosition extends StatelessWidget {
 
           AppText(user.name!, isTitle: true, translate: false),
           AppText(
-            user.position.positionName!,
+            user.position!,
             textAlign: TextAlign.center,
             translate: false,
             isTitle: true,

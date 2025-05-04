@@ -5,8 +5,8 @@ class CustodyTransactionModel extends CustodyTransactionEntity {
     super.id,
     super.createdAt,
     super.custodyId,
-
-    super.personId,
+    super.userId,
+    super.empId,
     super.amount,
   });
   factory CustodyTransactionModel.fromJson(Map<String, dynamic> json) {
@@ -14,7 +14,8 @@ class CustodyTransactionModel extends CustodyTransactionEntity {
       id: json['id'],
       createdAt: json['created_at'],
       custodyId: json['custody_id'],
-      personId: json['person_id'],
+      userId: json['user_id'],
+      empId: json['emp_id'],
       amount: json['amount'],
     );
   }
@@ -24,7 +25,8 @@ class CustodyTransactionModel extends CustodyTransactionEntity {
       'id': id,
       'created_at': createdAt,
       'custody_id': custodyId,
-      'person_id': personId,
+      'user_id': userId,
+      'emp_id': empId,
       'amount': amount,
     };
   }

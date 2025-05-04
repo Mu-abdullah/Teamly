@@ -30,10 +30,7 @@ class ReportItem extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: AppText(
-                      att.emp!.position!.positionName!,
-                      translate: false,
-                    ),
+                    child: AppText(att.emp!.position!, translate: false),
                   ),
                   AppText(
                     att.emp!.id!,

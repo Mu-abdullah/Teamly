@@ -14,7 +14,14 @@ class GetCustodyTransactionRepo {
     try {
       final data = await service.fetchCollection<CustodyTransactionModel>(
         collection: BackendPoint.custodyTransaction,
-        fields: ['id', 'created_at', 'custody_id', 'person_id', 'amount'],
+        fields: [
+          'id',
+          'created_at',
+          'custody_id',
+          'user_id',
+          'amount',
+          'emp_id',
+        ],
         fromJson: CustodyTransactionModel.fromJson,
         filters: {
           'custody_id': {'eq': custodyId},

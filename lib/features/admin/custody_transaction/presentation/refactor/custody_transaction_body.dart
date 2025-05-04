@@ -16,7 +16,7 @@ class CustodyTransactionsBody extends StatelessWidget {
         if (state is GetCustodyTransactionLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is GetCustodyTransactionError) {
-          return Center(child: Text(state.error.message));
+          return Center(child: AppText(LangKeys.error, translate: false));
         } else if (state is GetCustodyTransactionLoaded) {
           if (state.custodyTransaction.isEmpty) {
             return const Center(child: AppText(LangKeys.noDataFound));
@@ -26,7 +26,7 @@ class CustodyTransactionsBody extends StatelessWidget {
             cubit: GetCustodyTransactionCubit.get(context),
           );
         } else {
-          return const Center(child: Text('No data available'));
+          return const Center(child: AppText(LangKeys.noDataFound));
         }
       },
     );

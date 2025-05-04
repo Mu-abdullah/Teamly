@@ -140,4 +140,5 @@ class LangKeys {
   static const String userVacationRequest = 'userVacationRequest';
   static const String createdBy = 'createdBy';
   static const String rejectReason = 'rejectReason';
+  static const String youHaveRequest = 'youHaveRequest';
 }

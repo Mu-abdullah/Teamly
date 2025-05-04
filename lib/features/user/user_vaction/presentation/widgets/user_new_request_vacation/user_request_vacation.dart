@@ -9,13 +9,13 @@ import '../../cubits/new_request_vacation_cubit/new_request_vacation_cubit.dart'
 import 'user_new_request_vacation_body.dart';
 
 class UserRequestVacation extends StatelessWidget {
-  const UserRequestVacation({super.key, required this.isFemale});
-  final String isFemale;
+  const UserRequestVacation({super.key, required this.gender});
+  final String gender;
   @override
   Widget build(BuildContext context) {
     final lac = locator<SubmitVacationRequestRepo>();
     return BlocProvider(
-      create: (context) => NewRequestVacationCubit(gender: isFemale, repo: lac),
+      create: (context) => NewRequestVacationCubit(gender: gender, repo: lac),
       child: Scaffold(
         appBar: CustomAppBar(title: LangKeys.vacationRequest),
         body: UserNewRequestVacationBody(),

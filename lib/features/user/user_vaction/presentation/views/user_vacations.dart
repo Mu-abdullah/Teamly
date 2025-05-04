@@ -19,10 +19,11 @@ class UserVacations extends StatelessWidget {
     return BlocProvider(
       create:
           (context) =>
-              UserCheckVacationCubit(lac)..getVacationsRequests(userId: userId),
+              UserCheckVacationCubit(lac, gender: gender)
+                ..getVacationsRequests(userId: userId),
       child: Scaffold(
         appBar: CustomAppBar(title: LangKeys.vacation),
-        body: MobileUserVactionsBody(gender: gender),
+        body: MobileUserVactionsBody(),
       ),
     );
   }

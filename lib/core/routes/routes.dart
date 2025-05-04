@@ -81,7 +81,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.userNewVacationRequests:
       return BaseRoute(
-        page: UserRequestVacation(isFemale: args?['gender'] as String),
+        page: UserRequestVacation(gender: args?['gender'] as String),
       );
 
     case RoutesNames.userVacationsRequests:

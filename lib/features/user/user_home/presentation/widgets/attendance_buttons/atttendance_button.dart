@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../../../core/style/color/app_color.dart';
+import '../../../../../../core/style/statics/app_statics.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
 
 class AttendanceButton extends StatelessWidget {
   const AttendanceButton({
     super.key,
 
-    required this.label,
     required this.buttonText,
-    required this.icon,
     required this.color,
     required this.onTap,
   });
 
-  final String label;
   final String buttonText;
-  final IconData icon;
   final Color color;
   final VoidCallback onTap;
 
@@ -24,23 +22,19 @@ class AttendanceButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Material(
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: AppBorderRadius.mediumRadius,
         color: color.withValues(alpha: 0.1),
         child: InkWell(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: AppBorderRadius.mediumRadius,
           onTap: onTap,
           child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: Row(
+              spacing: 8,
               children: [
-                AppText(
-                  label,
-                  fontSize: 14,
-                  color: color.withValues(alpha: 0.8),
-                ),
-                const SizedBox(height: 8),
+                Expanded(child: AppText(buttonText, fontSize: 16)),
                 Container(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: color,
                     shape: BoxShape.circle,
@@ -52,10 +46,15 @@ class AttendanceButton extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: Icon(icon, color: AppColors.white, size: 28),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Icon(
+                      HugeIcons.strokeRoundedFingerPrint,
+                      color: AppColors.white,
+                      size: 28,
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 12),
-                AppText(buttonText, fontSize: 16),
               ],
             ),
           ),

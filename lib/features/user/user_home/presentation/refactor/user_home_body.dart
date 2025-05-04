@@ -7,7 +7,7 @@ import '../cubits/check_attendance_cubit/check_attendance_cubit.dart';
 import '../widgets/attendance_buttons/attendance_leaving_body.dart';
 import '../widgets/pervious_attendance/pervious_attendance_body.dart';
 import '../widgets/user_info/user_home_card.dart';
-import '../widgets/vacation_salary_cards.dart';
+import '../widgets/custody_vacation_salary_cards.dart';
 
 class UserHomeBody extends StatefulWidget {
   const UserHomeBody({super.key});
@@ -20,7 +20,6 @@ class _UserHomeBodyState extends State<UserHomeBody> {
   @override
   void initState() {
     super.initState();
-    // Fetch attendance data on widget initialization
     final uid = context.read<AppUserCubit>().userId;
     if (uid.isNotEmpty) {
       CheckAttendanceCubit.get(context).checkAttendance(uid);
@@ -35,7 +34,7 @@ class _UserHomeBodyState extends State<UserHomeBody> {
         children: [
           UserHomeCard(isArabic: isArabic),
           AttendanceLeavingBody(),
-          SalaryVacationCards(),
+          CustodySalaryVacationCards(),
           PerviousAttendance(),
         ],
       ),

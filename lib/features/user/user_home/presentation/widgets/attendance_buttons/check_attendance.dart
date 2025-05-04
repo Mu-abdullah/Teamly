@@ -24,28 +24,26 @@ class CheckAttendance extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(16),
           child: Column(
+            spacing: 8,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Row(
-                  children: [
-                    Icon(
-                      HugeIcons.strokeRoundedTime04,
-                      color: AppColors.blueAccent,
-                      size: 24,
-                    ),
-                    const SizedBox(width: 8),
-                    AppText(
-                      LangKeys.attendanceLeaving,
-                      isTitle: true,
-                      fontSize: 20,
-                      color: AppColors.blueAccent,
-                    ),
-                  ],
-                ),
+              Row(
+                children: [
+                  Icon(
+                    HugeIcons.strokeRoundedTime04,
+                    color: AppColors.blueAccent,
+                    size: 24,
+                  ),
+
+                  AppText(
+                    LangKeys.attendanceLeaving,
+                    isTitle: true,
+
+                    color: AppColors.blueAccent,
+                  ),
+                ],
               ),
               CheckInOutButtons(
                 cubit: cubit,

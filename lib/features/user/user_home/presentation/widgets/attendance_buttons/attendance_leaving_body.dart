@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../../../core/style/color/app_color.dart';
 import '../../../../../../../core/style/widgets/app_text.dart';
@@ -16,6 +17,7 @@ class AttendanceLeavingBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: context.height(percent: 0.15),
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -38,10 +40,10 @@ class AttendanceLeavingBody extends StatelessWidget {
           } else if (state is CheckAttendanceError) {
             return Center(
               child: Column(
+                spacing: 8,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AppText(state.message),
-                  const SizedBox(height: 8),
                   AppButton(
                     onTap: () {
                       final uid = context.read<AppUserCubit>().userId;

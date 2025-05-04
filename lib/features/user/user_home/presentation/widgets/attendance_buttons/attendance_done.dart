@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:teamly/core/style/widgets/app_space.dart';
 
 import '../../../../../../core/functions/timestamp_to_time.dart';
-import '../../../../../../core/language/lang_keys.dart' show LangKeys;
+import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
 
@@ -25,15 +26,14 @@ class AttendanceDone extends StatelessWidget {
     ).timeDifferenceInHoursAndMinutes(checkOut);
 
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
+        spacing: 5,
         children: [
           _buildHeader(),
-          const SizedBox(height: 20),
+          AppSpace(space: 5),
           AttendanceRow(label: LangKeys.checkIn, value: formattedCheckIn),
-          const SizedBox(height: 20),
           AttendanceRow(label: LangKeys.checkOut, value: formattedCheckOut),
-          const SizedBox(height: 20),
           AttendanceRow(label: LangKeys.manyHours, value: hoursBetween),
         ],
       ),
@@ -52,7 +52,7 @@ class AttendanceDone extends StatelessWidget {
         AppText(
           LangKeys.attendanceLeaving,
           isTitle: true,
-          fontSize: 20,
+
           color: AppColors.blueAccent,
         ),
       ],
@@ -70,12 +70,9 @@ class AttendanceRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(flex: 1, child: AppText(label, fontSize: 16)),
+        Expanded(flex: 1, child: AppText(label)),
         AppText(" :  ", translate: false),
-        Expanded(
-          flex: 2,
-          child: AppText(value, fontSize: 16, translate: false),
-        ),
+        Expanded(flex: 2, child: AppText(value, translate: false)),
       ],
     );
   }

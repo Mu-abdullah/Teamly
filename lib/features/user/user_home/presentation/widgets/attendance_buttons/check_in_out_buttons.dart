@@ -55,9 +55,7 @@ class CheckInOutButtons extends StatelessWidget {
         children: [
           if (showCheckIn)
             AttendanceButton(
-              label: LangKeys.checkIn,
               buttonText: LangKeys.login,
-              icon: Icons.login_rounded,
               color: AppColors.green,
               onTap: () {
                 final model = AttendanceModel(
@@ -80,9 +78,7 @@ class CheckInOutButtons extends StatelessWidget {
           if (showCheckIn && showCheckOut) const SizedBox(width: 16),
           if (showCheckOut)
             AttendanceButton(
-              label: LangKeys.checkOut,
               buttonText: LangKeys.logout,
-              icon: Icons.logout_rounded,
               color: AppColors.red,
               onTap: () {
                 attendanceCubit.checkOut(

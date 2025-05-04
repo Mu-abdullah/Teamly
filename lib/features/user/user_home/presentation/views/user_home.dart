@@ -22,7 +22,7 @@ class UserHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final uid = context.read<AppUserCubit>().userId;
+    final uid = context.read<AppUserCubit>().empID;
 
     return MultiBlocProvider(
       providers: _createBlocProviders(uid),

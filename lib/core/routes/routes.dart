@@ -59,7 +59,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return BaseRoute(page: const CustodyScreen());
 
     case RoutesNames.custodyTransactions:
-      return BaseRoute(page: CustodyTransactions(id: args?['id'] as String));
+      return BaseRoute(
+        page: CustodyTransactions(
+          id: args?['id'] as String,
+          amount: args?['amount'] as String,
+        ),
+      );
 
     case RoutesNames.adminAttendance:
       return BaseRoute(page: AdminAttendance());

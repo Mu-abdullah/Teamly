@@ -14,7 +14,7 @@ class UserVacations extends StatelessWidget {
   final String gender;
   @override
   Widget build(BuildContext context) {
-    var userId = context.read<AppUserCubit>().userId;
+    var userId = context.read<AppUserCubit>().empID;
     final lac = locator<UserCheckVacationRepo>();
     return BlocProvider(
       create:

@@ -20,7 +20,7 @@ class _UserHomeBodyState extends State<UserHomeBody> {
   @override
   void initState() {
     super.initState();
-    final uid = context.read<AppUserCubit>().userId;
+    final uid = context.read<AppUserCubit>().empID;
     if (uid.isNotEmpty) {
       CheckAttendanceCubit.get(context).checkAttendance(uid);
     }

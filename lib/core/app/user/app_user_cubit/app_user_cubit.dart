@@ -11,12 +11,16 @@ part 'app_user_state.dart';
 class AppUserCubit extends Cubit<AppUserState> {
   final AppUserRepo repo = AppUserRepo();
   AppUserCubit() : super(UserInitial()) {
-    userId;
+    empID;
+    userID;
+    compId;
+    role;
   }
 
   static AppUserCubit get(context) => BlocProvider.of(context);
 
-  String get userId => SharedPref.getData(key: PrefKeys.userID);
+  String get empID => SharedPref.getData(key: PrefKeys.empID);
+  String get userID => SharedPref.getData(key: PrefKeys.userId);
   String get compId => SharedPref.getData(key: PrefKeys.companyID);
   String get role => SharedPref.getData(key: PrefKeys.role);
 

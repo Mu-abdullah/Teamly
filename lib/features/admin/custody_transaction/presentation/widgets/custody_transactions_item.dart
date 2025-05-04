@@ -51,11 +51,10 @@ class CustodyTransactionItem extends StatelessWidget {
                     ),
                     child: Icon(
                       Icons.access_time_rounded,
-                      size: 24,
+
                       color: theme.colorScheme.primary,
                     ),
                   ),
-                  const SizedBox(width: 12),
 
                   // Transaction Details
                   Expanded(
@@ -63,19 +62,12 @@ class CustodyTransactionItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AppText(
-                          TimeRefactor(transaction.createdAt!).toString(),
+                          TimeRefactor(transaction.createdAt!).toDateString(),
                           translate: false,
                           color: theme.textTheme.bodySmall?.color,
-                          fontSize: context.bodySmall!.fontSize,
                         ),
-                        const SizedBox(height: 6),
-                        AppText(
-                          "  transaction.personName!",
-                          translate: false,
-                          fontSize: context.titleMedium!.fontSize,
-                          fontWeight: FontWeight.w600,
-                          color: theme.textTheme.titleMedium?.color,
-                        ),
+                        AppText(transaction.empId!, translate: false),
+                        AppText(transaction.userId!, translate: false),
                       ],
                     ),
                   ),

@@ -20,16 +20,19 @@ class ChooseMonth extends StatelessWidget {
       builder: (c, s) {
         if (s is GetMonthLoading) {
           return CustomShimmer(
-            child: Container(
-              height: 50,
-              width: context.width(),
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: AppBorderRadius.mediumRadius,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AppText(LangKeys.loading),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                height: 50,
+                width: context.width(),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: AppBorderRadius.mediumRadius,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: AppText(LangKeys.loading),
+                ),
               ),
             ),
           );

@@ -141,4 +141,9 @@ class LangKeys {
   static const String createdBy = 'createdBy';
   static const String rejectReason = 'rejectReason';
   static const String youHaveRequest = 'youHaveRequest';
+
+  //add custody transaction
+  static const String chooseEmployee = 'chooseEmployee';
+  static const String custodyTransactionAmountBigThanCustodyAmount =
+      'custodyTransactionAmountBigThanCustodyAmount';
 }

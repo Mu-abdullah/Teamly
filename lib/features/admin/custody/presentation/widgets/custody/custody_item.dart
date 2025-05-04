@@ -221,7 +221,10 @@ class _CustodyItemState extends State<CustodyItem>
       onTap: () {
         context.pushNamed(
           RoutesNames.custodyTransactions,
-          arguments: {'id': widget.custody.id},
+          arguments: {
+            'id': widget.custody.id,
+            'amount': widget.custody.totalAmount,
+          },
         );
       },
       text: LangKeys.showMore,

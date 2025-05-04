@@ -21,8 +21,7 @@ class CalcCustody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final remainingAmount =
-        100.00; //cubit.calculateRemainingAmount(custodyTransaction);
+    final remainingAmount = cubit.calculateRemainingAmount(custodyTransaction);
     final isNegative = remainingAmount < 0;
 
     return Padding(
@@ -56,8 +55,7 @@ class CalcCustody extends StatelessWidget {
               ),
               child: AppText(
                 LangKeys.custodySummary,
-                fontSize: context.titleLarge!.fontSize,
-                fontWeight: FontWeight.bold,
+                fontSize: context.labelMedium!.fontSize,
                 color: theme.primaryColor,
               ),
             ),
@@ -80,31 +78,40 @@ class CalcCustody extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 12),
-                      _buildSummaryCard(
-                        context,
-                        title: LangKeys.spended,
-                        value: cubit.sumAmount(custodyTransaction),
-                        icon: Icons.trending_down_rounded,
-                        gradient: const LinearGradient(
-                          colors: [Colors.orange, Color(0xFFFFA726)],
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      _buildSummaryCard(
-                        context,
-                        title: LangKeys.rimaining,
-                        value: remainingAmount.abs(),
-                        icon:
-                            isNegative
-                                ? Icons.error_outline
-                                : Icons.trending_up_rounded,
-                        gradient: LinearGradient(
-                          colors:
-                              isNegative
-                                  ? [Colors.red, Colors.redAccent]
-                                  : [Colors.green, Colors.greenAccent],
-                        ),
-                        isNegative: isNegative,
+                      Row(
+                        spacing: 8,
+                        children: [
+                          Expanded(
+                            child: _buildSummaryCard(
+                              context,
+                              title: LangKeys.spended,
+                              value: cubit.sumAmount(custodyTransaction),
+                              icon: Icons.trending_down_rounded,
+                              gradient: const LinearGradient(
+                                colors: [Colors.orange, Color(0xFFFFA726)],
+                              ),
+                            ),
+                          ),
+
+                          Expanded(
+                            child: _buildSummaryCard(
+                              context,
+                              title: LangKeys.rimaining,
+                              value: remainingAmount.abs(),
+                              icon:
+                                  isNegative
+                                      ? Icons.error_outline
+                                      : Icons.trending_up_rounded,
+                              gradient: LinearGradient(
+                                colors:
+                                    isNegative
+                                        ? [Colors.red, Colors.redAccent]
+                                        : [Colors.green, Colors.greenAccent],
+                              ),
+                              isNegative: isNegative,
+                            ),
+                          ),
+                        ],
                       ),
                     ]
                     .animate(interval: 200.ms)
@@ -127,7 +134,7 @@ class CalcCustody extends StatelessWidget {
     bool isNegative = false,
   }) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       decoration: BoxDecoration(
         gradient: gradient,
         borderRadius: BorderRadius.circular(12),
@@ -147,7 +154,7 @@ class CalcCustody extends StatelessWidget {
               color: Colors.white.withValues(alpha: 0.2),
               shape: BoxShape.circle,
             ),
-            child: Icon(icon, color: Colors.white, size: 28),
+            child: Icon(icon, color: Colors.white),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -157,7 +164,6 @@ class CalcCustody extends StatelessWidget {
                 AppText(
                   title,
                   color: Colors.white,
-                  fontSize: context.titleMedium!.fontSize,
                   fontWeight: FontWeight.w600,
                 ),
                 const SizedBox(height: 6),
@@ -173,16 +179,10 @@ class CalcCustody extends StatelessWidget {
                     AppText(
                       value.toStringAsFixed(2),
                       color: Colors.white,
-                      fontSize: context.titleLarge!.fontSize,
-                      fontWeight: FontWeight.bold,
                       translate: false,
                     ),
                     const SizedBox(width: 6),
-                    AppText(
-                      LangKeys.eg,
-                      color: Colors.white70,
-                      fontSize: context.bodySmall!.fontSize,
-                    ),
+                    AppText(LangKeys.eg, color: Colors.white70),
                   ],
                 ),
               ],

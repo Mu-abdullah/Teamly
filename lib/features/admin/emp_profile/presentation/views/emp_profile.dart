@@ -19,7 +19,7 @@ class EmpProfile extends StatelessWidget {
       create:
           (context) =>
               UserProfileCubit(isAdmin: id == null, repo: lac)
-                ..getUserProfile(id ?? context.read<AppUserCubit>().userId),
+                ..getUserProfile(id ?? context.read<AppUserCubit>().empID),
       child: Scaffold(
         appBar: CustomAppBar(title: LangKeys.profile),
         body: MobileEmpProfile(),

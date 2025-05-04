@@ -14,8 +14,8 @@ class CustodyTransactionModel extends CustodyTransactionEntity {
       id: json['id'],
       createdAt: json['created_at'],
       custodyId: json['custody_id'],
-      userId: json['user_id'],
-      empId: json['emp_id'],
+      userId: json['users']['emp']['name'],
+      empId: json['emp']['name'],
       amount: json['amount'],
     );
   }

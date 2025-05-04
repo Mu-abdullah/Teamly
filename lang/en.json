@@ -144,7 +144,13 @@
     "createdBy":"Created By",
     "rejectReason":"Reject Reason",
     "userVacationRequest":"User Vacation Request",
-    "youHaveRequest":"You Have Vacation Request, Wait For Manager Approval"
+    "youHaveRequest":"You Have Vacation Request, Wait For Manager Approval",
+
+
+    "######################################AddCustody":"", 
+    "chooseEmployee":"Choose Employee",
+    "custodyTransactionAmountBigThanCustodyAmount":"Custody Transaction Amount Big Than Custody Amount"
+
     
      
 }

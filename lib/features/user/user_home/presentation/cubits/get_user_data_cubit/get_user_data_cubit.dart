@@ -16,7 +16,7 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
   }
   UserHomeModel? user;
   Future<void> getCompID() async {
-    await repo.getID(key: PrefKeys.userID);
+    await repo.getID(key: PrefKeys.empID);
     await getUserData();
   }
 
@@ -24,7 +24,7 @@ class GetUserDataCubit extends Cubit<GetUserDataState> {
   Future<void> getUserData() async {
     emit(GetUserDataLoading());
     final result = await repo.getEmp(
-      userId: await repo.getID(key: PrefKeys.userID),
+      userId: await repo.getID(key: PrefKeys.empID),
     );
     result.fold(
       (l) {

@@ -18,9 +18,9 @@ class GetCustodyTransactionRepo {
           'id',
           'created_at',
           'custody_id',
-          'user_id',
+          'users{emp{name}}',
           'amount',
-          'emp_id',
+          'emp{name}',
         ],
         fromJson: CustodyTransactionModel.fromJson,
         filters: {

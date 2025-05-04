@@ -29,7 +29,7 @@ class CheckInOutButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final uid = context.read<AppUserCubit>().userId;
+    final uid = context.read<AppUserCubit>().empID;
     final com = context.read<AppUserCubit>().compId;
     final attendanceCubit = AttendanceCubit.get(context);
 

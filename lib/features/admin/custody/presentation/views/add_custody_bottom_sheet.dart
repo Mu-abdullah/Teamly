@@ -78,7 +78,7 @@ class AddCustodyBottomSheet extends StatelessWidget {
                     createdAt: DateTime.now().toString(),
                     name: cubit.nameController.text,
                     totalAmount: cubit.amountController.text,
-                    approvedBy: context.read<AppUserCubit>().userId,
+                    approvedBy: context.read<AppUserCubit>().empID,
                     status: CustodyStatus.notSettled,
                     companyId: context.read<AppUserCubit>().compId,
                   );

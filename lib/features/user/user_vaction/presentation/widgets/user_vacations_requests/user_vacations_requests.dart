@@ -17,7 +17,7 @@ class UserVacationsRequests extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lac = locator<GetUserVacationsRequestsRepo>();
-    var emp = context.read<AppUserCubit>().userId;
+    var emp = context.read<AppUserCubit>().empID;
     return BlocProvider(
       create:
           (context) =>

@@ -5,7 +5,8 @@ import '../../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../../core/functions/generate_id.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/services/status/gender_status.dart';
-import '../../../../../../core/services/status/vactions_typs.dart' show VacationTypes;
+import '../../../../../../core/services/status/vactions_typs.dart'
+    show VacationTypes;
 import '../../../../../../core/services/supabase/backend_points.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/widgets/app_button.dart';
@@ -34,7 +35,7 @@ class SubmitRequestButton extends StatelessWidget {
             } else {
               final model = NewRequestVacationModel(
                 comId: context.read<AppUserCubit>().compId,
-                empId: context.read<AppUserCubit>().userId,
+                empId: context.read<AppUserCubit>().empID,
                 id: GenerateId.generateDocumentId(
                   context: context,
                   tableName: BackendPoint.vacations,
@@ -45,7 +46,7 @@ class SubmitRequestButton extends StatelessWidget {
                 reason: cubit.reason.text,
                 createdAt: DateTime.now().toString(),
                 type: cubit.type,
-                userId: context.read<AppUserCubit>().userId,
+                userId: context.read<AppUserCubit>().empID,
               );
               cubit.submit(model);
             }

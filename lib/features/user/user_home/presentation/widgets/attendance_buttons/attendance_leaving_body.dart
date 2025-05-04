@@ -46,7 +46,7 @@ class AttendanceLeavingBody extends StatelessWidget {
                   AppText(state.message),
                   AppButton(
                     onTap: () {
-                      final uid = context.read<AppUserCubit>().userId;
+                      final uid = context.read<AppUserCubit>().empID;
                       cubit.checkAttendance(uid);
                     },
                     text: "Retry",
@@ -71,7 +71,7 @@ class AttendanceLeavingBody extends StatelessWidget {
           }
           // Handle initial state by fetching data
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            final uid = context.read<AppUserCubit>().userId;
+            final uid = context.read<AppUserCubit>().empID;
             if (uid.isNotEmpty) {
               cubit.checkAttendance(uid);
             }

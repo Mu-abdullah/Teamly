@@ -151,6 +151,11 @@
     "createdBy":"منشئ الطلب",
     "rejectReason":"سبب الرفض",
     "userVacationRequest":"طالب الاجازة",
-    "youHaveRequest":"لديك طلب اجازة، انتظر موافقة المدير"
+    "youHaveRequest":"لديك طلب اجازة، انتظر موافقة المدير",
+
+
+    "######################################AddCustody":"", 
+    "chooseEmployee":"اختر الموظف",
+    "custodyTransactionAmountBigThanCustodyAmount":"قيمة المبلغ اكبر من قيمة العهدة"
 
 }

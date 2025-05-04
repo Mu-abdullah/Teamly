@@ -10,9 +10,15 @@ part 'get_custody_transaction_state.dart';
 
 class GetCustodyTransactionCubit extends Cubit<GetCustodyTransactionState> {
   GetCustodyTransactionRepo repo;
-  GetCustodyTransactionCubit({required this.repo, required this.custody})
-    : super(GetCustodyTransactionInitial());
+
+  GetCustodyTransactionCubit({
+    required this.repo,
+    required this.custody,
+    required this.totlaCustody,
+  }) : super(GetCustodyTransactionInitial());
+
   final String custody;
+  final String totlaCustody;
   static GetCustodyTransactionCubit get(context) =>
       BlocProvider.of<GetCustodyTransactionCubit>(context);
 
@@ -40,10 +46,9 @@ class GetCustodyTransactionCubit extends Cubit<GetCustodyTransactionState> {
     return sum;
   }
 
-  // calculate rimmaining amount
-  // double calculateRemainingAmount(
-  //   List<CustodyTransactionModel> custodyTransaction,
-  // ) {
-  //   return double.parse(custody.totalAmount!) - sumAmount(custodyTransaction);
-  // }
+  double calculateRemainingAmount(
+    List<CustodyTransactionModel> custodyTransaction,
+  ) {
+    return double.parse(totlaCustody) - sumAmount(custodyTransaction);
+  }
 }

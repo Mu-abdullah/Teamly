@@ -10,18 +10,11 @@ class GetCustodyTransactionRepo {
   final GraphQLService service;
   GetCustodyTransactionRepo(this.service);
   Future<Either<CustomError, List<CustodyTransactionModel>>>
-  getCustodyTransaction({required int custodyId}) async {
+  getCustodyTransaction({required String custodyId}) async {
     try {
       final data = await service.fetchCollection<CustodyTransactionModel>(
         collection: BackendPoint.custodyTransaction,
-        fields: [
-          'id',
-          'created_at',
-          'custody_id',
-          'person_name',
-          'person_id',
-          'amount',
-        ],
+        fields: ['id', 'created_at', 'custody_id', 'person_id', 'amount'],
         fromJson: CustodyTransactionModel.fromJson,
         filters: {
           'custody_id': {'eq': custodyId},

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
-import '../../../../../../core/entities/custody_entity.dart';
 import '../../../../../../core/functions/timestamp_to_time.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/routes/routes_name.dart';
@@ -10,9 +9,10 @@ import '../../../../../../core/services/status/custody_status.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
+import '../../../data/model/custody_model.dart';
 
 class CustodyItemWeb extends StatelessWidget {
-  final CustodyEntity custody;
+  final CustodyModel custody;
   const CustodyItemWeb({
     super.key,
     required this.custody,
@@ -26,7 +26,7 @@ class CustodyItemWeb extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           RoutesNames.custodyTransactions,
-          arguments: {'custody': custody},
+          arguments: {'id': custody.id},
         );
       },
       child: Padding(

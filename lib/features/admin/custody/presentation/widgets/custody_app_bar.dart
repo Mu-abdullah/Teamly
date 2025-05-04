@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/custom_app_bar.dart';
-import '../../../../../core/style/widgets/custom_bottom_sheet.dart';
+import '../cubits/get_custody_cubit/get_custody_cubit.dart';
 import '../views/add_custody_bottom_sheet.dart';
 
 class CustodyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -11,19 +12,16 @@ class CustodyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<GetCustodyCubit>();
     return CustomAppBar(
       title: LangKeys.custody,
       actions: [
         IconButton(
           icon: const Icon(HugeIcons.strokeRoundedAddCircle),
           onPressed: () {
-            customShowBottomSheet(
+            cubit.openBottomSheet(
               context: context,
-              isScrollControlled: true,
-
-              builder: (context) {
-                return AddCustodyBottomSheet();
-              },
+              widget: AddCustodyBottomSheet(cubit: cubit),
             );
           },
         ),

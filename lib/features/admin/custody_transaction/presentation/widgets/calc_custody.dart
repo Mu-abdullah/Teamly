@@ -21,7 +21,8 @@ class CalcCustody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final remainingAmount = cubit.calculateRemainingAmount(custodyTransaction);
+    final remainingAmount =
+        100.00; //cubit.calculateRemainingAmount(custodyTransaction);
     final isNegative = remainingAmount < 0;
 
     return Padding(
@@ -69,7 +70,7 @@ class CalcCustody extends StatelessWidget {
                       _buildSummaryCard(
                         context,
                         title: LangKeys.custody,
-                        value: double.parse(cubit.custody.totalAmount ?? '0'),
+                        value: 100.00,
                         icon: Icons.account_balance_wallet_rounded,
                         gradient: LinearGradient(
                           colors: [

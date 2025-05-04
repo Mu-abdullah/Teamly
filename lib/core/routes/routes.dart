@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:teamly/features/user/user_vaction/presentation/widgets/user_new_request_vacation/user_request_vacation.dart';
 
 import '../../features/admin/admin_attendance/presentation/views/admin_attendance.dart';
 import '../../features/admin/custody_transaction/presentation/views/custody_transactions.dart';
@@ -11,11 +10,11 @@ import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
 import '../../features/user/user_home/presentation/views/user_home.dart';
 import '../../features/user/user_vaction/presentation/views/user_vacations.dart';
+import '../../features/user/user_vaction/presentation/widgets/user_new_request_vacation/user_request_vacation.dart';
 import '../../features/user/user_vaction/presentation/widgets/user_vacations_requests/user_vacations_requests.dart';
 import '../app/image/image_preview.dart';
 import '../app/language/language_screen.dart';
 import '../app/no_internet/no_internet_screen.dart';
-import '../entities/custody_entity.dart';
 import 'base_routes.dart';
 import 'routes_name.dart';
 
@@ -60,9 +59,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return BaseRoute(page: const CustodyScreen());
 
     case RoutesNames.custodyTransactions:
-      return BaseRoute(
-        page: CustodyTransactions(custody: args?['custody'] as CustodyEntity),
-      );
+      return BaseRoute(page: CustodyTransactions(id: args?['id'] as String));
 
     case RoutesNames.adminAttendance:
       return BaseRoute(page: AdminAttendance());

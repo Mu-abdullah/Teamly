@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
-import '../../../../../../core/entities/custody_entity.dart';
 import '../../../../../../core/functions/timestamp_to_time.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/services/status/custody_status.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
+import '../../../../../../core/style/widgets/app_button.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
+import '../../../data/model/custody_model.dart';
 
 class CustodyItem extends StatefulWidget {
-  final CustodyEntity custody;
+  final CustodyModel custody;
   const CustodyItem({super.key, required this.custody, this.showMore = true});
   final bool showMore;
   @override
@@ -107,39 +108,42 @@ class _CustodyItemState extends State<CustodyItem>
       borderRadius: BorderRadius.circular(12),
       onTap: _toggleExpansion,
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          // color: AppColors.black.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(12),
-          gradient: LinearGradient(
-            colors: [_getStatusColor(widget.custody.status!), AppColors.white],
-            begin: const FractionalOffset(0.0, 0.0),
-            end: const FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp,
-          ),
+          color: AppColors.white,
         ),
         child: Row(
+          spacing: 12,
           children: [
             const Icon(
               HugeIcons.strokeRoundedBriefcaseDollar,
               color: AppColors.black,
               size: 24,
             ),
-            const SizedBox(width: 12),
+
             Expanded(
-              child: AppText(
-                widget.custody.name ?? '',
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                translate: false,
+              child: AppText(widget.custody.name ?? '', translate: false),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: _getStatusColor(widget.custody.status!),
+                borderRadius: AppBorderRadius.mediumRadius,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: AppText(
+                  _getStatusText(widget.custody.status!),
+                  fontSize: context.labelSmall!.fontSize,
+                  color: AppColors.white,
+                ),
               ),
             ),
             RotationTransition(
               turns: _rotationAnimation,
               child: const Icon(
                 Icons.expand_more_rounded,
-                color: AppColors.white,
+                color: AppColors.black,
               ),
             ),
           ],
@@ -170,9 +174,8 @@ class _CustodyItemState extends State<CustodyItem>
           Row(
             spacing: widget.showMore ? 10 : 0,
             children: [
-              Expanded(child: _buildStatusChip()),
               widget.showMore
-                  ? Expanded(child: _buildShowMoreButton())
+                  ? Expanded(child: _buildActionButton())
                   : const SizedBox.shrink(),
             ],
           ),
@@ -213,78 +216,17 @@ class _CustodyItemState extends State<CustodyItem>
     );
   }
 
-  Widget _buildStatusChip() {
-    final status = widget.custody.status!;
-    final color = _getStatusColor(status);
-    final icon =
-        status == CustodyStatus.settlement
-            ? HugeIcons.strokeRoundedCheckmarkCircle03
-            : HugeIcons.strokeRoundedCancelCircle;
-
-    return _buildChip(icon: icon, text: _getStatusText(status), color: color);
-  }
-
-  Widget _buildShowMoreButton() {
-    final status = widget.custody.status!;
-    final color = _getStatusColor(status);
-
-    return InkWell(
-      borderRadius: AppBorderRadius.mediumRadius,
+  Widget _buildActionButton() {
+    return AppButton(
       onTap: () {
         context.pushNamed(
           RoutesNames.custodyTransactions,
-          arguments: {'custody': widget.custody},
+          arguments: {'id': widget.custody.id},
         );
       },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        decoration: BoxDecoration(
-          border: Border.all(color: color.withValues(alpha: 0.2), width: 3),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Row(
-          spacing: 8,
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AppText(
-              LangKeys.showMore,
-              color: color,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-            Icon(HugeIcons.strokeRoundedFolderDetails, color: color),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildChip({
-    required IconData icon,
-    required String text,
-    required Color color,
-  }) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.2),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        spacing: 8,
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: color),
-          AppText(
-            text,
-            color: color,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ],
-      ),
+      text: LangKeys.showMore,
+      fontSize: 12,
+      circleSize: 40,
     );
   }
 

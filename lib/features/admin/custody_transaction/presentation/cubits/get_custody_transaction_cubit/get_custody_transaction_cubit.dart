@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/entities/custody_entity.dart';
 import '../../../../../../core/error/custom_errors.dart';
 import '../../../data/model/custody_transaction_model.dart';
 import '../../../data/repo/get_custody_transaction.dart';
@@ -13,11 +12,11 @@ class GetCustodyTransactionCubit extends Cubit<GetCustodyTransactionState> {
   GetCustodyTransactionRepo repo;
   GetCustodyTransactionCubit({required this.repo, required this.custody})
     : super(GetCustodyTransactionInitial());
-  final CustodyEntity custody;
+  final String custody;
   static GetCustodyTransactionCubit get(context) =>
       BlocProvider.of<GetCustodyTransactionCubit>(context);
 
-  Future<void> fetchCustodyTransaction(int custodyId) async {
+  Future<void> fetchCustodyTransaction(String custodyId) async {
     emit(GetCustodyTransactionLoading());
     final result = await repo.getCustodyTransaction(custodyId: custodyId);
     result.fold(
@@ -42,9 +41,9 @@ class GetCustodyTransactionCubit extends Cubit<GetCustodyTransactionState> {
   }
 
   // calculate rimmaining amount
-  double calculateRemainingAmount(
-    List<CustodyTransactionModel> custodyTransaction,
-  ) {
-    return double.parse(custody.totalAmount!) - sumAmount(custodyTransaction);
-  }
+  // double calculateRemainingAmount(
+  //   List<CustodyTransactionModel> custodyTransaction,
+  // ) {
+  //   return double.parse(custody.totalAmount!) - sumAmount(custodyTransaction);
+  // }
 }

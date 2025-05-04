@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/entities/custody_entity.dart';
+import '../../../data/model/custody_model.dart';
 import 'custody_item_web.dart';
 
 class CustodyWebGridview extends StatelessWidget {
   const CustodyWebGridview({super.key, required this.custodyList});
-  final List<CustodyEntity> custodyList;
+  final List<CustodyModel> custodyList;
 
   @override
   Widget build(BuildContext context) {

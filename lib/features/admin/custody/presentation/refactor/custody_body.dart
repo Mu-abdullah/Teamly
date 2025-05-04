@@ -10,11 +10,9 @@ class CustodyBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth < 600) {
-          return MobileCustodyBody();
-        } else {
-          return WebCustodyBody();
-        }
+        return constraints.maxWidth < 600
+            ? const MobileCustodyBody()
+            : const WebCustodyBody();
       },
     );
   }

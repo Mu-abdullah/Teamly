@@ -70,7 +70,7 @@ class CustodyTransactionItem extends StatelessWidget {
                         ),
                         const SizedBox(height: 6),
                         AppText(
-                          transaction.personName!,
+                          "  transaction.personName!",
                           translate: false,
                           fontSize: context.titleMedium!.fontSize,
                           fontWeight: FontWeight.w600,

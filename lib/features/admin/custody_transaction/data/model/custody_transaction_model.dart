@@ -5,7 +5,7 @@ class CustodyTransactionModel extends CustodyTransactionEntity {
     super.id,
     super.createdAt,
     super.custodyId,
-    super.personName,
+
     super.personId,
     super.amount,
   });
@@ -14,7 +14,6 @@ class CustodyTransactionModel extends CustodyTransactionEntity {
       id: json['id'],
       createdAt: json['created_at'],
       custodyId: json['custody_id'],
-      personName: json['person_name'],
       personId: json['person_id'],
       amount: json['amount'],
     );
@@ -25,7 +24,6 @@ class CustodyTransactionModel extends CustodyTransactionEntity {
       'id': id,
       'created_at': createdAt,
       'custody_id': custodyId,
-      'person_name': personName,
       'person_id': personId,
       'amount': amount,
     };

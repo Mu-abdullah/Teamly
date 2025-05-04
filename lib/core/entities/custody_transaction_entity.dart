@@ -2,7 +2,6 @@ class CustodyTransactionEntity {
   final String? id;
   final String? createdAt;
   final String? custodyId;
-  final String? personName;
   final String? personId;
   final String? amount;
 
@@ -10,7 +9,6 @@ class CustodyTransactionEntity {
     this.id,
     this.createdAt,
     this.custodyId,
-    this.personName,
     this.personId,
     this.amount,
   });

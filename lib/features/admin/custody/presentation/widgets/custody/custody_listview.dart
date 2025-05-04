@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/entities/custody_entity.dart';
+import '../../../data/model/custody_model.dart';
 import 'custody_item.dart';
 
-class CustodyListview extends StatelessWidget {
-  const CustodyListview({super.key, required this.custodyList});
-  final List<CustodyEntity> custodyList;
+class CustodyListView extends StatelessWidget {
+  final List<CustodyModel> custodyList;
+
+  const CustodyListView({super.key, required this.custodyList});
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       itemCount: custodyList.length,
-      separatorBuilder: (_, __) => const Divider(),
-      itemBuilder: (context, index) {
-        final custody = custodyList[index];
-        return CustodyItem(custody: custody);
-      },
+      separatorBuilder: (_, __) => const Divider(height: 1),
+      itemBuilder: (context, index) => CustodyItem(custody: custodyList[index]),
     );
   }
 }

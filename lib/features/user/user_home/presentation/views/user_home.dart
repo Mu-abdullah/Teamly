@@ -19,42 +19,46 @@ import '../refactor/user_home_body.dart';
 class UserHome extends StatelessWidget {
   const UserHome({super.key, this.isAdmin = false});
   final bool isAdmin;
+
   @override
   Widget build(BuildContext context) {
-    var uid = context.read<AppUserCubit>().userId;
-    final empHomeLac = locator<UserHomeCardInfoRepo>();
-    final attendanceLac = locator<AttendanceRepo>();
-    final checkLac = locator<CheckAttendanceRepo>();
-    final hostoryLac = locator<GetHistoryRepo>();
+    final uid = context.read<AppUserCubit>().userId;
+
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create:
-              (context) =>
-                  GetUserDataCubit(empHomeLac, isAdmin: isAdmin)..getUserData(),
-        ),
-        BlocProvider(create: (context) => AttendanceCubit(attendanceLac)),
-        BlocProvider(
-          create:
-              (context) => AttendanceHistoryCubit(hostoryLac)..getHistory(uid),
-        ),
-        BlocProvider(
-          create:
-              (context) => CheckAttendanceCubit(checkLac)..checkAttendance(uid),
-        ),
-      ],
+      providers: _createBlocProviders(uid),
       child: Scaffold(
         appBar: CustomAppBar(
           title: LangKeys.home,
           isBack: isAdmin,
-          actions: isAdmin ? [] : [HomeLogoutButton()],
+          actions: isAdmin ? null : const [HomeLogoutButton()],
         ),
-        body: BlocBuilder<AppUserCubit, AppUserState>(
-          builder: (context, state) {
-            return UserHomeBody();
-          },
-        ),
+        body: const UserHomeBody(),
       ),
     );
   }
+
+  List<BlocProvider> _createBlocProviders(String uid) => [
+    BlocProvider<GetUserDataCubit>(
+      create:
+          (context) => GetUserDataCubit(
+            locator<UserHomeCardInfoRepo>(),
+            isAdmin: isAdmin,
+          )..getUserData(),
+    ),
+    BlocProvider<AttendanceCubit>(
+      create: (context) => AttendanceCubit(locator<AttendanceRepo>()),
+    ),
+    BlocProvider<AttendanceHistoryCubit>(
+      create:
+          (context) =>
+              AttendanceHistoryCubit(locator<GetHistoryRepo>())
+                ..getHistory(uid),
+    ),
+    BlocProvider<CheckAttendanceCubit>(
+      create:
+          (context) =>
+              CheckAttendanceCubit(locator<CheckAttendanceRepo>())
+                ..checkAttendance(uid),
+    ),
+  ];
 }

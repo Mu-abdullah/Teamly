@@ -142,6 +142,7 @@
     "######################################VacationReview":"", 
     "reviewVacationRequest":"Review Vacation Requests",
     "createdBy":"Created By",
+    "rejectReason":"Reject Reason",
     "userVacationRequest":"User Vacation Request"
     
      

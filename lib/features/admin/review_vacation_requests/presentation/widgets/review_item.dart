@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 
+import '../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/status/vactions_typs.dart';
 import '../../../../../core/style/color/app_color.dart';
@@ -8,6 +10,8 @@ import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../../core/style/widgets/app_button.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../data/model/review_vacation_model.dart';
+import '../cubits/review_vacation_cubit/review_vacation_cubit.dart';
+import '../cubits/vacation_response_cubit/vacation_response_cubit.dart';
 
 class ReviewItem extends StatelessWidget {
   const ReviewItem({super.key, required this.item});
@@ -50,22 +54,57 @@ class ReviewItem extends StatelessWidget {
               ),
               _buildItemRow(title: LangKeys.createdBy, value: item.userId!),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  AppButton(
-                    onTap: () {},
-                    isCircle: true,
-                    icon: HugeIcons.strokeRoundedCheckmarkCircle01,
-                    backGroundColor: AppColors.green,
-                  ),
-                  AppButton(
-                    onTap: () {},
-                    isCircle: true,
-                    icon: HugeIcons.strokeRoundedCancel01,
-                    backGroundColor: AppColors.red,
-                  ),
-                ],
+              BlocBuilder<VacationResponseCubit, VacationResponseState>(
+                builder: (context, state) {
+                  var cubit = VacationResponseCubit.get(context);
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _buildReviewButton(
+                        icon: HugeIcons.strokeRoundedCheckmarkCircle01,
+                        onTap: () {
+                          cubit
+                              .sendVacationResponse(
+                                id: item.id!,
+                                rejectReason: null,
+                                status: VacationStatus.approved,
+                              )
+                              .then((onValue) {
+                                if (context.mounted) {
+                                  context
+                                      .read<ReviewVacationCubit>()
+                                      .reviewVacationRequest(
+                                        context.read<AppUserCubit>().compId,
+                                      );
+                                }
+                              });
+                        },
+                        backGroundColor: AppColors.green,
+                      ),
+                      _buildReviewButton(
+                        icon: HugeIcons.strokeRoundedCancel01,
+                        onTap: () {
+                          cubit
+                              .sendVacationResponse(
+                                id: item.id!,
+                                rejectReason: "حاجة العمل",
+                                status: VacationStatus.rejected,
+                              )
+                              .then((onValue) {
+                                if (context.mounted) {
+                                  context
+                                      .read<ReviewVacationCubit>()
+                                      .reviewVacationRequest(
+                                        context.read<AppUserCubit>().compId,
+                                      );
+                                }
+                              });
+                        },
+                        backGroundColor: AppColors.red,
+                      ),
+                    ],
+                  );
+                },
               ),
             ],
           ),
@@ -82,6 +121,19 @@ class ReviewItem extends StatelessWidget {
         AppText(":", translate: false),
         Expanded(flex: 2, child: AppText(value, translate: false)),
       ],
+    );
+  }
+
+  Widget _buildReviewButton({
+    required IconData icon,
+    required VoidCallback onTap,
+    required Color backGroundColor,
+  }) {
+    return AppButton(
+      onTap: onTap,
+      isCircle: true,
+      icon: icon,
+      backGroundColor: backGroundColor,
     );
   }
 }

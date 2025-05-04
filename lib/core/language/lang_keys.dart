@@ -135,10 +135,9 @@ class LangKeys {
   static const String requestDate = 'requestDate';
   static const String noVacationRequests = 'noVacationRequests';
 
-
-  // vacation review 
+  // vacation review
   static const String reviewVacationRequest = 'reviewVacationRequest';
   static const String userVacationRequest = 'userVacationRequest';
   static const String createdBy = 'createdBy';
-  
+  static const String rejectReason = 'rejectReason';
 }

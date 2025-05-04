@@ -149,6 +149,7 @@
     "######################################VacationReview":"", 
     "reviewVacationRequest":"مراجعة طلبات الاجازة",
     "createdBy":"منشئ الطلب",
+    "rejectReason":"سبب الرفض",
     "userVacationRequest":"طالب الاجازة"
 
 }

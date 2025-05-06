@@ -19,6 +19,7 @@ class GetCustodyTransactionCubit extends Cubit<GetCustodyTransactionState> {
 
   final String custody;
   final String totlaCustody;
+  List<CustodyTransactionModel>? custodyTransaction;
   static GetCustodyTransactionCubit get(context) =>
       BlocProvider.of<GetCustodyTransactionCubit>(context);
 
@@ -31,6 +32,7 @@ class GetCustodyTransactionCubit extends Cubit<GetCustodyTransactionState> {
         debugPrint('Error: ${l.message}');
       },
       (r) {
+        custodyTransaction = r;
         emit(GetCustodyTransactionLoaded(r));
         debugPrint('Data: ${r.length}');
       },
@@ -46,9 +48,7 @@ class GetCustodyTransactionCubit extends Cubit<GetCustodyTransactionState> {
     return sum;
   }
 
-  double calculateRemainingAmount(
-    List<CustodyTransactionModel> custodyTransaction,
-  ) {
-    return double.parse(totlaCustody) - sumAmount(custodyTransaction);
+  double calculateRemainingAmount() {
+    return double.parse(totlaCustody) - sumAmount(custodyTransaction ?? []);
   }
 }

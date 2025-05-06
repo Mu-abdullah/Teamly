@@ -21,7 +21,7 @@ class CalcCustody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final remainingAmount = cubit.calculateRemainingAmount(custodyTransaction);
+    final remainingAmount = cubit.calculateRemainingAmount();
     final isNegative = remainingAmount < 0;
 
     return Padding(
@@ -64,11 +64,12 @@ class CalcCustody extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
+                spacing: 12,
                 children: [
                       _buildSummaryCard(
                         context,
                         title: LangKeys.custody,
-                        value: 100.00,
+                        value: double.parse(cubit.totlaCustody),
                         icon: Icons.account_balance_wallet_rounded,
                         gradient: LinearGradient(
                           colors: [
@@ -77,41 +78,31 @@ class CalcCustody extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      Row(
-                        spacing: 8,
-                        children: [
-                          Expanded(
-                            child: _buildSummaryCard(
-                              context,
-                              title: LangKeys.spended,
-                              value: cubit.sumAmount(custodyTransaction),
-                              icon: Icons.trending_down_rounded,
-                              gradient: const LinearGradient(
-                                colors: [Colors.orange, Color(0xFFFFA726)],
-                              ),
-                            ),
-                          ),
 
-                          Expanded(
-                            child: _buildSummaryCard(
-                              context,
-                              title: LangKeys.rimaining,
-                              value: remainingAmount.abs(),
-                              icon:
-                                  isNegative
-                                      ? Icons.error_outline
-                                      : Icons.trending_up_rounded,
-                              gradient: LinearGradient(
-                                colors:
-                                    isNegative
-                                        ? [Colors.red, Colors.redAccent]
-                                        : [Colors.green, Colors.greenAccent],
-                              ),
-                              isNegative: isNegative,
-                            ),
-                          ),
-                        ],
+                      _buildSummaryCard(
+                        context,
+                        title: LangKeys.spended,
+                        value: cubit.sumAmount(custodyTransaction),
+                        icon: Icons.trending_down_rounded,
+                        gradient: const LinearGradient(
+                          colors: [Colors.orange, Color(0xFFFFA726)],
+                        ),
+                      ),
+                      _buildSummaryCard(
+                        context,
+                        title: LangKeys.rimaining,
+                        value: remainingAmount.abs(),
+                        icon:
+                            isNegative
+                                ? Icons.error_outline
+                                : Icons.trending_up_rounded,
+                        gradient: LinearGradient(
+                          colors:
+                              isNegative
+                                  ? [Colors.red, Colors.redAccent]
+                                  : [Colors.green, Colors.greenAccent],
+                        ),
+                        isNegative: isNegative,
                       ),
                     ]
                     .animate(interval: 200.ms)
@@ -147,44 +138,37 @@ class CalcCustody extends StatelessWidget {
         ],
       ),
       child: Row(
+        spacing: 16,
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
               color: Colors.white.withValues(alpha: 0.2),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, color: Colors.white),
           ),
-          const SizedBox(width: 16),
+
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              spacing: 6,
               children: [
+                AppText(title, color: Colors.white),
+                AppText(" :", color: Colors.white70, translate: false),
+                if (isNegative)
+                  const AppText(
+                    '-',
+                    color: Colors.white,
+                    translate: false,
+                    fontWeight: FontWeight.bold,
+                  ),
                 AppText(
-                  title,
+                  value.round().toString(),
                   color: Colors.white,
-                  fontWeight: FontWeight.w600,
+                  translate: false,
                 ),
-                const SizedBox(height: 6),
-                Row(
-                  children: [
-                    if (isNegative)
-                      const AppText(
-                        '-',
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    AppText(
-                      value.toStringAsFixed(2),
-                      color: Colors.white,
-                      translate: false,
-                    ),
-                    const SizedBox(width: 6),
-                    AppText(LangKeys.eg, color: Colors.white70),
-                  ],
-                ),
+
+                AppText(LangKeys.eg, color: Colors.white70, fontSize: 11),
               ],
             ),
           ),

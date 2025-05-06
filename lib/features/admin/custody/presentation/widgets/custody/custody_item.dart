@@ -223,7 +223,7 @@ class _CustodyItemState extends State<CustodyItem>
           RoutesNames.custodyTransactions,
           arguments: {
             'id': widget.custody.id,
-            'amount': widget.custody.totalAmount,
+            'custodyAmount': widget.custody.totalAmount,
           },
         );
       },

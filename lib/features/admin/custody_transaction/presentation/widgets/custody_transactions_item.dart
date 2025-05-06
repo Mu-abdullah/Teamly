@@ -87,8 +87,6 @@ class CustodyTransactionItem extends StatelessWidget {
                         AppText(
                           transaction.amount!,
                           translate: false,
-                          fontSize: context.titleMedium!.fontSize,
-                          fontWeight: FontWeight.bold,
                           color: theme.colorScheme.secondary,
                         ),
                         const SizedBox(width: 6),

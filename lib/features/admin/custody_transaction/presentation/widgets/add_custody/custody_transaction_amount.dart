@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teamly/core/extextions/extentions.dart';
@@ -16,20 +18,20 @@ import '../../cubits/add_custody_transaction_cubit/add_custody_transaction_cubit
 class CustodyTransactionAmount extends StatelessWidget {
   const CustodyTransactionAmount({
     super.key,
-    required this.amount,
     required this.id,
     required this.compId,
+    this.onTransactionAdded,
   });
 
-  final String amount;
   final String id;
   final String compId;
+  final VoidCallback? onTransactionAdded;
 
   @override
   Widget build(BuildContext context) {
     final userId = context.read<AppUserCubit>().userID;
     return BlocConsumer<AddCustodyTransactionCubit, AddCustodyTransactionState>(
-      listener: _handleStateChanges,
+      listener: (context, state) => _handleStateChanges(context, state),
       builder: (context, state) {
         final cubit = AddCustodyTransactionCubit.get(context);
         return _buildForm(context, cubit, state, userId);
@@ -45,6 +47,7 @@ class CustodyTransactionAmount extends StatelessWidget {
       _showErrorSnackbar(context, state.message);
     } else if (state is AddCustodyTransactionLoaded) {
       Navigator.pop(context);
+      onTransactionAdded?.call();
     }
   }
 
@@ -73,7 +76,7 @@ class CustodyTransactionAmount extends StatelessWidget {
     return AppTextFormField(
       controller: cubit.transactionAmount,
       type: TextInputType.number,
-      validate: (value) => _validateAmountInput(value, context),
+      validate: (value) => _validateAmountInput(cubit, value, context),
       hint: LangKeys.custodyAmount,
       label: LangKeys.custodyAmount,
     );
@@ -92,18 +95,16 @@ class CustodyTransactionAmount extends StatelessWidget {
     );
   }
 
-  String? _validateAmountInput(String? value, BuildContext context) {
+  String? _validateAmountInput(cubit, String? value, BuildContext context) {
     if (value?.isEmpty ?? true) {
       return context.translate(LangKeys.requiredValue);
     }
 
     final enteredAmount = double.tryParse(value!) ?? 0;
-    final availableAmount = double.tryParse(amount) ?? 0;
+    final availableAmount = double.tryParse(cubit.rimingAmount) ?? 0;
 
     if (enteredAmount > availableAmount) {
-      return context.translate(
-        LangKeys.custodyTransactionAmountBigThanCustodyAmount,
-      );
+      return "${context.translate(LangKeys.custodyTransactionAmountBigThanCustodyAmount)}: ${cubit.rimingAmount}";
     }
 
     return null;
@@ -142,14 +143,24 @@ class CustodyTransactionAmount extends StatelessWidget {
       userId: userId,
     );
 
-    debugPrint("Transaction data: ${transaction.toJson()}");
-    cubit.addCustody(data: transaction);
+    log("Transaction data: ${transaction.toJson()}");
+    cubit.addCustody(data: transaction.toJson()).then((onValue) {
+      if (context.mounted) {
+        _showErrorSnackbar(context, LangKeys.addedSuccess, isError: false);
+        onTransactionAdded?.call();
+        context.pop();
+      }
+    });
   }
 
-  void _showErrorSnackbar(BuildContext context, String messageKey) {
+  void _showErrorSnackbar(
+    BuildContext context,
+    String messageKey, {
+    bool isError = true,
+  }) {
     CustomSnackbar.showTopSnackBar(
       context,
-      backgroundColor: AppColors.red,
+      backgroundColor: !isError ? AppColors.green : AppColors.red,
       message: messageKey,
     );
   }

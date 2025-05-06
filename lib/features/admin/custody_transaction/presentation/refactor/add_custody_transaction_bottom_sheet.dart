@@ -13,11 +13,14 @@ import '../widgets/add_custody/custody_transaction_amount.dart';
 class AddCustodyTranactionBottomSheet extends StatelessWidget {
   const AddCustodyTranactionBottomSheet({
     super.key,
-    required this.amount,
+
     required this.id,
+    required this.rimingAmount,
+    this.onTransactionAdded,
   });
   final String id;
-  final String amount;
+  final VoidCallback? onTransactionAdded;
+  final String rimingAmount;
   @override
   Widget build(BuildContext context) {
     var compId = context.read<AppUserCubit>().compId;
@@ -31,7 +34,11 @@ class AddCustodyTranactionBottomSheet extends StatelessWidget {
               (context) =>
                   EmpCustodyTransactionCubit(emp)..getEmp(compId: compId),
         ),
-        BlocProvider(create: (context) => AddCustodyTransactionCubit(add)),
+        BlocProvider(
+          create:
+              (context) =>
+                  AddCustodyTransactionCubit(add, rimingAmount: rimingAmount),
+        ),
       ],
       child: SingleChildScrollView(
         child: Padding(
@@ -45,7 +52,11 @@ class AddCustodyTranactionBottomSheet extends StatelessWidget {
             spacing: 16,
             children: [
               ChooseEmpDropMenu(),
-              CustodyTransactionAmount(amount: amount, id: id, compId: compId),
+              CustodyTransactionAmount(
+                id: id,
+                compId: compId,
+                onTransactionAdded: onTransactionAdded,
+              ),
             ],
           ),
         ),

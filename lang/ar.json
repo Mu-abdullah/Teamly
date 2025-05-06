@@ -156,6 +156,6 @@
 
     "######################################AddCustody":"", 
     "chooseEmployee":"اختر الموظف",
-    "custodyTransactionAmountBigThanCustodyAmount":"قيمة المبلغ اكبر من قيمة العهدة"
+    "custodyTransactionAmountBigThanCustodyAmount":"قيمة المبلغ اكبر من قيمة المبلغ المتاح"
 
 }

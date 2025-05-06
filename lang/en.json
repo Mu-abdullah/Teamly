@@ -149,7 +149,7 @@
 
     "######################################AddCustody":"", 
     "chooseEmployee":"Choose Employee",
-    "custodyTransactionAmountBigThanCustodyAmount":"Custody Transaction Amount Big Than Custody Amount"
+    "custodyTransactionAmountBigThanCustodyAmount":"Custody Transaction Amount Big Than available Amount"
 
     
      

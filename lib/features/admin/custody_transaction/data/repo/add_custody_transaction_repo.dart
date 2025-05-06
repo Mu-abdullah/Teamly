@@ -10,12 +10,12 @@ class AddCustodyTransactionRepo {
   AddCustodyTransactionRepo(this.service);
 
   Future<Either<CustomError, CustodyTransactionModel>> addCustodyTransaction({
-    required CustodyTransactionModel data,
+    required Map<String, dynamic> data,
   }) async {
     return await service.addData(
       table: BackendPoint.custodyTransaction,
       fromJson: CustodyTransactionModel.fromJson,
-      data: data.toJson(),
+      data: data,
     );
   }
 }

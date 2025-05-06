@@ -149,7 +149,17 @@
 
     "######################################AddCustody":"", 
     "chooseEmployee":"Choose Employee",
-    "custodyTransactionAmountBigThanCustodyAmount":"Custody Transaction Amount Big Than available Amount"
+    "custodyTransactionAmountBigThanCustodyAmount":"Custody Transaction Amount Big Than available Amount",
+    "custodyTransactionItems":"Custody Transaction Items",
+    "spendMoney":"Spend Money",
+
+    "######################################CustodyTransaction":"", 
+    "custodyTransaction":"Custody Transaction",
+    "totalPrice":"Total Price",
+    "totalQuantity":"Total Quantity",
+    "itemName":"Item Name",
+    "itemCount":"Item Count",
+    "itemPrice":"Item Price"
 
     
      

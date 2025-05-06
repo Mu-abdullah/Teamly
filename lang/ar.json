@@ -156,6 +156,15 @@
 
     "######################################AddCustody":"", 
     "chooseEmployee":"اختر الموظف",
-    "custodyTransactionAmountBigThanCustodyAmount":"قيمة المبلغ اكبر من قيمة المبلغ المتاح"
+    "custodyTransactionAmountBigThanCustodyAmount":"قيمة المبلغ اكبر من قيمة المبلغ المتاح",
+    "custodyTransactionItems":"بيانات العهدة",
+    "spendMoney":"صرف مبلغ",
 
+    "######################################CustodyTransaction":"", 
+    "custodyTransaction":"معاملة عهدة",
+    "totalPrice":"السعر الاجمالي",
+    "totalQuantity":"اجمالي الكمية",
+    "itemName":"اسم المنتج",
+    "itemCount":"العدد",
+    "itemPrice":"سعر المنتج"
 }

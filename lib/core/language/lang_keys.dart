@@ -146,4 +146,12 @@ class LangKeys {
   static const String chooseEmployee = 'chooseEmployee';
   static const String custodyTransactionAmountBigThanCustodyAmount =
       'custodyTransactionAmountBigThanCustodyAmount';
+
+  static const String spendMoney = 'spendMoney';
+  static const String custodyTransactionItems = 'custodyTransactionItems';
+  static const String itemName = 'itemName';
+  static const String itemCount = 'itemCount';
+  static const String itemPrice = 'itemPrice';
+  static const String totalPrice = 'totalPrice';
+  static const String totalQuantity = 'totalQuantity';
 }

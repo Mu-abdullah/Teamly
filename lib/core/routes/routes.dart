@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../features/admin/admin_attendance/presentation/views/admin_attendance.dart';
 import '../../features/admin/custody_transaction/presentation/views/custody_transactions.dart';
 import '../../features/admin/custody/presentation/views/custody_screen.dart';
+import '../../features/admin/custody_transaction_items/presentation/views/custody_transaction_items.dart';
 import '../../features/admin/emp_profile/presentation/views/emp_profile.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/admin/review_vacation_requests/presentation/views/review_vacation_request.dart';
@@ -65,6 +66,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           custodyAmount: args?['custodyAmount'] as String,
         ),
       );
+    case RoutesNames.custodyTransactionsItems:
+      return BaseRoute(page: CustodyTransactionItems(
+        id: args?['id'] as String,
+      ));
 
     case RoutesNames.adminAttendance:
       return BaseRoute(page: AdminAttendance());

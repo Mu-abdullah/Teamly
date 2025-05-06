@@ -1,0 +1,29 @@
+import '../../../../../core/entities/custody_transaction_item_entity.dart';
+
+class CreateCustodyTransItemModel extends CustodyTransactionItemEntity {
+  CreateCustodyTransItemModel({
+    required super.id,
+    required super.createdAt,
+    required super.transactionId,
+    required super.name,
+    required super.count,
+    required super.price,
+  });
+
+  factory CreateCustodyTransItemModel.fromJson(Map<String, dynamic> json) =>
+      CreateCustodyTransItemModel(
+        id: json['id'],
+        createdAt: json['created_at'],
+        transactionId: json['transaction_id'],
+        name: json['name'],
+        count: json['count'],
+        price: json['price'],
+      );
+
+  Map<String, dynamic> toJson() => {
+    'transaction_id': transactionId,
+    'name': name,
+    'count': count,
+    'price': price,
+  };
+}

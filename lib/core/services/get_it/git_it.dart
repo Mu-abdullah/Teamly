@@ -7,6 +7,7 @@ import '../../../features/admin/custody/data/repo/get_custody.dart';
 import '../../../features/admin/custody_transaction/data/repo/add_custody_transaction_repo.dart';
 import '../../../features/admin/custody_transaction/data/repo/emp_custody_transaction_repo.dart';
 import '../../../features/admin/custody_transaction/data/repo/get_custody_transaction.dart';
+import '../../../features/admin/custody_transaction_items/data/repo/get_custody_trans_item_repo.dart';
 import '../../../features/admin/emp_profile/data/repo/user_profile_repo.dart';
 import '../../../features/admin/home_screen/data/repo/emp_count_repo.dart';
 import '../../../features/admin/home_screen/data/repo/home_emp_repo.dart';
@@ -59,6 +60,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => UserCheckVacationRepo(locator()));
   locator.registerLazySingleton(() => AddCustodyTransactionRepo(locator()));
   locator.registerLazySingleton(() => EmpCustodyTransactionRepo(locator()));
+  locator.registerLazySingleton(() => GetCustodyTransItemRepo(locator()));
 }
 
 void _registerServices() {

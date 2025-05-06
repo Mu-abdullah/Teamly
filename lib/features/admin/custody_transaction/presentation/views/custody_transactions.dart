@@ -8,7 +8,7 @@ import '../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../../../../core/style/widgets/custom_bottom_sheet.dart';
 import '../../data/repo/get_custody_transaction.dart';
 import '../cubits/get_custody_transaction_cubit/get_custody_transaction_cubit.dart';
-import '../refactor/add_custody_transaction_bottom_sheet.dart';
+import 'add_custody_transaction_bottom_sheet.dart';
 import '../refactor/custody_transaction_body.dart';
 
 class CustodyTransactions extends StatelessWidget {

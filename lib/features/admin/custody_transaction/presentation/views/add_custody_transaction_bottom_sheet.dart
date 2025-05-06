@@ -7,8 +7,7 @@ import '../../data/repo/add_custody_transaction_repo.dart';
 import '../../data/repo/emp_custody_transaction_repo.dart';
 import '../cubits/add_custody_transaction_cubit/add_custody_transaction_cubit.dart';
 import '../cubits/emp_custody_transaction_cubit/emp_custody_transaction_cubit.dart';
-import '../widgets/add_custody/choose_emp_drop_menu.dart';
-import '../widgets/add_custody/custody_transaction_amount.dart';
+import '../refactor/add_custody_transaction_bottom_sheet_body.dart';
 
 class AddCustodyTranactionBottomSheet extends StatelessWidget {
   const AddCustodyTranactionBottomSheet({
@@ -28,39 +27,36 @@ class AddCustodyTranactionBottomSheet extends StatelessWidget {
     var add = locator<AddCustodyTransactionRepo>();
     var emp = locator<EmpCustodyTransactionRepo>();
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create:
-              (context) =>
-                  EmpCustodyTransactionCubit(emp)..getEmp(compId: compId),
-        ),
-        BlocProvider(
-          create:
-              (context) =>
-                  AddCustodyTransactionCubit(add, rimingAmount: rimingAmount),
-        ),
-      ],
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(
-            top: 16,
-            left: 16,
-            right: 16,
-            bottom: MediaQuery.of(context).viewInsets.bottom + 16,
-          ),
-          child: Column(
-            spacing: 16,
-            children: [
-              ChooseEmpDropMenu(),
-              CustodyTransactionAmount(
-                id: id,
-                compId: compId,
-                onTransactionAdded: onTransactionAdded,
-              ),
-            ],
-          ),
-        ),
+      providers: providers(
+        compId: compId,
+        id: id,
+        rimingAmount: rimingAmount,
+        add: add,
+        emp: emp,
+      ),
+      child: AddCustodyTranactionBottomSheetBody(
+        id: id,
+        compId: compId,
+        onTransactionAdded: onTransactionAdded,
       ),
     );
   }
+
+  List<BlocProvider> providers({
+    required String compId,
+    required String id,
+    required String rimingAmount,
+    required AddCustodyTransactionRepo add,
+    required EmpCustodyTransactionRepo emp,
+  }) => [
+    BlocProvider(
+      create:
+          (context) => EmpCustodyTransactionCubit(emp)..getEmp(compId: compId),
+    ),
+    BlocProvider(
+      create:
+          (context) =>
+              AddCustodyTransactionCubit(add, rimingAmount: rimingAmount),
+    ),
+  ];
 }

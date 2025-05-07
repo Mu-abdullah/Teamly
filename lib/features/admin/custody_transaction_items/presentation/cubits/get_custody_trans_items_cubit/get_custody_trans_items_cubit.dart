@@ -8,10 +8,13 @@ part 'get_custody_trans_items_state.dart';
 
 class GetCustodyTransItemsCubit extends Cubit<GetCustodyTransItemsState> {
   GetCustodyTransItemRepo repo;
-  GetCustodyTransItemsCubit(this.repo) : super(GetCustodyTransItemsInitial());
+  GetCustodyTransItemsCubit(this.repo, {required this.custodyAmount})
+    : super(GetCustodyTransItemsInitial());
 
   static GetCustodyTransItemsCubit get(context) => BlocProvider.of(context);
 
+  String? custodyAmount;
+  List<GetCustodyTransItemModel>? transactions;
   Future<void> getCustodyTransItems({required String transId}) async {
     emit(GetCustodyTransItemsLoading());
     var res = await repo.getCustodyTransItem(transId: transId);
@@ -23,6 +26,7 @@ class GetCustodyTransItemsCubit extends Cubit<GetCustodyTransItemsState> {
       },
       (r) {
         if (!isClosed) {
+          transactions = r;
           emit(GetCustodyTransItemsLoaded(r));
         }
       },
@@ -45,5 +49,10 @@ class GetCustodyTransItemsCubit extends Cubit<GetCustodyTransItemsState> {
       sum += double.parse(transaction.count!);
     }
     return sum;
+  }
+
+  //calc remaining amount
+  double calculateRemainingAmount() {
+    return double.parse(custodyAmount!) - sumPrice(transactions ?? []);
   }
 }

@@ -12,15 +12,23 @@ class AddCustodyTransactionItem extends StatelessWidget {
     super.key,
     this.onTransactionAdded,
     required this.id,
+    required this.remainingAmount,
   });
   final VoidCallback? onTransactionAdded;
   final String id;
+  final double remainingAmount;
   @override
   Widget build(BuildContext context) {
     final lac = locator<CreateCustodyTransItemRepo>();
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => CreateCustodyTransItemsCubit(lac)),
+        BlocProvider(
+          create:
+              (context) => CreateCustodyTransItemsCubit(
+                lac,
+                rimindingAmount: remainingAmount,
+              ),
+        ),
         BlocProvider(create: (context) => CustodyItemsCubit(context, id: id)),
       ],
       child: BlocBuilder<
@@ -32,6 +40,7 @@ class AddCustodyTransactionItem extends StatelessWidget {
             children: [
               Expanded(
                 child: AddCustodyTransactionItemBody(
+                  remainingAmount: remainingAmount.toString(),
                   onTransactionAdded: onTransactionAdded,
                 ),
               ),

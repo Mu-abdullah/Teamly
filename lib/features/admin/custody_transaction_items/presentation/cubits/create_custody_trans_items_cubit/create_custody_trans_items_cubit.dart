@@ -8,9 +8,11 @@ part 'create_custody_trans_items_state.dart';
 
 class CreateCustodyTransItemsCubit extends Cubit<CreateCustodyTransItemsState> {
   CreateCustodyTransItemRepo repo;
-  CreateCustodyTransItemsCubit(this.repo)
+  CreateCustodyTransItemsCubit(this.repo,{required this.rimindingAmount})
     : super(CreateCustodyTransItemsInitial());
   static CreateCustodyTransItemsCubit get(context) => BlocProvider.of(context);
+
+  final double rimindingAmount;
 
   Future<void> addItems(List<CreateCustodyTransItemModel> items) async {
     for (int i = 0; i < items.length; i++) {

@@ -78,4 +78,13 @@ class CustodyItemsCubit extends Cubit<List<CreateCustodyTransItemModel>> {
         .map((item) => item.toJson())
         .toList();
   }
+
+  // calc total price
+  double getTotalPrice() {
+    double totalPrice = 0;
+    for (var item in state) {
+      totalPrice += double.parse(item.price!) * double.parse(item.count!);
+    }
+    return totalPrice;
+  }
 }

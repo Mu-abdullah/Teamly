@@ -9,12 +9,10 @@ import '../../../../../../core/style/widgets/custom_snack_bar.dart';
 import '../../../data/model/create_custody_trans_item_model.dart';
 import '../../cubits/create_custody_trans_items_cubit/create_custody_trans_items_cubit.dart';
 import '../../cubits/text_field_cubit.dart';
-import '../../refactor/add_custody_transaction_item_body.dart';
 
 class SubmitNewTransactionItem extends StatelessWidget {
-  const SubmitNewTransactionItem({super.key, required this.widget});
-
-  final AddCustodyTransactionItemBody widget;
+  const SubmitNewTransactionItem({super.key, this.onTransactionAdded});
+  final VoidCallback? onTransactionAdded;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,7 @@ class SubmitNewTransactionItem extends StatelessWidget {
               }
             });
 
-            widget.onTransactionAdded?.call();
+            onTransactionAdded?.call();
           } else if (state is CreateCustodyTransItemsError) {
             context.pop();
             CustomSnackbar.showTopSnackBar(
@@ -51,16 +49,24 @@ class SubmitNewTransactionItem extends StatelessWidget {
         },
         builder: (context, state) {
           var cubit = CreateCustodyTransItemsCubit.get(context);
+          var itemsCubit = context.read<CustodyItemsCubit>();
           return AppButton(
             onTap: () {
-              final items =
-                  context.read<CustodyItemsCubit>().getNonEmptyItems();
+              if (itemsCubit.getTotalPrice() > cubit.rimindingAmount) {
+                CustomSnackbar.showTopSnackBar(
+                  context,
+                  message:
+                      LangKeys.custodyTransactionAmountBigThanCustodyAmount,
+                );
+              } else {
+                final items = itemsCubit.getNonEmptyItems();
 
-              List<CreateCustodyTransItemModel> modelList =
-                  items
-                      .map((map) => CreateCustodyTransItemModel.fromJson(map))
-                      .toList();
-              cubit.addItems(modelList);
+                List<CreateCustodyTransItemModel> modelList =
+                    items
+                        .map((map) => CreateCustodyTransItemModel.fromJson(map))
+                        .toList();
+                cubit.addItems(modelList);
+              }
             },
             text: LangKeys.save,
           );

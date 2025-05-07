@@ -9,6 +9,7 @@ import '../../views/add_custody_transactionI_item.dart';
 class AddCustodyTransactionItemButton extends StatelessWidget {
   const AddCustodyTransactionItemButton({super.key, required this.id});
   final String id;
+
   @override
   Widget build(BuildContext context) {
     var cubit = context.read<GetCustodyTransItemsCubit>();
@@ -22,6 +23,7 @@ class AddCustodyTransactionItemButton extends StatelessWidget {
           builder: (context) {
             return AddCustodyTransactionItem(
               onTransactionAdded: () => cubit.getCustodyTransItems(transId: id),
+              remainingAmount: cubit.calculateRemainingAmount(),
               id: id,
             );
           },

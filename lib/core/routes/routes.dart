@@ -69,6 +69,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case RoutesNames.custodyTransactionsItems:
       return BaseRoute(page: CustodyTransactionItems(
         id: args?['id'] as String,
+        custodyAmount: args?['custodyAmount'] as String,
       ));
 
     case RoutesNames.adminAttendance:

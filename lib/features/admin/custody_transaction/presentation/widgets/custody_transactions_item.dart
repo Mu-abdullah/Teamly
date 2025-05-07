@@ -20,7 +20,10 @@ class CustodyTransactionItem extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           RoutesNames.custodyTransactionsItems,
-          arguments: {'id': transaction.id},
+          arguments: {
+            'id': transaction.id,
+            'custodyAmount': transaction.amount,
+          },
         );
       },
       child: Padding(

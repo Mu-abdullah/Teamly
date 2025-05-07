@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/app_text.dart';
@@ -11,26 +12,48 @@ class TotalCountItems extends StatelessWidget {
 
   final GetCustodyTransItemsCubit cubit;
   final List<GetCustodyTransItemModel> items;
+
+  Widget _buildRow(List<Widget> children) {
+    return Row(spacing: 8, children: children);
+  }
+
+  Widget _buildLabelValue(String label, String value) {
+    return Row(
+      spacing: 4,
+      children: [
+        AppText(label, fontSize: 11),
+        AppText(translate: false, ":", fontSize: 11),
+        AppText(value, translate: false, fontSize: 11),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final totalQuantity = cubit.sumCount(items).toStringAsFixed(0);
+    final totalPrice = cubit.sumPrice(items).toString();
+    final remaining =
+        context
+            .read<GetCustodyTransItemsCubit>()
+            .calculateRemainingAmount()
+            .toString();
+
     return Padding(
       padding: const EdgeInsets.all(8),
       child: DecoratedContainer(
-        child: Row(
-          spacing: 5,
+        child: Column(
+          spacing: 8,
           children: [
-            AppText(LangKeys.totalQuantity, fontSize: 11),
-            AppText(translate: false, ":", fontSize: 11),
-            AppText(
-              translate: false,
-              fontSize: 11,
-              cubit.sumCount(items).toStringAsFixed(0),
-            ),
-            Spacer(),
-            AppText(LangKeys.totalPrice, fontSize: 11),
-            AppText(translate: false, ":", fontSize: 11),
-            AppText(translate: false, cubit.sumPrice(items).toString()),
-            AppText(LangKeys.eg),
+            _buildRow([
+              _buildLabelValue(LangKeys.totalQuantity, totalQuantity),
+              const Spacer(),
+              _buildLabelValue(LangKeys.totalPrice, totalPrice),
+              AppText(LangKeys.eg),
+            ]),
+            _buildRow([
+              _buildLabelValue(LangKeys.rimaining, remaining),
+              AppText(LangKeys.eg),
+            ]),
           ],
         ),
       ),

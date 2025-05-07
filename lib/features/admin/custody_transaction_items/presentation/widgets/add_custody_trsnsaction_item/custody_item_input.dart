@@ -42,9 +42,9 @@ class CustodyItemInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.only(bottom: 16.0),
+      margin: const EdgeInsets.only(bottom: 8),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8),
         child: Column(
           spacing: 8,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +85,7 @@ class CustodyItemInput extends StatelessWidget {
             ),
 
             Row(
-              spacing: 10,
+              spacing: 8,
               children: [
                 Expanded(
                   child: AppTextFormField(
@@ -116,11 +116,18 @@ class CustodyItemInput extends StatelessWidget {
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   ),
                 ),
+                AppText(_calculateTotal(), translate: false),
               ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  String _calculateTotal() {
+    final price = double.tryParse(item.price ?? '') ?? 0.0;
+    final count = double.tryParse(item.count ?? '') ?? 0.0;
+    return (price * count).toStringAsFixed(2);
   }
 }

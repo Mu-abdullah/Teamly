@@ -155,6 +155,7 @@
 
     "######################################CustodyTransaction":"", 
     "custodyTransaction":"Custody Transaction",
+    "noRemainingAmount":"No Remaining Amount",
     "item":"Item",
     "addItems":"Add Items",
     "newItem":"New Item",

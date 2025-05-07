@@ -157,4 +157,5 @@ class LangKeys {
   static const String item = 'item';
   static const String newItem = 'newItem';
   static const String addItems = 'addItems';
+  static const String noRemainingAmount = 'noRemainingAmount';
 }

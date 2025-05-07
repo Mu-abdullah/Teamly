@@ -26,4 +26,11 @@ class GetCustodyTransItemModel extends CustodyTransactionItemEntity {
     data['price'] = price;
     return data;
   }
+
+  // calc total price
+  double calculateTotal() {
+    final pric = double.tryParse(price ?? '') ?? 0.0;
+    final coun = double.tryParse(count ?? '') ?? 0.0;
+    return (pric * coun);
+  }
 }

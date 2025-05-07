@@ -162,6 +162,7 @@
 
     "######################################CustodyTransaction":"", 
     "custodyTransaction":"معاملة عهدة",
+    "noRemainingAmount":"لا يوجد مبلغ متبقي",
     "totalPrice":"السعر الاجمالي",
     "item":"المنتج",
     "newItem":"منتج جديد",

@@ -11,15 +11,17 @@ class CustomSnackbar {
     Color textColor = Colors.white,
     bool needIcon = false,
     bool translate = true,
+    bool top = true,
     IconData icon = HugeIcons.strokeRoundedCheckmarkCircle01,
   }) {
     final overlay = Overlay.of(context);
     final entry = OverlayEntry(
       builder:
           (context) => Positioned(
-            top: MediaQuery.of(context).padding.top + 10,
+            top: top ? MediaQuery.of(context).padding.top + 10 : null,
             left: 20,
             right: 20,
+            bottom: !top ? MediaQuery.of(context).padding.bottom + 10 : null,
             child: Material(
               color: Colors.transparent,
               child: Container(

@@ -51,8 +51,18 @@ class GetCustodyTransItemsCubit extends Cubit<GetCustodyTransItemsState> {
     return sum;
   }
 
+  // calc all price * counts
+  double sumAllPrice(List<GetCustodyTransItemModel> transactions) {
+    double sum = 0.0;
+    for (var transaction in transactions) {
+      sum +=
+          double.parse(transaction.price!) * double.parse(transaction.count!);
+    }
+    return sum;
+  }
+
   //calc remaining amount
   double calculateRemainingAmount() {
-    return double.parse(custodyAmount!) - sumPrice(transactions ?? []);
+    return double.parse(custodyAmount!) - sumAllPrice(transactions ?? []);
   }
 }

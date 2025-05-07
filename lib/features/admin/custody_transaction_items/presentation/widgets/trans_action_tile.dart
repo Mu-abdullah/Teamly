@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teamly/core/style/color/app_color.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/app_text.dart';
@@ -26,10 +27,50 @@ class TransactionItemTile extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 4,
-                  child: AppText(item.name!, translate: false, maxLines: 4),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        spacing: 5,
+                        children: [
+                          Expanded(
+                            child: AppText(
+                              item.name!,
+                              translate: false,
+                              maxLines: 4,
+                            ),
+                          ),
+                          AppText(item.price!, translate: false),
+                          AppText(
+                            LangKeys.eg,
+                            fontSize: 11,
+                            color: AppColors.grey,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        spacing: 5,
+                        children: [
+                          AppText(
+                            LangKeys.totalPrice,
+                            fontSize: 11,
+                            color: AppColors.grey,
+                          ),
+                          AppText(" : ", translate: false),
+                          AppText(
+                            item.calculateTotal().toStringAsFixed(0),
+                            translate: false,
+                          ),
+                          AppText(
+                            LangKeys.eg,
+                            fontSize: 11,
+                            color: AppColors.grey,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                AppText(item.price!, translate: false),
-                AppText(LangKeys.eg),
               ],
             ),
           ],

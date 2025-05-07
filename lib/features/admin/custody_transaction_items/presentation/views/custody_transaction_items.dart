@@ -31,12 +31,7 @@ class CustodyTransactionItems extends StatelessWidget {
           title:
               "${context.translate(LangKeys.custodyTransactionItems)} : $custodyAmount ${context.translate(LangKeys.eg)}",
           translate: false,
-          actions: [
-            AddCustodyTransactionItemButton(
-              id: id,
-              
-            ),
-          ],
+          actions: [AddCustodyTransactionItemButton(id: id)],
         ),
         body: CustodyTransactionItemsBody(),
       ),

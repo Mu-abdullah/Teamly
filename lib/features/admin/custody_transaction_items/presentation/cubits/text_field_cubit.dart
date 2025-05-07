@@ -1,29 +1,43 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teamly/core/extextions/extentions.dart';
+import 'package:teamly/core/functions/generate_id.dart';
 
+import '../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
+import '../../../../../core/services/supabase/backend_points.dart';
 import '../../data/model/create_custody_trans_item_model.dart';
 
 class CustodyItemsCubit extends Cubit<List<CreateCustodyTransItemModel>> {
-  CustodyItemsCubit()
+  final String id;
+  CustodyItemsCubit(BuildContext context, {required this.id})
     : super([
         CreateCustodyTransItemModel(
-          id: '',
-          createdAt: DateTime.now().toIso8601String(),
-          transactionId: '',
+          id: GenerateId.generateDocumentId(
+            context: context,
+            tableName: BackendPoint.custodyTransactionItem,
+            userId: context.read<AppUserCubit>().empID,
+            companyName: context.read<AppUserCubit>().compId,
+          ),
+          createdAt: DateTime.now().toString(),
+          transactionId: id,
           name: '',
           count: '',
           price: '',
         ),
       ]);
 
-  void addItem() {
+  void addItem(BuildContext context) {
     emit([
       ...state,
       CreateCustodyTransItemModel(
-        id: '',
-        createdAt: DateTime.now().toIso8601String(),
-        transactionId: '',
+        id: GenerateId.generateDocumentId(
+          context: context,
+          tableName: BackendPoint.custodyTransactionItem,
+          userId: context.read<AppUserCubit>().empID,
+          companyName: context.read<AppUserCubit>().compId,
+        ),
+        createdAt: DateTime.now().toString(),
+        transactionId: id,
         name: '',
         count: '',
         price: '',
@@ -53,15 +67,15 @@ class CustodyItemsCubit extends Cubit<List<CreateCustodyTransItemModel>> {
     emit(updatedList);
   }
 
-  // List<Map<String, dynamic>> getNonEmptyItems() {
-  //   return state
-  //       .where(
-  //         (item) =>
-  //             item.name!.isNotEmpty ||
-  //             double.parse(item.count!) > 0 ||
-  //             double.parse(item.price!) > 0,
-  //       )
-  //       .map((item) => item.toJson())
-  //       .toList();
-  // }
+  List<Map<String, dynamic>> getNonEmptyItems() {
+    return state
+        .where(
+          (item) =>
+              item.name!.isNotEmpty ||
+              double.parse(item.count!) > 0 ||
+              double.parse(item.price!) > 0,
+        )
+        .map((item) => item.toJson())
+        .toList();
+  }
 }

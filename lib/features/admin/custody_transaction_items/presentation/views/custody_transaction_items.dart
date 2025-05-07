@@ -22,7 +22,7 @@ class CustodyTransactionItems extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           title: LangKeys.custodyTransactionItems,
-          actions: [AddCustodyTransactionItemButton()],
+          actions: [AddCustodyTransactionItemButton(id : id)],
         ),
         body: CustodyTransactionItemsBody(),
       ),

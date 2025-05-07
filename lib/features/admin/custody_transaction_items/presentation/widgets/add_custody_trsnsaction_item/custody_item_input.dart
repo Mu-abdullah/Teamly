@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
@@ -97,6 +98,7 @@ class CustodyItemInput extends StatelessWidget {
                                 : null,
                     label: LangKeys.itemCount,
                     onChange: (value) => onCountChanged(value, index),
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   ),
                 ),
 
@@ -111,6 +113,7 @@ class CustodyItemInput extends StatelessWidget {
                                 : null,
                     label: LangKeys.itemPrice,
                     onChange: (value) => onPriceChanged(value, index),
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   ),
                 ),
               ],

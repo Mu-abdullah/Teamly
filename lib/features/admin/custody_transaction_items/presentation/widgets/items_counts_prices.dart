@@ -15,7 +15,7 @@ class TotalCountItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final totalQuantity = cubit.sumCount(items).toStringAsFixed(0);
-    final totalPrice = cubit.sumPrice(items).toString();
+    final totalPrice = cubit.sumAllPrice(items).toString();
     final remaining = cubit.calculateRemainingAmount().toString();
 
     return Padding(
@@ -24,9 +24,8 @@ class TotalCountItems extends StatelessWidget {
         child: Column(
           spacing: 8,
           children: [
+            _buildLabelValue(LangKeys.totalQuantity, totalQuantity),
             _buildRow([
-              _buildLabelValue(LangKeys.totalQuantity, totalQuantity),
-              const Spacer(),
               _buildLabelValue(LangKeys.totalPrice, totalPrice),
               AppText(LangKeys.eg),
             ]),

@@ -11,8 +11,8 @@ class AppButton extends StatelessWidget {
   const AppButton({
     required this.onTap,
     this.text,
-    this.btnColor = AppColors.white,
-    this.circleColor = AppColors.black,
+    this.txtColor = AppColors.white,
+    this.backGroungColor = AppColors.black,
     this.borderColor = AppColors.black,
     this.isBorderd = false,
     this.fontSize = 16,
@@ -30,8 +30,8 @@ class AppButton extends StatelessWidget {
   final String? text;
   final double fontSize;
   final VoidCallback onTap;
-  final Color btnColor;
-  final Color circleColor;
+  final Color txtColor;
+  final Color backGroungColor;
   final Color borderColor;
   final Color iconColor;
   final bool isBorderd;
@@ -60,7 +60,7 @@ class AppButton extends StatelessWidget {
   Widget _buildLoadingShimmer(BuildContext context) {
     return CustomShimmer(
       child: _buildButtonContainer(
-        child: Center(child: _buildText(context, btnColor)),
+        child: Center(child: _buildText(context, txtColor)),
       ),
     );
   }
@@ -119,8 +119,8 @@ class AppButton extends StatelessWidget {
 
   Color get _getButtonColor {
     if (isDisabled && !isLoading) return AppColors.grey;
-    return isBorderd ? Colors.white : circleColor;
+    return isBorderd ? Colors.white : backGroungColor;
   }
 
-  Color get _getTextColor => isBorderd ? borderColor : btnColor;
+  Color get _getTextColor => isBorderd ? borderColor : txtColor;
 }

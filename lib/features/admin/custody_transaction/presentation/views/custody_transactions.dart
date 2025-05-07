@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/get_it/git_it.dart';
+import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_button.dart';
 import '../../../../../core/style/widgets/custom_app_bar.dart';
-import '../../../../../core/style/widgets/custom_bottom_sheet.dart';
 import '../../data/repo/get_custody_transaction.dart';
 import '../cubits/get_custody_transaction_cubit/get_custody_transaction_cubit.dart';
-import 'add_custody_transaction_bottom_sheet.dart';
+import '../widgets/add_custody_transaction_button.dart';
 import '../refactor/custody_transaction_body.dart';
 
 class CustodyTransactions extends StatelessWidget {
@@ -47,7 +47,10 @@ class _CustodyTransactionsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: LangKeys.custodyDetails),
+      appBar: CustomAppBar(
+        title: LangKeys.custodyDetails,
+        actions: [AddCustodyTransactionbutton(id: id)],
+      ),
       body: Column(
         children: [
           Expanded(
@@ -62,29 +65,10 @@ class _CustodyTransactionsView extends StatelessWidget {
   Widget _buildBottomButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: BlocBuilder<GetCustodyTransactionCubit, GetCustodyTransactionState>(
-        builder: (context, state) {
-          final cubit = context.read<GetCustodyTransactionCubit>();
-          return AppButton(
-            text: LangKeys.addCustody,
-            onTap: () => _showAddCustodyBottomSheet(context, cubit),
-          );
-        },
-      ),
-    );
-  }
-
-  void _showAddCustodyBottomSheet(
-    BuildContext context,
-    GetCustodyTransactionCubit cubit,
-  ) {
-    customShowBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) => AddCustodyTranactionBottomSheet(
-        id: id,
-        rimingAmount: cubit.calculateRemainingAmount().toString(),
-        onTransactionAdded: () => cubit.fetchCustodyTransaction(id),
+      child: AppButton(
+        onTap: () {},
+        text: LangKeys.settled,
+        backGroungColor: AppColors.green,
       ),
     );
   }

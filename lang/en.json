@@ -155,6 +155,9 @@
 
     "######################################CustodyTransaction":"", 
     "custodyTransaction":"Custody Transaction",
+    "item":"Item",
+    "addItems":"Add Items",
+    "newItem":"New Item",
     "totalPrice":"Total Price",
     "totalQuantity":"Total Quantity",
     "itemName":"Item Name",

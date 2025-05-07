@@ -73,6 +73,7 @@ class AddCustodyBottomSheet extends StatelessWidget {
                     id: GenerateId.generateDocumentId(
                       context: context,
                       tableName: BackendPoint.custody,
+                      userId: context.read<AppUserCubit>().empID,
                       companyName: context.read<AppUserCubit>().compId,
                     ),
                     createdAt: DateTime.now().toString(),

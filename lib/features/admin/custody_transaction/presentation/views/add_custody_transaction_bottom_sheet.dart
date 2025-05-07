@@ -27,13 +27,18 @@ class AddCustodyTranactionBottomSheet extends StatelessWidget {
     var add = locator<AddCustodyTransactionRepo>();
     var emp = locator<EmpCustodyTransactionRepo>();
     return MultiBlocProvider(
-      providers: providers(
-        compId: compId,
-        id: id,
-        rimingAmount: rimingAmount,
-        add: add,
-        emp: emp,
-      ),
+      providers: [
+        BlocProvider(
+          create:
+              (context) =>
+                  EmpCustodyTransactionCubit(emp)..getEmp(compId: compId),
+        ),
+        BlocProvider(
+          create:
+              (context) =>
+                  AddCustodyTransactionCubit(add, rimingAmount: rimingAmount),
+        ),
+      ],
       child: AddCustodyTranactionBottomSheetBody(
         id: id,
         compId: compId,
@@ -41,22 +46,4 @@ class AddCustodyTranactionBottomSheet extends StatelessWidget {
       ),
     );
   }
-
-  List<BlocProvider> providers({
-    required String compId,
-    required String id,
-    required String rimingAmount,
-    required AddCustodyTransactionRepo add,
-    required EmpCustodyTransactionRepo emp,
-  }) => [
-    BlocProvider(
-      create:
-          (context) => EmpCustodyTransactionCubit(emp)..getEmp(compId: compId),
-    ),
-    BlocProvider(
-      create:
-          (context) =>
-              AddCustodyTransactionCubit(add, rimingAmount: rimingAmount),
-    ),
-  ];
 }

@@ -21,6 +21,8 @@ class CreateCustodyTransItemModel extends CustodyTransactionItemEntity {
       );
 
   Map<String, dynamic> toJson() => {
+    'id': id,
+    'created_at': createdAt,
     'transaction_id': transactionId,
     'name': name,
     'count': count,

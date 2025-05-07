@@ -40,6 +40,7 @@ class SubmitRequestButton extends StatelessWidget {
                   context: context,
                   tableName: BackendPoint.vacations,
                   companyName: context.read<AppUserCubit>().compId,
+                  userId: context.read<AppUserCubit>().empID,
                 ),
                 startDate: cubit.startDate.text,
                 endDate: cubit.endDate.text,

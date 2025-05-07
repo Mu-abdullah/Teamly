@@ -37,7 +37,6 @@ class AppTextFormField extends StatefulWidget {
   final bool isPassword;
   final bool enabled;
   final bool border;
-
   final TextDirection? direction;
   final TextEditingController controller;
   final TextInputType type;
@@ -119,10 +118,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     return customTextStyle(
       context,
       isBold: !isError,
-      fontSize:
-          !isError
-              ? context.bodySmall!.fontSize
-              : context.bodySmall!.fontSize! - 2,
+      fontSize: !isError ? 11.0 : 14.0,
       color: isError ? AppColors.red : AppColors.black,
     );
   }

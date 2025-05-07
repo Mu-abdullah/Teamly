@@ -12,7 +12,7 @@ class AppButton extends StatelessWidget {
     required this.onTap,
     this.text,
     this.btnColor = AppColors.white,
-    this.backGroundColor = AppColors.black,
+    this.circleColor = AppColors.black,
     this.borderColor = AppColors.black,
     this.isBorderd = false,
     this.fontSize = 16,
@@ -31,7 +31,7 @@ class AppButton extends StatelessWidget {
   final double fontSize;
   final VoidCallback onTap;
   final Color btnColor;
-  final Color backGroundColor;
+  final Color circleColor;
   final Color borderColor;
   final Color iconColor;
   final bool isBorderd;
@@ -119,7 +119,7 @@ class AppButton extends StatelessWidget {
 
   Color get _getButtonColor {
     if (isDisabled && !isLoading) return AppColors.grey;
-    return isBorderd ? Colors.white : backGroundColor;
+    return isBorderd ? Colors.white : circleColor;
   }
 
   Color get _getTextColor => isBorderd ? borderColor : btnColor;

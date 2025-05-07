@@ -134,6 +134,7 @@ class CustodyTransactionAmount extends StatelessWidget {
       id: GenerateId.generateDocumentId(
         context: context,
         tableName: BackendPoint.custodyTransaction,
+        userId: context.read<AppUserCubit>().empID,
         companyName: compId,
       ),
       createdAt: DateTime.now().toString(),

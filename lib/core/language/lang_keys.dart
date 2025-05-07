@@ -154,4 +154,7 @@ class LangKeys {
   static const String itemPrice = 'itemPrice';
   static const String totalPrice = 'totalPrice';
   static const String totalQuantity = 'totalQuantity';
+  static const String item = 'item';
+  static const String newItem = 'newItem';
+  static const String addItems = 'addItems';
 }

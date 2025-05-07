@@ -133,7 +133,7 @@ class ReviewItem extends StatelessWidget {
       onTap: onTap,
       isCircle: true,
       icon: icon,
-      backGroundColor: backGroundColor,
+      circleColor: backGroundColor,
     );
   }
 }

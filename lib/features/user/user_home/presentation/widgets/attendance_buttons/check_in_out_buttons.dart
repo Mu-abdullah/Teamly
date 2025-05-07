@@ -67,6 +67,7 @@ class CheckInOutButtons extends StatelessWidget {
                   id: GenerateId.generateDocumentId(
                     context: context,
                     tableName: BackendPoint.attendance,
+                    userId: context.read<AppUserCubit>().empID,
                     companyName: com,
                   ),
                   empId: uid,

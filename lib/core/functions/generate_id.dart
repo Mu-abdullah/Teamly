@@ -5,15 +5,17 @@ class GenerateId {
   static String generateDocumentId({
     required BuildContext context,
     required String tableName,
+    required String userId,
     required String companyName,
   }) {
     try {
       final DateTime now = DateTime.now();
       final String date = DateFormat('yyMMddHHmmss', 'en').format(now);
       final String table = tableName.substring(0, 3).toUpperCase();
-      final String comp = companyName.toUpperCase();
+      final String user = userId.substring(0, 3).toUpperCase();
+      final String comp = companyName.substring(0, 3).toUpperCase();
 
-      return 'TE-$table-$comp-$date';
+      return 'TE-$table-$comp-$user$date';
     } catch (e) {
       throw Exception('Failed to generate document ID: $e');
     }

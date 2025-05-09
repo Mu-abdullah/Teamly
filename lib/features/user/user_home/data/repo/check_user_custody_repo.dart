@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:teamly/core/error/custom_errors.dart';
+import 'package:teamly/core/services/status/custody_status.dart';
 
 import '../../../../../core/services/graph_ql/graph_ql.dart';
 import '../../../../../core/services/supabase/backend_points.dart';
@@ -19,6 +20,7 @@ class ChechUserCustodyRepo {
         fromJson: CheckUserCustodyModel.fromJson,
         filters: {
           'emp_id': {'eq': userId},
+          'status': {'eq': CustodyStatus.notSettled},
         },
       );
       return Right(result);

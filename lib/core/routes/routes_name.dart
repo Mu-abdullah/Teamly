@@ -20,4 +20,5 @@ class RoutesNames {
   static const String userVacation = 'userVacation';
   static const String userNewVacationRequests = 'userNewVacationRequests';
   static const String userVacationsRequests = 'UserVacationsRequests';
+  static const String userCustodyScreen = 'userCustodyScreen';
 }

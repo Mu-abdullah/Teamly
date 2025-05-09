@@ -41,6 +41,9 @@ class CustodySalaryVacationCards extends StatelessWidget {
                     icon: HugeIcons.strokeRoundedDollar01,
                     color: AppColors.blueBlack,
                     height: cardHeight + 20,
+                    onTap:
+                        () =>
+                            context.pushNamed(RoutesNames.userCustodyScreen),
                   );
                 } else if (state is CheckUserCustodyError) {
                   return Container();

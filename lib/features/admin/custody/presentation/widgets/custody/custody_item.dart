@@ -235,7 +235,7 @@ class _CustodyItemState extends State<CustodyItem>
 
   String _getStatusText(String status) {
     return switch (status) {
-      CustodyStatus.settlement => LangKeys.settled,
+      CustodyStatus.settled => LangKeys.settled,
       CustodyStatus.notSettled => LangKeys.notSettled,
       _ => LangKeys.error,
     };
@@ -243,7 +243,7 @@ class _CustodyItemState extends State<CustodyItem>
 
   Color _getStatusColor(String status) {
     return switch (status) {
-      CustodyStatus.settlement => AppColors.green,
+      CustodyStatus.settled => AppColors.green,
       CustodyStatus.notSettled => AppColors.orange,
       _ => AppColors.red,
     };

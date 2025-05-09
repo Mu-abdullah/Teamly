@@ -37,7 +37,7 @@ class SatteledButton extends StatelessWidget {
               custodyCubit
                   .updateCustodyStatus(
                     id: cubit.custody.id!,
-                    status: CustodyStatus.settlement,
+                    status: CustodyStatus.settled,
                   )
                   .then((onValue) {
                     if (context.mounted) {

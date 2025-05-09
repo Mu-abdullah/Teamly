@@ -1,7 +1,7 @@
 enum CustodyStatusEnum { settlement, notSettled, pending, rejected }
 
 class CustodyStatus {
-  static const String settlement = 'settlement';
+  static const String settled = 'settled';
   static const String notSettled = 'notSettled';
   static const String pending = 'pending';
   static const String rejected = 'rejected';

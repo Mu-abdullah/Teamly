@@ -5,6 +5,7 @@ class CustodyTransactionEntity {
   final String? userId;
   final String? empId;
   final String? amount;
+  final String? status;
 
   CustodyTransactionEntity({
     this.id,
@@ -13,6 +14,6 @@ class CustodyTransactionEntity {
     this.userId,
     this.empId,
     this.amount,
-
+    this.status,
   });
 }

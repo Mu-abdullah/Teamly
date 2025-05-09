@@ -93,7 +93,7 @@ class CustodyItemWeb extends StatelessWidget {
 
                 _buildWebItem(
                   icon:
-                      custody.status == CustodyStatus.settlement
+                      custody.status == CustodyStatus.settled
                           ? HugeIcons.strokeRoundedCheckmarkCircle01
                           : HugeIcons.strokeRoundedCancelCircle,
                   title: LangKeys.custodyStatus,
@@ -134,7 +134,7 @@ class CustodyItemWeb extends StatelessWidget {
 
   String _getStatusText(String status) {
     return switch (status) {
-      CustodyStatus.settlement => LangKeys.settled,
+      CustodyStatus.settled => LangKeys.settled,
       CustodyStatus.notSettled => LangKeys.notSettled,
       _ => LangKeys.error,
     };
@@ -142,7 +142,7 @@ class CustodyItemWeb extends StatelessWidget {
 
   Color _getStatusColor(String status) {
     return switch (status) {
-      CustodyStatus.settlement => AppColors.green,
+      CustodyStatus.settled => AppColors.green,
       CustodyStatus.notSettled => AppColors.orange,
       _ => AppColors.red,
     };

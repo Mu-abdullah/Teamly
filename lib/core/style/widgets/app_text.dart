@@ -14,7 +14,7 @@ class AppText extends StatelessWidget {
     this.isUnderline = false,
     this.isOverLine = false,
     this.isLineThrough = false,
-    this.textAlign = TextAlign.justify,
+    this.textAlign = TextAlign.start,
     this.overflow = TextOverflow.ellipsis,
     this.maxLines = 1,
     this.color = AppColors.black,

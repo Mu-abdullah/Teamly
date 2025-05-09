@@ -35,7 +35,7 @@ class CustodyTransactionItems extends StatelessWidget {
               "${context.translate(LangKeys.custodyTransactionItems)} : $custodyAmount ${context.translate(LangKeys.eg)}",
           translate: false,
           actions:
-              superCustodyStatus == CustodyStatus.settlement
+              superCustodyStatus == CustodyStatus.settled
                   ? null
                   : [AddCustodyTransactionItemButton(id: id)],
         ),

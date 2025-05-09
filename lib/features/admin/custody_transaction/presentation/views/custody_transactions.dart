@@ -49,7 +49,7 @@ class _CustodyTransactionsView extends StatelessWidget {
       appBar: CustomAppBar(
         title: LangKeys.custodyDetails,
         actions:
-            model.status! == CustodyStatus.settlement
+            model.status! == CustodyStatus.settled
                 ? null
                 : [AddCustodyTransactionbutton(id: model.id!)],
       ),

@@ -10,6 +10,7 @@ import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/admin/review_vacation_requests/presentation/views/review_vacation_request.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
+import '../../features/user/user_custody/presentation/views/user_custody_screen.dart';
 import '../../features/user/user_home/presentation/views/user_home.dart';
 import '../../features/user/user_vaction/presentation/views/user_vacations.dart';
 import '../../features/user/user_vaction/presentation/widgets/user_new_request_vacation/user_request_vacation.dart';
@@ -62,10 +63,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.custodyTransactions:
       return BaseRoute(
-        page: CustodyTransactions(
-          model: args?['model'] as CustodyModel,
-          
-        ),
+        page: CustodyTransactions(model: args?['model'] as CustodyModel),
       );
     case RoutesNames.custodyTransactionsItems:
       return BaseRoute(
@@ -98,6 +96,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.userVacationsRequests:
       return BaseRoute(page: UserVacationsRequests());
+
+    case RoutesNames.userCustodyScreen:
+      return BaseRoute(page: UserCustodyScreen());
 
     default:
       return BaseRoute(page: const MaterialApp());

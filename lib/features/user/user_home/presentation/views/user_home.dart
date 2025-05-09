@@ -8,11 +8,13 @@ import '../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../../../admin/home_screen/presentation/widgets/home_logout_button.dart';
 import '../../data/repo/attendance_repo.dart';
 import '../../data/repo/check_attendance_repo.dart';
+import '../../data/repo/check_user_custody_repo.dart';
 import '../../data/repo/get_history_repo.dart';
 import '../../data/repo/user_home_card_info_repo.dart';
 import '../cubits/attendance_cubit/attendance_cubit.dart';
 import '../cubits/attendance_history_cubit/attendance_history_cubit.dart';
 import '../cubits/check_attendance_cubit/check_attendance_cubit.dart';
+import '../cubits/check_user_custody_cubit/check_user_custody_cubit.dart';
 import '../cubits/get_user_data_cubit/get_user_data_cubit.dart';
 import '../refactor/user_home_body.dart';
 
@@ -59,6 +61,12 @@ class UserHome extends StatelessWidget {
           (context) =>
               CheckAttendanceCubit(locator<CheckAttendanceRepo>())
                 ..checkAttendance(uid),
+    ),
+    BlocProvider<CheckUserCustodyCubit>(
+      create:
+          (context) =>
+              CheckUserCustodyCubit(locator<ChechUserCustodyRepo>())
+                ..checkUserCustody(userId: uid),
     ),
   ];
 }

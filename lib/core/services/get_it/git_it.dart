@@ -20,6 +20,7 @@ import '../../../features/auth/data/repo/auth_repo.dart';
 import '../../../features/auth/data/repo/check_role_repo.dart';
 import '../../../features/user/user_home/data/repo/attendance_repo.dart';
 import '../../../features/user/user_home/data/repo/check_attendance_repo.dart';
+import '../../../features/user/user_home/data/repo/check_user_custody_repo.dart';
 import '../../../features/user/user_home/data/repo/emp_info_repo.dart';
 import '../../../features/user/user_home/data/repo/get_history_repo.dart';
 import '../../../features/user/user_home/data/repo/user_home_card_info_repo.dart';
@@ -65,6 +66,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => GetCustodyTransItemRepo(locator()));
   locator.registerLazySingleton(() => CreateCustodyTransItemRepo(locator()));
   locator.registerLazySingleton(() => SatteledRepo(locator()));
+  locator.registerLazySingleton(() => ChechUserCustodyRepo(locator()));
 }
 
 void _registerServices() {

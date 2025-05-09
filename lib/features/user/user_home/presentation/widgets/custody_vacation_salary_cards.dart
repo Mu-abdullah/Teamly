@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
+import 'package:teamly/core/style/widgets/custom_shimmer.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/statics/app_statics.dart';
 import '../../../../admin/home_screen/presentation/widgets/emp_count/home_card.dart';
+import '../cubits/check_user_custody_cubit/check_user_custody_cubit.dart';
 import '../cubits/get_user_data_cubit/get_user_data_cubit.dart';
 
 class CustodySalaryVacationCards extends StatelessWidget {
@@ -30,11 +32,35 @@ class CustodySalaryVacationCards extends StatelessWidget {
         child: Column(
           spacing: 8,
           children: [
-            _buildHomeCard(
-              title: LangKeys.custody,
-              icon: HugeIcons.strokeRoundedDollar01,
-              color: AppColors.blueBlack,
-              height: cardHeight,
+            BlocBuilder<CheckUserCustodyCubit, CheckUserCustodyState>(
+              builder: (context, state) {
+                if (state is CheckUserCustodyLoaded) {
+                  return _buildHomeCard(
+                    title: LangKeys.custody,
+                    count: state.isCustody.length.toString(),
+                    icon: HugeIcons.strokeRoundedDollar01,
+                    color: AppColors.blueBlack,
+                    height: cardHeight + 20,
+                  );
+                } else if (state is CheckUserCustodyError) {
+                  return Container();
+                } else if (state is CheckUserCustodyLoading) {
+                  return CustomShimmer(
+                    child: _buildHomeCard(
+                      title: LangKeys.custody,
+                      icon: HugeIcons.strokeRoundedDollar01,
+                      color: AppColors.blueBlack,
+                      height: cardHeight,
+                    ),
+                  );
+                }
+                return _buildHomeCard(
+                  title: LangKeys.custody,
+                  icon: HugeIcons.strokeRoundedDollar01,
+                  color: AppColors.blueBlack,
+                  height: cardHeight,
+                );
+              },
             ),
 
             _buildBottomRow(context, cardHeight),
@@ -84,6 +110,7 @@ class CustodySalaryVacationCards extends StatelessWidget {
   HomeCard _buildHomeCard({
     required String title,
     required IconData icon,
+    String? count,
     Color? color,
     double? height,
     VoidCallback? onTap,
@@ -91,6 +118,7 @@ class CustodySalaryVacationCards extends StatelessWidget {
     return HomeCard(
       onTap: onTap,
       cardTitle: title,
+      cardCount: count,
       cardIcon: icon,
       isHighlighted: true,
       color: color ?? AppColors.black,

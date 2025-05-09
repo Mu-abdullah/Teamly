@@ -5,6 +5,7 @@ class CustodyTransactionItemEntity {
   final String? name;
   final String? price;
   final String? count;
+  final String? user;
 
   CustodyTransactionItemEntity({
     this.id,
@@ -13,5 +14,6 @@ class CustodyTransactionItemEntity {
     this.name,
     this.price,
     this.count,
+    this.user,
   });
 }

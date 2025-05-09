@@ -127,7 +127,7 @@ class _CustodyItemState extends State<CustodyItem>
             ),
             Container(
               decoration: BoxDecoration(
-                color: _getStatusColor(widget.custody.status!),
+                color: CustodyStatus.getStatusColor(widget.custody.status!),
                 borderRadius: AppBorderRadius.mediumRadius,
               ),
               child: Padding(
@@ -228,13 +228,5 @@ class _CustodyItemState extends State<CustodyItem>
       fontSize: 12,
       circleSize: 40,
     );
-  }
-
-  Color _getStatusColor(String status) {
-    return switch (status) {
-      CustodyStatus.settled => AppColors.green,
-      CustodyStatus.notSettled => AppColors.orange,
-      _ => AppColors.red,
-    };
   }
 }

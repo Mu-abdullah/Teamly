@@ -16,6 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor = AppColors.scaffoldBackground,
     this.icon = HugeIcons.strokeRoundedMenu03,
     this.elevation,
+    this.fontSize,
   });
 
   final String title;
@@ -26,6 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color backgroundColor;
   final IconData? icon;
   final double? elevation;
+  final double? fontSize;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -45,7 +47,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () => Navigator.pop(context),
               )
               : null,
-      title: AppText(title, translate: translate),
+      title: AppText(title, translate: translate, fontSize: fontSize),
       actions: actions,
       backgroundColor: backgroundColor,
       elevation: elevation,

@@ -10,7 +10,9 @@ import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/admin/review_vacation_requests/presentation/views/review_vacation_request.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
+import '../../features/user/user_custody/data/model/user_custody_model.dart';
 import '../../features/user/user_custody/presentation/views/user_custody_screen.dart';
+import '../../features/user/user_custody_items/presentation/views/user_custody_items_screen.dart';
 import '../../features/user/user_home/presentation/views/user_home.dart';
 import '../../features/user/user_vaction/presentation/views/user_vacations.dart';
 import '../../features/user/user_vaction/presentation/widgets/user_new_request_vacation/user_request_vacation.dart';
@@ -99,6 +101,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.userCustodyScreen:
       return BaseRoute(page: UserCustodyScreen());
+
+    case RoutesNames.userCustodyItem:
+      return BaseRoute(
+        page: UserCustodyItemsScreen(item: args?['item'] as UserCustodyModel),
+      );
 
     default:
       return BaseRoute(page: const MaterialApp());

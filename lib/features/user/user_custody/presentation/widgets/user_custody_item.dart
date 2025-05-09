@@ -4,6 +4,7 @@ import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/functions/timestamp_to_time.dart';
 import '../../../../../core/language/lang_keys.dart';
+import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/services/status/custody_status.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_text.dart';
@@ -19,7 +20,11 @@ class UserCustodyItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          context.pushNamed(RoutesNames.userCustodyItem, arguments: {
+            'item': item,
+          });
+        },
         child: Container(
           decoration: BoxDecoration(
             color: AppColors.white,
@@ -113,7 +118,7 @@ class UserCustodyItem extends StatelessWidget {
   }
 
   Widget _buildStatus() {
-    final statusColor = _getStatusColor(item.status!);
+    final statusColor =  CustodyStatus.getStatusColor(item.status!);
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Row(
@@ -144,14 +149,5 @@ class UserCustodyItem extends StatelessWidget {
     );
   }
 
-  Color _getStatusColor(String status) {
-    switch (status) {
-      case CustodyStatus.notSettled:
-        return AppColors.orange;
-      case CustodyStatus.settled:
-        return AppColors.green;
-      default:
-        return AppColors.red;
-    }
-  }
+  
 }

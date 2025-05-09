@@ -19,14 +19,15 @@ import '../../../features/admin/review_vacation_requests/data/repo/review_vacati
 import '../../../features/auth/data/repo/auth_repo.dart';
 import '../../../features/auth/data/repo/check_role_repo.dart';
 import '../../../features/user/user_custody/data/repo/get_user_custody_repo.dart';
+import '../../../features/user/user_custody_items/data/repo/user_add_custody_item_repo.dart';
+import '../../../features/user/user_custody_items/data/repo/user_get_custody_item_repo.dart';
 import '../../../features/user/user_home/data/repo/attendance_repo.dart';
 import '../../../features/user/user_home/data/repo/check_attendance_repo.dart';
 import '../../../features/user/user_home/data/repo/check_user_custody_repo.dart';
 import '../../../features/user/user_home/data/repo/emp_info_repo.dart';
 import '../../../features/user/user_home/data/repo/get_history_repo.dart';
 import '../../../features/user/user_home/data/repo/user_home_card_info_repo.dart';
-import '../../../features/user/user_vaction/data/repo/get_user_vacations_requests_repo.dart'
-    show GetUserVacationsRequestsRepo;
+import '../../../features/user/user_vaction/data/repo/get_user_vacations_requests_repo.dart';
 import '../../../features/user/user_vaction/data/repo/submit_vacation_request_repo.dart';
 import '../../../features/user/user_vaction/data/repo/user_check_vacation_repo.dart';
 import '../graph_ql/graph_ql.dart';
@@ -69,6 +70,8 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => SatteledRepo(locator()));
   locator.registerLazySingleton(() => ChechUserCustodyRepo(locator()));
   locator.registerLazySingleton(() => GetUserCustodyRepo(locator()));
+  locator.registerLazySingleton(() => UserAddCustodyItemRepo(locator()));
+  locator.registerLazySingleton(() => UserGetCustodyItemRepo(locator()));
 }
 
 void _registerServices() {

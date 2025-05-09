@@ -54,7 +54,7 @@ class CustodyItemWeb extends StatelessWidget {
                     gradient: LinearGradient(
                       colors: [
                         AppColors.white,
-                        _getStatusColor(custody.status!),
+                        CustodyStatus.getStatusColor(custody.status!),
                       ],
                       begin: const FractionalOffset(0.0, 0.0),
                       end: const FractionalOffset(1.0, 0.0),
@@ -118,7 +118,7 @@ class CustodyItemWeb extends StatelessWidget {
     return Row(
       spacing: 10,
       children: [
-        Icon(icon, color: _getStatusColor(custody.status!)),
+        Icon(icon, color: CustodyStatus.getStatusColor(custody.status!)),
         AppText(title, fontSize: 16, color: AppColors.black),
         AppText(":", translate: false),
         AppText(
@@ -137,14 +137,6 @@ class CustodyItemWeb extends StatelessWidget {
       CustodyStatus.settled => LangKeys.settled,
       CustodyStatus.notSettled => LangKeys.notSettled,
       _ => LangKeys.error,
-    };
-  }
-
-  Color _getStatusColor(String status) {
-    return switch (status) {
-      CustodyStatus.settled => AppColors.green,
-      CustodyStatus.notSettled => AppColors.orange,
-      _ => AppColors.red,
     };
   }
 }

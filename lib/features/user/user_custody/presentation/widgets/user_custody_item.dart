@@ -18,42 +18,45 @@ class UserCustodyItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.grey.withValues(alpha: 0.2),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
-          border: Border.all(color: AppColors.black.withValues(alpha: 0.1)),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(),
-              const SizedBox(height: 12),
-              _buildInfoTile(
-                context,
-                icon: HugeIcons.strokeRoundedDollar01,
-                label: LangKeys.custodyAmount,
-                value: '${item.amount} EGP',
+      child: InkWell(
+        onTap: () {},
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.grey.withValues(alpha: 0.2),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
-              _buildDivider(),
-              _buildInfoTile(
-                context,
-                icon: HugeIcons.strokeRoundedUser,
-                label: LangKeys.createdBy,
-                value: item.userId!,
-              ),
-              _buildDivider(),
-              _buildStatus(),
             ],
+            border: Border.all(color: AppColors.black.withValues(alpha: 0.1)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(),
+                const SizedBox(height: 12),
+                _buildInfoTile(
+                  context,
+                  icon: HugeIcons.strokeRoundedDollar01,
+                  label: LangKeys.custodyAmount,
+                  value: '${item.amount} EGP',
+                ),
+                _buildDivider(),
+                _buildInfoTile(
+                  context,
+                  icon: HugeIcons.strokeRoundedUser,
+                  label: LangKeys.createdBy,
+                  value: item.userId!,
+                ),
+                _buildDivider(),
+                _buildStatus(),
+              ],
+            ),
           ),
         ),
       ),

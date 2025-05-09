@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../../../../core/style/widgets/custom_shimmer.dart';
@@ -18,7 +19,13 @@ class UserCustodyScreenBody extends StatelessWidget {
         if (state is UserCustodyLoading) {
           return LoadingShimmer();
         } else if (state is UserCustodyLoaded) {
-          return UserCustodyLisView(list: state.userCustodyList);
+          if (state.userCustodyList.isEmpty) {
+            return Center(
+              child: AppText(LangKeys.noDataFound, translate: false),
+            );
+          } else {
+            return UserCustodyLisView(list: state.userCustodyList);
+          }
         } else if (state is UserCustodyError) {
           return Center(
             child: AppText(state.message, translate: false, maxLines: 5),

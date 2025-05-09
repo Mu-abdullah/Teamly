@@ -16,11 +16,11 @@ class CustodyTransactionItems extends StatelessWidget {
     super.key,
     required this.id,
     required this.custodyAmount,
-    required this.superCustodyStatus,
+    this.superCustodyStatus,
   });
   final String id;
   final String custodyAmount;
-  final String superCustodyStatus;
+  final String? superCustodyStatus;
   @override
   Widget build(BuildContext context) {
     final lac = locator<GetCustodyTransItemRepo>();

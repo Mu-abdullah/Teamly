@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/functions/timestamp_to_time.dart';
@@ -8,6 +9,7 @@ import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../data/model/custody_transaction_model.dart';
+import '../cubits/get_custody_transaction_cubit/get_custody_transaction_cubit.dart';
 
 class CustodyTransactionItem extends StatelessWidget {
   const CustodyTransactionItem({super.key, required this.transaction});
@@ -23,6 +25,8 @@ class CustodyTransactionItem extends StatelessWidget {
           arguments: {
             'id': transaction.id,
             'custodyAmount': transaction.amount,
+            'superCustodyStatus':
+                context.read<GetCustodyTransactionCubit>().custody.status,
           },
         );
       },

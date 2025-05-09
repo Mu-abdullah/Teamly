@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
+import '../../../../../core/routes/routes_name.dart';
 import '../../../../../core/services/status/custody_status.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_button.dart';
@@ -40,7 +41,7 @@ class SatteledButton extends StatelessWidget {
                   )
                   .then((onValue) {
                     if (context.mounted) {
-                      context.pop();
+                      context.pushNamedAndRemoveUntil(RoutesNames.homeScreen);
                     }
                   });
             }

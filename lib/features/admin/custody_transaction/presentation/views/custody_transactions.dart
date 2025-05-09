@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/get_it/git_it.dart';
+import '../../../../../core/services/status/custody_status.dart';
 import '../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../../custody/data/model/custody_model.dart';
 import '../../data/repo/get_custody_transaction.dart';
@@ -13,14 +14,9 @@ import '../widgets/add_custody_transaction_button.dart';
 import '../refactor/custody_transaction_body.dart';
 
 class CustodyTransactions extends StatelessWidget {
-  const CustodyTransactions({
-    super.key,
-    required this.model,
-    
-  });
+  const CustodyTransactions({super.key, required this.model});
 
   final CustodyModel model;
-   
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +31,7 @@ class CustodyTransactions extends StatelessWidget {
                   ..fetchCustodyTransaction(model.id!);
               }(context),
         ),
-        BlocProvider(
-          create: (context) => SettledCustodyCubit(lac,  ),
-        ),
+        BlocProvider(create: (context) => SettledCustodyCubit(lac)),
       ],
       child: _CustodyTransactionsView(model: model),
     );
@@ -54,7 +48,10 @@ class _CustodyTransactionsView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: LangKeys.custodyDetails,
-        actions: [AddCustodyTransactionbutton(id: model.id!)],
+        actions:
+            model.status! == CustodyStatus.settlement
+                ? null
+                : [AddCustodyTransactionbutton(id: model.id!)],
       ),
       body: SingleChildScrollView(child: CustodyTransactionsBody()),
     );

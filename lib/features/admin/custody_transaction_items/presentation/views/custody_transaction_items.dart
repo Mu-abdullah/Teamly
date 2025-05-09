@@ -4,6 +4,7 @@ import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/get_it/git_it.dart';
+import '../../../../../core/services/status/custody_status.dart';
 import '../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../data/repo/get_custody_trans_item_repo.dart';
 import '../cubits/get_custody_trans_items_cubit/get_custody_trans_items_cubit.dart';
@@ -15,9 +16,11 @@ class CustodyTransactionItems extends StatelessWidget {
     super.key,
     required this.id,
     required this.custodyAmount,
+    required this.superCustodyStatus,
   });
   final String id;
   final String custodyAmount;
+  final String superCustodyStatus;
   @override
   Widget build(BuildContext context) {
     final lac = locator<GetCustodyTransItemRepo>();
@@ -31,7 +34,10 @@ class CustodyTransactionItems extends StatelessWidget {
           title:
               "${context.translate(LangKeys.custodyTransactionItems)} : $custodyAmount ${context.translate(LangKeys.eg)}",
           translate: false,
-          actions: [AddCustodyTransactionItemButton(id: id)],
+          actions:
+              superCustodyStatus == CustodyStatus.settlement
+                  ? null
+                  : [AddCustodyTransactionItemButton(id: id)],
         ),
         body: CustodyTransactionItemsBody(),
       ),

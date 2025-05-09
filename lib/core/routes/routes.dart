@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../features/admin/admin_attendance/presentation/views/admin_attendance.dart';
+import '../../features/admin/custody/data/model/custody_model.dart';
 import '../../features/admin/custody_transaction/presentation/views/custody_transactions.dart';
 import '../../features/admin/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/custody_transaction_items/presentation/views/custody_transaction_items.dart';
@@ -62,15 +63,17 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case RoutesNames.custodyTransactions:
       return BaseRoute(
         page: CustodyTransactions(
+          model: args?['model'] as CustodyModel,
+          
+        ),
+      );
+    case RoutesNames.custodyTransactionsItems:
+      return BaseRoute(
+        page: CustodyTransactionItems(
           id: args?['id'] as String,
           custodyAmount: args?['custodyAmount'] as String,
         ),
       );
-    case RoutesNames.custodyTransactionsItems:
-      return BaseRoute(page: CustodyTransactionItems(
-        id: args?['id'] as String,
-        custodyAmount: args?['custodyAmount'] as String,
-      ));
 
     case RoutesNames.adminAttendance:
       return BaseRoute(page: AdminAttendance());

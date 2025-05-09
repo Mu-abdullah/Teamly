@@ -7,7 +7,7 @@ import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/widgets/custom_bottom_sheet.dart';
 import '../../../../../../core/style/widgets/custom_snack_bar.dart';
 import '../../cubits/get_custody_trans_items_cubit/get_custody_trans_items_cubit.dart';
-import '../../views/add_custody_transactionI_item.dart';
+import '../../views/add_custody_transaction_item.dart';
 
 class AddCustodyTransactionItemButton extends StatelessWidget {
   const AddCustodyTransactionItemButton({super.key, required this.id});

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/error/custom_errors.dart';
+import '../../../../custody/data/model/custody_model.dart';
 import '../../../data/model/custody_transaction_model.dart';
 import '../../../data/repo/get_custody_transaction.dart';
 
@@ -11,14 +12,10 @@ part 'get_custody_transaction_state.dart';
 class GetCustodyTransactionCubit extends Cubit<GetCustodyTransactionState> {
   GetCustodyTransactionRepo repo;
 
-  GetCustodyTransactionCubit({
-    required this.repo,
-    required this.custody,
-    required this.totlaCustody,
-  }) : super(GetCustodyTransactionInitial());
+  GetCustodyTransactionCubit({required this.repo, required this.custody})
+    : super(GetCustodyTransactionInitial());
 
-  final String custody;
-  final String totlaCustody;
+  final CustodyModel custody;
   List<CustodyTransactionModel>? custodyTransaction;
   static GetCustodyTransactionCubit get(context) =>
       BlocProvider.of<GetCustodyTransactionCubit>(context);
@@ -49,6 +46,6 @@ class GetCustodyTransactionCubit extends Cubit<GetCustodyTransactionState> {
   }
 
   double calculateRemainingAmount() {
-    return double.parse(totlaCustody) - sumAmount(custodyTransaction ?? []);
+    return double.parse(custody.totalAmount!) - sumAmount(custodyTransaction ?? []);
   }
 }

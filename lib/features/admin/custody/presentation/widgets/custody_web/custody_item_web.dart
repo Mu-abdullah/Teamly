@@ -26,7 +26,7 @@ class CustodyItemWeb extends StatelessWidget {
       onTap: () {
         context.pushNamed(
           RoutesNames.custodyTransactions,
-          arguments: {'id': custody.id, 'custodyAmount': custody.totalAmount},
+          arguments: {'model': custody},
         );
       },
       child: Padding(

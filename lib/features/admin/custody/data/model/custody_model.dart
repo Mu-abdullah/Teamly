@@ -19,10 +19,8 @@ class CustodyModel extends CustodyEntity {
       companyId: json['company_id'],
       totalAmount: json['total_amount'],
       name: json['name'],
-
       status: json['status'],
       approvedBy: json['approved_by'],
-
       note: json['note'],
     );
   }

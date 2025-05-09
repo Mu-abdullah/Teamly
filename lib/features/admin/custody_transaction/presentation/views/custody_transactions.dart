@@ -3,73 +3,60 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/services/get_it/git_it.dart';
-import '../../../../../core/style/color/app_color.dart';
-import '../../../../../core/style/widgets/app_button.dart';
 import '../../../../../core/style/widgets/custom_app_bar.dart';
+import '../../../custody/data/model/custody_model.dart';
 import '../../data/repo/get_custody_transaction.dart';
+import '../../data/repo/satteled_repo.dart';
 import '../cubits/get_custody_transaction_cubit/get_custody_transaction_cubit.dart';
+import '../cubits/settled_custody_cubit/settled_custody_cubit.dart';
 import '../widgets/add_custody_transaction_button.dart';
 import '../refactor/custody_transaction_body.dart';
 
 class CustodyTransactions extends StatelessWidget {
   const CustodyTransactions({
     super.key,
-    required this.id,
-    required this.custodyAmount,
+    required this.model,
+    
   });
 
-  final String id;
-  final String custodyAmount;
+  final CustodyModel model;
+   
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => _createCubit(context),
-      child: _CustodyTransactionsView(id: id),
+    final lac = locator<SatteledRepo>();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create:
+              (context) => (BuildContext context) {
+                final repo = locator<GetCustodyTransactionRepo>();
+                return GetCustodyTransactionCubit(repo: repo, custody: model)
+                  ..fetchCustodyTransaction(model.id!);
+              }(context),
+        ),
+        BlocProvider(
+          create: (context) => SettledCustodyCubit(lac,  ),
+        ),
+      ],
+      child: _CustodyTransactionsView(model: model),
     );
-  }
-
-  GetCustodyTransactionCubit _createCubit(BuildContext context) {
-    final repo = locator<GetCustodyTransactionRepo>();
-    return GetCustodyTransactionCubit(
-      repo: repo,
-      custody: id,
-      totlaCustody: custodyAmount,
-    )..fetchCustodyTransaction(id);
   }
 }
 
 class _CustodyTransactionsView extends StatelessWidget {
-  const _CustodyTransactionsView({required this.id});
+  const _CustodyTransactionsView({required this.model});
 
-  final String id;
+  final CustodyModel model;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
         title: LangKeys.custodyDetails,
-        actions: [AddCustodyTransactionbutton(id: id)],
+        actions: [AddCustodyTransactionbutton(id: model.id!)],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(child: CustodyTransactionsBody()),
-          ),
-          _buildBottomButton(context),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBottomButton(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: AppButton(
-        onTap: () {},
-        text: LangKeys.settled,
-        backGroungColor: AppColors.green,
-      ),
+      body: SingleChildScrollView(child: CustodyTransactionsBody()),
     );
   }
 }

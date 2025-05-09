@@ -6,6 +6,7 @@ import 'package:teamly/core/extextions/extentions.dart';
 import '../../../../../core/functions/timestamp_to_time.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/routes/routes_name.dart';
+import '../../../../../core/services/status/custody_status.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../data/model/custody_transaction_model.dart';
@@ -18,88 +19,182 @@ class CustodyTransactionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        context.pushNamed(
-          RoutesNames.custodyTransactionsItems,
-          arguments: {
-            'id': transaction.id,
-            'custodyAmount': transaction.amount,
-            'superCustodyStatus':
-                context.read<GetCustodyTransactionCubit>().custody.status,
-          },
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: InkWell(
+        onTap: () => _handleTap(context),
+        borderRadius: BorderRadius.circular(16),
         child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.1),
-                blurRadius: 6,
-                offset: const Offset(0, 2),
-              ),
-            ],
+          decoration: _buildItemDecoration(),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+                  children: [
+                    _buildHeader(),
+                    const SizedBox(height: 12),
+                    _buildInfoRow(
+                      context,
+                      icon: Icons.person_outline_rounded,
+                      label: LangKeys.name,
+                      value: transaction.empId!,
+                    ),
+                    _buildDivider(),
+                    _buildInfoRow(
+                      context,
+                      icon: Icons.assignment_ind_rounded,
+                      label: LangKeys.createdBy,
+                      value: transaction.userId!,
+                    ),
+                    _buildDivider(),
+                    _buildStatusRow(),
+                  ],
+                )
+                .animate()
+                .fadeIn(duration: 400.ms)
+                .slideX(begin: 0.2, duration: 300.ms, curve: Curves.easeOut),
           ),
-          padding: const EdgeInsets.all(12),
-          child: Column(
-                spacing: 5,
-                children: [
-                  Row(
-                    spacing: 5,
-                    children: [
-                      AppText(
-                        translate: false,
-                        TimeRefactor(transaction.createdAt!).toDateString(),
-                        fontSize: 10,
-                      ),
-                      Spacer(),
-                      AppText(
-                        translate: false,
-                        transaction.amount!,
-                        fontSize: 10,
-                      ),
-                      AppText(LangKeys.eg, fontSize: 10),
-                    ],
-                  ),
-                  Row(
-                    spacing: 5,
-                    children: [
-                      AppText(
-                        LangKeys.name,
-                        fontSize: 10,
-                        color: AppColors.darkGrey,
-                      ),
-                      AppText(" : ", translate: false),
-                      Expanded(
-                        child: AppText(translate: false, transaction.empId!),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    spacing: 5,
-                    children: [
-                      AppText(
-                        LangKeys.createdBy,
-                        fontSize: 10,
-                        color: AppColors.darkGrey,
-                      ),
-                      AppText(" : ", translate: false),
-                      Expanded(
-                        child: AppText(translate: false, transaction.userId!),
-                      ),
-                    ],
-                  ),
-                ],
-              )
-              .animate()
-              .fadeIn(duration: 400.ms)
-              .slideX(begin: 0.2, duration: 300.ms, curve: Curves.easeOut),
         ),
       ),
     );
+  }
+
+  void _handleTap(BuildContext context) {
+    context.pushNamed(
+      RoutesNames.custodyTransactionsItems,
+      arguments: {
+        'id': transaction.id,
+        'custodyAmount': transaction.amount,
+        'superCustodyStatus':
+            context.read<GetCustodyTransactionCubit>().custody.status,
+      },
+    );
+  }
+
+  BoxDecoration _buildItemDecoration() {
+    return BoxDecoration(
+      color: AppColors.white,
+      borderRadius: BorderRadius.circular(16),
+      boxShadow: [
+        BoxShadow(
+          color: AppColors.grey.withValues(alpha: 0.15),
+          blurRadius: 12,
+          offset: const Offset(0, 4),
+        ),
+      ],
+      border: Border.all(color: AppColors.black.withValues(alpha: 0.1)),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Row(
+      spacing: 8,
+      children: [
+        Icon(Icons.calendar_today_rounded, size: 18, color: AppColors.darkGrey),
+
+        AppText(
+          TimeRefactor(transaction.createdAt!).toDateString(),
+          fontSize: 14,
+          translate: false,
+          color: AppColors.darkGrey,
+        ),
+        const Spacer(),
+        Chip(
+          backgroundColor: AppColors.black.withValues(alpha: 0.1),
+          label: Row(
+            spacing: 4,
+            children: [
+              AppText(
+                transaction.amount!,
+                color: AppColors.black,
+                translate: false,
+              ),
+              AppText(LangKeys.eg, color: AppColors.black, fontSize: 10),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildInfoRow(
+    BuildContext context, {
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        children: [
+          Icon(icon, size: 20, color: AppColors.darkGrey),
+          const SizedBox(width: 12),
+          Expanded(
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: '${context.translate(label)} : ',
+                    style: customTextStyle(
+                      context,
+                      fontSize: 14,
+                      color: AppColors.darkGrey,
+                    ),
+                  ),
+                  TextSpan(
+                    text: value,
+                    style: customTextStyle(
+                      context,
+                      fontSize: 14,
+                      color: AppColors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStatusRow() {
+    final statusColor = _getStatusColor(transaction.status!);
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Row(
+        spacing: 12,
+        children: [
+          Icon(Icons.circle, size: 16, color: statusColor),
+
+          Expanded(
+            child: AppText(
+              transaction.status!,
+              color: statusColor,
+              fontSize: 14,
+              translate: true,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDivider() {
+    return Divider(
+      height: 1,
+      thickness: 0.8,
+      color: AppColors.grey.withValues(alpha: 0.3),
+    );
+  }
+
+  Color _getStatusColor(String status) {
+    switch (status) {
+      case CustodyStatus.notSettled:
+        return AppColors.orange;
+      case CustodyStatus.settled:
+        return AppColors.green;
+      default:
+        return AppColors.red;
+    }
   }
 }

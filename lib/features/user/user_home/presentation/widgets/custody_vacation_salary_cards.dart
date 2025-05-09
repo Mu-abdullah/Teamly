@@ -42,8 +42,7 @@ class CustodySalaryVacationCards extends StatelessWidget {
                     color: AppColors.blueBlack,
                     height: cardHeight + 20,
                     onTap:
-                        () =>
-                            context.pushNamed(RoutesNames.userCustodyScreen),
+                        () => context.pushNamed(RoutesNames.userCustodyScreen),
                   );
                 } else if (state is CheckUserCustodyError) {
                   return Container();

@@ -30,6 +30,7 @@ class LangKeys {
   static const String rejected = 'rejected';
   static const String pending = 'pending';
   static const String print = 'print';
+  static const String accessDenied = 'accessDenied';
 
   //account keys
   static const String deleteAccount = 'deleteAccount';

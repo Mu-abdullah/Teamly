@@ -23,6 +23,7 @@ class UserCustodyCubit extends Cubit<UserCustodyState> {
       },
       (r) {
         if (!isClosed) {
+          r.sort((a, b) => a.status!.compareTo(b.status!));
           emit(UserCustodyLoaded(r));
         }
       },

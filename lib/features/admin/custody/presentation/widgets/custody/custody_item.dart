@@ -133,7 +133,7 @@ class _CustodyItemState extends State<CustodyItem>
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: AppText(
-                  _getStatusText(widget.custody.status!),
+                  widget.custody.status!,
                   fontSize: context.labelSmall!.fontSize,
                   color: AppColors.white,
                 ),
@@ -221,24 +221,13 @@ class _CustodyItemState extends State<CustodyItem>
       onTap: () {
         context.pushNamed(
           RoutesNames.custodyTransactions,
-          arguments: {
-            'model': widget.custody,
-            
-          },
+          arguments: {'model': widget.custody},
         );
       },
       text: LangKeys.showMore,
       fontSize: 12,
       circleSize: 40,
     );
-  }
-
-  String _getStatusText(String status) {
-    return switch (status) {
-      CustodyStatus.settled => LangKeys.settled,
-      CustodyStatus.notSettled => LangKeys.notSettled,
-      _ => LangKeys.error,
-    };
   }
 
   Color _getStatusColor(String status) {

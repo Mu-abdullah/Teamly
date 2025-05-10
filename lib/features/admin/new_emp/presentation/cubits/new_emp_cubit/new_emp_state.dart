@@ -8,3 +8,10 @@ sealed class NewEmpState extends Equatable {
 }
 
 final class NewEmpInitial extends NewEmpState {}
+
+final class GetImageFromGallery extends NewEmpState {}
+
+final class ErrorImageFromGallery extends NewEmpState {
+  final String error;
+  const ErrorImageFromGallery({required this.error});
+}

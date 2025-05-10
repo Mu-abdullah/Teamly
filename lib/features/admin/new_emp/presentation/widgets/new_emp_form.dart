@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
@@ -5,6 +6,8 @@ import 'package:teamly/core/extextions/extentions.dart';
 import '../../../../../core/functions/select_data.dart';
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/color/app_color.dart';
+import '../../../../../core/style/font/fonts_helper.dart';
+import '../../../../../core/style/statics/image_test.dart';
 import '../cubits/new_emp_cubit/new_emp_cubit.dart';
 import 'new_emp_input_row.dart';
 
@@ -15,6 +18,7 @@ class NewEmpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isArabic = FontsHelper.isArabic(context);
     return Form(
       key: cubit.formKey,
       child: Column(
@@ -36,12 +40,28 @@ class NewEmpForm extends StatelessWidget {
                   offset: const Offset(0, 4),
                 ),
               ],
+              image: kIsWeb ? _pcIamge() : _mobileIamge(),
             ),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(HugeIcons.strokeRoundedImageAdd02),
-              iconSize: 100,
-              color: AppColors.green,
+            child: Stack(
+              children: [
+                Positioned(
+                  bottom: 0,
+                  right: isArabic ? null : 0,
+                  left: isArabic ? 0 : null,
+                  child: InkWell(
+                    onTap: () {
+                      cubit.whichPaltform();
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.blueAccent,
+                      child: Icon(
+                        HugeIcons.strokeRoundedImageAdd02,
+                        color: AppColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
 
@@ -125,6 +145,26 @@ class NewEmpForm extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  DecorationImage _pcIamge() {
+    return DecorationImage(
+      image:
+          cubit.pickedBytes == null
+              ? const AssetImage(AppImages.logo)
+              : MemoryImage(cubit.pickedBytes!),
+      fit: BoxFit.contain,
+    );
+  }
+
+  DecorationImage _mobileIamge() {
+    return DecorationImage(
+      image:
+          cubit.image == null
+              ? const AssetImage(AppImages.logo)
+              : FileImage(cubit.image!),
+      fit: BoxFit.contain,
     );
   }
 }

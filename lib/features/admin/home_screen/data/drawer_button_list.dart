@@ -23,6 +23,7 @@ class DrawerButtonListItems {
       title: LangKeys.profile,
       icon: HugeIcons.strokeRoundedUserAccount,
       onTap: () {
+        context.pop();
         context.pushNamed(RoutesNames.empProfileScreen);
       },
     ),
@@ -35,6 +36,7 @@ class DrawerButtonListItems {
       title: LangKeys.addEmployee,
       icon: HugeIcons.strokeRoundedUserCircle,
       onTap: () {
+        context.pop();
         context.pushNamed(RoutesNames.newEmpScreen);
       },
     ),

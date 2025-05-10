@@ -166,7 +166,12 @@
     "totalQuantity":"Total Quantity",
     "itemName":"Item Name",
     "itemCount":"Item Count",
-    "itemPrice":"Item Price"
+    "itemPrice":"Item Price",
+
+
+
+    "######################################newEmp":"", 
+    "newEmp":"New Employee" 
 
     
      

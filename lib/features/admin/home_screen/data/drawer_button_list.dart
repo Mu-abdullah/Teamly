@@ -34,7 +34,9 @@ class DrawerButtonListItems {
     DrawerButtonModel(
       title: LangKeys.addEmployee,
       icon: HugeIcons.strokeRoundedUserCircle,
-      onTap: () {},
+      onTap: () {
+        context.pushNamed(RoutesNames.newEmpScreen);
+      },
     ),
   ];
 }

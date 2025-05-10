@@ -42,6 +42,6 @@ void selectData({
 
 String convertDateToArabic(String dateString) {
   DateTime dateTime = DateTime.parse(dateString);
-  String formattedDate = intl.DateFormat('d MMMM y', 'ar_SA').format(dateTime);
+  String formattedDate = intl.DateFormat('dd/MM/yyyy').format(dateTime);
   return formattedDate;
 }

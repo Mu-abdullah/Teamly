@@ -7,6 +7,7 @@ import '../../features/admin/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/custody_transaction_items/presentation/views/custody_transaction_items.dart';
 import '../../features/admin/emp_profile/presentation/views/emp_profile.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
+import '../../features/admin/new_emp/presentation/views/new_emp_screen.dart';
 import '../../features/admin/review_vacation_requests/presentation/views/review_vacation_request.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
@@ -81,6 +82,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.reviewVacationRequest:
       return BaseRoute(page: ReviewVacationRequest());
+
+    case RoutesNames.newEmpScreen:
+      return BaseRoute(page: NewEmpScreen());
 
     /////////
     /////////user feature routes////////////

@@ -161,4 +161,7 @@ class LangKeys {
   static const String newItem = 'newItem';
   static const String addItems = 'addItems';
   static const String noRemainingAmount = 'noRemainingAmount';
+
+  static const String newEmp = 'newEmp';
+
 }

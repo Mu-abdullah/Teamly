@@ -14,6 +14,7 @@ class RoutesNames {
   static const String custodyTransactionsItems = 'custodyTransactionsItems';
   static const String adminAttendance = 'adminAttendance';
   static const String reviewVacationRequest = 'reviewVacationRequest';
+  static const String newEmpScreen = 'newEmpScreen';
 
   //user screens
   static const String userHomeScreen = 'userHomeScreen';

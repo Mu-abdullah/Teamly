@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/model/update_custody_status_model.dart';
-import '../../../data/repo/satteled_repo.dart';
+import '../../../../custody_transaction/data/model/update_custody_status_model.dart';
+import '../../../../custody_transaction/data/repo/satteled_repo.dart';
 
 part 'settled_custody_state.dart';
 

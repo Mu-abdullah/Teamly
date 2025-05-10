@@ -23,6 +23,7 @@ class CustodyItemsCubit extends Cubit<List<CreateCustodyTransItemModel>> {
           name: '',
           count: '',
           price: '',
+          user: context.read<AppUserCubit>().empID,
         ),
       ]);
 
@@ -41,6 +42,7 @@ class CustodyItemsCubit extends Cubit<List<CreateCustodyTransItemModel>> {
         name: '',
         count: '',
         price: '',
+        user: context.read<AppUserCubit>().empID,
       ),
     ]);
   }
@@ -54,6 +56,7 @@ class CustodyItemsCubit extends Cubit<List<CreateCustodyTransItemModel>> {
       name: name ?? updatedList[index].name,
       count: count ?? updatedList[index].count,
       price: price ?? updatedList[index].price,
+      user: updatedList[index].user,
     );
     emit(updatedList);
   }

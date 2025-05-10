@@ -8,6 +8,7 @@ class CreateCustodyTransItemModel extends CustodyTransactionItemEntity {
     required super.name,
     required super.count,
     required super.price,
+    required super.user,
   });
 
   factory CreateCustodyTransItemModel.fromJson(Map<String, dynamic> json) =>
@@ -18,6 +19,7 @@ class CreateCustodyTransItemModel extends CustodyTransactionItemEntity {
         name: json['name'],
         count: json['count'],
         price: json['price'],
+        user: json['user'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -27,5 +29,6 @@ class CreateCustodyTransItemModel extends CustodyTransactionItemEntity {
     'name': name,
     'count': count,
     'price': price,
+    'user': user,
   };
 }

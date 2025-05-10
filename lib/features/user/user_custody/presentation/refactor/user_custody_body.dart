@@ -20,9 +20,7 @@ class UserCustodyScreenBody extends StatelessWidget {
           return LoadingShimmer();
         } else if (state is UserCustodyLoaded) {
           if (state.userCustodyList.isEmpty) {
-            return Center(
-              child: AppText(LangKeys.noDataFound, translate: false),
-            );
+            return Center(child: AppText(LangKeys.noDataFound));
           } else {
             return UserCustodyLisView(list: state.userCustodyList);
           }

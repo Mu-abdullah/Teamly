@@ -72,7 +72,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         page: CustodyTransactionItems(
           id: args?['id'] as String,
           custodyAmount: args?['custodyAmount'] as String,
-          superCustodyStatus: args?['superCustodyStatus'],
+          custodyStatus: args?['custodyStatus'],
         ),
       );
 

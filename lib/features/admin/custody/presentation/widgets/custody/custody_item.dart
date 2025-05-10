@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
+import '../../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../../core/functions/timestamp_to_time.dart';
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/routes/routes_name.dart';
@@ -11,6 +13,8 @@ import '../../../../../../core/style/statics/app_statics.dart';
 import '../../../../../../core/style/widgets/app_button.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
 import '../../../data/model/custody_model.dart';
+import '../../cubits/get_custody_cubit/get_custody_cubit.dart';
+import '../../cubits/settled_custody_cubit/settled_custody_cubit.dart';
 
 class CustodyItem extends StatefulWidget {
   final CustodyModel custody;
@@ -217,16 +221,49 @@ class _CustodyItemState extends State<CustodyItem>
   }
 
   Widget _buildActionButton() {
-    return AppButton(
-      onTap: () {
-        context.pushNamed(
-          RoutesNames.custodyTransactions,
-          arguments: {'model': widget.custody},
-        );
-      },
-      text: LangKeys.showMore,
-      fontSize: 12,
-      circleSize: 40,
+    return Row(
+      spacing: 10,
+      children: [
+        Expanded(
+          child: AppButton(
+            onTap: () {
+              context.pushNamed(
+                RoutesNames.custodyTransactions,
+                arguments: {'model': widget.custody},
+              );
+            },
+            text: LangKeys.showMore,
+            fontSize: 12,
+            circleSize: 40,
+          ),
+        ),
+        if (widget.custody.status != CustodyStatus.settled)
+          Expanded(
+            child: AppButton(
+              onTap: () {
+                context
+                    .read<SettledCustodyCubit>()
+                    .updateCustodyStatus(
+                      id: widget.custody.id!,
+                      status: CustodyStatus.settled,
+                    )
+                    .then((onValue) {
+                      if (mounted) {
+                        context.read<GetCustodyCubit>().fetchCustody(
+                          context.read<AppUserCubit>().compId,
+                        );
+                      }
+                    });
+              },
+              text: LangKeys.settlement,
+              fontSize: 12,
+              circleSize: 40,
+              backGroungColor: CustodyStatus.getStatusColor(
+                widget.custody.status!,
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

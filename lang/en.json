@@ -113,6 +113,7 @@
     "custodyStatus":"Custody Status" ,
     "notSettled":"Not Settled",
     "settled":"Settled",
+    "settlement":"Settlement",
 
 
     "######################################Attendance":"",

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../core/language/lang_keys.dart';
-import '../../../../../core/services/status/custody_status.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_space.dart';
 import '../../../../../core/style/widgets/app_text.dart';
@@ -10,8 +9,6 @@ import '../../data/model/custody_transaction_model.dart';
 import '../cubits/get_custody_transaction_cubit/get_custody_transaction_cubit.dart';
 
 import 'package:flutter_animate/flutter_animate.dart';
-
-import 'satteled_button.dart';
 
 class CalcCustody extends StatelessWidget {
   const CalcCustody({
@@ -28,7 +25,6 @@ class CalcCustody extends StatelessWidget {
     final theme = Theme.of(context);
     final remainingAmount = cubit.calculateRemainingAmount();
     final isNegative = remainingAmount < 0;
-    final isNotSatteled = cubit.custody.status == CustodyStatus.notSettled;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Container(
@@ -63,10 +59,6 @@ class CalcCustody extends StatelessWidget {
                           fontSize: context.labelMedium!.fontSize,
                           color: AppColors.black,
                         ),
-                      ),
-                      SatteledButton(
-                        isNotSatteled: isNotSatteled,
-                        cubit: cubit,
                       ),
                     ],
                   ),

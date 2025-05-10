@@ -108,6 +108,7 @@ class LangKeys {
   static const String custodyAmount = 'custodyAmount';
   static const String custodyStatus = 'custodyStatus';
   static const String settled = 'settled';
+  static const String settlement = 'settlement';
   static const String notSettled = 'notSettled';
   static const String eg = 'eg';
 

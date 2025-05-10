@@ -9,6 +9,7 @@ import '../../../../../core/services/status/custody_status.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../data/model/user_custody_model.dart';
+import 'user_custody_settaled_button.dart';
 
 class UserCustodyItem extends StatelessWidget {
   const UserCustodyItem({super.key, required this.item});
@@ -21,9 +22,10 @@ class UserCustodyItem extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          context.pushNamed(RoutesNames.userCustodyItem, arguments: {
-            'item': item,
-          });
+          context.pushNamed(
+            RoutesNames.userCustodyItem,
+            arguments: {'item': item},
+          );
         },
         child: Container(
           decoration: BoxDecoration(
@@ -43,7 +45,7 @@ class UserCustodyItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildHeader(),
+                _buildHeader(context),
                 const SizedBox(height: 12),
                 _buildInfoTile(
                   context,
@@ -68,7 +70,7 @@ class UserCustodyItem extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return Row(
       spacing: 8,
       children: [
@@ -77,12 +79,14 @@ class UserCustodyItem extends StatelessWidget {
           size: 18,
           color: AppColors.darkGrey,
         ),
-
         AppText(
           TimeRefactor(item.createdAt!).toDateString(),
           color: AppColors.darkGrey.withValues(alpha: 0.8),
           translate: false,
         ),
+        Spacer(),
+        if (item.status! == CustodyStatus.notSettled)
+          UserSettaledButton(item: item),
       ],
     );
   }
@@ -118,7 +122,7 @@ class UserCustodyItem extends StatelessWidget {
   }
 
   Widget _buildStatus() {
-    final statusColor =  CustodyStatus.getStatusColor(item.status!);
+    final statusColor = CustodyStatus.getStatusColor(item.status!);
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Row(
@@ -148,6 +152,5 @@ class UserCustodyItem extends StatelessWidget {
       child: Divider(height: 1, color: AppColors.grey.withValues(alpha: 0.5)),
     );
   }
-
-  
 }
+

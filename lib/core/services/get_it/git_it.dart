@@ -19,6 +19,7 @@ import '../../../features/admin/review_vacation_requests/data/repo/review_vacati
 import '../../../features/auth/data/repo/auth_repo.dart';
 import '../../../features/auth/data/repo/check_role_repo.dart';
 import '../../../features/user/user_custody/data/repo/get_user_custody_repo.dart';
+import '../../../features/user/user_custody/data/repo/satteld_user_custody_repo.dart';
 import '../../../features/user/user_custody_items/data/repo/user_add_custody_item_repo.dart';
 import '../../../features/user/user_custody_items/data/repo/user_get_custody_item_repo.dart';
 import '../../../features/user/user_home/data/repo/attendance_repo.dart';
@@ -72,6 +73,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => GetUserCustodyRepo(locator()));
   locator.registerLazySingleton(() => UserAddCustodyItemRepo(locator()));
   locator.registerLazySingleton(() => UserGetCustodyItemRepo(locator()));
+  locator.registerLazySingleton(() => SatteldUserCustodyRepo(locator()));
 }
 
 void _registerServices() {

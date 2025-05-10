@@ -16,11 +16,12 @@ class CustodyTransactionItems extends StatelessWidget {
     super.key,
     required this.id,
     required this.custodyAmount,
-    this.superCustodyStatus,
+    required this.custodyStatus,
   });
   final String id;
   final String custodyAmount;
-  final String? superCustodyStatus;
+  final String custodyStatus;
+  
   @override
   Widget build(BuildContext context) {
     final lac = locator<GetCustodyTransItemRepo>();
@@ -35,7 +36,7 @@ class CustodyTransactionItems extends StatelessWidget {
               "${context.translate(LangKeys.custodyTransactionItems)} : $custodyAmount ${context.translate(LangKeys.eg)}",
           translate: false,
           actions:
-              superCustodyStatus == CustodyStatus.settled
+              custodyStatus == CustodyStatus.settled
                   ? null
                   : [AddCustodyTransactionItemButton(id: id)],
         ),

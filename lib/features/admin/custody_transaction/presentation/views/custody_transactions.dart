@@ -7,9 +7,7 @@ import '../../../../../core/services/status/custody_status.dart';
 import '../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../../custody/data/model/custody_model.dart';
 import '../../data/repo/get_custody_transaction.dart';
-import '../../data/repo/satteled_repo.dart';
 import '../cubits/get_custody_transaction_cubit/get_custody_transaction_cubit.dart';
-import '../cubits/settled_custody_cubit/settled_custody_cubit.dart';
 import '../widgets/add_custody_transaction_button.dart';
 import '../refactor/custody_transaction_body.dart';
 
@@ -20,7 +18,7 @@ class CustodyTransactions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lac = locator<SatteledRepo>();
+    
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -31,7 +29,7 @@ class CustodyTransactions extends StatelessWidget {
                   ..fetchCustodyTransaction(model.id!);
               }(context),
         ),
-        BlocProvider(create: (context) => SettledCustodyCubit(lac)),
+      
       ],
       child: _CustodyTransactionsView(model: model),
     );

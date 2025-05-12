@@ -23,6 +23,10 @@ class NewEmpCubit extends Cubit<NewEmpState> {
   var nid = TextEditingController();
   var startIn = TextEditingController();
   var salary = TextEditingController();
+
+  String? positionId;
+  String? gender;
+
   File? image;
   final ImagePicker picker = ImagePicker();
   String? imagePath;

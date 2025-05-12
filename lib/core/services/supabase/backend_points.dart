@@ -10,7 +10,7 @@ class BackendPoint {
   static const gender = 'gender';
   static const images = 'gender';
   static const locations = 'locations';
-  static const positions = 'positions';
+  static const position = 'position';
   static const users = 'users';
   static const vacations = 'vacations';
 }

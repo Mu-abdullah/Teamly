@@ -32,6 +32,8 @@ class LangKeys {
   static const String print = 'print';
   static const String accessDenied = 'accessDenied';
   static const String createdAt = 'createdAt';
+  static const String image = 'image';
+  static const String images = 'images';
 
   //account keys
   static const String deleteAccount = 'deleteAccount';
@@ -163,5 +165,10 @@ class LangKeys {
   static const String noRemainingAmount = 'noRemainingAmount';
 
   static const String newEmp = 'newEmp';
+  static const String male = 'male';
+  static const String female = 'female';
+  static const String getEmpPaper = 'getEmpPaper';
+  static const String noImage = 'noImage';
+ 
 
 }

@@ -31,6 +31,8 @@
     "print":"Print",
     "accessDenied":"Access denied",
     "createdAt":"Created at",
+    "image":"صورة",
+    "images":"صور",
 
     "######################################no internet screen":"",
     "tryToConnect":"Try to connect",
@@ -171,7 +173,11 @@
 
 
     "######################################newEmp":"", 
-    "newEmp":"New Employee" 
+    "newEmp":"New Employee" ,
+    "male":"Male" ,
+    "female":"Female"  ,
+    "getEmpPaper":"Employee Papers",
+    "noImage":"No Image Selected"
 
     
      

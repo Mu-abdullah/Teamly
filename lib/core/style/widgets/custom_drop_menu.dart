@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:teamly/core/style/statics/app_statics.dart';
 
+import '../color/app_color.dart';
 import 'app_text.dart';
 
 class GenericDropdown<T> extends StatelessWidget {
@@ -23,21 +25,12 @@ class GenericDropdown<T> extends StatelessWidget {
     return DropdownButtonFormField<T>(
       value: selectedValue,
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.blueAccent),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.blueAccent),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.black),
-        ),
+        border: _outlineDecoration(),
+        enabledBorder: _outlineDecoration(),
+        focusedBorder: _outlineDecoration(),
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         filled: true,
-        fillColor: Colors.grey[200],
+        fillColor: AppColors.scaffoldBackground,
       ),
       items:
           items.map((item) {
@@ -50,7 +43,7 @@ class GenericDropdown<T> extends StatelessWidget {
             );
           }).toList(),
       hint: Padding(padding: EdgeInsets.only(left: 8), child: AppText(hint)),
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: AppBorderRadius.mediumRadius,
       icon: Icon(Icons.arrow_drop_down, color: Colors.black, size: 28),
       iconSize: 32,
       dropdownColor: Colors.white,
@@ -66,6 +59,13 @@ class GenericDropdown<T> extends StatelessWidget {
           );
         }).toList();
       },
+    );
+  }
+
+  OutlineInputBorder _outlineDecoration({Color color = AppColors.black}) {
+    return OutlineInputBorder(
+      borderRadius: AppBorderRadius.mediumRadius,
+      borderSide: BorderSide(color: color),
     );
   }
 }

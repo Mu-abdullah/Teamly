@@ -7,10 +7,10 @@ class GenderEntity {
 }
 
 class GenderModel extends GenderEntity {
-  GenderModel({super.name});
+  GenderModel({super.name, super.id});
 
   factory GenderModel.fromJson(Map<String, dynamic> json) =>
-      GenderModel(name: json['gender']);
+      GenderModel(name: json['gender'], id: json['id']);
 
-  Map<String, dynamic> toJson() => {'gender': name};
+  Map<String, dynamic> toJson() => {'gender': name, 'id': id};
 }

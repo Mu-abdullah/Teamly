@@ -15,3 +15,15 @@ final class ErrorImageFromGallery extends NewEmpState {
   final String error;
   const ErrorImageFromGallery({required this.error});
 }
+
+final class NewEmpLoading extends NewEmpState {}
+
+final class NewEmpSubmitted extends NewEmpState {
+  final EmpModel emp;
+  const NewEmpSubmitted({required this.emp});
+}
+
+final class NewEmpError extends NewEmpState {
+  final String error;
+  const NewEmpError(this.error);
+}

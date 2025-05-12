@@ -20,6 +20,7 @@ class UserProfileRepo {
         fields: const [
           'id',
           'name',
+          'image',
           'nid',
           'address',
           'phone',

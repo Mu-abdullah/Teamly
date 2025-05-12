@@ -15,6 +15,7 @@ import '../../../features/admin/home_screen/data/repo/emp_count_repo.dart';
 import '../../../features/admin/home_screen/data/repo/home_emp_repo.dart';
 import '../../../features/admin/home_screen/data/repo/vaction_count_repo.dart';
 import '../../../features/admin/new_emp/data/repo/get_new_emp_position.dart';
+import '../../../features/admin/new_emp/data/repo/upload_emp_info_to_supabase.dart';
 import '../../../features/admin/review_vacation_requests/data/repo/response_vacation_repo.dart';
 import '../../../features/admin/review_vacation_requests/data/repo/review_vacation_repo.dart';
 import '../../../features/auth/data/repo/auth_repo.dart';
@@ -76,6 +77,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => UserGetCustodyItemRepo(locator()));
   locator.registerLazySingleton(() => SatteldUserCustodyRepo(locator()));
   locator.registerLazySingleton(() => GetNewEmpPosition(locator()));
+  locator.registerLazySingleton(() => UploadEmpInfoToSupabase(locator()));
 }
 
 void _registerServices() {

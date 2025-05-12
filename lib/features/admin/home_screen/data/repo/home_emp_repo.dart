@@ -19,6 +19,7 @@ class HomeEmpRepo {
         collection: BackendPoint.emp,
         fields: const [
           'id',
+          'image',
           'name',
           'position',
           'phone',

@@ -13,6 +13,9 @@ class EmpEntity {
   final String? comId;
   final String? position;
   final String? gender;
+  final String? image;
+  final String? papers;
+  
 
   EmpEntity({
     this.id,
@@ -29,5 +32,7 @@ class EmpEntity {
     this.comId,
     this.position,
     this.gender,
+    this.image,
+    this.papers
   });
 }

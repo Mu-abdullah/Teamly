@@ -2,19 +2,22 @@ import '../../../../core/entities/emp_entity.dart';
 
 class EmpModel extends EmpEntity {
   EmpModel({
-    required super.id,
-    required super.createdAt,
-    required super.name,
-    required super.nid,
-    required super.address,
-    required super.phone,
-    required super.salary,
-    required super.startIn,
-    required super.startEnd,
-    required super.endJobReason,
-    required super.jobStatus,
-    required super.comId,
-    required super.position,
+     super.id,
+     super.createdAt,
+     super.name,
+     super.nid,
+     super.address,
+     super.phone,
+     super.salary,
+     super.startIn,
+     super.startEnd,
+     super.endJobReason,
+     super.jobStatus,
+     super.comId,
+     super.position,
+     super.gender,
+     super.papers,
+     super.image
   });
 
   factory EmpModel.fromJson(Map<String, dynamic> json) => EmpModel(
@@ -31,6 +34,9 @@ class EmpModel extends EmpEntity {
     jobStatus: json["job_status"],
     comId: json["com_id"],
     position: json["position"]['position'],
+    gender: json["gender"],
+    papers: json["papers"],
+    image: json["image"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -47,5 +53,8 @@ class EmpModel extends EmpEntity {
     "job_status": jobStatus,
     "com_id": comId,
     "position": position,
+    "gender": gender,
+    "papers": papers,
+    "image": image,
   };
 }

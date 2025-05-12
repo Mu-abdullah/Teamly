@@ -6,13 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../../auth/data/models/emp_model.dart';
+import '../../../data/repo/convert_images_to_pdf.dart';
 import '../../../data/repo/get_new_emp_image.dart';
+import '../../../data/repo/upload_emp_info_to_supabase.dart';
 
 part 'new_emp_state.dart';
 
 class NewEmpCubit extends Cubit<NewEmpState> {
+  UploadEmpInfoToSupabase uploadEmpInfoToSupabase;
   GetNewEmpImage getImage = GetNewEmpImage();
-  NewEmpCubit() : super(NewEmpInitial());
+  ConvertImagesToPdf convertImagesToPdf = ConvertImagesToPdf();
+  NewEmpCubit(this.uploadEmpInfoToSupabase) : super(NewEmpInitial());
 
   static NewEmpCubit get(context) => BlocProvider.of(context);
 
@@ -58,5 +63,52 @@ class NewEmpCubit extends Cubit<NewEmpState> {
     } catch (e) {
       emit(ErrorImageFromGallery(error: e.toString())); // Handle errors
     }
+  }
+
+  Future<void> uploadEmpData({required EmpModel emp}) async {
+    emit(NewEmpLoading());
+    var result = await uploadEmpInfoToSupabase.uploadEmpInfoToSupabase(
+      emp.toJson(),
+    );
+    result.fold(
+      (l) {
+        if (!isClosed) {
+          emit(NewEmpError(l.message));
+        }
+      },
+      (r) {
+        if (!isClosed) {
+          emit(NewEmpSubmitted(emp: r));
+        }
+      },
+    );
+  }
+
+  Future<String> convertAndUpload({
+    required List<File> images,
+    required String companyID,
+  }) async {
+    emit(NewEmpLoading());
+    var pdfUrl = await uploadEmpInfoToSupabase.convertImageToPDFAndUpload(
+      images: images,
+      companyID: companyID,
+      nid: nid.text,
+    );
+    debugPrint(pdfUrl);
+    return pdfUrl;
+  }
+
+  Future<String> uploadImage({
+    required File image,
+    required String companyID,
+  }) async {
+    emit(NewEmpLoading());
+    var imageUrl = await uploadEmpInfoToSupabase.uploadImage(
+      image: image,
+      companyID: companyID,
+      nid: nid.text,
+    );
+    debugPrint(imageUrl);
+    return imageUrl;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
@@ -99,6 +100,7 @@ class NewEmpForm extends StatelessWidget {
               return null;
             },
             maxLength: 14,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),
           NewEmpInputRow(
             controller: cubit.phone,
@@ -112,6 +114,7 @@ class NewEmpForm extends StatelessWidget {
               return null;
             },
             maxLength: 11,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),
           NewEmpInputRow(
             controller: cubit.startIn,
@@ -142,6 +145,7 @@ class NewEmpForm extends StatelessWidget {
               }
               return null;
             },
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),
         ],
       ),

@@ -169,6 +169,7 @@ class LangKeys {
   static const String female = 'female';
   static const String getEmpPaper = 'getEmpPaper';
   static const String noImage = 'noImage';
+  static const String gender = 'gender';
  
 
 }

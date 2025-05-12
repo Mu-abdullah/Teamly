@@ -41,7 +41,7 @@ class HomeEmpItem extends StatelessWidget {
                     shape: BoxShape.circle,
                     border: Border.all(color: AppColors.black, width: 3),
                     image: DecorationImage(
-                      image: NetworkImage(ImageTest.bloger),
+                      image: NetworkImage(emp.image ?? ImageTest.bloger),
                       fit: BoxFit.cover,
                     ),
                     boxShadow: [
@@ -66,11 +66,7 @@ class HomeEmpItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     spacing: 4,
                     children: [
-                      AppText(
-                        emp.position!,
-                        isTitle: true,
-                        translate: false,
-                      ),
+                      AppText(emp.position!, isTitle: true, translate: false),
                       AppText(emp.name!, fontSize: 12, translate: false),
                       AppText(emp.phone!, fontSize: 12, translate: false),
                       AppText(emp.id!, fontSize: 12, translate: false),

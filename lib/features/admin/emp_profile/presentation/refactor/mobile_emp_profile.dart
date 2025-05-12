@@ -62,7 +62,7 @@ class MobileEmpProfile extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          BuidInfoTile(title: 'الرقم الوظيفي', value: user.id!),
+          BuidInfoTile(title: LangKeys.id, value: user.id!, flex: 2),
           SizedBox(
             height: 50,
             child: CustomDivider(
@@ -73,7 +73,7 @@ class MobileEmpProfile extends StatelessWidget {
               indent: 0,
             ),
           ),
-          BuidInfoTile(title: 'الراتب', value: user.salary!),
+          BuidInfoTile(title: LangKeys.salary, value: user.salary!),
         ],
       ),
     );

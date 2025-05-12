@@ -20,18 +20,17 @@ class NameImagePosition extends StatelessWidget {
               color: Colors.grey.shade200,
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: NetworkImage(ImageTest.bloger),
+                image: NetworkImage(user.image ?? ImageTest.bloger),
                 fit: BoxFit.cover,
               ),
             ),
           ),
 
-          AppText(user.name!, isTitle: true, translate: false),
+          AppText(user.name!, isTitle: true, translate: false, maxLines: 5),
           AppText(
             user.position!,
             textAlign: TextAlign.center,
             translate: false,
-            isTitle: true,
           ),
         ],
       ),

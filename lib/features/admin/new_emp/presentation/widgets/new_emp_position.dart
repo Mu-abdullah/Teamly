@@ -7,13 +7,13 @@ import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../../../../core/style/widgets/custom_drop_menu.dart';
 import '../../data/model/new_emp_positions_model.dart';
-import '../cubits/new_emp_cubit/new_emp_cubit.dart';
+import '../cubits/new_emp_form_cubit/new_emp_form_cubit.dart';
 import '../cubits/new_emp_position_cubit/new_emp_position_cubit.dart';
 
 class NewEmpPosition extends StatelessWidget {
   const NewEmpPosition({super.key, required this.cubit});
 
-  final NewEmpCubit cubit;
+  final NewEmpFormCubit cubit;
 
   @override
   Widget build(BuildContext context) {

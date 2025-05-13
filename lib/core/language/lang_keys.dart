@@ -34,6 +34,7 @@ class LangKeys {
   static const String createdAt = 'createdAt';
   static const String image = 'image';
   static const String images = 'images';
+  static const String noPapers = 'noPapers';
 
   //account keys
   static const String deleteAccount = 'deleteAccount';

@@ -9,13 +9,13 @@ import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/font/fonts_helper.dart';
 import '../../../../../core/style/statics/image_test.dart';
-import '../cubits/new_emp_cubit/new_emp_cubit.dart';
+import '../cubits/new_emp_form_cubit/new_emp_form_cubit.dart';
 import 'new_emp_input_row.dart';
 
 class NewEmpForm extends StatelessWidget {
   const NewEmpForm({super.key, required this.cubit});
 
-  final NewEmpCubit cubit;
+  final NewEmpFormCubit cubit;
 
   @override
   Widget build(BuildContext context) {

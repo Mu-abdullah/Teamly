@@ -18,11 +18,11 @@ class UploadEmpInfoToSupabase {
   final supabase = Supabase.instance.client;
 
   Future<Either<CustomError, EmpModel>> uploadEmpInfoToSupabase(
-    Map<String, dynamic> data,
+    EmpModel data,
   ) async {
     return await service.addData(
       table: BackendPoint.emp,
-      data: data,
+      data: data.toJson(),
       fromJson: EmpModel.fromJson,
     );
   }
@@ -30,12 +30,12 @@ class UploadEmpInfoToSupabase {
   Future<String> convertImageToPDFAndUpload({
     required List<File> images,
     required String companyID,
-    required String nid,
+    required nid,
   }) async {
     final storage = supabase.storage.from(BackendPoint.imageBucket);
     final pdfBytes = await ConvertImagesToPdf().generatePdfFromImages(images);
     final fileName =
-        '$companyID/$nid/pdfs/${DateTime.now().millisecondsSinceEpoch}.pdf';
+        '$companyID/${nid.toString()}/pdfs/${DateTime.now().millisecondsSinceEpoch}.pdf';
 
     // Upload the PDF
     await storage.uploadBinary(
@@ -53,11 +53,11 @@ class UploadEmpInfoToSupabase {
   Future<String> uploadImage({
     required File image,
     required String companyID,
-    required String nid,
+    required nid,
   }) async {
     final storage = supabase.storage.from(BackendPoint.imageBucket);
     final fileName =
-        '$companyID/$nid/images/${DateTime.now().millisecondsSinceEpoch}.jpg';
+        '$companyID/${nid.toString()}/images/${DateTime.now().millisecondsSinceEpoch}.jpg';
     await storage.upload(fileName, image);
     final response = storage.getPublicUrl(fileName);
     return response;

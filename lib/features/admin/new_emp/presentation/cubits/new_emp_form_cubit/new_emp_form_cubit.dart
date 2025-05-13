@@ -6,20 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../auth/data/models/emp_model.dart';
 import '../../../data/repo/convert_images_to_pdf.dart';
 import '../../../data/repo/get_new_emp_image.dart';
 import '../../../data/repo/upload_emp_info_to_supabase.dart';
 
-part 'new_emp_state.dart';
+part 'new_emp_form_state.dart';
 
-class NewEmpCubit extends Cubit<NewEmpState> {
+class NewEmpFormCubit extends Cubit<NewEmpFormState> {
   UploadEmpInfoToSupabase uploadEmpInfoToSupabase;
   GetNewEmpImage getImage = GetNewEmpImage();
   ConvertImagesToPdf convertImagesToPdf = ConvertImagesToPdf();
-  NewEmpCubit(this.uploadEmpInfoToSupabase) : super(NewEmpInitial());
+  NewEmpFormCubit(this.uploadEmpInfoToSupabase) : super(NewEmpInitial());
 
-  static NewEmpCubit get(context) => BlocProvider.of(context);
+  static NewEmpFormCubit get(context) => BlocProvider.of(context);
 
   var formKey = GlobalKey<FormState>();
   var name = TextEditingController();
@@ -52,7 +53,6 @@ class NewEmpCubit extends Cubit<NewEmpState> {
       emit(GetImageFromGallery());
     } catch (e) {
       emit(ErrorImageFromGallery(error: e.toString()));
-      debugPrint('Error getting image from gallery: $e');
     }
   }
 
@@ -65,37 +65,26 @@ class NewEmpCubit extends Cubit<NewEmpState> {
     }
   }
 
-  Future<void> uploadEmpData({required EmpModel emp}) async {
-    emit(NewEmpLoading());
-    var result = await uploadEmpInfoToSupabase.uploadEmpInfoToSupabase(
-      emp.toJson(),
-    );
-    result.fold(
-      (l) {
-        if (!isClosed) {
-          emit(NewEmpError(l.message));
-        }
-      },
-      (r) {
-        if (!isClosed) {
-          emit(NewEmpSubmitted(emp: r));
-        }
-      },
-    );
-  }
-
   Future<String> convertAndUpload({
     required List<File> images,
     required String companyID,
   }) async {
     emit(NewEmpLoading());
-    var pdfUrl = await uploadEmpInfoToSupabase.convertImageToPDFAndUpload(
-      images: images,
-      companyID: companyID,
-      nid: nid.text,
-    );
-    debugPrint(pdfUrl);
-    return pdfUrl;
+
+    try {
+      final pdfUrl = await uploadEmpInfoToSupabase.convertImageToPDFAndUpload(
+        images: images,
+        companyID: companyID.toString(),
+        nid: nid.text.toString(),
+      );
+
+      return pdfUrl;
+    } catch (e) {
+      if (!isClosed) {
+        emit(NewEmpError(LangKeys.error));
+      }
+      rethrow; // Rethrow to let SubmitedEmp handle the error
+    }
   }
 
   Future<String> uploadImage({
@@ -103,12 +92,20 @@ class NewEmpCubit extends Cubit<NewEmpState> {
     required String companyID,
   }) async {
     emit(NewEmpLoading());
-    var imageUrl = await uploadEmpInfoToSupabase.uploadImage(
-      image: image,
-      companyID: companyID,
-      nid: nid.text,
-    );
-    debugPrint(imageUrl);
-    return imageUrl;
+
+    try {
+      final imageUrl = await uploadEmpInfoToSupabase.uploadImage(
+        image: image,
+        companyID: companyID.toString(),
+        nid: nid.text.toString(),
+      );
+
+      return imageUrl;
+    } catch (e) {
+      if (!isClosed) {
+        emit(NewEmpError(LangKeys.error));
+      }
+      rethrow;
+    }
   }
 }

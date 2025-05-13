@@ -14,8 +14,16 @@ class CheckUserCustodyCubit extends Cubit<CheckUserCustodyState> {
     emit(CheckUserCustodyLoading());
     final result = await repo.checkUserCustody(userId: userId);
     result.fold(
-      (l) => emit(CheckUserCustodyError(l.message)),
-      (r) => emit(CheckUserCustodyLoaded(r)),
+      (l) {
+        if (!isClosed) {
+          emit(CheckUserCustodyError(l.message));
+        }
+      },
+      (r) {
+        if (!isClosed) {
+          emit(CheckUserCustodyLoaded(r));
+        }
+      },
     );
   }
 }

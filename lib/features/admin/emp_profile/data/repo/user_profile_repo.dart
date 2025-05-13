@@ -29,6 +29,7 @@ class UserProfileRepo {
           'job_status',
           'com_id',
           'position {position}',
+          'papers',
         ],
         fromJson: EmpModel.fromJson,
         filters: {

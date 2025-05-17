@@ -7,7 +7,7 @@ class EmpEntity {
   final String? address;
   final String? salary;
   final String? startIn;
-  final String? startEnd;
+  final String? endIn;
   final String? endJobReason;
   final String? jobStatus;
   final String? comId;
@@ -15,7 +15,6 @@ class EmpEntity {
   final String? gender;
   final String? image;
   final String? papers;
-  
 
   EmpEntity({
     this.id,
@@ -26,13 +25,13 @@ class EmpEntity {
     this.address,
     this.salary,
     this.startIn,
-    this.startEnd,
+    this.endIn,
     this.endJobReason,
     this.jobStatus,
     this.comId,
     this.position,
     this.gender,
     this.image,
-    this.papers
+    this.papers,
   });
 }

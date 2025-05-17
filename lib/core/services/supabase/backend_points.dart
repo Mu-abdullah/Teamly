@@ -13,4 +13,6 @@ class BackendPoint {
   static const position = 'position';
   static const users = 'users';
   static const vacations = 'vacations';
+  static const companyPolicies = 'company_policies';
+  static const officialHolidays = 'official_holidays';
 }

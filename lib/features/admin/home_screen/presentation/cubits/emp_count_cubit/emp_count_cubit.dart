@@ -25,12 +25,19 @@ class EmpCountCubit extends Cubit<EmpCountState> {
   Future<void> getEmpCount(String? comId) async {
     emit(EmpCountLoading());
     var empCount = await repo.getEmpCount(comId: comId!);
-    empCount.fold((error) => emit(EmpCountError(error.message)), (empCount) {
-      if (!isClosed) {
-        emp = empCount;
-        emit(EmpCountSuccess(empCount));
-      }
-    });
+    empCount.fold(
+      (error) {
+        if (!isClosed) {
+          emit(EmpCountError(error.message));
+        }
+      },
+      (empCount) {
+        if (!isClosed) {
+          emp = empCount;
+          emit(EmpCountSuccess(empCount));
+        }
+      },
+    );
   }
 
   List<EmpCountModel> getOnWork() {

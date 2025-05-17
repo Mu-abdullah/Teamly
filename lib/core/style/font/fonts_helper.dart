@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FontsHelper {
-  static const String fontFamily = 'monsterrat';
+  static const String monsterratFontFamily = 'monsterrat';
+  static const String fontFamily = 'reqaa';
 
   static String getAppLangCode(BuildContext context) {
     final currentLocale = Localizations.localeOf(context);

@@ -129,7 +129,7 @@ class CustodySalaryVacationCards extends StatelessWidget {
   }
 
   void _handleVacationTap(BuildContext context) {
-    final gender = context.read<GetUserDataCubit>().user!.gend!.name;
+    final gender = context.read<GetUserDataCubit>().user!.gender;
     context.pushNamed(RoutesNames.userVacation, arguments: {'gender': gender});
   }
 }

@@ -12,87 +12,130 @@ class ReportItem extends StatelessWidget {
 
   final MonthAdminAttendance att;
 
+  bool get hasCheckOut => att.checkOut != null;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
+        height: 140,
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: AppBorderRadius.mediumRadius,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Stack(
             children: [
-              AppText(att.date!, translate: false),
-              Row(
-                children: [
-                  Expanded(
-                    child: AppText(att.emp!.position!, translate: false),
-                  ),
-                  AppText(
-                    att.emp!.id!,
-                    translate: false,
-                    color: AppColors.darkGrey,
-                  ),
-                ],
-              ),
-
-              Row(
-                children: [
-                  Expanded(
-                    child: AppText(
-                      att.emp!.name!,
-                      translate: false,
-                      isTitle: true,
-                    ),
-                  ),
-                  att.checkOut == null
-                      ? const SizedBox()
-                      : AppText(
-                        TimeRefactor(
-                          att.checkIn!,
-                        ).timeDifferenceInHoursAndMinutes(att.checkOut!),
-                        translate: false,
-                        color: AppColors.darkGrey,
-                      ),
-                ],
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      AppText(LangKeys.checkIn),
-                      AppText(" : ", translate: false),
-                      AppText(
-                        TimeRefactor(att.checkIn!).toTimeString(),
-                        translate: false,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      AppText(LangKeys.checkOut),
-                      AppText(" : ", translate: false),
-
-                      AppText(
-                        att.checkOut == null
-                            ? LangKeys.noLogout
-                            : TimeRefactor(att.checkOut!).toTimeString(),
-                        translate: att.checkOut == null,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              if (!hasCheckOut) _buildNoLogoutLabel(),
+              Positioned.fill(child: _buildReportDetails()),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildNoLogoutLabel() {
+    return Positioned(
+      top: 0,
+      left: 0,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        decoration: const BoxDecoration(
+          color: AppColors.red,
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
+        child: const AppText(
+          LangKeys.noLogout,
+          color: AppColors.white,
+          translate: true,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildReportDetails() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppText(att.date!, translate: false),
+
+        _buildPositionAndIdRow(),
+
+        _buildNameAndDurationRow(),
+
+        _buildCheckTimes(),
+      ],
+    );
+  }
+
+  Widget _buildPositionAndIdRow() {
+    return Row(
+      children: [
+        Expanded(
+          child: AppText(
+            att.emp!.position!,
+            translate: false,
+            fontSize: 11,
+            color: AppColors.darkGrey,
+          ),
+        ),
+        AppText(
+          att.emp!.id!,
+          translate: false,
+          color: AppColors.darkGrey,
+          fontSize: 9,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNameAndDurationRow() {
+    return Row(
+      children: [
+        Expanded(child: AppText(att.emp!.name!, translate: false)),
+        if (hasCheckOut)
+          AppText(
+            TimeRefactor(
+              att.checkIn!,
+            ).timeDifferenceInHoursAndMinutes(att.checkOut!),
+            translate: false,
+            color: AppColors.darkGrey,
+          ),
+      ],
+    );
+  }
+
+  Widget _buildCheckTimes() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            AppText(LangKeys.checkIn, fontSize: 10),
+            const AppText(" : ", translate: false),
+            AppText(
+              TimeRefactor(att.checkIn!).toTimeString(),
+              translate: false,
+            ),
+          ],
+        ),
+        if (hasCheckOut)
+          Row(
+            children: [
+              AppText(LangKeys.checkOut, fontSize: 10),
+              const AppText(" : ", translate: false),
+              AppText(
+                TimeRefactor(att.checkOut!).toTimeString(),
+                translate: false,
+              ),
+            ],
+          ),
+      ],
     );
   }
 }

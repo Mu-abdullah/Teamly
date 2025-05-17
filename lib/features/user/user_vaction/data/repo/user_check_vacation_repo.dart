@@ -16,7 +16,7 @@ class UserCheckVacationRepo {
       var result = await service.fetchCollection(
         collection: BackendPoint.vacations,
         fromJson: UserCheckVacationModel.fromJson,
-        fields: const ['id', 'type', 'status'],
+        fields: const ['id', 'type', 'status', 'emp{gender{gender}}'],
         filters: {
           'user_id': {'eq': userId},
         },

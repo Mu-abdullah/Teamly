@@ -19,7 +19,12 @@ class MobileUserVactionsBody extends StatelessWidget {
         } else if (state is UserCheckVacationLoaded) {
           return VacationCardsGridView(cubit: cubit);
         } else if (state is UserCheckVacationError) {
-          return Center(child: AppText(state.error));
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: AppText(state.error, translate: false, maxLines: 10),
+            ),
+          );
         }
         return Container();
       },

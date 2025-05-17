@@ -6,6 +6,7 @@ import '../../features/admin/custody_transaction/presentation/views/custody_tran
 import '../../features/admin/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/custody_transaction_items/presentation/views/custody_transaction_items.dart';
 import '../../features/admin/emp_profile/presentation/views/emp_profile.dart';
+import '../../features/admin/emp_profile/presentation/widgets/emp_papers.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/admin/new_emp/presentation/views/new_emp_screen.dart';
 import '../../features/admin/review_vacation_requests/presentation/views/review_vacation_request.dart';
@@ -85,6 +86,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.newEmpScreen:
       return BaseRoute(page: NewEmpScreen());
+
+    case RoutesNames.paperViewer:
+      return BaseRoute(page: PaperViewer(url: args?['url'] as String?));
 
     /////////
     /////////user feature routes////////////

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
+import '../../../../../core/routes/routes_name.dart';
+import '../../../../../core/style/color/app_color.dart';
 import '../../../../../core/style/statics/image_test.dart';
+import '../../../../../core/style/widgets/app_button.dart';
 import '../../../../../core/style/widgets/app_text.dart';
 import '../../../../auth/data/models/emp_model.dart';
 
@@ -27,10 +32,29 @@ class NameImagePosition extends StatelessWidget {
           ),
 
           AppText(user.name!, isTitle: true, translate: false, maxLines: 5),
-          AppText(
-            user.position!,
-            textAlign: TextAlign.center,
-            translate: false,
+          Row(
+            children: [
+              Expanded(
+                child: AppText(
+                  user.position!,
+                  textAlign: TextAlign.start,
+                  translate: false,
+                ),
+              ),
+              user.papers != null && user.papers!.isNotEmpty
+                  ? AppButton(
+                    isCircle: true,
+                    icon: HugeIcons.strokeRoundedPdf01,
+                    backGroungColor: AppColors.blueBlack,
+                    onTap: () {
+                      context.pushNamed(
+                        RoutesNames.paperViewer,
+                        arguments: {'url': user.papers},
+                      );
+                    },
+                  )
+                  : SizedBox.shrink(),
+            ],
           ),
         ],
       ),

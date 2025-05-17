@@ -104,7 +104,7 @@ flutter:
         - asset: assets/fonts/alfont_com_Montserrat-Arabic-SemiBold-1.ttf
     - family: reqaa
       fonts:
-        - asset: assets/fonts/alfont_com_UthmanicHafs_V22.ttf
+        - asset: assets/fonts/Almarai-Regular.ttf
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../../core/functions/timestamp_to_time.dart';
 import '../../../../../../core/language/lang_keys.dart';
+import '../../../../../../core/services/status/vactions_typs.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
 import '../../../data/model/month_admin_attendance.dart';
+import '../../../data/model/vacation_monthly_records_model.dart';
 
 class ReportItem extends StatelessWidget {
   const ReportItem({super.key, required this.att});
@@ -19,19 +22,16 @@ class ReportItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 140,
+        height: 150,
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: AppBorderRadius.mediumRadius,
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Stack(
-            children: [
-              if (!hasCheckOut) _buildNoLogoutLabel(),
-              Positioned.fill(child: _buildReportDetails()),
-            ],
-          ),
+        child: Stack(
+          children: [
+            if (!hasCheckOut) _buildNoLogoutLabel(),
+            Positioned.fill(child: _buildReportDetails()),
+          ],
         ),
       ),
     );
@@ -60,17 +60,20 @@ class ReportItem extends StatelessWidget {
   }
 
   Widget _buildReportDetails() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppText(att.date!, translate: false),
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppText(att.date!, translate: false),
 
-        _buildPositionAndIdRow(),
+          _buildPositionAndIdRow(),
 
-        _buildNameAndDurationRow(),
+          _buildNameAndDurationRow(),
 
-        _buildCheckTimes(),
-      ],
+          _buildCheckTimes(),
+        ],
+      ),
     );
   }
 
@@ -136,6 +139,103 @@ class ReportItem extends StatelessWidget {
             ],
           ),
       ],
+    );
+  }
+}
+
+class VacationReportItem extends StatelessWidget {
+  const VacationReportItem({super.key, required this.vac});
+
+  final VacationMonthlyRecordsModel vac;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 140,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: AppBorderRadius.mediumRadius,
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            left: 10,
+            child: Container(
+              decoration: BoxDecoration(
+                color:
+                    vac.status == VacationStatus.approved
+                        ? AppColors.green
+                        : vac.status == VacationStatus.rejected
+                        ? AppColors.red
+                        : AppColors.darkGrey,
+
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: AppText(vac.status!, color: AppColors.white),
+            ),
+          ),
+          Positioned.fill(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    spacing: 10,
+                    children: [
+                      Row(
+                        children: [
+                          AppText(LangKeys.startIn),
+                          const AppText(" : ", translate: false),
+                          AppText(
+                            TimeRefactor(vac.startDate!).toDateString(),
+                            translate: false,
+                          ),
+                        ],
+                      ),
+
+                      Row(
+                        children: [
+                          AppText(LangKeys.endIn),
+                          const AppText(" : ", translate: false),
+                          AppText(
+                            TimeRefactor(vac.endDate!).toDateString(),
+                            translate: false,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: AppText(
+                          vac.userId!,
+                          translate: false,
+                          isTitle: true,
+                        ),
+                      ),
+                      AppText(vac.empId!, translate: false, fontSize: 10),
+                    ],
+                  ),
+
+                  AppText(
+                    '${context.translate(LangKeys.vacationReason)}: ${vac.reason}',
+                    translate: false,
+                    fontSize: 10,
+                    color: AppColors.darkGrey,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

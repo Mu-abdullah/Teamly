@@ -31,8 +31,8 @@ void selectData({
     ),
     onChange: (index) {},
     onSubmit: (index) async {
-      var date = convertDateToArabic(index.toString());
-      controller.text = date;
+      // var date = convertDateToArabic(index.toString());
+      controller.text = index.toString();
     },
     bottomPickerTheme: BottomPickerTheme.blue,
   );

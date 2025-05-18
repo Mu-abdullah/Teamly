@@ -17,11 +17,13 @@ class MonthAttendanceReport extends StatelessWidget {
         if (state is MonthAttendanceLoading) {
           return MonthReportLoading();
         } else if (state is MonthAttendanceLoaded) {
-          final attendance = state.attendanceList;
-          return ReportListview(attendance: attendance);
+          final report = state.report;
+          return ReportListview(report: report);
         } else if (state is MonthAttendanceError) {
           return Expanded(
-            child: Center(child: AppText(state.message, translate: false)),
+            child: Center(
+              child: AppText(state.message, translate: false, maxLines: 20),
+            ),
           );
         } else {
           return const Expanded(

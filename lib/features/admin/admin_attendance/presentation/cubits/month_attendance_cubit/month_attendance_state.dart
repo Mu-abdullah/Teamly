@@ -9,16 +9,22 @@ sealed class MonthAttendanceState extends Equatable {
 
 final class MonthAttendanceInitial extends MonthAttendanceState {}
 
-final class MonthAttendanceLoading extends MonthAttendanceState {}
+class MonthAttendanceLoading extends MonthAttendanceState {}
 
-final class MonthAttendanceLoaded extends MonthAttendanceState {
-  final List<MonthAdminAttendance> attendanceList;
+class MonthAttendanceLoaded extends MonthAttendanceState {
+  final MonthlyReport report;
 
-  const MonthAttendanceLoaded(this.attendanceList);
+  const MonthAttendanceLoaded(this.report);
+
+  @override
+  List<Object> get props => [report];
 }
 
-final class MonthAttendanceError extends MonthAttendanceState {
+class MonthAttendanceError extends MonthAttendanceState {
   final String message;
 
   const MonthAttendanceError(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

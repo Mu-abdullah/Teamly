@@ -16,6 +16,7 @@ class RoutesNames {
   static const String reviewVacationRequest = 'reviewVacationRequest';
   static const String newEmpScreen = 'newEmpScreen';
   static const String paperViewer = 'paperViewer';
+  static const String adminVacationScreen = 'adminVacationScreen';
 
   //user screens
   static const String userHomeScreen = 'userHomeScreen';

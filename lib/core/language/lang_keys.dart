@@ -132,6 +132,7 @@ class LangKeys {
   static const String startDate = 'startDate';
   static const String endDate = 'endDate';
   static const String vacationRequest = 'vacationRequest';
+  static const String newVacationRequest = 'newVacationRequest';
   static const String annuallVacation = 'annuallvacation';
   static const String exceptionalVacation = 'exceptionalVacation';
   static const String sickLeave = 'sickLeave';
@@ -172,6 +173,19 @@ class LangKeys {
   static const String getEmpPaper = 'getEmpPaper';
   static const String noImage = 'noImage';
   static const String gender = 'gender';
- 
+
+  static const String baseSalary = 'baseSalary';
+  static const String attendedDays = 'attendedDays';
+  static const String regularDays = 'regularDays';
+  static const String holidayDays = 'holidayDays';
+  static const String approvedVacationDays = 'approvedVacationDays';
+  static const String absentDays = 'absentDays';
+  static const String lateEarlyPenalty = 'lateEarlyPenalty';
+  static const String totalSalary = 'totalSalary';
+  static const String workingDays = 'workingDays';
+  static const String noSalaryData = 'noSalaryData';
+  static const String salaryReport = 'salaryReport';
+  static const String officialHolidayDays = 'officialHolidayDays';
+  static const String weeklyHolidayDays = 'weeklyHolidayDays';
 
 }

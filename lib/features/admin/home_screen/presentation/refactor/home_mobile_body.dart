@@ -8,7 +8,6 @@ import '../widgets/co_name_logo/co_name_logo.dart';
 import '../widgets/emp_count/home_emp_count_body.dart';
 import '../widgets/home_comp/home_companies.dart';
 import '../widgets/home_custody/home_admin_custody.dart';
-import '../widgets/home_vacations_attendance/home_vacations_attendance.dart';
 import '../widgets/home_emp/home_emp.dart';
 
 class HomeMobileBody extends StatelessWidget {
@@ -41,13 +40,13 @@ class Counts extends StatelessWidget {
         color: AppColors.white,
         borderRadius: AppBorderRadius.mediumRadius,
       ),
-      height: context.height(percent: .5),
+      height: context.height(percent: .5 - .15 - .009),
       child: Column(
         spacing: context.height(percent: .009),
         children: [
           AppSpace(space: context.height(percent: .001)),
           HomeEmpCountBody(height: context.height(percent: .15)),
-          HomeVacationAttendance(height: context.height(percent: .15)),
+          // HomeVacationAttendance(height: context.height(percent: .15)),
           HomeAdminCustody(height: context.height(percent: .15)),
         ],
       ),

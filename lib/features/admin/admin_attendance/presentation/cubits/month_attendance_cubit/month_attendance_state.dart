@@ -28,3 +28,13 @@ class MonthAttendanceError extends MonthAttendanceState {
   @override
   List<Object> get props => [message];
 }
+
+class MonthAttendanceSalaryCalculated extends MonthAttendanceState {
+  final MonthlyReport report;
+  final Map<String, Map<String, dynamic>> salaryReport;
+
+  const MonthAttendanceSalaryCalculated(this.report, this.salaryReport);
+
+  @override
+  List<Object> get props => [report, salaryReport];
+}

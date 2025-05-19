@@ -136,6 +136,7 @@
     "startDate":"Start Date" ,
     "endDate":"End Date" ,
     "vacationRequest":"Vacation Request",
+    "newVacationRequest":"New Vacation Requests",
     "exceptionalVacation":"Exceptional Vacation",
     "sickLeave":"Sick Leave",
     "newRequest":"New Request" ,
@@ -180,7 +181,24 @@
     "male":"Male" ,
     "female":"Female"  ,
     "getEmpPaper":"Employee Papers",
-    "noImage":"No Image Selected"
+    "noImage":"No Image Selected",
+
+    
+
+    "######################################salary":"",
+    "weeklyHolidayDays":"Weekly Holiday Days",
+    "officialHolidayDays":"Official Holiday Days",
+    "baseSalary":"Base Salary",
+    "attendedDays":"Attended Days",
+    "regularDays":"Regular Days",
+    "holidayDays":"Holiday Days",
+    "approvedVacationDays":"Approved Vacation Days",
+    "absentDays":"Absent Days",
+    "lateEarlyPenalty":"Late & Early Penalty",
+    "totalSalary":"Total Salary",
+    "workingDays":"Working Days",
+    "noSalaryData":"No Salary",
+    "salaryReport":"Salary Report"
 
     
      

@@ -143,6 +143,7 @@
     "startDate":"تاريخ البدء" ,
     "endDate":"تاريخ الانتهاء" ,
     "vacationRequest":"طلب اجازة" ,
+    "newVacationRequest":"طلبات الاجازة الجديدة" ,
     "exceptionalVacation":"اجازة استثنائية" ,
     "sickLeave":"اجازة مرضية",
     "newRequest":"طلب جديد" ,
@@ -187,5 +188,27 @@
     "male":"ذكر" ,
     "female":"انثى"  ,
     "getEmpPaper":"وثائق الموظف" ,
-    "noImage":"لم يتم اختيار صور"
+    "noImage":"لم يتم اختيار صور",
+
+    
+
+    "######################################salary":"",
+    "weeklyHolidayDays":"ايام العطلة الاسبوعية",
+    "officialHolidayDays":"ايام العطلة الحكومية",
+    "baseSalary":"الراتب الاساسي",
+    "attendedDays":"ايام الحضور",
+    "regularDays":"ايام العمل",
+    "holidayDays":"ايام العطلة",
+    "approvedVacationDays":"ايام الاجازة الموافق عليها",
+    "absentDays":"ايام الغياب",
+    "lateEarlyPenalty":"الانصراف المبكر",
+    "totalSalary":"الراتب الكلي",
+    "workingDays":"ايام العمل",
+    "noSalaryData":"لا يوجد راتب",
+    "salaryReport":"تقرير الراتب"
+
+
+
+    
+ 
 }

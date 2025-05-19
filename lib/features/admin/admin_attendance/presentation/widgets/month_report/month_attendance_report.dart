@@ -18,8 +18,27 @@ class MonthAttendanceReport extends StatelessWidget {
           return MonthReportLoading();
         } else if (state is MonthAttendanceLoaded) {
           final report = state.report;
-          return ReportListview(report: report);
-        } else if (state is MonthAttendanceError) {
+          return Expanded(
+            child: Column(
+              children: [Expanded(child: ReportListview(report: report))],
+            ),
+          );
+        } 
+        // else if (state is MonthAttendanceSalaryCalculated) {
+        //   return Expanded(
+        //     child: Column(
+        //       children: [
+        //         Expanded(
+        //           child: SalaryReportView(
+        //             report: state.report,
+        //             salaryReport: state.salaryReport,
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //   );
+        // } 
+        else if (state is MonthAttendanceError) {
           return Expanded(
             child: Center(
               child: AppText(state.message, translate: false, maxLines: 20),

@@ -37,7 +37,7 @@ class AdminAttendanceRepository {
               'user_id',
               'comp_id',
               'date',
-              'emp { id name position { position } }',
+              'emp { id name position { position } salary }',
             ],
             fromJson: MonthAdminAttendance.fromJson,
             filters: {

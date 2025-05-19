@@ -10,6 +10,7 @@ import '../../features/admin/emp_profile/presentation/widgets/emp_papers.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/admin/new_emp/presentation/views/new_emp_screen.dart';
 import '../../features/admin/review_vacation_requests/presentation/views/review_vacation_request.dart';
+import '../../features/admin/admin_vacations/presentation/views/admin_vacations_screen.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
 import '../../features/user/user_custody/data/model/user_custody_model.dart';
@@ -89,6 +90,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.paperViewer:
       return BaseRoute(page: PaperViewer(url: args?['url'] as String?));
+
+    case RoutesNames.adminVacationScreen:
+      return BaseRoute(page: AdminVacationsScreen());
 
     /////////
     /////////user feature routes////////////

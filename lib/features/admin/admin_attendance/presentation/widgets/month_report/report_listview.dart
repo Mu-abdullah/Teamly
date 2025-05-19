@@ -51,12 +51,6 @@ class ReportListview extends StatelessWidget {
               ],
             ),
           ),
-          // Positioned(
-          //   bottom: 10,
-          //   right: 10,
-          //   left: 10,
-          //   child: PrintReportButton(attendance: report),
-          // ),
         ],
       ),
     );

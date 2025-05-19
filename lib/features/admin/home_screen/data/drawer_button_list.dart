@@ -28,11 +28,6 @@ class DrawerButtonListItems {
       },
     ),
     DrawerButtonModel(
-      title: LangKeys.addCompany,
-      icon: HugeIcons.strokeRoundedFactory01,
-      onTap: () {},
-    ),
-    DrawerButtonModel(
       title: LangKeys.addEmployee,
       icon: HugeIcons.strokeRoundedUserCircle,
       onTap: () {
@@ -40,5 +35,18 @@ class DrawerButtonListItems {
         context.pushNamed(RoutesNames.newEmpScreen);
       },
     ),
+    DrawerButtonModel(
+      title: LangKeys.addCompany,
+      icon: HugeIcons.strokeRoundedFactory01,
+      onTap: () {},
+    ),
+    // DrawerButtonModel(
+    //   title: LangKeys.vacation,
+    //   icon: HugeIcons.strokeRoundedBeach,
+    //   onTap: () {
+    //     context.pop();
+    //     context.pushNamed(RoutesNames.adminVacationScreen);
+    //   },
+    // ),
   ];
 }

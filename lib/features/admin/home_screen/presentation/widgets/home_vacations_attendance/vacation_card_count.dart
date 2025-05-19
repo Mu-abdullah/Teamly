@@ -19,6 +19,7 @@ class VacationCardCount extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<VacationCountCubit, VacationCountState>(
       builder: (context, state) {
+        var cubit = VacationCountCubit.get(context);
         if (state is VacationCountLoading) {
           return VacationCardLoading(height: height);
         } else if (state is VacationCountSuccess) {
@@ -26,9 +27,9 @@ class VacationCardCount extends StatelessWidget {
             onTap: () {
               context.pushNamed(RoutesNames.reviewVacationRequest);
             },
-            cardTitle: LangKeys.vacation,
+            cardTitle: LangKeys.reviewVacationRequest,
             height: height,
-            cardCount: state.vacCount.length.toString(),
+            cardCount: cubit.getVacationsPeding().length.toString(),
             color: AppColors.blueAccent,
             cardIcon: HugeIcons.strokeRoundedBeach,
             isHighlighted: true,

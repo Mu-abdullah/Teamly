@@ -14,6 +14,7 @@ import '../cubits/month_attendance_cubit/month_attendance_cubit.dart';
 class ChooseMonth extends StatelessWidget {
   const ChooseMonth({super.key, required this.com});
   final String com;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetMonthCubit, GetMonthState>(
@@ -40,61 +41,73 @@ class ChooseMonth extends StatelessWidget {
           final months = s.monthList;
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                border: _outLineInputBorder(color: AppColors.blueAccent),
-                enabledBorder: _outLineInputBorder(color: AppColors.blueAccent),
-                focusedBorder: _outLineInputBorder(color: AppColors.black),
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-                filled: true,
-                fillColor: AppColors.scaffoldBackground,
-              ),
-              items:
-                  months.map((month) {
-                    return DropdownMenuItem<String>(
-                      value: month,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 8),
-                        child: AppText(month, translate: false),
+            child:
+                months.isEmpty
+                    ? Center(child: AppText(LangKeys.noDataFound))
+                    : DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        border: _outLineInputBorder(
+                          color: AppColors.blueAccent,
+                        ),
+                        enabledBorder: _outLineInputBorder(
+                          color: AppColors.blueAccent,
+                        ),
+                        focusedBorder: _outLineInputBorder(
+                          color: AppColors.black,
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
+                        filled: true,
+                        fillColor: AppColors.scaffoldBackground,
                       ),
-                    );
-                  }).toList(),
-              onChanged: (String? selectedMonth) {
-                if (selectedMonth != null) {
-                  context.read<MonthAttendanceCubit>().getMonthAttendance(
-                    compId: com,
-                    month: selectedMonth,
-                  );
-                }
-              },
-              hint: Padding(
-                padding: EdgeInsets.only(left: 8),
-                child: AppText(LangKeys.chooseMonth),
-              ),
-
-              borderRadius: BorderRadius.circular(12),
-              icon: Icon(
-                HugeIcons.strokeRoundedArrowDown01,
-                color: AppColors.black,
-                size: 28,
-              ),
-              iconSize: 32,
-              dropdownColor: Colors.white,
-              elevation: 2,
-              menuMaxHeight: 300,
-              alignment: AlignmentDirectional.center,
-              selectedItemBuilder: (BuildContext context) {
-                return months.map((String value) {
-                  return Align(
-                    alignment: Alignment.center,
-                    child: AppText(value, translate: false),
-                  );
-                }).toList();
-              },
-            ),
+                      items:
+                          months.map((month) {
+                            return DropdownMenuItem<String>(
+                              value: month,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 8,
+                                ),
+                                child: AppText(month, translate: false),
+                              ),
+                            );
+                          }).toList(),
+                      onChanged: (String? selectedMonth) {
+                        if (selectedMonth != null) {
+                          context
+                              .read<MonthAttendanceCubit>()
+                              .getMonthAttendance(
+                                compId: com,
+                                month: selectedMonth,
+                              );
+                        }
+                      },
+                      hint: Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: AppText(LangKeys.chooseMonth),
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                      icon: Icon(
+                        HugeIcons.strokeRoundedArrowDown01,
+                        color: AppColors.black,
+                        size: 28,
+                      ),
+                      iconSize: 32,
+                      dropdownColor: Colors.white,
+                      elevation: 2,
+                      menuMaxHeight: 300,
+                      alignment: AlignmentDirectional.center,
+                      selectedItemBuilder: (BuildContext context) {
+                        return months.map((String value) {
+                          return Align(
+                            alignment: Alignment.center,
+                            child: AppText(value, translate: false),
+                          );
+                        }).toList();
+                      },
+                    ),
           );
         } else {
           return Center(

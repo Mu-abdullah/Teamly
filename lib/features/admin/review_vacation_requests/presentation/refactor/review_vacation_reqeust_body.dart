@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/language/lang_keys.dart';
 import '../../../../../core/style/widgets/app_text.dart';
-import '../../../../user/user_vaction/presentation/widgets/user_vacations_requests/requests_loading.dart';
+import '../../../../../core/style/widgets/loading_shimmer_widget.dart';
 import '../cubits/review_vacation_cubit/review_vacation_cubit.dart';
 import '../widgets/review_listview.dart';
 
@@ -15,7 +15,7 @@ class ReviewVacationRequestBody extends StatelessWidget {
     return BlocBuilder<ReviewVacationCubit, ReviewVacationState>(
       builder: (context, state) {
         if (state is ReviewVacationLoading) {
-          return RequestsLoadingShimmer();
+          return LoadingShimmer();
         } else if (state is ReviewVacationLoaded) {
           if (state.reviewVacationList.isEmpty) {
             return Center(

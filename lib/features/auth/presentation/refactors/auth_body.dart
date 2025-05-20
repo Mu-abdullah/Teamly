@@ -6,12 +6,9 @@ import '../../../../core/language/lang_keys.dart';
 import '../../../../core/routes/routes_name.dart';
 import '../../../../core/style/color/app_color.dart';
 import '../../../../core/style/widgets/custom_snack_bar.dart';
-import '../../../admin/home_screen/presentation/widgets/co_name_logo/co_name_logo.dart';
 import '../cubit/auth_cubit/auth_cubit.dart';
-import '../widgets/auth_button.dart';
-import '../widgets/auth_field.dart';
-import '../widgets/remmber_me_check_box.dart';
-import '../widgets/welcome_user.dart';
+import 'mobile_auth_body.dart';
+import 'web_auth_body.dart';
 
 class AuthBody extends StatelessWidget {
   const AuthBody({super.key});
@@ -22,18 +19,17 @@ class AuthBody extends StatelessWidget {
       listener: _authListener,
       builder: (context, state) {
         var authCubit = AuthCubit.get(context);
-        return SingleChildScrollView(
-          child: Column(
-            spacing: 10,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CoNameLogo(),
-              WelcomeUser(),
-              AuthField(authCubit: authCubit),
-              AuthButton(authCubit: authCubit),
-              RemmberCheckBox(),
-            ],
-          ),
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth < 600) {
+              return MobileAuthBody(authCubit: authCubit);
+            } else {
+              return WebAuthBody(
+                authCubit: authCubit,
+                constraints: constraints.maxWidth,
+              );
+            }
+          },
         );
       },
     );

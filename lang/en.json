@@ -198,7 +198,19 @@
     "totalSalary":"Total Salary",
     "workingDays":"Working Days",
     "noSalaryData":"No Salary",
-    "salaryReport":"Salary Report"
+    "salaryReport":"Salary Report",
+
+
+    "######################################warehouse":"",
+    "warehouse":"Warehouse" ,
+    "serial":"S" ,
+    "status":"Status" ,
+    "available":"Available" ,
+    "unAvailable":"Unavailable" ,
+    "noImageFound":"No Image Found" ,
+    "sku":"Sku" ,
+    "preview":"Preview" ,
+    "unitType":"Unit Type" 
 
     
      

@@ -11,6 +11,7 @@ import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/admin/new_emp/presentation/views/new_emp_screen.dart';
 import '../../features/admin/review_vacation_requests/presentation/views/review_vacation_request.dart';
 import '../../features/admin/admin_vacations/presentation/views/admin_vacations_screen.dart';
+import '../../features/admin/warehouse/presentation/views/warehouse_screen.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
 import '../../features/user/user_custody/data/model/user_custody_model.dart';
@@ -93,6 +94,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.adminVacationScreen:
       return BaseRoute(page: AdminVacationsScreen());
+
+    case RoutesNames.warehouseScreen:
+      return BaseRoute(page: WarehouseScreen());
 
     /////////
     /////////user feature routes////////////

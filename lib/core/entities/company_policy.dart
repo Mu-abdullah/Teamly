@@ -30,7 +30,7 @@ class CompanyPolicy {
             try {
               return DateTime.parse(d as String);
             } catch (e) {
-              print('Error parsing holiday date: $d, Error: $e');
+              debugPrint('Error parsing holiday date: $d, Error: $e');
               return DateTime(1970, 1, 1); // Fallback date
             }
           }).toList() ??
@@ -46,7 +46,7 @@ class CompanyPolicy {
       final minute = int.parse(parts[1]);
       return TimeOfDay(hour: hour, minute: minute);
     } catch (e) {
-      print('Error parsing time string: $timeString, Error: $e');
+      debugPrint('Error parsing time string: $timeString, Error: $e');
       return null;
     }
   }

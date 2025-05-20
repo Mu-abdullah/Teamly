@@ -92,8 +92,9 @@ class SalaryCalculator {
     final Map<String, List<DateTime>> officialHolidayAttendanceByEmp = {};
     for (var att in report.attendanceRecords) {
       final empId = att.userId;
-      if (att.checkOut == null || att.checkOut!.isEmpty)
-        continue; // Skip if no checkout
+      if (att.checkOut == null || att.checkOut!.isEmpty) {
+        continue;
+      }
       attendanceByEmp.putIfAbsent(empId!, () => []).add(att);
 
       // Check if attendance date is a weekly holiday or official holiday
@@ -116,7 +117,7 @@ class SalaryCalculator {
               .add(attDate);
         }
       } catch (e) {
-        print(
+        debugPrint(
           'Error parsing attendance date for holiday check: ${att.date}, Error: $e',
         );
       }
@@ -259,7 +260,7 @@ class SalaryCalculator {
           totalDays += effectiveEnd.difference(effectiveStart).inDays + 1;
         }
       } catch (e) {
-        print('Error parsing vacation dates for calculation: $e');
+        debugPrint('Error parsing vacation dates for calculation: $e');
       }
     }
     return totalDays;
@@ -322,7 +323,7 @@ class SalaryCalculator {
           }
         }
       } catch (e) {
-        print('Error calculating late/early penalty: $e');
+        debugPrint('Error calculating late/early penalty: $e');
       }
     }
     return penalty;

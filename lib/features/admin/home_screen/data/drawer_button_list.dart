@@ -48,5 +48,13 @@ class DrawerButtonListItems {
     //     context.pushNamed(RoutesNames.adminVacationScreen);
     //   },
     // ),
+    DrawerButtonModel(
+      title: LangKeys.warehouse,
+      icon: HugeIcons.strokeRoundedHouse03,
+      onTap: () {
+        context.pop();
+        context.pushNamed(RoutesNames.warehouseScreen);
+      },
+    ),
   ];
 }

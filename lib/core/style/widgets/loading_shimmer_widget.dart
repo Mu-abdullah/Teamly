@@ -1,15 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
-import '../../../../../../core/style/color/app_color.dart';
-import '../../../../../../core/style/statics/app_statics.dart';
-import '../../../../../../core/style/widgets/custom_shimmer.dart';
+import '../color/app_color.dart';
+import '../statics/app_statics.dart';
+import 'custom_shimmer.dart';
 
-class RequestsLoadingShimmer extends StatelessWidget {
-  const RequestsLoadingShimmer({
-    super.key,
-  });
+class LoadingShimmer extends StatelessWidget {
+  const LoadingShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

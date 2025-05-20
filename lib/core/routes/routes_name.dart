@@ -17,6 +17,7 @@ class RoutesNames {
   static const String newEmpScreen = 'newEmpScreen';
   static const String paperViewer = 'paperViewer';
   static const String adminVacationScreen = 'adminVacationScreen';
+  static const String warehouseScreen = 'warehouseScreen';
 
   //user screens
   static const String userHomeScreen = 'userHomeScreen';

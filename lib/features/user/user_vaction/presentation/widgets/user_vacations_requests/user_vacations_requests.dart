@@ -8,7 +8,7 @@ import '../../../../../../core/style/widgets/app_text.dart';
 import '../../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../../data/repo/get_user_vacations_requests_repo.dart';
 import '../../cubits/user_vacation_requests_cubit/user_vacation_requests_cubit.dart';
-import 'requests_loading.dart';
+import '../../../../../../core/style/widgets/loading_shimmer_widget.dart';
 import 'user_vacations_requests_listview.dart';
 
 class UserVacationsRequests extends StatelessWidget {
@@ -33,7 +33,7 @@ class UserVacationsRequests extends StatelessWidget {
                 return Center(child: AppText(LangKeys.noVacationRequests));
               }
             } else if (state is UservacationRequestsLoading) {
-              return RequestsLoadingShimmer();
+              return LoadingShimmer();
             } else if (state is UservacationRequestsErrorState) {
               return Center(child: AppText(state.error, translate: false));
             }

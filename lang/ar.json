@@ -205,10 +205,19 @@
     "totalSalary":"الراتب الكلي",
     "workingDays":"ايام العمل",
     "noSalaryData":"لا يوجد راتب",
-    "salaryReport":"تقرير الراتب"
+    "salaryReport":"تقرير الراتب",
 
 
-
+    "######################################warehouse":"",
+    "warehouse":"المخزن" ,
+    "serial":"م" ,
+    "status":"الحالة" ,
+    "available":"متوفر" ,
+    "unAvailable":"غير متوفر" ,
+    "noImageFound":"لا يوجد صور" ,
+    "sku":"كود المنتج" ,
+    "preview":"مشاهدة" ,
+    "unitType":"نوع الوحدة" 
     
  
 }

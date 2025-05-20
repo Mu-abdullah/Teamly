@@ -188,4 +188,17 @@ class LangKeys {
   static const String officialHolidayDays = 'officialHolidayDays';
   static const String weeklyHolidayDays = 'weeklyHolidayDays';
 
+
+
+////////////////[Warehouse]/////////////////////
+  static const String warehouse = 'warehouse';
+  static const String sku = 'sku';
+  static const String unitType = 'unitType';
+  static const String serial = 'serial';
+  static const String noImageFound = 'noImageFound';
+  static const String preview = 'preview';
+  static const String status = 'status';
+  static const String available = 'available';
+  static const String unAvailable = 'unAvailable';
+ 
 }

@@ -45,7 +45,7 @@ class Counts extends StatelessWidget {
         spacing: context.height(percent: .009),
         children: [
           AppSpace(space: context.height(percent: .001)),
-          HomeEmpCountBody(height: context.height(percent: .15)),
+          HomeEmpCountBody(height: context.height(percent: .16)),
           // HomeVacationAttendance(height: context.height(percent: .15)),
           HomeAdminCustody(height: context.height(percent: .15)),
         ],

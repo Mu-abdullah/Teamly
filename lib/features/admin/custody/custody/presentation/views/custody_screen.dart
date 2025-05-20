@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teamly/features/admin/admin_custody/custody/data/repo/add_custody.dart';
+import 'package:teamly/features/admin/custody/custody/data/repo/add_custody.dart';
 
 import '../../../../../../core/app/user/app_user_cubit/app_user_cubit.dart';
 import '../../../../../../core/services/get_it/git_it.dart';

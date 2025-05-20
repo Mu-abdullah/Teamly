@@ -11,7 +11,9 @@ import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/admin/emp_services/new_emp/presentation/views/new_emp_screen.dart';
 import '../../features/admin/vacation_attendance/review_vacation_requests/presentation/views/review_vacation_request.dart';
 import '../../features/admin/vacation_attendance/admin_vacations/presentation/views/admin_vacations_screen.dart';
+import '../../features/admin/warehouse/warehouse/data/model/werehouse_model.dart';
 import '../../features/admin/warehouse/warehouse/presentation/views/warehouse_screen.dart';
+import '../../features/admin/warehouse/warehouse_transaction/presentation/views/warehouse_transaction.dart';
 import '../../features/auth/presentation/views/auth_screen.dart';
 import '../../features/auth/presentation/views/check_role.dart';
 import '../../features/user/user_custody/data/model/user_custody_model.dart';
@@ -97,6 +99,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case RoutesNames.warehouseScreen:
       return BaseRoute(page: WarehouseScreen());
+
+    case RoutesNames.warehouseTransaction:
+      return BaseRoute(
+        page: WarehouseTransaction(model: args?['model'] as WarehouseModel),
+      );
 
     /////////
     /////////user feature routes////////////

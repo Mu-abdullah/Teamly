@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../../../core/language/lang_keys.dart';
+import '../../../../../../../core/routes/routes_name.dart';
 import '../../../../../../../core/style/color/app_color.dart';
 import '../../../../../../../core/style/widgets/app_text.dart';
 import '../../../data/model/werehouse_model.dart';
@@ -79,7 +80,29 @@ class _MobileItemState extends State<MobileItem> {
                           : CrossFadeState.showFirst,
                   duration: const Duration(milliseconds: 300),
                 ),
-                _buildStatusBadge(context),
+                Row(
+                  spacing: 8,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildStatusBadge(context),
+                    IconButton(
+                      onPressed: () {
+                        context.pushNamed(RoutesNames.warehouseTransaction,
+                        arguments: {
+                          'model': widget.item,
+                        }
+                        );
+                      },
+                      icon: CircleAvatar(
+                        backgroundColor: AppColors.black.withValues(alpha: 0.1),
+                        child: const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: AppColors.black,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

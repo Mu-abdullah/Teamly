@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../../../core/language/lang_keys.dart';
+import '../../../../../../../core/routes/routes_name.dart';
 import '../../../../../../../core/style/color/app_color.dart';
 import '../../../../../../../core/style/widgets/app_text.dart';
 import '../../../data/model/werehouse_model.dart';
@@ -21,31 +22,43 @@ class WarehouseItemRow extends StatelessWidget {
             ? "${item?.calculateTotal()} ${context.translate(LangKeys.eg)}"
             : LangKeys.totalPrice;
 
-    return Material(
-      elevation: 3,
-      borderRadius: BorderRadius.circular(12),
-      color: AppColors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildHeader(index, context),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                _infoChip(LangKeys.sku, item?.sku),
-                _infoChip(LangKeys.totalQuantity, item?.quantity),
-                _infoChip(LangKeys.unitType, item?.unitType),
-                Expanded(child: _infoChip(LangKeys.name, item?.name, flex: 2)),
-                _infoChip(LangKeys.itemPrice, item?.price),
-                _infoChip(LangKeys.totalPrice, totalPrice),
-                _statusChip(context),
-              ],
-            ),
-          ],
+    return InkWell(
+      onTap: () {
+        if (item != null) {
+          context.pushNamed(
+            RoutesNames.warehouseTransaction,
+            arguments: {'model': item},
+          );
+        }
+      },
+      child: Material(
+        elevation: 3,
+        borderRadius: BorderRadius.circular(12),
+        color: AppColors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(index, context),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  _infoChip(LangKeys.sku, item?.sku),
+                  _infoChip(LangKeys.totalQuantity, item?.quantity),
+                  _infoChip(LangKeys.unitType, item?.unitType),
+                  Expanded(
+                    child: _infoChip(LangKeys.name, item?.name, flex: 2),
+                  ),
+                  _infoChip(LangKeys.itemPrice, item?.price),
+                  _infoChip(LangKeys.totalPrice, totalPrice),
+                  _statusChip(context),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

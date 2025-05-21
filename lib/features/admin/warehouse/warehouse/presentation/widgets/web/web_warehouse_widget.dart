@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/model/werehouse_model.dart';
+import '../../../data/model/get_werehouse_model.dart';
 import '../../cubits/warehouse_cubit/warehouse_cubit.dart';
 import '../category_filter.dart';
 import 'web_warehouse_listview.dart';
@@ -11,7 +11,7 @@ class WebWarehouseWidget extends StatelessWidget {
     required this.cubit,
     required this.items,
   });
-  final List<WarehouseModel> items;
+  final List<GetWarehouseModel> items;
   final WarehouseCubit cubit;
 
   @override

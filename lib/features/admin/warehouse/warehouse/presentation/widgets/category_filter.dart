@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
-import '../../data/model/werehouse_model.dart';
+import '../../data/model/get_werehouse_model.dart';
 import '../cubits/warehouse_cubit/warehouse_cubit.dart';
 
 class CategoryFilter extends StatelessWidget {
@@ -46,7 +46,7 @@ class CategoryFilter extends StatelessWidget {
     );
   }
 
-  List<String> _extractCategories(List<WarehouseModel> products) {
+  List<String> _extractCategories(List<GetWarehouseModel> products) {
     return products.map((e) => e.category!).toSet().toList();
   }
 }

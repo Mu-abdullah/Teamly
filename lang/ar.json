@@ -172,9 +172,9 @@
     "custodyTransaction":"معاملة عهدة",
     "noRemainingAmount":"لا يوجد مبلغ متبقي",
     "totalPrice":"السعر الاجمالي",
-    "item":"المنتج",
+    "item":"منتج",
     "newItem":"منتج جديد",
-    "addItems":"اظافة منتجات",
+    "addItems":"اضافة منتجات",
     "totalQuantity":"اجمالي الكمية",
     "itemName":"اسم المنتج",
     "itemCount":"العدد",
@@ -217,6 +217,10 @@
     "noImageFound":"لا يوجد صور" ,
     "sku":"كود المنتج" ,
     "preview":"مشاهدة" ,
+    "category":"الفئة" ,
+    "additionalDetails":"تفاصيل اضافية" ,
+    "itemIdentification":"تحديد المنتج" ,
+    "addItem":"إضافة منتج" ,
     "unitType":"نوع الوحدة" 
     
  

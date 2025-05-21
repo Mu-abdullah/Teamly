@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../../../../../core/style/widgets/app_space.dart';
-import '../../../data/model/werehouse_model.dart';
+import '../../../data/model/get_werehouse_model.dart';
 import '../../cubits/warehouse_cubit/warehouse_cubit.dart';
 import '../category_filter.dart';
 import 'mobile_item.dart';
@@ -13,7 +13,7 @@ class MobileWarehouseWidget extends StatelessWidget {
     required this.cubit,
     required this.items,
   });
-  final List<WarehouseModel> items;
+  final List<GetWarehouseModel> items;
   final WarehouseCubit cubit;
 
   @override
@@ -28,7 +28,6 @@ class MobileWarehouseWidget extends StatelessWidget {
               var item = items[i];
               return MobileItem(
                 item: item,
-               
               ).animate().fadeIn(duration: 1000.ms, delay: (1 * i).ms);
             },
           ),

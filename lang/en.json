@@ -210,6 +210,10 @@
     "noImageFound":"No Image Found" ,
     "sku":"Sku" ,
     "preview":"Preview" ,
+    "category":"Category" ,
+    "additionalDetails":"Additional Details" ,
+    "itemIdentification":"Item Identification" ,
+    "addItem":"Add Item" ,
     "unitType":"Unit Type" 
 
     

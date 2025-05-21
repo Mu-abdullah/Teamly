@@ -200,5 +200,9 @@ class LangKeys {
   static const String status = 'status';
   static const String available = 'available';
   static const String unAvailable = 'unAvailable';
+  static const String category = 'category';
+  static const String additionalDetails = 'additionalDetails';
+  static const String itemIdentification = 'itemIdentification';
+  static const String addItem = 'addItem';
  
 }

@@ -1,7 +1,7 @@
 import '../../../../../../core/entities/werehouse_entity.dart';
 
-class WarehouseModel extends WarehouseEntity {
-  WarehouseModel({
+class GetWarehouseModel extends WarehouseEntity {
+  GetWarehouseModel({
     required super.createdAt,
     required super.sku,
     required super.category,
@@ -12,8 +12,8 @@ class WarehouseModel extends WarehouseEntity {
     required super.available,
   });
 
-  factory WarehouseModel.fromJson(Map<String, dynamic> json) {
-    return WarehouseModel(
+  factory GetWarehouseModel.fromJson(Map<String, dynamic> json) {
+    return GetWarehouseModel(
       createdAt: json['created_at'],
       sku: json['sku'],
       category: json['category'],
@@ -43,6 +43,4 @@ class WarehouseModel extends WarehouseEntity {
     final coun = double.tryParse(quantity ?? '') ?? 0.0;
     return (pric * coun);
   }
-
-
 }

@@ -18,6 +18,7 @@ import '../../../features/admin/emp_services/new_emp/data/repo/get_new_emp_posit
 import '../../../features/admin/emp_services/new_emp/data/repo/upload_emp_info_to_supabase.dart';
 import '../../../features/admin/vacation_attendance/review_vacation_requests/data/repo/response_vacation_repo.dart';
 import '../../../features/admin/vacation_attendance/review_vacation_requests/data/repo/review_vacation_repo.dart';
+import '../../../features/admin/warehouse/add_item_to_warehouse/data/repo/add_werehouse_items_repo.dart';
 import '../../../features/admin/warehouse/warehouse/data/repo/get_werehouse_items_repo.dart';
 import '../../../features/auth/data/repo/auth_repo.dart';
 import '../../../features/auth/data/repo/check_role_repo.dart';
@@ -80,6 +81,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => GetNewEmpPosition(locator()));
   locator.registerLazySingleton(() => UploadEmpInfoToSupabase(locator()));
   locator.registerLazySingleton(() => GetWerehouseItemsRepo(locator()));
+  locator.registerLazySingleton(() => AddWerehouseItemsRepo(locator()));
 }
 
 void _registerServices() {

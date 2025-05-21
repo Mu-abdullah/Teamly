@@ -17,9 +17,16 @@ class WarehouseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final compID = context.read<AppUserCubit>().compId;
     final lac = locator<GetWerehouseItemsRepo>();
-    return BlocProvider(
-      create:
-          (context) => WarehouseCubit(lac)..getWerehouseItems(compId: compID),
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create:
+              (context) =>
+                  WarehouseCubit(lac)..getWerehouseItems(compId: compID),
+        ),
+        
+      ],
       child: Scaffold(
         appBar: CustomAppBar(
           title: LangKeys.warehouse,

@@ -5,12 +5,12 @@ import '../../../../../../../core/language/lang_keys.dart';
 import '../../../../../../../core/routes/routes_name.dart';
 import '../../../../../../../core/style/color/app_color.dart';
 import '../../../../../../../core/style/widgets/app_text.dart';
-import '../../../data/model/werehouse_model.dart';
+import '../../../data/model/get_werehouse_model.dart';
 
 class WarehouseItemRow extends StatelessWidget {
   const WarehouseItemRow({super.key, this.item, this.index});
 
-  final WarehouseModel? item;
+  final GetWarehouseModel? item;
   final int? index;
 
   bool get isNull => item == null;

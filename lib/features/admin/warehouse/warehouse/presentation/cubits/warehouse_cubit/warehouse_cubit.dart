@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/model/werehouse_model.dart';
+import '../../../data/model/get_werehouse_model.dart';
 import '../../../data/repo/get_werehouse_items_repo.dart';
 
 part 'warehouse_state.dart';
@@ -12,7 +12,7 @@ class WarehouseCubit extends Cubit<WarehouseState> {
 
   static WarehouseCubit get(context) => BlocProvider.of(context);
 
-  List<WarehouseModel> items = [];
+  List<GetWarehouseModel> items = [];
   String? selectedCategory;
   Future<void> getWerehouseItems({required String compId}) async {
     emit(WarehouseLoading());

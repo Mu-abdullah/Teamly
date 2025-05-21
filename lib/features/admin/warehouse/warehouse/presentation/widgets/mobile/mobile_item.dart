@@ -5,12 +5,12 @@ import '../../../../../../../core/language/lang_keys.dart';
 import '../../../../../../../core/routes/routes_name.dart';
 import '../../../../../../../core/style/color/app_color.dart';
 import '../../../../../../../core/style/widgets/app_text.dart';
-import '../../../data/model/werehouse_model.dart';
+import '../../../data/model/get_werehouse_model.dart';
 
 class MobileItem extends StatefulWidget {
   const MobileItem({super.key, required this.item});
 
-  final WarehouseModel? item;
+  final GetWarehouseModel? item;
 
   @override
   State<MobileItem> createState() => _MobileItemState();
@@ -87,10 +87,9 @@ class _MobileItemState extends State<MobileItem> {
                     _buildStatusBadge(context),
                     IconButton(
                       onPressed: () {
-                        context.pushNamed(RoutesNames.warehouseTransaction,
-                        arguments: {
-                          'model': widget.item,
-                        }
+                        context.pushNamed(
+                          RoutesNames.warehouseTransaction,
+                          arguments: {'model': widget.item},
                         );
                       },
                       icon: CircleAvatar(

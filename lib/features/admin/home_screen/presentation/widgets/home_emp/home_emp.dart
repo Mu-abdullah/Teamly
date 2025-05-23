@@ -6,6 +6,7 @@ import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
 import '../../../../../../core/style/widgets/app_space.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
+import '../../../../custody/custody_transaction/presentation/widgets/add_custody/emp_shimmer.dart';
 import '../../cubits/home_emp_cubit/home_emp_cubit.dart';
 import '../home_section_header.dart';
 import 'home_emp_listview.dart';
@@ -18,6 +19,7 @@ class HomeEmpSection extends StatelessWidget {
     return BlocBuilder<HomeEmpCubit, HomeEmpState>(
       builder: (context, state) {
         if (state is EmpLoading) {
+          return EmpShimmer(height: height);
         } else if (state is EmpSuccess) {
           return Container(
             decoration: BoxDecoration(

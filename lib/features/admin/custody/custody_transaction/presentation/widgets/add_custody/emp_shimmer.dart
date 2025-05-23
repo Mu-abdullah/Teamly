@@ -8,15 +8,15 @@ import '../../../../../../../core/style/widgets/app_text.dart';
 import '../../../../../../../core/style/widgets/custom_shimmer.dart';
 
 class EmpShimmer extends StatelessWidget {
-  const EmpShimmer({super.key});
-
+  const EmpShimmer({super.key , this.height = 50});
+final double height;
   @override
   Widget build(BuildContext context) {
     return CustomShimmer(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Container(
-          height: 50,
+          height: height,
           width: context.width(),
           decoration: BoxDecoration(
             color: AppColors.white,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teamly/core/language/lang_keys.dart';
 
+import '../../language/lang_keys.dart';
 import '../../style/color/app_color.dart';
 
 class JobStatus {

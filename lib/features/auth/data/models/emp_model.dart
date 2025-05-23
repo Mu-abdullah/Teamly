@@ -34,7 +34,7 @@ class EmpModel extends EmpEntity {
     jobStatus: json["job_status"],
     comId: json["com_id"],
     position: json["position"]['position'],
-    gender: json["gender"],
+    gender: json["gender"]['gender'],
     papers: json["papers"],
     image: json["image"],
   );

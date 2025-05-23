@@ -49,9 +49,7 @@ class WarehouseItemRow extends StatelessWidget {
                   _infoChip(LangKeys.sku, item?.sku),
                   _infoChip(LangKeys.totalQuantity, item?.quantity),
                   _infoChip(LangKeys.unitType, item?.unitType),
-                  Expanded(
-                    child: _infoChip(LangKeys.name, item?.name, flex: 2),
-                  ),
+                  _infoChip(LangKeys.name, item?.name, flex: 2),
                   _infoChip(LangKeys.itemPrice, item?.price),
                   _infoChip(LangKeys.totalPrice, totalPrice),
                   _statusChip(context),

@@ -18,10 +18,48 @@ class WarehouseTransaction extends StatelessWidget {
         body: BlocBuilder<WarehouseTransactionCubit, WarehouseTransactionState>(
           builder: (context, state) {
             var cubit = WarehouseTransactionCubit.get(context);
-            return Column(children: [WarehouseItemSummary(cubit: cubit)]);
+            return LayoutBuilder(
+              builder: (context, constraints) {
+                if (constraints.maxWidth < 600) {
+                  return MobileWarehouseTransaction(cubit: cubit);
+                } else {
+                  return WebWarehouseTransaction(cubit: cubit);
+                }
+              },
+            );
           },
         ),
       ),
     );
+  }
+}
+
+class WebWarehouseTransaction extends StatelessWidget {
+  const WebWarehouseTransaction({super.key, required this.cubit});
+  final WarehouseTransactionCubit cubit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(child: WarehouseItemSummary(cubit: cubit)),
+        const SizedBox(width: 12),
+        Expanded(flex: 2, child: Column(
+          children: [
+            // Add any additional widgets for the web layout here
+          ],
+        )),
+      ],
+    );
+  }
+}
+
+class MobileWarehouseTransaction extends StatelessWidget {
+  const MobileWarehouseTransaction({super.key, required this.cubit});
+  final WarehouseTransactionCubit cubit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [WarehouseItemSummary(cubit: cubit)]);
   }
 }

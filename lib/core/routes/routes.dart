@@ -6,7 +6,7 @@ import '../../features/admin/custody/custody_transaction/presentation/views/cust
 import '../../features/admin/custody/custody/presentation/views/custody_screen.dart';
 import '../../features/admin/custody/custody_transaction_items/presentation/views/custody_transaction_items.dart';
 import '../../features/admin/emp_services/emp_profile/presentation/views/emp_profile.dart';
-import '../../features/admin/emp_services/emp_profile/presentation/widgets/emp_papers.dart';
+import '../../features/admin/emp_services/emp_profile/presentation/widgets/papers/emp_papers.dart';
 import '../../features/admin/home_screen/presentation/views/home_screen.dart';
 import '../../features/admin/emp_services/new_emp/presentation/views/new_emp_screen.dart';
 import '../../features/admin/vacation_attendance/review_vacation_requests/presentation/views/review_vacation_request.dart';

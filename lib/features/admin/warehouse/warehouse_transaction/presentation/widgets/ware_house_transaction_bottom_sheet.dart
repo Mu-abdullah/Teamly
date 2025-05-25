@@ -15,8 +15,10 @@ import '../../../../../../core/style/widgets/custom_snack_bar.dart';
 import '../../data/model/exist_item_model.dart';
 import '../../data/repo/exist_item_repo.dart';
 import '../../data/repo/get_warehouse_emp_repo.dart';
+import '../../data/repo/update_avilable_repo.dart';
 import '../cubits/exit_quantity_cubit/exit_quantity_cubit.dart';
 import '../cubits/get_emps_cubit/get_emps_cubit.dart';
+import '../cubits/update_avilable_cubit/update_avilable_cubit.dart';
 import 'choose_emp_to_warehouse_item.dart';
 
 class WarehouseTransactionBottomSheet extends StatelessWidget {
@@ -26,17 +28,22 @@ class WarehouseTransactionBottomSheet extends StatelessWidget {
     required this.warehouseId,
     required this.onClose,
   });
+
   final VoidCallback? onClose;
   final String quantity;
   final String warehouseId;
+
   @override
   Widget build(BuildContext context) {
     final comp = BlocProvider.of<AppUserCubit>(context).compId;
     final lac = locator<GetWarehouseEmpRepo>();
     final lac2 = locator<ExistItemRepo>();
+    final lac3 = locator<UpdateAvilableRepo>();
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ExitQuantityCubit(lac2)),
+        BlocProvider(create: (context) => UpdateAvilableCubit(lac3)),
         BlocProvider(
           create: (context) => GetEmpsCubit(lac)..getEmp(compId: comp),
         ),
@@ -56,11 +63,11 @@ class WarehouseTransactionBottomSheet extends StatelessWidget {
               context,
               message: LangKeys.addedSuccess,
             );
-            onClose!.call();
+            onClose?.call();
           }
         },
         builder: (context, state) {
-          var cubit = ExitQuantityCubit.get(context);
+          final cubit = ExitQuantityCubit.get(context);
           return Padding(
             padding: EdgeInsets.only(
               top: 20,
@@ -76,50 +83,18 @@ class WarehouseTransactionBottomSheet extends StatelessWidget {
                 spacing: 20,
                 children: [
                   AppText(LangKeys.exitQuantity, isBold: true, isTitle: true),
-
                   ChooseEmpToWarehouseItem(cubit: cubit),
                   AppTextFormField(
                     controller: cubit.quantity,
                     type: TextInputType.number,
                     label: LangKeys.addQuantity,
                     hint: LangKeys.addQuantity,
-                    validate: (v) {
-                      if (v!.isEmpty) {
-                        return context.translate(LangKeys.requiredValue);
-                      } else if (int.parse(v) > int.parse(quantity)) {
-                        return context.translate(LangKeys.notEnoughQuantity);
-                      }
-                      return null;
-                    },
+                    validate: (v) => validateQuantity(v, quantity, context),
                   ),
                   AppButton(
                     isLoading: state is ExitQuantityLoading,
                     text: LangKeys.addItem,
-                    onTap: () {
-                      if (cubit.formKey.currentState!.validate()) {
-                        if (cubit.uid == null) {
-                          CustomSnackbar.showTopSnackBar(
-                            context,
-                            message: LangKeys.chooseEmployee,
-                            backgroundColor: AppColors.red,
-                          );
-                        } else {
-                          var data = ExistItemModel(
-                            id: GenerateId.generateDocumentId(
-                              context: context,
-                              tableName: BackendPoint.warehouseTransaction,
-                              companyName: context.read<AppUserCubit>().compId,
-                              userId: context.read<AppUserCubit>().empID,
-                            ),
-                            warehouse: warehouseId,
-                            emp: cubit.uid,
-                            createdAt: DateTime.now().toString(),
-                            quantity: cubit.quantity.text,
-                          );
-                          cubit.exitQuantity(data: data.toJson());
-                        }
-                      }
-                    },
+                    onTap: () => handleExitQuantity(context, cubit),
                   ),
                 ],
               ),
@@ -128,5 +103,61 @@ class WarehouseTransactionBottomSheet extends StatelessWidget {
         },
       ),
     );
+  }
+
+  String? validateQuantity(
+    String? value,
+    String maxQuantity,
+    BuildContext context,
+  ) {
+    if (value == null || value.isEmpty) {
+      return context.translate(LangKeys.requiredValue);
+    }
+
+    final enteredQty = int.tryParse(value);
+    final maxQty = int.tryParse(maxQuantity);
+
+    if (enteredQty == null) {
+      return context.translate(LangKeys.notEnoughQuantity);
+    }
+
+    if (maxQty == null || enteredQty > maxQty) {
+      return context.translate(LangKeys.notEnoughQuantity);
+    }
+
+    return null;
+  }
+
+  void handleExitQuantity(BuildContext context, ExitQuantityCubit cubit) {
+    if (!cubit.formKey.currentState!.validate()) return;
+
+    if (cubit.uid == null) {
+      CustomSnackbar.showTopSnackBar(
+        context,
+        message: LangKeys.chooseEmployee,
+        backgroundColor: AppColors.red,
+      );
+      return;
+    }
+
+    final data = ExistItemModel(
+      id: GenerateId.generateDocumentId(
+        context: context,
+        tableName: BackendPoint.warehouseTransaction,
+        companyName: context.read<AppUserCubit>().compId,
+        userId: context.read<AppUserCubit>().empID,
+      ),
+      warehouse: warehouseId,
+      emp: cubit.uid,
+      createdAt: DateTime.now().toString(),
+      quantity: cubit.quantity.text,
+    );
+
+    cubit.exitQuantity(data: data.toJson()).then((_) {
+      final remainingQty = int.parse(quantity) - int.parse(cubit.quantity.text);
+      if (remainingQty == 0 && context.mounted) {
+        context.read<UpdateAvilableCubit>().updateItem(warehouseId);
+      }
+    });
   }
 }

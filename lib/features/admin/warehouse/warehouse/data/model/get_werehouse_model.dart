@@ -2,6 +2,7 @@ import '../../../../../../core/entities/werehouse_entity.dart';
 
 class GetWarehouseModel extends WarehouseEntity {
   GetWarehouseModel({
+    required super.id,
     required super.createdAt,
     required super.sku,
     required super.category,
@@ -14,6 +15,7 @@ class GetWarehouseModel extends WarehouseEntity {
 
   factory GetWarehouseModel.fromJson(Map<String, dynamic> json) {
     return GetWarehouseModel(
+      id: json['id'],
       createdAt: json['created_at'],
       sku: json['sku'],
       category: json['category'],
@@ -27,6 +29,7 @@ class GetWarehouseModel extends WarehouseEntity {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'created_at': createdAt,
       'sku': sku,
       'category': category,

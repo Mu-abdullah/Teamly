@@ -6,6 +6,7 @@ import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/style/widgets/app_text.dart';
 import '../../../../../../core/style/widgets/app_text_form_felid.dart';
 import '../cubits/add_to_warehouse_cubit/add_to_warehouse_cubit.dart';
+import 'choose_category_unit_type.dart';
 
 class AddItemToWarehouse extends StatelessWidget {
   const AddItemToWarehouse({super.key, required this.cubit});
@@ -90,7 +91,7 @@ class AddItemToWarehouse extends StatelessWidget {
             ),
 
             AppText(LangKeys.additionalDetails),
-
+            ChooseCategoryUnitType(cubit: cubit),
             Row(
               spacing: 8,
               children: [

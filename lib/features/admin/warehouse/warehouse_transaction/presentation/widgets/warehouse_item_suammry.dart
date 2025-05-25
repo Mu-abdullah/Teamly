@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teamly/core/extextions/extentions.dart';
 
 import '../../../../../../core/language/lang_keys.dart';
 import '../../../../../../core/style/color/app_color.dart';
@@ -14,7 +15,6 @@ class WarehouseItemSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -37,6 +37,14 @@ class WarehouseItemSummary extends StatelessWidget {
           _buildHeaderRow(context),
           const SizedBox(height: 12),
           _buildDetailsRow(context),
+          const SizedBox(height: 12),
+          AppText(
+            '${context.translate(LangKeys.rimaining)}: ${cubit.calculateRemainingAmount().toStringAsFixed(0)}',
+            translate: false,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: AppColors.black,
+          ),
         ],
       ),
     );

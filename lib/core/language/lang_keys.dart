@@ -204,5 +204,9 @@ class LangKeys {
   static const String additionalDetails = 'additionalDetails';
   static const String itemIdentification = 'itemIdentification';
   static const String addItem = 'addItem';
+  static const String exitQuantity = 'exitQuantity';
+  static const String addQuantity = 'addQuantity';
+  static const String remaining = 'remaining';
+  static const String notEnoughQuantity = 'notEnoughQuantity';
  
 }

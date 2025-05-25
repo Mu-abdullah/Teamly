@@ -221,6 +221,10 @@
     "additionalDetails":"تفاصيل اضافية" ,
     "itemIdentification":"تحديد المنتج" ,
     "addItem":"إضافة منتج" ,
+    "exitQuantity":"خروج كمية" ,
+    "addQuantity":"إضافة كمية" ,
+    "remaining":"المتبقي" ,
+    "notEnoughQuantity":"لا يوجد كمية كافية" ,
     "unitType":"نوع الوحدة" 
     
  

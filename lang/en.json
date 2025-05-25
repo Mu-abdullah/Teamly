@@ -214,6 +214,10 @@
     "additionalDetails":"Additional Details" ,
     "itemIdentification":"Item Identification" ,
     "addItem":"Add Item" ,
+    "exitQuantity":"Exit Quantity" ,
+    "addQuantity":"Add Quantity" ,
+    "remaining":"Remaining" ,
+    "notEnoughQuantity":"Not Enough Quantity" ,
     "unitType":"Unit Type" 
 
     

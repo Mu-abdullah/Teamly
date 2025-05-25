@@ -1,65 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../core/services/get_it/git_it.dart';
 import '../../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../../warehouse/data/model/get_werehouse_model.dart';
+import '../../data/repo/get_warehouse_trans_item_repo.dart';
+import '../../data/repo/update_avilable_repo.dart';
+import '../cubits/update_avilable_cubit/update_avilable_cubit.dart';
 import '../cubits/warehouse_transaction_cubit/warehouse_transaction_cubit.dart';
-import '../widgets/warehouse_item_suammry.dart';
+import '../refactor/warehouse_transaction_body.dart';
 
 class WarehouseTransaction extends StatelessWidget {
   const WarehouseTransaction({super.key, required this.model});
   final GetWarehouseModel model;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => WarehouseTransactionCubit(model: model),
+    final lac = locator<GetWarehouseTransItemRepo>();
+        final lac2 = locator<UpdateAvilableRepo>();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create:
+              (context) =>
+                  WarehouseTransactionCubit(model: model, repo: lac)
+                    ..getTransItems(warehouse: model.id!),
+        ),
+        BlocProvider(create: (context) => UpdateAvilableCubit(lac2)),
+      ],
       child: Scaffold(
         appBar: CustomAppBar(title: model.name!, translate: false),
-        body: BlocBuilder<WarehouseTransactionCubit, WarehouseTransactionState>(
-          builder: (context, state) {
-            var cubit = WarehouseTransactionCubit.get(context);
-            return LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth < 600) {
-                  return MobileWarehouseTransaction(cubit: cubit);
-                } else {
-                  return WebWarehouseTransaction(cubit: cubit);
-                }
-              },
-            );
-          },
-        ),
+        body: WarehouseTransactionBody(),
       ),
     );
-  }
-}
-
-class WebWarehouseTransaction extends StatelessWidget {
-  const WebWarehouseTransaction({super.key, required this.cubit});
-  final WarehouseTransactionCubit cubit;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(child: WarehouseItemSummary(cubit: cubit)),
-        const SizedBox(width: 12),
-        Expanded(flex: 2, child: Column(
-          children: [
-            // Add any additional widgets for the web layout here
-          ],
-        )),
-      ],
-    );
-  }
-}
-
-class MobileWarehouseTransaction extends StatelessWidget {
-  const MobileWarehouseTransaction({super.key, required this.cubit});
-  final WarehouseTransactionCubit cubit;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [WarehouseItemSummary(cubit: cubit)]);
   }
 }

@@ -16,4 +16,5 @@ class BackendPoint {
   static const companyPolicies = 'company_policies';
   static const officialHolidays = 'official_holidays';
   static const warehouse = 'warehouse';
+  static const warehouseTransaction = 'warehouse_transaction';
 }

@@ -14,34 +14,6 @@ class AddWarehouseItemModel extends WarehouseEntity {
     required super.comp,
   });
 
-  // copyWith method
-
-  AddWarehouseItemModel copyWith({
-    String? createdAt,
-    String? sku,
-    String? category,
-    String? unitType,
-    String? name,
-    String? price,
-    String? quantity,
-    bool? available,
-    String? id,
-    String? comp,
-  }) {
-    return AddWarehouseItemModel(
-      createdAt: createdAt ?? this.createdAt,
-      sku: sku ?? this.sku,
-      category: category ?? this.category,
-      unitType: unitType ?? this.unitType,
-      name: name ?? this.name,
-      price: price ?? this.price,
-      quantity: quantity ?? this.quantity,
-      available: available ?? this.available,
-      id: id ?? this.id,
-      comp: comp ?? this.comp,
-    );
-  }
-
   factory AddWarehouseItemModel.fromJson(Map<String, dynamic> json) {
     return AddWarehouseItemModel(
       createdAt: json['created_at'],

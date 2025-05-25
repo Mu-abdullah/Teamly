@@ -18,6 +18,7 @@ class GetWerehouseItemsRepo {
       final res = await service.fetchCollection(
         collection: BackendPoint.warehouse,
         fields: [
+          'id',
           'created_at',
           'sku',
           'category',

@@ -19,7 +19,12 @@ import '../../../features/admin/emp_services/new_emp/data/repo/upload_emp_info_t
 import '../../../features/admin/vacation_attendance/review_vacation_requests/data/repo/response_vacation_repo.dart';
 import '../../../features/admin/vacation_attendance/review_vacation_requests/data/repo/review_vacation_repo.dart';
 import '../../../features/admin/warehouse/add_item_to_warehouse/data/repo/add_werehouse_items_repo.dart';
+import '../../../features/admin/warehouse/add_item_to_warehouse/data/repo/get_warehouse_categoties_repo.dart';
 import '../../../features/admin/warehouse/warehouse/data/repo/get_werehouse_items_repo.dart';
+import '../../../features/admin/warehouse/warehouse_transaction/data/repo/exist_item_repo.dart';
+import '../../../features/admin/warehouse/warehouse_transaction/data/repo/get_warehouse_emp_repo.dart';
+import '../../../features/admin/warehouse/warehouse_transaction/data/repo/get_warehouse_trans_item_repo.dart';
+import '../../../features/admin/warehouse/warehouse_transaction/data/repo/update_avilable_repo.dart';
 import '../../../features/auth/data/repo/auth_repo.dart';
 import '../../../features/auth/data/repo/check_role_repo.dart';
 import '../../../features/user/user_custody/data/repo/get_user_custody_repo.dart';
@@ -82,6 +87,11 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => UploadEmpInfoToSupabase(locator()));
   locator.registerLazySingleton(() => GetWerehouseItemsRepo(locator()));
   locator.registerLazySingleton(() => AddWerehouseItemsRepo(locator()));
+  locator.registerLazySingleton(() => GetWarehouseEmpRepo(locator()));
+  locator.registerLazySingleton(() => GetWarehouseTransItemRepo(locator()));
+  locator.registerLazySingleton(() => GetWarehouseCategotiesRepo(locator()));
+  locator.registerLazySingleton(() => ExistItemRepo(locator()));
+  locator.registerLazySingleton(() => UpdateAvilableRepo(locator()));
 }
 
 void _registerServices() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/admin/emp_services/all_emps/presentation/views/all_emps_screen.dart';
 import '../../features/admin/vacation_attendance/admin_attendance/presentation/views/admin_attendance.dart';
 import '../../features/admin/custody/custody/data/model/custody_model.dart';
 import '../../features/admin/custody/custody_transaction/presentation/views/custody_transactions.dart';
@@ -104,6 +105,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return BaseRoute(
         page: WarehouseTransaction(model: args?['model'] as GetWarehouseModel),
       );
+    case RoutesNames.allEmp:
+      return BaseRoute(page: AllEmpsScreen(status: args?['status']));
 
     /////////
     /////////user feature routes////////////

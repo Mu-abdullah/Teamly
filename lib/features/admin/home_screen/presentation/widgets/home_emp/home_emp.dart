@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:teamly/core/extextions/extentions.dart';
+import 'package:teamly/core/services/status/job_status.dart';
 
 import '../../../../../../core/language/lang_keys.dart';
+import '../../../../../../core/routes/routes_name.dart';
 import '../../../../../../core/style/color/app_color.dart';
 import '../../../../../../core/style/statics/app_statics.dart';
 import '../../../../../../core/style/widgets/app_space.dart';
@@ -33,7 +36,15 @@ class HomeEmpSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppSpace(space: 10),
-                HomeSectionHeader(title: LangKeys.employees, onTap: () {}),
+                HomeSectionHeader(
+                  title: LangKeys.employees,
+                  onTap: () {
+                    context.pushNamed(
+                      RoutesNames.allEmp,
+                      arguments: {'status': JobStatus.onWork},
+                    );
+                  },
+                ),
                 HomeEmpListview(empList: state.empList),
               ],
             ),

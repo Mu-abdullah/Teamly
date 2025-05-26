@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+import '../../../features/admin/emp_services/all_emps/data/repo/get_all_emp_repo.dart';
 import '../../../features/admin/vacation_attendance/admin_attendance/data/repo/admin_attendance_repo.dart';
 import '../../../features/admin/vacation_attendance/admin_attendance/data/repo/get_month_repo.dart';
 import '../../../features/admin/custody/custody/data/repo/add_custody.dart';
@@ -92,6 +93,7 @@ void _registerRepositories() {
   locator.registerLazySingleton(() => GetWarehouseCategotiesRepo(locator()));
   locator.registerLazySingleton(() => ExistItemRepo(locator()));
   locator.registerLazySingleton(() => UpdateAvilableRepo(locator()));
+  locator.registerLazySingleton(() => GetAllEmpRepo(locator()));
 }
 
 void _registerServices() {

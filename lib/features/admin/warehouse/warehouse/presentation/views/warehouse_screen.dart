@@ -8,7 +8,7 @@ import '../../../../../../core/style/widgets/custom_app_bar.dart';
 import '../../data/repo/get_werehouse_items_repo.dart';
 import '../cubits/warehouse_cubit/warehouse_cubit.dart';
 import '../refactor/warehouse_body.dart';
-import '../widgets/warehouse_add_button.dart';
+import '../widgets/app_bar_buttons.dart';
 
 class WarehouseScreen extends StatelessWidget {
   const WarehouseScreen({super.key});
@@ -25,12 +25,11 @@ class WarehouseScreen extends StatelessWidget {
               (context) =>
                   WarehouseCubit(lac)..getWerehouseItems(compId: compID),
         ),
-        
       ],
       child: Scaffold(
         appBar: CustomAppBar(
           title: LangKeys.warehouse,
-          actions: [WarehouseAddButton()],
+          actions: [RefreshButton(), WarehouseAddButton()],
         ),
         body: WarehouseScreenBody(),
       ),

@@ -32,3 +32,18 @@ class WarehouseAddButton extends StatelessWidget {
     );
   }
 }
+
+class RefreshButton extends StatelessWidget {
+  const RefreshButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var cubit = context.read<WarehouseCubit>();
+    return IconButton(
+      onPressed: () {
+        cubit.getWerehouseItems(compId: context.read<AppUserCubit>().compId);
+      },
+      icon: const Icon(HugeIcons.strokeRoundedRefresh),
+    );
+  }
+}

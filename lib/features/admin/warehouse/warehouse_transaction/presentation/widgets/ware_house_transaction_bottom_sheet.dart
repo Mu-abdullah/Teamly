@@ -91,10 +91,14 @@ class WarehouseTransactionBottomSheet extends StatelessWidget {
                     hint: LangKeys.addQuantity,
                     validate: (v) => validateQuantity(v, quantity, context),
                   ),
-                  AppButton(
-                    isLoading: state is ExitQuantityLoading,
-                    text: LangKeys.addItem,
-                    onTap: () => handleExitQuantity(context, cubit),
+                  BlocBuilder<UpdateAvilableCubit, UpdateAvilableState>(
+                    builder: (context, state) {
+                      return AppButton(
+                        isLoading: state is ExitQuantityLoading,
+                        text: LangKeys.addItem,
+                        onTap: () => handleExitQuantity(context, cubit),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -153,11 +157,12 @@ class WarehouseTransactionBottomSheet extends StatelessWidget {
       quantity: cubit.quantity.text,
     );
 
-    cubit.exitQuantity(data: data.toJson()).then((_) {
-      final remainingQty = int.parse(quantity) - int.parse(cubit.quantity.text);
-      if (remainingQty == 0 && context.mounted) {
-        context.read<UpdateAvilableCubit>().updateItem(warehouseId);
-      }
-    });
+    if (int.parse(quantity) - int.parse(cubit.quantity.text) ==  0) {
+      context.read<UpdateAvilableCubit>().updateItem(warehouseId).then((v) {
+        cubit.exitQuantity(data: data.toJson());
+      });
+    } else {
+      cubit.exitQuantity(data: data.toJson());
+    }
   }
 }

@@ -19,7 +19,7 @@ class UpdateAvilableRepo {
           'id': {'eq': id},
         },
         updates: {
-          'available': {'set': false},
+          'available': false,
         },
       );
       return Right(true);
